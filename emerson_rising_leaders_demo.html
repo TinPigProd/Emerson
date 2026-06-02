@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Emerson Rising Leaders Program</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css"/>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --em-navy: #003865;
+  --em-navy2: #004487;
+  --em-blue: #285F9A;
+  --em-blue-light: #E8F0F8;
+  --em-blue-mid: #C5D8EE;
+  --em-teal: #00796B;
+  --em-teal-dark: #005A52;
+  --em-teal-light: #E0F2F0;
+  --em-gold: #8B6914;
+  --em-gold-light: #FDF3DC;
+  --em-gold-mid: #F0D080;
+  --em-gray-light: #E5E6E7;
+  --em-gray-bg: #F3F4F6;
+  --em-amber: #B85C00;
+  --em-amber-light: #FFF3E0;
+  --em-red: #A4262C;
+  --em-text: #201F1E;
+  --em-text-muted: #605E5C;
+  --em-text-light: #8A8886;
+  --em-border: #EDEBE9;
+  --em-border-strong: #C8C6C4;
+  --proto-bg: #2D1B69;
+  --proto-border: #7C5CBF;
+  --proto-text: #C9B8F0;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+html, body { height: 100%; }
+body { background: var(--em-gray-bg); color: var(--em-text); font-size: 14px; }
+
+/* ── Top Bar ── */
+.sp-topbar { height: 48px; background: var(--em-navy); display: flex; align-items: center; position: sticky; top: 0; z-index: 100; }
+.sp-app-launcher { width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; cursor: pointer; color: white; flex-shrink: 0; }
+.sp-app-launcher:hover { background: rgba(255,255,255,0.12); }
+.sp-topbar-logo { display: flex; align-items: center; padding: 0 14px; height: 100%; border-left: 1px solid rgba(255,255,255,0.25); }
+.em-wordmark { font-size: 13px; font-weight: 700; color: white; letter-spacing: 2px; }
+.sp-topbar-app { font-size: 15px; font-weight: 600; color: white; padding: 0 16px; height: 100%; display: flex; align-items: center; border-left: 1px solid rgba(255,255,255,0.25); }
+.sp-topbar-search { flex: 1; max-width: 400px; margin: 0 16px; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.2); border-radius: 3px; display: flex; align-items: center; padding: 0 10px; height: 32px; gap: 8px; }
+.sp-topbar-search input { background: transparent; border: none; outline: none; color: white; font-size: 13px; flex: 1; }
+.sp-topbar-search input::placeholder { color: rgba(255,255,255,0.55); }
+.sp-topbar-right { margin-left: auto; display: flex; align-items: center; gap: 2px; padding-right: 12px; }
+.sp-icon-btn { width: 32px; height: 32px; border-radius: 3px; display: flex; align-items: center; justify-content: center; color: white; cursor: pointer; border: none; background: transparent; transition: background 0.15s; }
+.sp-icon-btn:hover { background: rgba(255,255,255,0.15); }
+.sp-avatar-pill { display: flex; align-items: center; gap: 8px; cursor: pointer; padding: 4px 8px; border-radius: 3px; }
+.sp-avatar-pill:hover { background: rgba(255,255,255,0.1); }
+.sp-avatar-name { font-size: 13px; color: white; }
+.sp-avatar { width: 32px; height: 32px; border-radius: 50%; background: #6264A7; color: white; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 600; }
+
+/* ── Site Header ── */
+.sp-site-header { background: var(--em-navy2); flex-shrink: 0; }
+.sp-site-identity { display: flex; align-items: center; gap: 12px; padding: 12px 20px 0; }
+.sp-site-icon { width: 34px; height: 34px; border-radius: 50%; background: rgba(255,255,255,0.15); display: flex; align-items: center; justify-content: center; color: white; font-size: 15px; }
+.sp-site-name { font-size: 19px; font-weight: 600; color: white; }
+.sp-site-follow { margin-left: auto; display: flex; align-items: center; gap: 5px; color: rgba(255,255,255,0.8); font-size: 12px; cursor: pointer; padding: 4px 10px; border: 1px solid rgba(255,255,255,0.3); border-radius: 3px; }
+.sp-horiz-nav { display: flex; padding: 0 20px; margin-top: 8px; }
+.sp-nav-item { padding: 10px 14px; color: rgba(255,255,255,0.75); font-size: 13px; cursor: pointer; border-bottom: 2px solid transparent; transition: all 0.15s; white-space: nowrap; display: flex; align-items: center; gap: 4px; }
+.sp-nav-item:hover { color: white; background: rgba(255,255,255,0.08); }
+.sp-nav-item.active { color: white; border-bottom-color: white; font-weight: 600; }
+
+/* ── Prototype Banner ── */
+.proto-banner { background: var(--proto-bg); border-bottom: 1px solid var(--proto-border); padding: 7px 20px; display: flex; align-items: center; gap: 12px; flex-shrink: 0; flex-wrap: wrap; }
+.proto-label { display: inline-flex; align-items: center; gap: 5px; background: var(--proto-border); color: white; font-size: 10px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; padding: 3px 8px; border-radius: 3px; flex-shrink: 0; }
+.proto-msg { font-size: 12px; color: var(--proto-text); }
+.proto-msg strong { color: white; }
+.proto-views { display: flex; gap: 6px; margin-left: auto; align-items: center; flex-wrap: wrap; }
+.proto-view-label { font-size: 11px; color: var(--proto-text); }
+.proto-btn { padding: 4px 12px; border-radius: 3px; font-size: 12px; font-weight: 600; border: 1px solid var(--proto-border); background: transparent; color: var(--proto-text); cursor: pointer; transition: all 0.15s; }
+.proto-btn.active { background: white; color: var(--proto-bg); border-color: white; }
+.proto-btn:hover:not(.active) { background: rgba(255,255,255,0.1); color: white; }
+
+/* ── Hero ── */
+.sp-hero { background: linear-gradient(135deg, var(--em-navy) 0%, #1a4a6e 50%, var(--em-teal-dark) 100%); padding: 22px 28px; display: flex; align-items: center; gap: 20px; }
+.hero-program-badge { display: flex; flex-direction: column; gap: 4px; }
+.hero-program-name { font-size: 11px; font-weight: 700; color: var(--em-gold-mid); letter-spacing: 1.2px; text-transform: uppercase; }
+.hero-greeting h2 { font-size: 22px; font-weight: 700; color: white; letter-spacing: -0.3px; }
+.hero-greeting p { font-size: 13px; color: rgba(255,255,255,0.72); margin-top: 3px; }
+.hero-right { margin-left: auto; text-align: right; }
+.hero-phase-badge { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25); border-radius: 4px; padding: 10px 16px; text-align: center; }
+.hero-phase-label { font-size: 10px; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 3px; }
+.hero-phase-name { font-size: 15px; font-weight: 700; color: white; }
+.hero-phase-sub { font-size: 11px; color: rgba(255,255,255,0.6); margin-top: 2px; }
+.cohort-chip { display: inline-flex; align-items: center; gap: 5px; background: rgba(255,255,255,0.12); color: rgba(255,255,255,0.85); font-size: 11px; padding: 3px 10px; border-radius: 12px; margin-top: 8px; }
+
+/* ── Shell ── */
+.sp-shell { display: flex; flex-direction: column; min-height: 100vh; }
+.sp-body-wrap { display: flex; flex: 1; }
+
+/* ── Left Rail ── */
+.sp-left-rail { width: 48px; background: var(--em-navy); flex-shrink: 0; display: flex; flex-direction: column; align-items: center; padding: 8px 0; gap: 2px; }
+.rail-icon { width: 36px; height: 36px; border-radius: 3px; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.65); cursor: pointer; transition: all 0.15s; font-size: 18px; }
+.rail-icon:hover, .rail-icon.active { background: rgba(255,255,255,0.18); color: white; }
+.rail-divider { width: 24px; height: 1px; background: rgba(255,255,255,0.15); margin: 4px 0; }
+.rail-add { margin-top: auto; }
+
+/* ── Sidebar ── */
+.sp-sidebar { width: 240px; background: white; border-right: 1px solid var(--em-border); padding: 16px 0; flex-shrink: 0; overflow-y: auto; }
+.sidebar-section-label { font-size: 11px; font-weight: 600; color: var(--em-text-light); padding: 4px 16px 6px; text-transform: uppercase; letter-spacing: 0.6px; }
+.sidebar-link { display: flex; align-items: center; gap: 10px; padding: 8px 16px; font-size: 13px; color: var(--em-text); cursor: pointer; transition: background 0.1s; }
+.sidebar-link:hover { background: var(--em-gray-bg); }
+.sidebar-link.active { background: var(--em-blue-light); color: var(--em-navy2); font-weight: 600; border-right: 3px solid var(--em-navy2); }
+.sidebar-link i { font-size: 15px; opacity: 0.65; }
+.sidebar-link.active i { opacity: 1; }
+.sidebar-divider { height: 1px; background: var(--em-border); margin: 8px 16px; }
+
+/* Phase nav */
+.phase-nav-item { display: flex; align-items: center; gap: 10px; padding: 6px 16px; font-size: 12px; color: var(--em-text-muted); cursor: pointer; transition: background 0.1s; border-radius: 0; }
+.phase-nav-item:hover { background: var(--em-gray-bg); }
+.phase-nav-item.done { opacity: 0.5; }
+.phase-nav-item.done .pni-label { text-decoration: line-through; }
+.phase-nav-item.current { color: var(--em-navy2); font-weight: 600; }
+.phase-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; background: var(--em-border-strong); }
+.phase-dot.done { background: var(--em-teal); }
+.phase-dot.current { background: var(--em-navy2); width: 10px; height: 10px; }
+.phase-dot.locked { background: var(--em-gray-light); }
+
+/* Progress */
+.progress-block { padding: 10px 16px; }
+.donut-wrap { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+.donut-pct { font-size: 22px; font-weight: 700; color: var(--em-navy2); line-height: 1; }
+.donut-sub { font-size: 11px; color: var(--em-text-muted); }
+.phase-bar-row { margin-bottom: 7px; }
+.phase-bar-label { display: flex; justify-content: space-between; font-size: 11px; color: var(--em-text-muted); margin-bottom: 3px; }
+.bar-track { height: 4px; background: var(--em-gray-light); border-radius: 2px; overflow: hidden; }
+.bar-fill { height: 100%; background: var(--em-navy2); border-radius: 2px; transition: width 0.4s; }
+.bar-fill.complete { background: var(--em-teal); }
+
+/* ── Main ── */
+.sp-main { flex: 1; padding: 20px; overflow-y: auto; min-width: 0; }
+
+/* Cards */
+.sp-card { background: white; border: 1px solid var(--em-border); border-radius: 3px; margin-bottom: 16px; }
+.card-header { display: flex; align-items: center; justify-content: space-between; padding: 13px 18px; border-bottom: 1px solid var(--em-border); }
+.card-title { font-size: 14px; font-weight: 600; color: var(--em-text); display: flex; align-items: center; gap: 8px; }
+.card-title i { font-size: 16px; color: var(--em-navy2); }
+.card-body { padding: 14px 18px; }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+.three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-bottom: 16px; }
+
+/* Tasks */
+.task-item { display: flex; align-items: flex-start; gap: 10px; padding: 10px 12px; border: 1px solid var(--em-border); border-radius: 3px; cursor: pointer; transition: border-color 0.15s; margin-bottom: 8px; }
+.task-item:last-child { margin-bottom: 0; }
+.task-item:hover { border-color: var(--em-blue); }
+.task-item.done { opacity: 0.6; }
+.task-item.done .task-name { text-decoration: line-through; }
+.task-item.locked { opacity: 0.45; cursor: default; }
+.task-item.locked:hover { border-color: var(--em-border); }
+.task-check { width: 16px; height: 16px; border: 1.5px solid var(--em-border-strong); border-radius: 2px; flex-shrink: 0; margin-top: 2px; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700; transition: all 0.2s; }
+.task-check.checked { background: var(--em-teal); border-color: var(--em-teal); color: white; }
+.task-check.locked-icon { background: var(--em-gray-light); border-color: var(--em-gray-light); color: var(--em-text-light); font-size: 9px; }
+.task-name { font-size: 13px; color: var(--em-text); line-height: 1.4; }
+.task-meta { display: flex; align-items: center; gap: 6px; margin-top: 3px; flex-wrap: wrap; }
+.trigger-tag { font-size: 10px; padding: 1px 6px; border-radius: 2px; background: var(--em-amber-light); color: var(--em-amber); font-weight: 600; display: flex; align-items: center; gap: 3px; }
+.deadline-tag { font-size: 10px; padding: 1px 6px; border-radius: 2px; background: #FDE8E8; color: var(--em-red); font-weight: 600; }
+.lms-tag { font-size: 10px; padding: 1px 6px; border-radius: 2px; background: var(--em-teal-light); color: var(--em-teal-dark); font-weight: 600; display: flex; align-items: center; gap: 3px; }
+.link-tag { font-size: 10px; padding: 1px 6px; border-radius: 2px; background: var(--em-blue-light); color: var(--em-navy2); font-weight: 600; display: flex; align-items: center; gap: 3px; }
+
+/* Phase header strip */
+.phase-strip { display: flex; align-items: center; gap: 12px; padding: 12px 18px; margin-bottom: 16px; border-radius: 3px; }
+.phase-strip.prework { background: var(--em-gold-light); border-left: 4px solid var(--em-gold); }
+.phase-strip.session { background: var(--em-blue-light); border-left: 4px solid var(--em-navy2); }
+.phase-strip.between { background: var(--em-teal-light); border-left: 4px solid var(--em-teal); }
+.phase-strip-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; }
+.phase-strip.prework .phase-strip-label { color: var(--em-gold); }
+.phase-strip.session .phase-strip-label { color: var(--em-navy2); }
+.phase-strip.between .phase-strip-label { color: var(--em-teal); }
+.phase-strip-title { font-size: 16px; font-weight: 700; color: var(--em-text); }
+.phase-strip-desc { font-size: 12px; color: var(--em-text-muted); margin-top: 1px; }
+.phase-strip-icon { font-size: 24px; margin-right: 4px; }
+
+/* Phase full checklist */
+.phase-group { border-bottom: 1px solid var(--em-border); }
+.phase-group:last-child { border-bottom: none; }
+.phase-toggle { display: flex; align-items: center; gap: 10px; padding: 12px 18px; cursor: pointer; transition: background 0.1s; user-select: none; }
+.phase-toggle:hover { background: var(--em-gray-bg); }
+.phase-toggle-left { display: flex; align-items: center; gap: 10px; flex: 1; }
+.phase-toggle-pip { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+.phase-toggle-label { font-size: 13px; font-weight: 600; }
+.phase-count { font-size: 11px; color: var(--em-text-muted); margin-left: auto; margin-right: 8px; }
+.phase-arrow { font-size: 13px; color: var(--em-text-light); transition: transform 0.2s; display: inline-block; }
+.phase-arrow.open { transform: rotate(90deg); }
+.phase-tasks { padding: 0 18px 8px; display: none; }
+.phase-tasks.open { display: block; }
+.checklist-task { display: flex; align-items: flex-start; gap: 10px; padding: 8px 0; border-bottom: 1px solid var(--em-border); cursor: pointer; }
+.checklist-task:last-child { border-bottom: none; }
+.checklist-task.done .task-name { text-decoration: line-through; color: var(--em-text-muted); }
+.checklist-task.locked { opacity: 0.4; cursor: default; }
+
+/* Month grouping in Between Sessions */
+.month-group { margin-bottom: 14px; }
+.month-label { font-size: 11px; font-weight: 700; color: var(--em-teal-dark); text-transform: uppercase; letter-spacing: 0.6px; padding: 6px 0 8px; border-bottom: 1px solid var(--em-teal-light); margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
+
+/* People cards */
+.person-row { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
+.person-avatar { width: 40px; height: 40px; border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; color: white; }
+.person-name { font-size: 13px; font-weight: 600; }
+.person-role { font-size: 11px; color: var(--em-text-muted); }
+.person-rel { font-size: 12px; color: var(--em-text-muted); margin-bottom: 10px; line-height: 1.5; }
+.action-link { display: inline-flex; align-items: center; gap: 5px; font-size: 12px; color: var(--em-navy2); font-weight: 600; padding: 5px 10px; border: 1px solid var(--em-navy2); border-radius: 3px; cursor: pointer; transition: all 0.15s; text-decoration: none; margin-right: 6px; margin-top: 4px; }
+.action-link:hover { background: var(--em-navy2); color: white; }
+
+/* Cohort card */
+.cohort-member { display: flex; align-items: center; gap: 10px; padding: 7px 0; border-bottom: 1px solid var(--em-border); }
+.cohort-member:last-child { border-bottom: none; }
+.cohort-avatar { width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: white; flex-shrink: 0; }
+.cohort-name { font-size: 13px; font-weight: 500; }
+.cohort-role { font-size: 11px; color: var(--em-text-muted); }
+.cohort-count { font-size: 12px; color: var(--em-text-muted); font-style: italic; padding: 8px 0; }
+
+/* Staff / Exec views */
+.stat-box { background: white; border: 1px solid var(--em-border); border-radius: 3px; padding: 14px; text-align: center; }
+.stat-num { font-size: 26px; font-weight: 700; color: var(--em-navy2); }
+.stat-label { font-size: 11px; color: var(--em-text-muted); }
+.alert-card { display: flex; align-items: flex-start; gap: 12px; background: white; border: 1px solid var(--em-border); border-radius: 3px; padding: 11px 14px; margin-bottom: 7px; }
+.alert-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; margin-top: 4px; }
+.alert-dot.done { background: var(--em-teal); }
+.alert-dot.pending { background: var(--em-amber); }
+.alert-dot.upcoming { background: var(--em-navy2); }
+.alert-title { font-size: 13px; font-weight: 600; }
+.alert-sub { font-size: 12px; color: var(--em-text-muted); margin-top: 2px; }
+.nudge-card { background: var(--em-blue-light); border: 1px solid var(--em-blue-mid); border-radius: 3px; padding: 12px 14px; margin-bottom: 8px; }
+.nudge-timing { font-size: 11px; color: var(--em-navy2); font-weight: 700; margin-bottom: 5px; text-transform: uppercase; letter-spacing: 0.4px; }
+.nudge-q { font-size: 13px; color: var(--em-text); line-height: 1.5; }
+.ai-chip { display: inline-flex; align-items: center; gap: 4px; font-size: 10px; padding: 2px 8px; border-radius: 10px; background: var(--em-gray-light); color: var(--em-text-muted); margin-top: 7px; font-weight: 500; }
+
+/* Teams sim */
+.teams-sim { background: #1A1D21; border-radius: 3px; padding: 16px; }
+.teams-header { color: #868D96; font-size: 11px; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid #2C2F35; }
+.teams-msg { display: flex; gap: 10px; margin-bottom: 14px; }
+.teams-avatar-t { width: 32px; height: 32px; border-radius: 4px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; color: white; }
+.teams-name { font-size: 13px; font-weight: 700; color: #D9D9D9; }
+.teams-time { font-size: 11px; color: #868D96; margin-left: 6px; }
+.teams-body { font-size: 13px; color: #B9BBBE; line-height: 1.5; margin-top: 3px; }
+.teams-body strong { color: #D9D9D9; font-weight: 600; }
+.teams-body ul { padding-left: 16px; margin-top: 6px; }
+.teams-body li { margin-bottom: 4px; }
+
+/* Participant progress table */
+.progress-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+.progress-table th { text-align: left; padding: 8px 12px; font-size: 11px; font-weight: 600; color: var(--em-text-muted); text-transform: uppercase; letter-spacing: 0.4px; border-bottom: 1px solid var(--em-border); background: var(--em-gray-bg); }
+.progress-table td { padding: 9px 12px; border-bottom: 1px solid var(--em-border); vertical-align: middle; }
+.progress-table tr:last-child td { border-bottom: none; }
+.progress-table tr:hover td { background: var(--em-gray-bg); }
+.mini-bar-wrap { display: flex; align-items: center; gap: 8px; }
+.mini-bar { flex: 1; height: 5px; background: var(--em-gray-light); border-radius: 2px; overflow: hidden; }
+.mini-bar-fill { height: 100%; border-radius: 2px; background: var(--em-navy2); }
+.mini-bar-fill.hi { background: var(--em-teal); }
+.mini-bar-fill.lo { background: var(--em-amber); }
+.status-pill { font-size: 10px; padding: 2px 8px; border-radius: 10px; font-weight: 600; }
+.pill-on-track { background: var(--em-teal-light); color: var(--em-teal-dark); }
+.pill-behind { background: var(--em-amber-light); color: var(--em-amber); }
+.pill-complete { background: #E8F5E9; color: #2E7D32; }
+
+/* Modal */
+.modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 500; display: flex; align-items: center; justify-content: center; }
+.modal-box { background: white; border-radius: 3px; max-width: 500px; width: 92%; overflow: hidden; border: 1px solid var(--em-border); }
+.modal-header { background: linear-gradient(135deg, var(--em-navy) 0%, var(--em-teal-dark) 100%); padding: 22px 26px; }
+.modal-header .eyebrow { font-size: 10px; color: var(--em-gold-mid); font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 6px; }
+.modal-header h2 { font-size: 20px; font-weight: 700; color: white; }
+.modal-body { padding: 20px 26px; }
+.modal-body p { font-size: 13px; line-height: 1.7; color: var(--em-text); margin-top: 10px; }
+.modal-body p:first-child { margin-top: 0; }
+.modal-actions { display: flex; gap: 10px; margin-top: 18px; }
+.btn-secondary { flex: 1; padding: 8px; border: 1px solid var(--em-border-strong); border-radius: 3px; background: white; font-size: 13px; cursor: pointer; color: var(--em-text-muted); }
+.btn-primary { flex: 2; padding: 8px; border: none; border-radius: 3px; background: var(--em-navy); color: white; font-size: 13px; font-weight: 600; cursor: pointer; }
+
+/* Toast */
+.toast { position: fixed; bottom: 24px; right: 24px; background: white; border: 1px solid var(--em-border); border-left: 3px solid var(--em-teal); border-radius: 3px; padding: 12px 16px; max-width: 310px; z-index: 999; display: none; box-shadow: 0 4px 16px rgba(0,0,0,0.1); }
+.toast.show { display: block; animation: slideIn 0.25s ease; }
+@keyframes slideIn { from { transform: translateX(16px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+.toast-title { font-size: 13px; font-weight: 600; color: var(--em-teal); margin-bottom: 4px; }
+.toast-body { font-size: 12px; color: var(--em-text-muted); line-height: 1.4; }
+.toast-close { font-size: 12px; color: var(--em-navy2); font-weight: 600; cursor: pointer; margin-top: 8px; display: block; }
+
+.view-panel { display: none; }
+.view-panel.active { display: block; }
+
+/* Session content tiles */
+.session-tile { background: var(--em-blue-light); border: 1px solid var(--em-blue-mid); border-radius: 3px; padding: 14px 16px; margin-bottom: 10px; display: flex; gap: 14px; align-items: flex-start; }
+.session-tile-icon { font-size: 20px; flex-shrink: 0; margin-top: 2px; }
+.session-tile-title { font-size: 13px; font-weight: 600; color: var(--em-navy2); margin-bottom: 3px; }
+.session-tile-desc { font-size: 12px; color: var(--em-text-muted); line-height: 1.5; }
+
+/* Info banner */
+.info-banner { background: var(--em-gold-light); border: 1px solid var(--em-gold-mid); border-radius: 3px; padding: 10px 14px; margin-bottom: 14px; display: flex; align-items: flex-start; gap: 10px; font-size: 12px; color: var(--em-gold); line-height: 1.5; }
+.info-banner i { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+</style>
+</head>
+<body>
+
+<div class="sp-shell">
+
+  <!-- Top Bar -->
+  <div class="sp-topbar">
+    <div class="sp-app-launcher" title="App launcher">
+      <svg width="18" height="18" viewBox="0 0 16 16" fill="white" aria-hidden="true">
+        <rect x="1" y="1" width="4" height="4" rx="0.5"/><rect x="6" y="1" width="4" height="4" rx="0.5"/>
+        <rect x="11" y="1" width="4" height="4" rx="0.5"/><rect x="1" y="6" width="4" height="4" rx="0.5"/>
+        <rect x="6" y="6" width="4" height="4" rx="0.5"/><rect x="11" y="6" width="4" height="4" rx="0.5"/>
+        <rect x="1" y="11" width="4" height="4" rx="0.5"/><rect x="6" y="11" width="4" height="4" rx="0.5"/>
+        <rect x="11" y="11" width="4" height="4" rx="0.5"/>
+      </svg>
+    </div>
+    <div class="sp-topbar-logo"><span class="em-wordmark">EMERSON</span></div>
+    <div class="sp-topbar-app">SharePoint</div>
+    <div class="sp-topbar-search">
+      <i class="ti ti-search" style="font-size:14px;color:rgba(255,255,255,0.6)" aria-hidden="true"></i>
+      <input type="text" placeholder="Search"/>
+    </div>
+    <div class="sp-topbar-right">
+      <button class="sp-icon-btn" title="Settings"><i class="ti ti-settings" style="font-size:16px"></i></button>
+      <button class="sp-icon-btn" title="Help"><i class="ti ti-help" style="font-size:16px"></i></button>
+      <div class="sp-avatar-pill">
+        <span class="sp-avatar-name">Chen, Jordan</span>
+        <div class="sp-avatar">JC</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Site Header -->
+  <div class="sp-site-header">
+    <div class="sp-site-identity">
+      <div class="sp-site-icon"><i class="ti ti-trophy" aria-hidden="true"></i></div>
+      <div class="sp-site-name">Rising Leaders Program</div>
+      <div class="sp-site-follow"><i class="ti ti-star" style="font-size:12px" aria-hidden="true"></i> Following</div>
+    </div>
+    <div class="sp-horiz-nav">
+      <div class="sp-nav-item active">My Program</div>
+      <div class="sp-nav-item">Program Resources <i class="ti ti-chevron-down" style="font-size:11px"></i></div>
+      <div class="sp-nav-item">Session Materials</div>
+      <div class="sp-nav-item">LMS Courses</div>
+      <div class="sp-nav-item">Cohort Directory</div>
+    </div>
+  </div>
+
+  <!-- Prototype Banner -->
+  <div class="proto-banner">
+    <div class="proto-label"><i class="ti ti-flask" style="font-size:11px" aria-hidden="true"></i> Prototype</div>
+    <span class="proto-msg">This view toggle is a <strong>design preview only</strong> — in production, each person sees only their own view based on SharePoint permissions.</span>
+    <div class="proto-views">
+      <span class="proto-view-label">Simulate view as:</span>
+      <button class="proto-btn active" onclick="switchView('participant',this)">Jordan (Participant)</button>
+      <button class="proto-btn" onclick="switchView('staff',this)">Program Staff</button>
+      <button class="proto-btn" onclick="switchView('exec',this)">Resident Executive</button>
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <div class="sp-hero">
+    <div>
+      <div class="hero-program-name">Rising Leaders Program · Cohort 2025-A</div>
+      <h2 style="font-size:22px;font-weight:700;color:white;margin-top:4px;">Good morning, Jordan.</h2>
+      <p style="font-size:13px;color:rgba(255,255,255,0.72);margin-top:3px;">You have 3 prework items to complete before Session 1.</p>
+      <div class="cohort-chip"><i class="ti ti-users" style="font-size:12px" aria-hidden="true"></i> 36 participants · Cohort 2025-A</div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-phase-badge">
+        <div class="hero-phase-label">Current phase</div>
+        <div class="hero-phase-name">Prework</div>
+        <div class="hero-phase-sub">Session 1 in 18 days</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Body -->
+  <div class="sp-body-wrap">
+
+    <!-- Left Rail -->
+    <div class="sp-left-rail">
+      <div class="rail-icon active" title="Home"><i class="ti ti-home"></i></div>
+      <div class="rail-icon" title="My content"><i class="ti ti-layout-dashboard"></i></div>
+      <div class="rail-icon" title="Sites"><i class="ti ti-world"></i></div>
+      <div class="rail-icon" title="News"><i class="ti ti-news"></i></div>
+      <div class="rail-icon" title="Pages"><i class="ti ti-file"></i></div>
+      <div class="rail-divider"></div>
+      <div class="rail-icon" title="Conversations"><i class="ti ti-messages"></i></div>
+      <div class="rail-icon rail-add" title="Add"><i class="ti ti-plus"></i></div>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="sp-sidebar">
+      <div class="sidebar-section-label">Navigation</div>
+      <div class="sidebar-link active"><i class="ti ti-home"></i> My program</div>
+      <div class="sidebar-link"><i class="ti ti-checkbox"></i> My checklist</div>
+      <div class="sidebar-link"><i class="ti ti-users"></i> My cohort</div>
+      <div class="sidebar-link"><i class="ti ti-school"></i> LMS courses</div>
+      <div class="sidebar-link"><i class="ti ti-book"></i> Resources</div>
+
+      <div class="sidebar-divider"></div>
+      <div class="sidebar-section-label">Program Phases</div>
+      <div class="phase-nav-item current">
+        <div class="phase-dot current"></div>
+        <span class="pni-label">Prework</span>
+      </div>
+      <div class="phase-nav-item">
+        <div class="phase-dot"></div>
+        <span class="pni-label">Session 1</span>
+      </div>
+      <div class="phase-nav-item">
+        <div class="phase-dot locked"></div>
+        <span class="pni-label">Between Sessions</span>
+      </div>
+      <div class="phase-nav-item">
+        <div class="phase-dot locked"></div>
+        <span class="pni-label">Session 2</span>
+      </div>
+
+      <div class="sidebar-divider"></div>
+      <div class="sidebar-section-label">Track Progress</div>
+      <div class="progress-block">
+        <div class="donut-wrap">
+          <svg width="52" height="52" viewBox="0 0 52 52" style="flex-shrink:0">
+            <circle cx="26" cy="26" r="20" fill="none" stroke="#E5E6E7" stroke-width="6"/>
+            <circle id="donut-ring" cx="26" cy="26" r="20" fill="none" stroke="#004487" stroke-width="6"
+              stroke-linecap="round" stroke-dasharray="125.7" stroke-dashoffset="100.6"
+              transform="rotate(-90 26 26)" style="transition:stroke-dashoffset 0.5s"/>
+          </svg>
+          <div>
+            <div class="donut-pct" id="pct-display">20%</div>
+            <div class="donut-sub" id="tasks-display">3 of 15</div>
+          </div>
+        </div>
+        <div id="phase-bars"></div>
+      </div>
+
+      <div class="sidebar-divider"></div>
+      <div class="sidebar-section-label">Program Staff</div>
+      <div style="padding:8px 16px">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
+          <div style="width:28px;height:28px;border-radius:50%;background:#004487;color:white;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0">RK</div>
+          <div><div style="font-size:12px;font-weight:600">Rachel Kim</div><div style="font-size:10px;color:var(--em-text-muted)">Program Director</div></div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px">
+          <div style="width:28px;height:28px;border-radius:50%;background:#285F9A;color:white;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0">MT</div>
+          <div><div style="font-size:12px;font-weight:600">Marcus Torres</div><div style="font-size:10px;color:var(--em-text-muted)">Program Coordinator</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main -->
+    <div class="sp-main">
+
+      <!-- PARTICIPANT VIEW -->
+      <div class="view-panel active" id="panel-participant">
+
+        <!-- Priority alert -->
+        <div class="info-banner">
+          <i class="ti ti-clock-exclamation" aria-hidden="true"></i>
+          <div><strong>3 prework items are due before Session 1 (March 14).</strong> Complete them at your own pace — allow roughly 4–6 hours total. Teams reminders will be sent 7 days and 2 days before the deadline.</div>
+        </div>
+
+        <div class="two-col">
+          <!-- Today's focus -->
+          <div class="sp-card" style="margin-bottom:0">
+            <div class="card-header"><div class="card-title"><i class="ti ti-star" aria-hidden="true"></i> Up next for you</div></div>
+            <div class="card-body" id="today-tasks-list"></div>
+          </div>
+
+          <!-- People -->
+          <div>
+            <div class="sp-card" style="margin-bottom:12px">
+              <div class="card-header"><div class="card-title"><i class="ti ti-id-badge" aria-hidden="true"></i> Program staff</div></div>
+              <div class="card-body">
+                <div class="person-row">
+                  <div class="person-avatar" style="background:var(--em-navy2)">RK</div>
+                  <div><div class="person-name">Rachel Kim</div><div class="person-role">Program Director</div></div>
+                </div>
+                <div class="person-rel">Rachel leads the Rising Leaders Program. Reach out with questions about program structure, scheduling, or logistics.</div>
+                <a class="action-link" href="#"><i class="ti ti-message" style="font-size:12px" aria-hidden="true"></i> Message</a>
+              </div>
+            </div>
+            <div class="sp-card">
+              <div class="card-header"><div class="card-title"><i class="ti ti-user-star" aria-hidden="true"></i> Your resident executive</div></div>
+              <div class="card-body">
+                <div class="person-row">
+                  <div class="person-avatar" style="background:var(--em-teal)">DL</div>
+                  <div><div class="person-name">Diana Lowe</div><div class="person-role">VP, Global Operations</div></div>
+                </div>
+                <div class="person-rel">Diana is embedded in your team cohort as a Resident Executive — she'll help facilitate team sessions and connect learning to real business context.</div>
+                <a class="action-link" href="#"><i class="ti ti-message" style="font-size:12px" aria-hidden="true"></i> Message</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Full checklist -->
+        <div class="sp-card">
+          <div class="card-header">
+            <div class="card-title"><i class="ti ti-checkbox" aria-hidden="true"></i> My Program Checklist</div>
+            <span id="checklist-count" style="font-size:12px;color:var(--em-text-muted)">3 of 15 complete</span>
+          </div>
+          <div id="checklist-body"></div>
+        </div>
+
+      </div>
+
+      <!-- PROGRAM STAFF VIEW -->
+      <div class="view-panel" id="panel-staff">
+        <div style="margin-bottom:16px">
+          <div style="font-size:18px;font-weight:600;margin-bottom:3px">Program Staff Dashboard — Cohort 2025-A</div>
+          <div style="font-size:13px;color:var(--em-text-muted)">Rising Leaders Program · 36 participants · Session 1 in 18 days</div>
+        </div>
+
+        <div class="three-col">
+          <div class="stat-box"><div class="stat-num">36</div><div class="stat-label">Total participants</div></div>
+          <div class="stat-box"><div class="stat-num" style="color:var(--em-teal)">21</div><div class="stat-label">Prework on track</div></div>
+          <div class="stat-box"><div class="stat-num" style="color:var(--em-amber)">15</div><div class="stat-label">Prework incomplete</div></div>
+        </div>
+
+        <!-- Cohort progress table -->
+        <div class="sp-card">
+          <div class="card-header"><div class="card-title"><i class="ti ti-table" aria-hidden="true"></i> Participant progress — Prework phase</div></div>
+          <div class="card-body" style="padding:0">
+            <table class="progress-table">
+              <thead>
+                <tr>
+                  <th>Participant</th>
+                  <th>Prework completion</th>
+                  <th>Last activity</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td><strong>Jordan Chen</strong></td><td><div class="mini-bar-wrap"><div class="mini-bar"><div class="mini-bar-fill hi" style="width:60%"></div></div><span style="font-size:11px;color:var(--em-text-muted)">60%</span></div></td><td style="font-size:12px;color:var(--em-text-muted)">Today</td><td><span class="status-pill pill-on-track">On track</span></td></tr>
+                <tr><td><strong>Marcus Reid</strong></td><td><div class="mini-bar-wrap"><div class="mini-bar"><div class="mini-bar-fill hi" style="width:100%"></div></div><span style="font-size:11px;color:var(--em-text-muted)">100%</span></div></td><td style="font-size:12px;color:var(--em-text-muted)">2 days ago</td><td><span class="status-pill pill-complete">Complete</span></td></tr>
+                <tr><td><strong>Priya Nair</strong></td><td><div class="mini-bar-wrap"><div class="mini-bar"><div class="mini-bar-fill lo" style="width:20%"></div></div><span style="font-size:11px;color:var(--em-text-muted)">20%</span></div></td><td style="font-size:12px;color:var(--em-text-muted)">6 days ago</td><td><span class="status-pill pill-behind">Needs nudge</span></td></tr>
+                <tr><td><strong>Thomas Greer</strong></td><td><div class="mini-bar-wrap"><div class="mini-bar"><div class="mini-bar-fill" style="width:40%"></div></div><span style="font-size:11px;color:var(--em-text-muted)">40%</span></div></td><td style="font-size:12px;color:var(--em-text-muted)">3 days ago</td><td><span class="status-pill pill-on-track">On track</span></td></tr>
+                <tr><td style="font-size:12px;color:var(--em-text-muted);font-style:italic" colspan="4">+ 32 more participants · Full list in SharePoint List view</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Staff task reminders -->
+        <div class="sp-card">
+          <div class="card-header"><div class="card-title"><i class="ti ti-bell" aria-hidden="true"></i> Upcoming staff reminders</div></div>
+          <div class="card-body" style="padding-top:8px">
+            <div class="alert-card"><div class="alert-dot upcoming"></div><div><div class="alert-title">Send cohort welcome communication</div><div class="alert-sub">Due today · Template in Resources → Cohort Communications</div></div></div>
+            <div class="alert-card"><div class="alert-dot upcoming"></div><div><div class="alert-title">Confirm Session 1 venue and catering</div><div class="alert-sub">Due in 5 days · March 9</div></div></div>
+            <div class="alert-card"><div class="alert-dot upcoming"></div><div><div class="alert-title">Send prework completion reminder to cohort</div><div class="alert-sub">Due in 7 days · Auto-send via Power Automate — review draft first</div></div></div>
+            <div class="alert-card"><div class="alert-dot pending"></div><div><div class="alert-title" style="color:var(--em-amber)">15 participants below 50% prework completion</div><div class="alert-sub">Consider direct outreach for Priya Nair and 4 others flagged as "Needs nudge"</div></div></div>
+          </div>
+        </div>
+
+        <!-- Teams notification thread -->
+        <div class="sp-card">
+          <div class="card-header"><div class="card-title"><i class="ti ti-brand-teams" aria-hidden="true"></i> Teams — Program Staff notifications</div></div>
+          <div class="card-body">
+            <div style="font-size:12px;color:var(--em-text-muted);margin-bottom:12px">Automated reminders and participant milestone alerts delivered to the Program Staff Teams channel <span class="ai-chip"><i class="ti ti-sparkles" style="font-size:10px" aria-hidden="true"></i> Power Automate</span></div>
+            <div class="teams-sim">
+              <div class="teams-header">🔔 RLP Program Bot · #rlp-staff-2025a</div>
+              <div class="teams-msg">
+                <div class="teams-avatar-t" style="background:#004487">RB</div>
+                <div>
+                  <span class="teams-name">RLP Program Bot</span><span class="teams-time"> · Today, 8:00 AM</span>
+                  <div class="teams-body"><strong>📋 Daily prework summary — 18 days to Session 1</strong><br><br>21 of 36 participants are on track. 15 have completed less than 50% of prework.<br><br><strong>Action needed:</strong> 5 participants have had no activity in 7+ days — consider direct outreach before the automated reminder fires on March 7.</div>
+                </div>
+              </div>
+              <div class="teams-msg">
+                <div class="teams-avatar-t" style="background:#00796B">RB</div>
+                <div>
+                  <span class="teams-name">RLP Program Bot</span><span class="teams-time"> · Yesterday, 3:14 PM</span>
+                  <div class="teams-body"><strong>✅ Marcus Reid completed all prework</strong> — first participant in the cohort to do so. Consider a quick acknowledgment to build momentum with the group.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RESIDENT EXECUTIVE VIEW -->
+      <div class="view-panel" id="panel-exec">
+        <div style="margin-bottom:16px">
+          <div style="font-size:18px;font-weight:600;margin-bottom:3px">Resident Executive Hub — Diana Lowe</div>
+          <div style="font-size:13px;color:var(--em-text-muted)">Rising Leaders Program · Cohort 2025-A · Your team cohort: Team 3 (9 participants)</div>
+        </div>
+
+        <div class="two-col">
+          <div class="stat-box"><div class="stat-num">9</div><div class="stat-label">Participants in your team</div></div>
+          <div class="stat-box"><div class="stat-num" style="color:var(--em-amber)">18</div><div class="stat-label">Days to Session 1</div></div>
+        </div>
+
+        <!-- Exec role card -->
+        <div class="sp-card">
+          <div class="card-header"><div class="card-title"><i class="ti ti-user-star" aria-hidden="true"></i> Your role in this program</div></div>
+          <div class="card-body">
+            <div class="session-tile">
+              <div class="session-tile-icon">🎯</div>
+              <div>
+                <div class="session-tile-title">Team facilitator during sessions</div>
+                <div class="session-tile-desc">You'll help guide your team cohort through facilitated discussion and team-based activities during Session 1 and Session 2. Session guides will be shared 1 week before each session.</div>
+              </div>
+            </div>
+            <div class="session-tile">
+              <div class="session-tile-icon">🔗</div>
+              <div>
+                <div class="session-tile-title">Business context connector</div>
+                <div class="session-tile-desc">Your role is to help participants connect program learning to real Emerson business challenges — drawing on your own experience and current strategic priorities.</div>
+              </div>
+            </div>
+            <div class="session-tile">
+              <div class="session-tile-icon">📅</div>
+              <div>
+                <div class="session-tile-title">Optional: between-session touchpoint</div>
+                <div class="session-tile-desc">Between sessions, you may optionally connect with your team cohort for an informal check-in. Program staff can support scheduling if helpful.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Exec reminders -->
+        <div class="sp-card">
+          <div class="card-header"><div class="card-title"><i class="ti ti-bell" aria-hidden="true"></i> Your upcoming reminders</div></div>
+          <div class="card-body" style="padding-top:8px">
+            <div class="alert-card"><div class="alert-dot upcoming"></div><div><div class="alert-title">Review Session 1 facilitation guide</div><div class="alert-sub">Recommended by March 10 · Document will be shared by program staff</div></div></div>
+            <div class="alert-card"><div class="alert-dot upcoming"></div><div><div class="alert-title">Session 1 — March 14</div><div class="alert-sub">Full-day session · Location and logistics from Rachel Kim's calendar invite</div></div></div>
+            <div class="alert-card"><div class="alert-dot done"></div><div><div class="alert-title">Resident Executive orientation call</div><div class="alert-sub">Completed · Feb 20 with Rachel Kim and Marcus Torres</div></div></div>
+          </div>
+        </div>
+
+        <!-- Team roster -->
+        <div class="sp-card">
+          <div class="card-header"><div class="card-title"><i class="ti ti-users" aria-hidden="true"></i> Your team cohort — Team 3</div></div>
+          <div class="card-body">
+            <div style="font-size:12px;color:var(--em-text-muted);margin-bottom:12px">Prework completion shown for awareness — detailed tracking is managed by program staff.</div>
+            <div class="cohort-member">
+              <div class="cohort-avatar" style="background:#004487">JC</div>
+              <div style="flex:1"><div class="cohort-name">Jordan Chen</div><div class="cohort-role">Senior Manager, Supply Chain</div></div>
+              <span class="status-pill pill-on-track">On track</span>
+            </div>
+            <div class="cohort-member">
+              <div class="cohort-avatar" style="background:#285F9A">MR</div>
+              <div style="flex:1"><div class="cohort-name">Marcus Reid</div><div class="cohort-role">Manager, Engineering</div></div>
+              <span class="status-pill pill-complete">Complete</span>
+            </div>
+            <div class="cohort-member">
+              <div class="cohort-avatar" style="background:#00796B">PN</div>
+              <div style="flex:1"><div class="cohort-name">Priya Nair</div><div class="cohort-role">Manager, Finance</div></div>
+              <span class="status-pill pill-behind">Needs nudge</span>
+            </div>
+            <div class="cohort-member">
+              <div class="cohort-avatar" style="background:#8B6914">TG</div>
+              <div style="flex:1"><div class="cohort-name">Thomas Greer</div><div class="cohort-role">Director, Sales Operations</div></div>
+              <span class="status-pill pill-on-track">On track</span>
+            </div>
+            <div class="cohort-count">+ 5 more teammates · View full roster in Cohort Directory</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Welcome Modal -->
+<div class="modal-overlay" id="welcome-modal">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div class="eyebrow">Rising Leaders Program · Cohort 2025-A</div>
+      <h2>Welcome, Jordan. You've been selected.</h2>
+    </div>
+    <div class="modal-body">
+      <p>This hub is your guide through the Rising Leaders Program — from prework through your final session. Everything you need to prepare, engage, and reflect is here in one place.</p>
+      <p>Your Program Director <strong>Rachel Kim</strong> and Resident Executive <strong>Diana Lowe</strong> are part of your experience. You'll also connect with 35 peers across Emerson who are on this journey with you.</p>
+      <p>Start with your prework — Session 1 is in 18 days. Allow approximately 4–6 hours across multiple sittings.</p>
+      <div class="modal-actions">
+        <button class="btn-secondary" onclick="closeModal()">Skip tour</button>
+        <button class="btn-primary" onclick="closeModal()">Go to my prework →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast">
+  <div class="toast-title">✓ Notification sent</div>
+  <div class="toast-body" id="toast-body">Program staff and your manager have been notified.</div>
+  <a class="toast-close" onclick="hideToast()">Dismiss</a>
+</div>
+
+<script>
+const phases = [
+  {
+    id: 'prework', label: 'Prework', color: '#8B6914', pip: '#8B6914',
+    tasks: [
+      { id: 'pw1', name: 'Complete the Leadership Style self-assessment', done: true, trigger: true, link: true, linkLabel: 'Open in LMS' },
+      { id: 'pw2', name: 'Read: "Leading at the Next Level" — assigned article', done: true, link: true, linkLabel: 'Open article' },
+      { id: 'pw3', name: 'Complete the 360 feedback request — invite at least 5 raters', done: true, trigger: true, link: true, linkLabel: 'Open 360 tool' },
+      { id: 'pw4', name: 'Watch: Program overview video from Rachel Kim (12 min)', done: false, link: true, linkLabel: 'Watch video' },
+      { id: 'pw5', name: 'Submit your pre-program reflection — 3 questions, ~30 min', done: false, trigger: true, link: true, linkLabel: 'Open form', deadline: true },
+      { id: 'pw6', name: 'Review Session 1 agenda and logistics', done: false, link: true, linkLabel: 'View agenda' },
+    ]
+  },
+  {
+    id: 'session1', label: 'Session 1', color: '#004487', pip: '#004487',
+    tasks: [
+      { id: 's1a', name: 'Attend Session 1 — full-day program (March 14)', done: false, locked: true },
+      { id: 's1b', name: 'Complete in-session team activity — Strategic Challenge brief', done: false, locked: true },
+      { id: 's1c', name: 'Submit Session 1 reflection (within 48 hours)', done: false, locked: true, trigger: true, link: true, linkLabel: 'Open form' },
+    ]
+  },
+  {
+    id: 'between', label: 'Between Sessions', color: '#00796B', pip: '#00796B',
+    months: [
+      {
+        label: 'Month 1',
+        tasks: [
+          { id: 'bt1', name: 'Complete LMS module: Influencing Without Authority', done: false, locked: true, lms: true },
+          { id: 'bt2', name: 'Complete LMS module: Communicating for Impact', done: false, locked: true, lms: true },
+          { id: 'bt3', name: 'Attend Learning Event 1 — Virtual (date TBD)', done: false, locked: true },
+        ]
+      },
+      {
+        label: 'Month 2',
+        tasks: [
+          { id: 'bt4', name: 'Complete LMS module: Leading Through Change', done: false, locked: true, lms: true },
+          { id: 'bt5', name: 'Complete team project milestone — deliverable to Resident Executive', done: false, locked: true, trigger: true },
+          { id: 'bt6', name: 'Attend Learning Event 2 — Virtual (date TBD)', done: false, locked: true },
+        ]
+      },
+      {
+        label: 'Month 3',
+        tasks: [
+          { id: 'bt7', name: 'Complete LMS module: Strategic Thinking for Leaders', done: false, locked: true, lms: true },
+          { id: 'bt8', name: 'Submit team project draft — for program staff review', done: false, locked: true, trigger: true },
+          { id: 'bt9', name: 'Complete pre-Session 2 reflection', done: false, locked: true, trigger: true, link: true, linkLabel: 'Open form' },
+        ]
+      }
+    ]
+  },
+  {
+    id: 'session2', label: 'Session 2', color: '#004487', pip: '#1a5276',
+    tasks: [
+      { id: 's2a', name: 'Attend Session 2 — full-day program (date TBD)', done: false, locked: true },
+      { id: 's2b', name: 'Present team project — to cohort and Resident Executives', done: false, locked: true },
+      { id: 's2c', name: 'Complete program evaluation survey', done: false, locked: true, link: true, linkLabel: 'Open survey' },
+      { id: 's2d', name: 'Submit post-program leadership commitment', done: false, locked: true, trigger: true, link: true, linkLabel: 'Open form' },
+    ]
+  }
+];
+
+const upNextIds = ['pw4', 'pw5', 'pw6'];
+
+function allTasks() {
+  return phases.flatMap(p => {
+    if (p.months) return p.months.flatMap(m => m.tasks);
+    return p.tasks;
+  });
+}
+
+function closeModal() { document.getElementById('welcome-modal').style.display = 'none'; }
+
+function updateProgress() {
+  const all = allTasks();
+  const done = all.filter(t => t.done).length;
+  const total = all.length;
+  const pct = Math.round(done / total * 100);
+  document.getElementById('pct-display').textContent = pct + '%';
+  document.getElementById('tasks-display').textContent = done + ' of ' + total;
+  document.getElementById('checklist-count').textContent = done + ' of ' + total + ' complete';
+  const circ = 2 * Math.PI * 20;
+  document.getElementById('donut-ring').setAttribute('stroke-dashoffset', (circ - pct / 100 * circ).toFixed(1));
+  renderPhaseBars();
+}
+
+function renderPhaseBars() {
+  const c = document.getElementById('phase-bars'); if (!c) return;
+  c.innerHTML = phases.map(p => {
+    const tasks = p.months ? p.months.flatMap(m => m.tasks) : p.tasks;
+    const d = tasks.filter(t => t.done).length;
+    const t = tasks.length;
+    const pct = Math.round(d / t * 100);
+    return `<div class="phase-bar-row">
+      <div class="phase-bar-label"><span>${p.label}</span><span>${d}/${t}</span></div>
+      <div class="bar-track"><div class="bar-fill ${d === t ? 'complete' : ''}" style="width:${pct}%"></div></div>
+    </div>`;
+  }).join('');
+}
+
+function taskHTML(t, inChecklist) {
+  const checkContent = t.locked ? '<i class="ti ti-lock" style="font-size:9px"></i>' : (t.done ? '✓' : '');
+  const checkClass = t.locked ? 'locked-icon' : (t.done ? 'checked' : '');
+  const itemClass = `${inChecklist ? 'checklist-task' : 'task-item'} ${t.done ? 'done' : ''} ${t.locked ? 'locked' : ''}`;
+  const clickAttr = t.locked ? '' : `onclick="toggleTask('${t.id}')"`;
+  return `<div class="${itemClass}" ${clickAttr} id="ct-${t.id}">
+    <div class="task-check ${checkClass}">${checkContent}</div>
+    <div>
+      <div class="task-name">${t.name}</div>
+      <div class="task-meta">
+        ${t.trigger && !t.locked ? '<span class="trigger-tag"><i class="ti ti-bolt" style="font-size:10px"></i> notifies staff & manager</span>' : ''}
+        ${t.lms ? '<span class="lms-tag"><i class="ti ti-school" style="font-size:10px"></i> LMS course</span>' : ''}
+        ${t.link && !t.locked ? `<span class="link-tag"><i class="ti ti-external-link" style="font-size:10px"></i> ${t.linkLabel}</span>` : ''}
+        ${t.deadline ? '<span class="deadline-tag">required before Session 1</span>' : ''}
+        ${t.locked ? '<span style="font-size:10px;color:var(--em-text-light)">Unlocks after previous phase</span>' : ''}
+      </div>
+    </div>
+  </div>`;
+}
+
+function renderUpNext() {
+  const c = document.getElementById('today-tasks-list');
+  const tasks = allTasks().filter(t => upNextIds.includes(t.id));
+  c.innerHTML = tasks.map(t => taskHTML(t, false)).join('');
+}
+
+function renderChecklist() {
+  const c = document.getElementById('checklist-body');
+  c.innerHTML = phases.map((p, pi) => {
+    const tasks = p.months ? p.months.flatMap(m => m.tasks) : p.tasks;
+    const done = tasks.filter(t => t.done).length;
+    const isOpen = pi === 0;
+    const pipStyle = `background:${p.pip}`;
+    let innerHTML = '';
+    if (p.months) {
+      innerHTML = p.months.map(m => `
+        <div class="month-group">
+          <div class="month-label"><i class="ti ti-calendar" style="font-size:12px"></i> ${m.label}</div>
+          ${m.tasks.map(t => taskHTML(t, true)).join('')}
+        </div>`).join('');
+    } else {
+      innerHTML = p.tasks.map(t => taskHTML(t, true)).join('');
+    }
+    return `<div class="phase-group">
+      <div class="phase-toggle" onclick="togglePhase('ph-${p.id}', this)">
+        <div class="phase-toggle-left">
+          <div class="phase-toggle-pip" style="${pipStyle}"></div>
+          <span class="phase-toggle-label">${p.label}</span>
+        </div>
+        <span class="phase-count">${done} of ${tasks.length}</span>
+        <i class="ti ti-chevron-right phase-arrow ${isOpen ? 'open' : ''}"></i>
+      </div>
+      <div class="phase-tasks ${isOpen ? 'open' : ''}" id="ph-${p.id}">${innerHTML}</div>
+    </div>`;
+  }).join('');
+}
+
+function toggleTask(id) {
+  const task = allTasks().find(t => t.id === id);
+  if (!task || task.locked) return;
+  task.done = !task.done;
+  document.querySelectorAll('#ct-' + id).forEach(el => {
+    el.classList.toggle('done', task.done);
+    const chk = el.querySelector('.task-check');
+    chk.classList.toggle('checked', task.done);
+    chk.textContent = task.done ? '✓' : '';
+  });
+  if (task.trigger && task.done) {
+    document.getElementById('toast-body').textContent = 'You completed "' + task.name + '". Program staff and your manager have been notified via Teams.';
+    showToast();
+  }
+  updateProgress();
+  renderUpNext();
+  phases.forEach(p => {
+    const tasks = p.months ? p.months.flatMap(m => m.tasks) : p.tasks;
+    const el = document.querySelector('[onclick="togglePhase(\'ph-' + p.id + '\', this)"] .phase-count');
+    if (el) el.textContent = tasks.filter(t => t.done).length + ' of ' + tasks.length;
+  });
+}
+
+function togglePhase(id, header) {
+  const panel = document.getElementById(id);
+  const arrow = header.querySelector('.phase-arrow');
+  const open = panel.classList.contains('open');
+  panel.classList.toggle('open', !open);
+  arrow.classList.toggle('open', !open);
+}
+
+function switchView(view, btn) {
+  document.querySelectorAll('.view-panel').forEach(p => p.classList.remove('active'));
+  document.getElementById('panel-' + view).classList.add('active');
+  document.querySelectorAll('.proto-btn').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+}
+
+function showToast() {
+  const t = document.getElementById('toast');
+  t.classList.add('show');
+  clearTimeout(window._tt);
+  window._tt = setTimeout(hideToast, 6000);
+}
+function hideToast() { document.getElementById('toast').classList.remove('show'); }
+
+renderUpNext();
+renderChecklist();
+updateProgress();
+</script>
+</body>
+</html>
