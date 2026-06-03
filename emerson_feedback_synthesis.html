@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Feedback Synthesis — Emerson Success Model</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --navy: #003865;
+  --navy2: #004487;
+  --navy3: #002a50;
+  --navy-dim: rgba(255,255,255,0.06);
+  --navy-border: rgba(255,255,255,0.10);
+  --navy-border-strong: rgba(255,255,255,0.18);
+  --teal: #00796B;
+  --teal-light: #E0F2F0;
+  --teal-dark: #005A52;
+  --amber: #B85C00;
+  --amber-light: #FFF3E0;
+  --right-bg: #F5F6F8;
+  --right-card: #FFFFFF;
+  --right-border: #E8E9EC;
+  --right-text: #1A1D23;
+  --right-muted: #6B7280;
+  --right-light: #9CA3AF;
+  --deliver-bg: #DBEAFE; --deliver-text: #1E3A8A;
+  --collab-bg: #D1FAE5; --collab-text: #064E3B;
+  --customer-bg: #FEF3C7; --customer-text: #78350F;
+  --innovate-bg: #EDE9FE; --innovate-text: #4C1D95;
+  --team-bg: #FCE7F3; --team-text: #831843;
+}
+html, body { height: 100%; font-family: 'Inter', system-ui, sans-serif; font-size: 14px; }
+body { display: flex; flex-direction: column; background: var(--right-bg); }
+
+/* ── Sim banner ── */
+.sim-banner {
+  background: #2D1B69; border-bottom: 1px solid #4C3A8A;
+  padding: 6px 24px; display: flex; align-items: center; gap: 10px;
+  font-size: 11px; color: #C9B8F0; flex-shrink: 0; z-index: 10;
+}
+.sim-banner strong { color: white; }
+.sim-banner code { font-family: monospace; font-size: 10px; background: rgba(255,255,255,0.1); padding: 1px 5px; border-radius: 2px; }
+.sim-banner i { font-size: 13px; flex-shrink: 0; }
+
+/* ── Main split layout ── */
+.split { display: flex; flex: 1; min-height: 0; }
+
+/* ── LEFT PANEL ── */
+.left {
+  width: 360px; flex-shrink: 0;
+  background: var(--navy);
+  display: flex; flex-direction: column;
+  overflow-y: auto;
+}
+.left-top {
+  padding: 28px 28px 0;
+  flex-shrink: 0;
+}
+.back-link {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-size: 11px; color: rgba(255,255,255,0.35);
+  text-decoration: none; margin-bottom: 28px; transition: color 0.15s;
+}
+.back-link:hover { color: rgba(255,255,255,0.7); }
+.wordmark { font-size: 10px; font-weight: 700; letter-spacing: 2px; color: rgba(255,255,255,0.35); margin-bottom: 10px; }
+.left-title { font-size: 22px; font-weight: 700; color: white; letter-spacing: -0.5px; line-height: 1.2; margin-bottom: 6px; }
+.left-desc { font-size: 12px; color: rgba(255,255,255,0.45); line-height: 1.65; margin-bottom: 24px; }
+.left-divider { height: 1px; background: var(--navy-border); margin: 0 28px 20px; }
+
+/* Scenario chips */
+.left-section { padding: 0 28px; margin-bottom: 20px; }
+.left-label { font-size: 10px; font-weight: 600; color: rgba(255,255,255,0.35); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 8px; }
+.scenario-chips { display: flex; flex-direction: column; gap: 5px; }
+.scenario-chip {
+  display: flex; align-items: center; gap: 8px;
+  padding: 8px 12px; border-radius: 6px;
+  background: var(--navy-dim); border: 1px solid var(--navy-border);
+  cursor: pointer; transition: all 0.15s; text-decoration: none;
+}
+.scenario-chip:hover { background: rgba(255,255,255,0.1); border-color: var(--navy-border-strong); }
+.scenario-chip-avatar {
+  width: 26px; height: 26px; border-radius: 50%; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 10px; font-weight: 700; color: white;
+}
+.scenario-chip-info { flex: 1; min-width: 0; }
+.scenario-chip-name { font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.85); }
+.scenario-chip-meta { font-size: 10px; color: rgba(255,255,255,0.4); margin-top: 1px; }
+.scenario-chip-arrow { font-size: 13px; color: rgba(255,255,255,0.2); }
+
+/* Form fields */
+.field { margin-bottom: 14px; }
+.field-label { font-size: 10px; font-weight: 600; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.7px; margin-bottom: 5px; }
+.field input, .field textarea {
+  width: 100%; background: rgba(255,255,255,0.06);
+  border: 1px solid var(--navy-border); border-radius: 6px;
+  padding: 9px 12px; font-size: 13px; font-family: inherit;
+  color: white; outline: none; transition: border-color 0.15s;
+}
+.field input::placeholder, .field textarea::placeholder { color: rgba(255,255,255,0.25); }
+.field input:focus, .field textarea:focus { border-color: rgba(255,255,255,0.35); }
+.field textarea { resize: none; height: 110px; line-height: 1.6; }
+
+/* Level selector */
+.level-groups { display: flex; flex-direction: column; gap: 10px; }
+.level-group-label { font-size: 9px; font-weight: 600; color: rgba(255,255,255,0.25); text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 5px; }
+.level-chips { display: flex; gap: 4px; flex-wrap: wrap; }
+.level-chip {
+  padding: 3px 9px; border-radius: 4px; font-size: 11px; font-weight: 600;
+  border: 1px solid var(--navy-border); background: var(--navy-dim);
+  color: rgba(255,255,255,0.45); cursor: pointer; transition: all 0.15s;
+}
+.level-chip:hover { border-color: rgba(255,255,255,0.3); color: rgba(255,255,255,0.8); }
+.level-chip.selected { background: var(--teal); border-color: var(--teal); color: white; }
+
+/* Submit */
+.left-footer { padding: 20px 28px 28px; flex-shrink: 0; }
+.submit-btn {
+  width: 100%; padding: 12px; background: var(--teal);
+  border: none; border-radius: 8px; color: white;
+  font-size: 13px; font-weight: 700; font-family: inherit;
+  cursor: pointer; transition: background 0.15s;
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+}
+.submit-btn:hover { background: var(--teal-dark); }
+.submit-btn:disabled { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.3); cursor: default; }
+.submit-note { font-size: 10px; color: rgba(255,255,255,0.25); text-align: center; margin-top: 8px; line-height: 1.5; }
+
+/* ── RIGHT PANEL ── */
+.right {
+  flex: 1; background: var(--right-bg);
+  overflow-y: auto; display: flex; flex-direction: column;
+}
+.right-inner { padding: 40px 40px 60px; flex: 1; display: flex; flex-direction: column; }
+
+/* Empty state */
+.empty-state {
+  flex: 1; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 16px;
+  text-align: center; padding: 40px;
+}
+.empty-icon {
+  width: 56px; height: 56px; border-radius: 14px;
+  background: white; border: 1px solid var(--right-border);
+  display: flex; align-items: center; justify-content: center;
+  color: #9CA3AF; font-size: 24px;
+}
+.empty-title { font-size: 16px; font-weight: 600; color: var(--right-text); }
+.empty-desc { font-size: 13px; color: var(--right-muted); line-height: 1.6; max-width: 320px; }
+.empty-steps { display: flex; flex-direction: column; gap: 8px; text-align: left; margin-top: 8px; }
+.empty-step { display: flex; align-items: flex-start; gap: 10px; font-size: 12px; color: var(--right-muted); }
+.empty-step-num { width: 18px; height: 18px; border-radius: 50%; background: var(--right-border); display: flex; align-items: center; justify-content: center; font-size: 9px; font-weight: 700; color: var(--right-light); flex-shrink: 0; margin-top: 1px; }
+
+/* Loading state */
+.loading-state { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 24px; display: none; }
+.loading-card { background: white; border: 1px solid var(--right-border); border-radius: 12px; padding: 28px 32px; width: 100%; max-width: 420px; }
+.loading-header { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+.loading-dots { display: flex; gap: 5px; }
+.ldot { width: 7px; height: 7px; border-radius: 50%; background: var(--navy2); animation: ldot 1.2s ease-in-out infinite; }
+.ldot:nth-child(2) { animation-delay: 0.2s; }
+.ldot:nth-child(3) { animation-delay: 0.4s; }
+@keyframes ldot { 0%,80%,100%{opacity:0.25;transform:scale(0.75)} 40%{opacity:1;transform:scale(1)} }
+.loading-header-text { font-size: 13px; font-weight: 600; color: var(--right-text); }
+.loading-steps-list { display: flex; flex-direction: column; gap: 10px; }
+.lstep { display: flex; align-items: center; gap: 10px; font-size: 12px; color: var(--right-light); opacity: 0; transition: opacity 0.4s; }
+.lstep.vis { opacity: 1; color: var(--right-muted); }
+.lstep.done { color: var(--teal); }
+.lstep-icon { width: 18px; height: 18px; border-radius: 50%; border: 1.5px solid var(--right-border); display: flex; align-items: center; justify-content: center; font-size: 9px; flex-shrink: 0; transition: all 0.2s; }
+.lstep.done .lstep-icon { background: var(--teal); border-color: var(--teal); color: white; }
+.lstep.cur .lstep-icon { border-color: var(--navy2); }
+
+/* Results */
+.results-state { display: none; flex-direction: column; gap: 0; }
+.results-header { margin-bottom: 24px; }
+.results-person { display: flex; align-items: center; gap: 12px; margin-bottom: 6px; }
+.results-avatar { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; color: white; flex-shrink: 0; }
+.results-name { font-size: 18px; font-weight: 700; color: var(--right-text); letter-spacing: -0.3px; }
+.results-meta { font-size: 12px; color: var(--right-muted); margin-top: 2px; }
+.results-level-chip { display: inline-flex; align-items: center; gap: 5px; background: white; border: 1px solid var(--right-border); border-radius: 20px; padding: 3px 10px; font-size: 11px; font-weight: 600; color: var(--navy2); margin-top: 8px; }
+.reset-btn { display: inline-flex; align-items: center; gap: 5px; font-size: 12px; color: var(--right-muted); cursor: pointer; padding: 6px 0; transition: color 0.15s; background: none; border: none; font-family: inherit; margin-top: 4px; }
+.reset-btn:hover { color: var(--right-text); }
+
+/* Result sections */
+.result-section { margin-bottom: 28px; }
+.result-section-header { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; padding-bottom: 10px; border-bottom: 1px solid var(--right-border); }
+.result-section-pip { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+.result-section-name { font-size: 12px; font-weight: 700; color: var(--right-text); text-transform: uppercase; letter-spacing: 0.6px; }
+.result-section-count { margin-left: auto; font-size: 11px; color: var(--right-light); }
+
+.result-items { display: flex; flex-direction: column; gap: 10px; }
+.result-item {
+  background: white; border: 1px solid var(--right-border); border-radius: 10px;
+  padding: 16px 18px; border-left-width: 3px;
+  opacity: 0; transform: translateY(6px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.result-item.vis { opacity: 1; transform: translateY(0); }
+.result-item-tags { display: flex; gap: 6px; margin-bottom: 10px; flex-wrap: wrap; }
+.cap-tag { font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 4px; }
+.kf-tag { font-size: 10px; font-weight: 500; padding: 2px 8px; border-radius: 4px; background: var(--right-bg); color: var(--right-muted); border: 1px solid var(--right-border); }
+.result-item-text { font-size: 13px; color: #374151; line-height: 1.7; }
+</style>
+</head>
+<body>
+
+<div class="sim-banner">
+  <i class="ti ti-flask"></i>
+  <div><strong>Prototype — simulated output.</strong> In production this calls the Anthropic API via a Vercel proxy at <code>/api/synthesize</code> with the full Emerson Success Model embedded in the system prompt.</div>
+</div>
+
+<div class="split">
+
+  <!-- LEFT PANEL -->
+  <div class="left">
+    <div class="left-top">
+      <a class="back-link" href="index.html"><i class="ti ti-arrow-left" style="font-size:11px"></i> LDD Demo Space</a>
+      <div class="wordmark">EMERSON</div>
+      <div class="left-title">Feedback<br>Synthesis</div>
+      <div class="left-desc">Enter manager observations and a career level. The tool maps your notes to the Emerson Success Model and returns structured, level-calibrated feedback.</div>
+    </div>
+
+    <div class="left-divider"></div>
+
+    <div class="left-section">
+      <div class="left-label">Sample scenarios</div>
+      <div class="scenario-chips">
+        <div class="scenario-chip" onclick="loadScenario(0)">
+          <div class="scenario-chip-avatar" style="background:#285F9A">AR</div>
+          <div class="scenario-chip-info">
+            <div class="scenario-chip-name">Alex Rivera</div>
+            <div class="scenario-chip-meta">IC3 · Proficient Practitioner</div>
+          </div>
+          <i class="ti ti-chevron-right scenario-chip-arrow"></i>
+        </div>
+        <div class="scenario-chip" onclick="loadScenario(1)">
+          <div class="scenario-chip-avatar" style="background:#00796B">MS</div>
+          <div class="scenario-chip-info">
+            <div class="scenario-chip-name">Morgan Shaw</div>
+            <div class="scenario-chip-meta">L2 · Leader of Teams</div>
+          </div>
+          <i class="ti ti-chevron-right scenario-chip-arrow"></i>
+        </div>
+        <div class="scenario-chip" onclick="loadScenario(2)">
+          <div class="scenario-chip-avatar" style="background:#5B21B6">DK</div>
+          <div class="scenario-chip-info">
+            <div class="scenario-chip-name">Dana Kim</div>
+            <div class="scenario-chip-meta">L5 · Leader of Leaders</div>
+          </div>
+          <i class="ti ti-chevron-right scenario-chip-arrow"></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="left-divider"></div>
+
+    <div class="left-section" style="flex:1">
+      <div class="field">
+        <div class="field-label">Employee name</div>
+        <input type="text" id="emp-name" placeholder="e.g. Jordan Mills"/>
+      </div>
+      <div class="field">
+        <div class="field-label">Role / Title</div>
+        <input type="text" id="emp-role" placeholder="e.g. Senior Engineer"/>
+      </div>
+
+      <div class="field">
+        <div class="field-label">Career level</div>
+        <div class="level-groups">
+          <div>
+            <div class="level-group-label">Individual Contributor</div>
+            <div class="level-chips" id="chips-ic">
+              <div class="level-chip" onclick="selectLevel('IC1','ic',this)">IC1</div>
+              <div class="level-chip" onclick="selectLevel('IC2','ic',this)">IC2</div>
+              <div class="level-chip" onclick="selectLevel('IC3','ic',this)">IC3</div>
+              <div class="level-chip" onclick="selectLevel('IC4','ic',this)">IC4</div>
+              <div class="level-chip" onclick="selectLevel('IC5','ic',this)">IC5</div>
+              <div class="level-chip" onclick="selectLevel('IC6','ic',this)">IC6</div>
+            </div>
+          </div>
+          <div>
+            <div class="level-group-label">Leader of Teams</div>
+            <div class="level-chips" id="chips-lot">
+              <div class="level-chip" onclick="selectLevel('L1','lot',this)">L1</div>
+              <div class="level-chip" onclick="selectLevel('L2','lot',this)">L2</div>
+              <div class="level-chip" onclick="selectLevel('L3','lot',this)">L3</div>
+              <div class="level-chip" onclick="selectLevel('L4','lot',this)">L4</div>
+            </div>
+          </div>
+          <div>
+            <div class="level-group-label">Leader of Leaders</div>
+            <div class="level-chips" id="chips-lol">
+              <div class="level-chip" onclick="selectLevel('L5','lol',this)">L5</div>
+              <div class="level-chip" onclick="selectLevel('L6','lol',this)">L6</div>
+              <div class="level-chip" onclick="selectLevel('E1','lol',this)">E1</div>
+            </div>
+          </div>
+          <div>
+            <div class="level-group-label">Leader of Organizations</div>
+            <div class="level-chips" id="chips-loo">
+              <div class="level-chip" onclick="selectLevel('E2','loo',this)">E2</div>
+              <div class="level-chip" onclick="selectLevel('E3','loo',this)">E3</div>
+              <div class="level-chip" onclick="selectLevel('E4','loo',this)">E4</div>
+              <div class="level-chip" onclick="selectLevel('E5+','loo',this)">E5+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="field" style="margin-top:4px">
+        <div class="field-label">Manager observations <span style="font-weight:400;color:rgba(255,255,255,0.2)">(write naturally)</span></div>
+        <textarea id="observations" placeholder="Write however you naturally think — no structure required. The tool handles the translation."></textarea>
+      </div>
+    </div>
+
+    <div class="left-footer">
+      <button class="submit-btn" id="submit-btn" onclick="runSynthesis()">
+        <i class="ti ti-sparkles" style="font-size:14px"></i> Synthesize feedback
+      </button>
+      <div class="submit-note">Output is calibrated to the selected career level and Emerson Success Model expectations</div>
+    </div>
+  </div>
+
+  <!-- RIGHT PANEL -->
+  <div class="right">
+    <div class="right-inner">
+
+      <!-- Empty state -->
+      <div class="empty-state" id="empty-state">
+        <div class="empty-icon"><i class="ti ti-clipboard-text"></i></div>
+        <div>
+          <div class="empty-title">Ready to synthesize</div>
+          <div class="empty-desc">Fill in the form on the left — or load a sample scenario to see how the tool works.</div>
+        </div>
+        <div class="empty-steps">
+          <div class="empty-step"><div class="empty-step-num">1</div> Enter an employee name, role, and career level</div>
+          <div class="empty-step"><div class="empty-step-num">2</div> Write your raw observations — no structure needed</div>
+          <div class="empty-step"><div class="empty-step-num">3</div> The tool maps notes to the Emerson Success Model</div>
+          <div class="empty-step"><div class="empty-step-num">4</div> Receive structured, level-calibrated feedback</div>
+        </div>
+      </div>
+
+      <!-- Loading state -->
+      <div class="loading-state" id="loading-state">
+        <div class="loading-card">
+          <div class="loading-header">
+            <div class="loading-dots">
+              <div class="ldot"></div><div class="ldot"></div><div class="ldot"></div>
+            </div>
+            <div class="loading-header-text">Analyzing against Emerson Success Model</div>
+          </div>
+          <div class="loading-steps-list">
+            <div class="lstep" id="ls0"><div class="lstep-icon"></div> Reading manager observations</div>
+            <div class="lstep" id="ls1"><div class="lstep-icon"></div> Identifying behavioral patterns</div>
+            <div class="lstep" id="ls2"><div class="lstep-icon"></div> Mapping to Success Model capabilities</div>
+            <div class="lstep" id="ls3"><div class="lstep-icon"></div> Calibrating to career level expectations</div>
+            <div class="lstep" id="ls4"><div class="lstep-icon"></div> Structuring output</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Results state -->
+      <div class="results-state" id="results-state">
+        <div class="results-header">
+          <div class="results-person">
+            <div class="results-avatar" id="results-avatar"></div>
+            <div>
+              <div class="results-name" id="results-name"></div>
+              <div class="results-meta" id="results-role"></div>
+            </div>
+          </div>
+          <div class="results-level-chip" id="results-level-chip"></div>
+          <br/>
+          <button class="reset-btn" onclick="resetTool()">
+            <i class="ti ti-refresh" style="font-size:12px"></i> New synthesis
+          </button>
+        </div>
+
+        <div class="result-section">
+          <div class="result-section-header">
+            <div class="result-section-pip" style="background:#00796B"></div>
+            <div class="result-section-name">Strengths</div>
+            <div class="result-section-count" id="ct-strength"></div>
+          </div>
+          <div class="result-items" id="list-strength"></div>
+        </div>
+
+        <div class="result-section">
+          <div class="result-section-header">
+            <div class="result-section-pip" style="background:#B85C00"></div>
+            <div class="result-section-name">Opportunities</div>
+            <div class="result-section-count" id="ct-opp"></div>
+          </div>
+          <div class="result-items" id="list-opp"></div>
+        </div>
+
+        <div class="result-section">
+          <div class="result-section-header">
+            <div class="result-section-pip" style="background:#004487"></div>
+            <div class="result-section-name">Recommended actions</div>
+            <div class="result-section-count" id="ct-action"></div>
+          </div>
+          <div class="result-items" id="list-action"></div>
+        </div>
+
+        <div style="margin-top:8px;padding-top:20px;border-top:1px solid var(--right-border);display:flex;align-items:center;gap:12px">
+          <div style="width:32px;height:32px;border-radius:8px;background:var(--right-bg);border:1px solid var(--right-border);display:flex;align-items:center;justify-content:center;color:#9CA3AF;font-size:15px"><i class="ti ti-award"></i></div>
+          <div>
+            <div style="font-size:12px;font-weight:600;color:var(--right-text)">Emerson Success Model</div>
+            <div style="font-size:11px;color:var(--right-muted)">5 capabilities · 10 Korn Ferry competencies · 6 role-level categories</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+var selLevel = '', selCat = '';
+
+var CAP_STYLE = {
+  'Deliver With Discipline And Rigor':  { bg:'#DBEAFE', color:'#1E3A8A', border:'#1E3A8A' },
+  'Collaborate To Realize Value':       { bg:'#D1FAE5', color:'#064E3B', border:'#065F46' },
+  'Fuel Growth Through Customer Focus': { bg:'#FEF3C7', color:'#78350F', border:'#92400E' },
+  'Innovate For Impact':                { bg:'#EDE9FE', color:'#4C1D95', border:'#5B21B6' },
+  'Unlock The Power Of The Team':       { bg:'#FCE7F3', color:'#831843', border:'#9D174D' }
+};
+
+var BORDER_COLOR = { strength:'#00796B', opportunity:'#B85C00', action:'#004487' };
+var AVATAR_COLOR = { ic:'#285F9A', lot:'#00796B', lol:'#5B21B6', loo:'#003865' };
+
+var CAT_LABEL = {
+  IC1:'Developing Contributor', IC2:'Developing Contributor',
+  IC3:'Proficient Practitioner', IC4:'Proficient Practitioner',
+  IC5:'Subject Matter Specialist', IC6:'Subject Matter Specialist',
+  L1:'Leader of Teams', L2:'Leader of Teams', L3:'Leader of Teams', L4:'Leader of Teams',
+  L5:'Leader of Leaders', L6:'Leader of Leaders', E1:'Leader of Leaders',
+  E2:'Leader of Organizations', E3:'Leader of Organizations', E4:'Leader of Organizations', 'E5+':'Leader of Organizations'
+};
+
+var scenarios = [
+  { name:'Alex Rivera', role:'Process Improvement Analyst', level:'IC3', cat:'ic',
+    obs:"Alex is reliable and consistently delivers on what she commits to — rarely needs follow-up and her work quality is solid. She's good at navigating her immediate team but tends to wait to be asked before looping in other functions. Customers seem happy with her work but she doesn't always connect her output to broader customer impact. Has good ideas but doesn't surface them proactively in team meetings. Adapts when direction changes but doesn't always volunteer to help others through the transition." },
+  { name:'Morgan Shaw', role:'Operations Manager', level:'L2', cat:'lot',
+    obs:"Morgan is a strong executor — his team hits their numbers and he's good at removing blockers quickly. Where I see gaps is in developing people: he tends to solve problems for his team rather than coaching them through it. He models trust and reliability well but team members don't always feel empowered to push back or share ideas. Communicates clearly one-on-one but team meetings feel like status updates, not real dialogue. Customer feedback is positive but his team isn't consistently gathering or acting on it systematically." },
+  { name:'Dana Kim', role:'Senior Director, Commercial Operations', level:'L5', cat:'lol',
+    obs:"Dana is excellent at translating strategy into execution plans — her organizations consistently deliver. Cross-functional collaboration is a strength; she's built strong relationships at peer level and knows how to influence without authority. The gap I see is at the next level up: she's not yet thinking about how to build the organizational conditions that make collaboration and accountability the default. Her direct reports perform well but the leaders below them are not being developed with the same intentionality. Strong communicator at her level but hasn't fully stepped into shaping the narrative across the broader enterprise." }
+];
+
+var simOutput = {
+  IC3: {
+    strengths: [
+      { cap:'Deliver With Discipline And Rigor', kf:'Drives Results · Ensures Accountability', text:'Alex consistently delivers on commitments without requiring follow-up, demonstrating the independent task ownership and accountability expected of a Proficient Practitioner. Her ability to monitor her own progress and maintain quality output without supervision is a clear behavioral strength at this level.' },
+      { cap:'Collaborate To Realize Value', kf:'Instills Trust', text:'Alex has established a reliable, trust-based presence within her immediate team. Her consistency in delivering quality work creates the credibility that makes her a dependable collaborator — a foundational expectation at IC3–IC4.' }
+    ],
+    opportunities: [
+      { cap:'Collaborate To Realize Value', kf:'Collaborates · Organizational Savvy', text:'At the Proficient Practitioner level, the expectation is to proactively share information and involve others to build trust — not to wait to be asked. Alex tends to operate within her immediate team boundary rather than navigating across functions with initiative, which limits her impact and visibility.' },
+      { cap:'Fuel Growth Through Customer Focus', kf:'Customer Focus · Strategic Mindset', text:'Proficient Practitioners are expected to independently meet customer needs and seek ways to improve solutions mindful of the whole picture. Alex delivers well at the task level but isn\'t yet consistently connecting her work to broader customer outcomes.' },
+      { cap:'Innovate For Impact', kf:'Cultivates Innovation · Nimble Learning', text:'Alex has good ideas but doesn\'t surface them unless prompted. At IC3–IC4, the expectation is to suggest and implement creative ideas actively — not to wait for permission. This is a meaningful gap given where she is in her development trajectory.' }
+    ],
+    actions: [
+      { cap:'Collaborate To Realize Value', kf:'Collaborates · Organizational Savvy', text:'Assign Alex a cross-functional task that requires proactive coordination with at least two other teams. Debrief with her afterward on how she initiated those connections and what she would do differently. The goal is to build the muscle for cross-boundary initiative.' },
+      { cap:'Fuel Growth Through Customer Focus', kf:'Customer Focus', text:'In your next 1:1, ask Alex to articulate how her current project connects to a specific customer outcome. Make this a standing expectation — for each significant deliverable, she should name the customer impact, not just the task output.' },
+      { cap:'Innovate For Impact', kf:'Nimble Learning', text:'Create a low-stakes space for Alex to share ideas — a standing agenda item or a brief async format. The goal is to build proactive idea-sharing as a habit before it becomes an expectation at higher levels.' }
+    ]
+  },
+  L2: {
+    strengths: [
+      { cap:'Deliver With Discipline And Rigor', kf:'Drives Results · Ensures Accountability', text:'Morgan\'s team consistently hits commitments and he is effective at removing blockers — a core expectation for a Leader of Teams. His ability to drive focus and accountability reflects strong execution capability at the L1–L4 level.' },
+      { cap:'Collaborate To Realize Value', kf:'Instills Trust', text:'Morgan models trust and reliability personally, which creates a stable environment for his team. His consistency builds the kind of manager credibility that supports sustained team performance over time.' }
+    ],
+    opportunities: [
+      { cap:'Unlock The Power Of The Team', kf:'Builds Effective Teams', text:'Leader of Teams expectations include developing high-performing teams through coaching, feedback, and recognition — not just delivering results through them. Morgan\'s tendency to solve problems for his team rather than coach them through challenges is limiting their development and his own progression.' },
+      { cap:'Collaborate To Realize Value', kf:'Collaborates · Instills Trust', text:'Encouraging open dialogue and supporting team members to collaborate across boundaries is a core expectation at L1–L4. Team members not feeling empowered to push back or share ideas suggests a gap in psychological safety — even if Morgan is personally trustworthy.' },
+      { cap:'Fuel Growth Through Customer Focus', kf:'Customer Focus', text:'At the Leader of Teams level, the expectation is to gather and act on customer feedback systematically and prioritize team efforts toward customer success. Positive individual customer sentiment is good, but without a team-level process, this will plateau.' }
+    ],
+    actions: [
+      { cap:'Unlock The Power Of The Team', kf:'Builds Effective Teams', text:'Work with Morgan to identify two or three team members with development gaps and co-create a lightweight coaching plan for each. The goal is to shift his instinct from problem-solver to developer — a critical transition at this level.' },
+      { cap:'Unlock The Power Of The Team', kf:'Communicates Effectively', text:'Encourage Morgan to redesign one recurring team meeting with the explicit goal of generating dialogue rather than collecting status updates. A practical starting point: pose a real business question and let the group work through it before he offers his view.' },
+      { cap:'Fuel Growth Through Customer Focus', kf:'Customer Focus', text:'Ask Morgan to implement a simple team ritual for customer feedback — a monthly review, a rotating synthesis responsibility, or integration into team planning. The goal is to make customer-centricity a team habit, not a manager behavior.' }
+    ]
+  },
+  L5: {
+    strengths: [
+      { cap:'Deliver With Discipline And Rigor', kf:'Drives Results · Ensures Accountability', text:'Dana excels at translating strategy into execution — her organizations deliver consistently and with discipline. Holding leaders accountable for team outcomes is a core Leader of Leaders expectation, and this is clearly a strength she has developed and can rely on.' },
+      { cap:'Collaborate To Realize Value', kf:'Collaborates · Organizational Savvy', text:'Dana\'s cross-functional relationship-building and ability to drive alignment through influence rather than authority represents advanced capability at the L5–E1 level. She has built the peer credibility that makes enterprise collaboration possible.' }
+    ],
+    opportunities: [
+      { cap:'Unlock The Power Of The Team', kf:'Builds Effective Teams', text:'At Leader of Leaders, the expectation is to develop high-performing teams across the employee lifecycle — not just manage directs well. Dana\'s leaders below the director level are not being developed with the same intentionality she brings to her own span, which creates a pipeline risk.' },
+      { cap:'Collaborate To Realize Value', kf:'Collaborates · Organizational Savvy', text:'The shift to enterprise-level impact requires building organizational conditions that make collaboration the default — not just being personally collaborative. Dana is not yet designing the structures or norms that would make cross-functional alignment systematic rather than dependent on her involvement.' },
+      { cap:'Unlock The Power Of The Team', kf:'Communicates Effectively', text:'Shaping the narrative across the broader enterprise is an L5+ expectation. Dana communicates well at her level but has not yet stepped into the role of enterprise storyteller — helping stakeholders understand where the organization is going and why it matters.' }
+    ],
+    actions: [
+      { cap:'Unlock The Power Of The Team', kf:'Builds Effective Teams', text:'Work with Dana to conduct a talent review one level below her directs. The goal is to build her awareness of the pipeline and her intentionality about developing leaders beneath her direct span. Consider establishing a cadence of skip-level development conversations.' },
+      { cap:'Collaborate To Realize Value', kf:'Organizational Savvy', text:'Challenge Dana to identify one cross-functional process that is currently dependent on her personal involvement — and to design a structural alternative that doesn\'t require her as the connector. This is the work of building organizational capability versus personal capability.' },
+      { cap:'Unlock The Power Of The Team', kf:'Communicates Effectively', text:'Create visible opportunities for Dana to communicate strategy to audiences beyond her immediate organization — all-hands sessions, written leadership updates, or cross-functional forums. Offer direct feedback on how she\'s landing the enterprise narrative, not just the functional message.' }
+    ]
+  }
+};
+
+function selectLevel(level, cat, el) {
+  selLevel = level; selCat = cat;
+  document.querySelectorAll('.level-chip').forEach(function(c){ c.classList.remove('selected'); });
+  el.classList.add('selected');
+}
+
+function loadScenario(i) {
+  var s = scenarios[i];
+  document.getElementById('emp-name').value = s.name;
+  document.getElementById('emp-role').value = s.role;
+  document.getElementById('observations').value = s.obs;
+  selLevel = s.level; selCat = s.cat;
+  document.querySelectorAll('.level-chip').forEach(function(c){ c.classList.remove('selected'); });
+  document.querySelectorAll('#chips-' + s.cat + ' .level-chip').forEach(function(c){
+    if (c.textContent === s.level) c.classList.add('selected');
+  });
+}
+
+function getInitials(name) {
+  return name.split(' ').map(function(n){ return n[0]; }).join('').substring(0,2).toUpperCase();
+}
+
+function runSynthesis() {
+  var name = document.getElementById('emp-name').value.trim();
+  var role = document.getElementById('emp-role').value.trim();
+  var obs  = document.getElementById('observations').value.trim();
+  if (!name || !obs || !selLevel) { alert('Please enter a name, observations, and select a career level.'); return; }
+
+  document.getElementById('empty-state').style.display = 'none';
+  document.getElementById('results-state').style.display = 'none';
+  var ls = document.getElementById('loading-state');
+  ls.style.display = 'flex';
+
+  var delays = [300, 900, 1700, 2500, 3200];
+  for (var i = 0; i < 5; i++) {
+    (function(idx) {
+      setTimeout(function() {
+        var el = document.getElementById('ls' + idx);
+        el.classList.add('vis', 'cur');
+        if (idx > 0) {
+          var prev = document.getElementById('ls' + (idx-1));
+          prev.classList.remove('cur'); prev.classList.add('done');
+          prev.querySelector('.lstep-icon').textContent = '✓';
+        }
+      }, delays[idx]);
+    })(i);
+  }
+  setTimeout(function() {
+    var last = document.getElementById('ls4');
+    last.classList.remove('cur'); last.classList.add('done');
+    last.querySelector('.lstep-icon').textContent = '✓';
+  }, 4000);
+
+  setTimeout(function() {
+    ls.style.display = 'none';
+    document.querySelectorAll('.lstep').forEach(function(s){
+      s.classList.remove('vis','done','cur');
+      s.querySelector('.lstep-icon').textContent = '';
+    });
+
+    /* ── API INTEGRATION POINT ──────────────────────────────────
+       Replace the simulated block below with a real API call:
+
+       const res = await fetch('/api/synthesize', {
+         method: 'POST',
+         headers: { 'Content-Type': 'application/json' },
+         body: JSON.stringify({ name, role, level: selLevel, observations: obs })
+       });
+       const data = await res.json();
+       const raw = (data.content||[]).map(c=>c.text||'').join('');
+       const parsed = JSON.parse(raw.replace(/```json|```/g,'').trim());
+       renderResults(name, role, selLevel, selCat, parsed);
+    ──────────────────────────────────────────────────────────── */
+
+    var outputKey = (selLevel in simOutput) ? selLevel :
+      selCat === 'ic' ? 'IC3' : selCat === 'lot' ? 'L2' : 'L5';
+    renderResults(name, role, selLevel, selCat, simOutput[outputKey]);
+  }, 4600);
+}
+
+function renderResults(name, role, level, cat, data) {
+  document.getElementById('results-avatar').textContent = getInitials(name);
+  document.getElementById('results-avatar').style.background = AVATAR_COLOR[cat] || '#003865';
+  document.getElementById('results-name').textContent = name;
+  document.getElementById('results-role').textContent = role;
+  document.getElementById('results-level-chip').innerHTML =
+    '<i class="ti ti-briefcase" style="font-size:11px"></i> ' + level + ' · ' + (CAT_LABEL[level]||'');
+
+  document.getElementById('ct-strength').textContent = data.strengths.length + ' items';
+  document.getElementById('ct-opp').textContent = data.opportunities.length + ' items';
+  document.getElementById('ct-action').textContent = data.actions.length + ' items';
+
+  renderSection('list-strength', data.strengths, 'strength');
+  renderSection('list-opp', data.opportunities, 'opportunity');
+  renderSection('list-action', data.actions, 'action');
+
+  var rs = document.getElementById('results-state');
+  rs.style.display = 'flex'; rs.style.flexDirection = 'column';
+
+  var items = document.querySelectorAll('.result-item');
+  items.forEach(function(item, i){
+    setTimeout(function(){ item.classList.add('vis'); }, i * 90);
+  });
+  document.querySelector('.right').scrollTop = 0;
+}
+
+function renderSection(id, items, type) {
+  var container = document.getElementById(id);
+  container.innerHTML = items.map(function(item){
+    var cs = CAP_STYLE[item.cap] || { bg:'#F3F4F6', color:'#374151', border:'#374151' };
+    var borderColor = BORDER_COLOR[type] || '#004487';
+    return '<div class="result-item" style="border-left-color:' + borderColor + '">' +
+      '<div class="result-item-tags">' +
+        '<span class="cap-tag" style="background:' + cs.bg + ';color:' + cs.color + '">' + item.cap + '</span>' +
+        '<span class="kf-tag">' + item.kf + '</span>' +
+      '</div>' +
+      '<div class="result-item-text">' + item.text + '</div>' +
+    '</div>';
+  }).join('');
+}
+
+function resetTool() {
+  document.getElementById('results-state').style.display = 'none';
+  document.getElementById('empty-state').style.display = 'flex';
+  document.querySelector('.right').scrollTop = 0;
+}
+</script>
+</body>
+</html>
