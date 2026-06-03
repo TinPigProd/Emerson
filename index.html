@@ -62,7 +62,7 @@ html,body{min-height:100%;background:var(--bg)}
 .demo-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 @media(max-width:640px){.demo-grid{grid-template-columns:1fr}}
 
-.demo-card{background:white;border:1px solid var(--border);border-radius:12px;overflow:hidden;text-decoration:none;color:inherit;display:flex;flex-direction:column;transition:border-color 0.2s,transform 0.15s}
+.demo-card{background:white;border:1px solid var(--border);border-radius:12px;overflow:hidden;text-decoration:none;color:inherit;display:flex;flex-direction:column;transition:border-color 0.2s,transform 0.15s;min-height:420px}
 .demo-card:hover{border-color:var(--navy2);transform:translateY(-2px)}
 .demo-card.placeholder{border-style:dashed;cursor:default}
 .demo-card.placeholder:hover{border-color:var(--border);transform:none}
@@ -111,8 +111,8 @@ html,body{min-height:100%;background:var(--bg)}
 .tag-coming{background:var(--bg);color:var(--text-3);border:1px solid var(--border)}
 
 .demo-card-title{font-size:16px;font-weight:700;color:var(--text);letter-spacing:-0.3px;margin-bottom:6px}
-.demo-card-desc{font-size:13px;color:var(--text-2);line-height:1.65;margin-bottom:16px;flex:1}
-.demo-features{display:flex;flex-direction:column;gap:5px;margin-bottom:18px}
+.demo-card-desc{font-size:13px;color:var(--text-2);line-height:1.65;margin-bottom:14px}
+.demo-features{display:flex;flex-direction:column;gap:5px;margin-bottom:18px;flex:1}
 .demo-feature{display:flex;align-items:flex-start;gap:7px;font-size:12px;color:var(--text-2)}
 .demo-feature i{font-size:13px;color:var(--teal);flex-shrink:0;margin-top:1px}
 
@@ -160,7 +160,7 @@ html,body{min-height:100%;background:var(--bg)}
 <div class="hero">
   <div class="hero-label">Learning &amp; Development</div>
   <div class="hero-title">See what we're<br><em>building.</em></div>
-  <div class="hero-sub">Interactive prototypes for review and feedback — before production development begins. Click through, interact, and tell us what works.</div>
+  <div class="hero-sub">Interactive prototypes for review and feedback before production development begins.</div>
   <a href="#demos" class="hero-cta">Explore the demos</a>
   <div class="hero-note">No login required · Works in any browser · All demos are interactive</div>
 </div>
@@ -467,9 +467,9 @@ html,body{min-height:100%;background:var(--bg)}
         <div class="demo-card-title">Feedback Synthesis Tool</div>
         <div class="demo-card-desc">Make sure your feedback aligns to the Success Model guidance for employees at any career level. Use this tool to draft feedback based on strengths, areas of opportunity, and development actions.</div>
         <div class="demo-features">
-          <div class="demo-feature"><div style="width:5px;height:5px;border-radius:50%;background:#00796B;flex-shrink:0;margin-top:4px"></div> Split-panel UI — dark input, light results</div>
+          <div class="demo-feature"><div style="width:5px;height:5px;border-radius:50%;background:#00796B;flex-shrink:0;margin-top:4px"></div> Split-panel UI: dark input, light results</div>
           <div class="demo-feature"><div style="width:5px;height:5px;border-radius:50%;background:#00796B;flex-shrink:0;margin-top:4px"></div> Five capabilities · ten Korn Ferry competencies</div>
-          <div class="demo-feature"><div style="width:5px;height:5px;border-radius:50%;background:#00796B;flex-shrink:0;margin-top:4px"></div> API-ready — Vercel proxy integration point labeled</div>
+          <div class="demo-feature"><div style="width:5px;height:5px;border-radius:50%;background:#00796B;flex-shrink:0;margin-top:4px"></div> API-ready: Vercel proxy integration point labeled</div>
         </div>
         <div class="demo-card-footer">
           <div class="demo-views">
