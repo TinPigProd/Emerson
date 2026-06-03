@@ -208,7 +208,7 @@ body { display: flex; flex-direction: column; background: var(--right-bg); }
 
 <div class="sim-banner">
   <i class="ti ti-flask"></i>
-  <div><strong>Prototype: simulated output.</strong> In production this calls the Anthropic API via a Vercel proxy at <code>/api/synthesize</code> with the full Emerson Success Model embedded in the system prompt. <strong>The "View full framework" link is shown for context only.</strong> The form, level selector, scenarios, and synthesis output are fully interactive.</div>
+  <div><strong>Prototype: simulated output.</strong> In production, output is generated dynamically based on the Emerson Success Model and the selected career level. <strong>The "View full framework" link is shown for context only.</strong> The form, level selector, scenarios, and synthesis output are fully interactive.</div>
 </div>
 
 <div class="split">
@@ -561,19 +561,7 @@ function runSynthesis() {
       s.querySelector('.lstep-icon').textContent = '';
     });
 
-    /* ── API INTEGRATION POINT ──────────────────────────────────
-       Replace the simulated block below with a real API call:
-
-       const res = await fetch('/api/synthesize', {
-         method: 'POST',
-         headers: { 'Content-Type': 'application/json' },
-         body: JSON.stringify({ name, role, level: selLevel, observations: obs })
-       });
-       const data = await res.json();
-       const raw = (data.content||[]).map(c=>c.text||'').join('');
-       const parsed = JSON.parse(raw.replace(/```json|```/g,'').trim());
-       renderResults(name, role, selLevel, selCat, parsed);
-    ──────────────────────────────────────────────────────────── */
+    /* Simulated output — replace with live integration in production */
 
     var outputKey = (selLevel in simOutput) ? selLevel :
       selCat === 'ic' ? 'IC3' : selCat === 'lot' ? 'L2' : 'L5';

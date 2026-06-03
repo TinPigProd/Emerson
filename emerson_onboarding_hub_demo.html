@@ -249,7 +249,8 @@ html,body{min-height:100%;background:var(--bg)}
     </div>
     <div class="sb-divider"></div>
     <div class="sb-section">
-      <div class="sb-label">90-Day Phases</div>
+      <div class="sb-label">Onboarding Phases</div>
+      <div class="phase-item done"><div class="pi-dot done"></div><span class="pi-label">Pre-Day 1: Prepare</span></div>
       <div class="phase-item done"><div class="pi-dot done"></div><span class="pi-label">Day 1: Welcome</span></div>
       <div class="phase-item done"><div class="pi-dot done"></div><span class="pi-label">Days 2-5: Orientation</span></div>
       <div class="phase-item current"><div class="pi-dot current"></div><span class="pi-label">Days 6-30: First 30 Days</span></div>
@@ -290,6 +291,34 @@ html,body{min-height:100%;background:var(--bg)}
 
     <!-- NEW HIRE VIEW -->
     <div class="view-panel active" id="panel-new-hire">
+
+      <!-- What your new hire is learning right now -->
+      <div class="card" style="margin-bottom:16px;border-left:3px solid #004487">
+        <div class="card-header">
+          <div class="card-title"><i class="ti ti-bulb"></i> What your new hire is covering right now</div>
+          <span style="font-size:11px;color:var(--text-3);background:var(--blue-light);padding:2px 10px;border-radius:10px;font-weight:600">Days 6-30: First 30 Days</span>
+        </div>
+        <div class="card-body">
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px">
+            <div style="padding:10px 12px;background:var(--bg);border-radius:8px;border:1px solid var(--border)">
+              <div style="font-size:10px;font-weight:700;color:var(--navy2);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:5px">Strategic Context</div>
+              <div style="font-size:12px;color:var(--text-2);line-height:1.55">How their role connects to department strategy and Emerson's broader objectives.</div>
+            </div>
+            <div style="padding:10px 12px;background:var(--bg);border-radius:8px;border:1px solid var(--border)">
+              <div style="font-size:10px;font-weight:700;color:var(--navy2);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:5px">Systems and Tools</div>
+              <div style="font-size:12px;color:var(--text-2);line-height:1.55">Role-specific platform access, workflows, and tools needed to operate independently.</div>
+            </div>
+            <div style="padding:10px 12px;background:var(--bg);border-radius:8px;border:1px solid var(--border)">
+              <div style="font-size:10px;font-weight:700;color:var(--navy2);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:5px">Compliance</div>
+              <div style="font-size:12px;color:var(--text-2);line-height:1.55">Protecting Privacy and Information Security tutorial due by end of Day 30.</div>
+            </div>
+          </div>
+          <div style="margin-top:10px;font-size:12px;color:var(--text-3);padding:8px 12px;background:var(--amber-light);border-radius:6px;border:1px solid #F5D0A9">
+            <strong style="color:var(--amber)">Manager tip:</strong> Now is the time to discuss performance expectations and begin brainstorming goals. Benefits enrollment deadline is also approaching.
+          </div>
+        </div>
+      </div>
+
       <div class="two-col">
         <div class="card" style="margin-bottom:0">
           <div class="card-header"><div class="card-title"><i class="ti ti-star"></i> Up next for you</div></div>
@@ -322,7 +351,7 @@ html,body{min-height:100%;background:var(--bg)}
       </div>
       <div class="card">
         <div class="card-header">
-          <div class="card-title"><i class="ti ti-checkbox"></i> My 90-Day Checklist</div>
+          <div class="card-title"><i class="ti ti-checkbox"></i> My Onboarding Checklist</div>
           <span id="checklist-count" style="font-size:12px;color:var(--text-3)">9 of 18 complete</span>
         </div>
         <div id="checklist-body"></div>
@@ -333,7 +362,7 @@ html,body{min-height:100%;background:var(--bg)}
     <div class="view-panel" id="panel-manager">
       <div style="margin-bottom:18px">
         <div style="font-size:20px;font-weight:700;letter-spacing:-0.3px;margin-bottom:3px">Jordan Park: Onboarding Status</div>
-        <div style="font-size:13px;color:var(--text-3)">Day 12 of 90 · First 30 Days · On track</div>
+        <div style="font-size:13px;color:var(--text-3)">Day 12 of 90 · Days 6-30: First 30 Days · On track</div>
       </div>
       <div class="stat-row">
         <div class="stat-box"><div class="stat-num">12</div><div class="stat-label">Days elapsed</div></div>
@@ -354,7 +383,7 @@ html,body{min-height:100%;background:var(--bg)}
       <div class="card">
         <div class="card-header"><div class="card-title"><i class="ti ti-message-dots"></i> Manager nudge scripts</div></div>
         <div class="card-body">
-          <div style="font-size:12px;color:var(--text-3);margin-bottom:12px">AI-generated check-in questions based on Jordan's progress <span class="ai-chip"><i class="ti ti-sparkles" style="font-size:10px"></i> Power Automate + AI Builder</span></div>
+          <div style="font-size:12px;color:var(--text-3);margin-bottom:12px">AI-generated check-in questions based on Jordan's progress <span class="ai-chip"><i class="ti ti-sparkles" style="font-size:10px"></i> Power Automate</span></div>
           <div class="nudge-card"><div class="nudge-timing">Use this week (Day 12-14)</div><div class="nudge-q">"Now that you've had a chance to meet the team, which relationships feel most natural so far: and are there any gaps you'd like help bridging?"</div></div>
           <div class="nudge-card"><div class="nudge-timing">Day 20–25 · Pre-benefits deadline</div><div class="nudge-q">"Have you had a chance to look through the benefits enrollment options? Happy to connect you with HR if you have questions before the Day 30 deadline."</div></div>
           <div class="nudge-card"><div class="nudge-timing">Day 28-30 · 30-day check-in</div><div class="nudge-q">"As we hit the one-month mark: what's clicked faster than expected, and what still feels unclear about how we operate?"</div></div>
@@ -395,7 +424,7 @@ html,body{min-height:100%;background:var(--bg)}
       <div class="card">
         <div class="card-header"><div class="card-title"><i class="ti ti-brand-teams"></i> Teams thread: Mentor touchpoints</div></div>
         <div class="card-body">
-          <div style="font-size:12px;color:var(--text-3);margin-bottom:12px">Messages sent to your Teams DM when a trigger fires <span class="ai-chip"><i class="ti ti-sparkles" style="font-size:10px"></i> Power Automate + AI Builder</span></div>
+          <div style="font-size:12px;color:var(--text-3);margin-bottom:12px">Messages sent to your Teams DM when a trigger fires <span class="ai-chip"><i class="ti ti-sparkles" style="font-size:10px"></i> Power Automate</span></div>
           <div class="teams-sim" id="teams-thread">
             <div class="teams-hdr">Onboarding Bot · Mentor Touchpoints</div>
             <div class="teams-msg">
@@ -480,9 +509,9 @@ const phases=[
     {id:'t20',name:'Finalize goals in performance system',done:false},
   ]}
 ];
-const todayIds=['t10','t7','t12'];
+const todayIds=['t13','t9','t16'];
 const allTasks=()=>phases.flatMap(p=>p.tasks);
-const PHASE_COLORS=['#004487','#285F9A','#00796B','#B85C00','#9CA3AF'];
+const PHASE_COLORS=['#5B21B6','#004487','#285F9A','#00796B','#B85C00','#9CA3AF'];
 
 function updateProgress(){
   const done=allTasks().filter(t=>t.done).length,total=allTasks().length,pct=Math.round(done/total*100);
