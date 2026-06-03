@@ -3,387 +3,267 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Emerson People Hub — New Hire Onboarding</title>
+<title>People Hub: Onboarding</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
 <style>
-* { box-sizing: border-box; margin: 0; padding: 0; }
-:root {
-  --em-navy: #003865;
-  --em-navy2: #004487;
-  --em-blue: #285F9A;
-  --em-blue-light: #E8F0F8;
-  --em-blue-mid: #C5D8EE;
-  --em-teal: #00796B;
-  --em-teal-dark: #005A52;
-  --em-teal-light: #E0F2F0;
-  --em-gray-light: #E5E6E7;
-  --em-gray-bg: #F3F4F6;
-  --em-amber: #B85C00;
-  --em-amber-light: #FFF3E0;
-  --em-red: #A4262C;
-  --em-text: #201F1E;
-  --em-text-muted: #605E5C;
-  --em-text-light: #8A8886;
-  --em-border: #EDEBE9;
-  --em-border-strong: #C8C6C4;
-  --proto-bg: #2D1B69;
-  --proto-border: #7C5CBF;
-  --proto-text: #C9B8F0;
-  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#003865;--navy2:#004487;--navy3:#002a50;
+  --teal:#00796B;--teal-light:#E0F2F0;--teal-dark:#005A52;
+  --blue-light:#E8F0F8;--blue-mid:#C5D8EE;
+  --amber:#B85C00;--amber-light:#FFF3E0;
+  --red:#A4262C;--red-light:#FDE8E8;
+  --text:#111827;--text-2:#4B5563;--text-3:#9CA3AF;
+  --border:#E5E7EB;--border-2:#F3F4F6;
+  --surface:#FFFFFF;--bg:#F9FAFB;
+  --proto-bg:#2D1B69;--proto-border:#7C5CBF;--proto-text:#C9B8F0;
+  font-family:'Inter',system-ui,sans-serif;font-size:14px;color:var(--text);
 }
+html,body{min-height:100%;background:var(--bg)}
 
-html, body { height: 100%; }
-body { background: var(--em-gray-bg); color: var(--em-text); font-size: 14px; }
+/* ── App nav ── */
+.app-nav{height:52px;background:white;border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 24px;gap:16px;position:sticky;top:0;z-index:100}
+.app-back{display:inline-flex;align-items:center;gap:5px;font-size:12px;color:var(--text-3);text-decoration:none;transition:color 0.15s}
+.app-back:hover{color:var(--text)}
+.app-nav-divider{width:1px;height:16px;background:var(--border)}
+.app-nav-title{font-size:14px;font-weight:600;color:var(--text)}
+.app-nav-right{margin-left:auto;display:flex;align-items:center;gap:8px}
+.app-avatar{width:30px;height:30px;border-radius:50%;background:var(--navy2);color:white;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700}
 
-/* ── Top Bar ── */
-.sp-topbar {
-  height: 48px; background: var(--em-navy);
-  display: flex; align-items: center;
-  position: sticky; top: 0; z-index: 100; flex-shrink: 0;
-}
-.sp-app-launcher {
-  width: 48px; height: 48px; display: flex; align-items: center; justify-content: center;
-  cursor: pointer; color: white; flex-shrink: 0;
-}
-.sp-app-launcher:hover { background: rgba(255,255,255,0.12); }
-.sp-topbar-logo {
-  display: flex; align-items: center; padding: 0 14px; height: 100%;
-  border-left: 1px solid rgba(255,255,255,0.25);
-}
-.em-wordmark { font-size: 13px; font-weight: 700; color: white; letter-spacing: 2px; }
-.sp-topbar-app {
-  font-size: 15px; font-weight: 600; color: white;
-  padding: 0 16px; height: 100%; display: flex; align-items: center;
-  border-left: 1px solid rgba(255,255,255,0.25);
-}
-.sp-topbar-search {
-  flex: 1; max-width: 400px; margin: 0 16px;
-  background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.2);
-  border-radius: 3px; display: flex; align-items: center; padding: 0 10px; height: 32px; gap: 8px;
-}
-.sp-topbar-search input {
-  background: transparent; border: none; outline: none;
-  color: white; font-size: 13px; flex: 1;
-}
-.sp-topbar-search input::placeholder { color: rgba(255,255,255,0.55); }
-.sp-topbar-right { margin-left: auto; display: flex; align-items: center; gap: 2px; padding-right: 12px; }
-.sp-icon-btn {
-  width: 32px; height: 32px; border-radius: 3px; display: flex; align-items: center;
-  justify-content: center; color: white; cursor: pointer; border: none; background: transparent;
-  transition: background 0.15s;
-}
-.sp-icon-btn:hover { background: rgba(255,255,255,0.15); }
-.sp-avatar-pill { display: flex; align-items: center; gap: 8px; cursor: pointer; padding: 4px 8px; border-radius: 3px; }
-.sp-avatar-pill:hover { background: rgba(255,255,255,0.1); }
-.sp-avatar-name { font-size: 13px; color: white; }
-.sp-avatar { width: 32px; height: 32px; border-radius: 50%; background: #6264A7; color: white; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 600; }
-
-/* ── Site Header ── */
-.sp-site-header { background: var(--em-navy2); flex-shrink: 0; }
-.sp-site-identity { display: flex; align-items: center; gap: 12px; padding: 12px 20px 0; }
-.sp-site-icon { width: 34px; height: 34px; border-radius: 50%; background: rgba(255,255,255,0.15); display: flex; align-items: center; justify-content: center; color: white; font-size: 15px; }
-.sp-site-name { font-size: 19px; font-weight: 600; color: white; }
-.sp-site-follow { margin-left: auto; display: flex; align-items: center; gap: 5px; color: rgba(255,255,255,0.8); font-size: 12px; cursor: pointer; padding: 4px 10px; border: 1px solid rgba(255,255,255,0.3); border-radius: 3px; }
-.sp-horiz-nav { display: flex; padding: 0 20px; margin-top: 8px; }
-.sp-nav-item { padding: 10px 14px; color: rgba(255,255,255,0.75); font-size: 13px; cursor: pointer; border-bottom: 2px solid transparent; transition: all 0.15s; white-space: nowrap; display: flex; align-items: center; gap: 4px; }
-.sp-nav-item:hover { color: white; background: rgba(255,255,255,0.08); }
-.sp-nav-item.active { color: white; border-bottom-color: white; font-weight: 600; }
-
-/* ── Prototype Banner ── */
-.proto-banner {
-  background: var(--proto-bg); border-bottom: 1px solid var(--proto-border);
-  padding: 7px 20px; display: flex; align-items: center; gap: 12px; flex-shrink: 0; flex-wrap: wrap;
-}
-.proto-label {
-  display: inline-flex; align-items: center; gap: 5px;
-  background: var(--proto-border); color: white; font-size: 10px; font-weight: 700;
-  letter-spacing: 0.8px; text-transform: uppercase; padding: 3px 8px; border-radius: 3px; flex-shrink: 0;
-}
-.proto-msg { font-size: 12px; color: var(--proto-text); }
-.proto-msg strong { color: white; }
-.proto-views { display: flex; gap: 6px; margin-left: auto; align-items: center; flex-wrap: wrap; }
-.proto-view-label { font-size: 11px; color: var(--proto-text); }
-.proto-btn { padding: 4px 12px; border-radius: 3px; font-size: 12px; font-weight: 600; border: 1px solid var(--proto-border); background: transparent; color: var(--proto-text); cursor: pointer; transition: all 0.15s; }
-.proto-btn.active { background: white; color: var(--proto-bg); border-color: white; }
-.proto-btn:hover:not(.active) { background: rgba(255,255,255,0.1); color: white; }
+/* ── Proto banner ── */
+.proto-banner{background:var(--proto-bg);border-bottom:1px solid var(--proto-border);padding:7px 24px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.proto-label{display:inline-flex;align-items:center;gap:5px;background:var(--proto-border);color:white;font-size:10px;font-weight:700;letter-spacing:0.8px;text-transform:uppercase;padding:3px 8px;border-radius:4px;flex-shrink:0}
+.proto-msg{font-size:12px;color:var(--proto-text)}
+.proto-msg strong{color:white}
+.proto-views{display:flex;gap:6px;margin-left:auto;align-items:center;flex-wrap:wrap}
+.proto-view-label{font-size:11px;color:var(--proto-text)}
+.proto-btn{padding:4px 12px;border-radius:4px;font-size:12px;font-weight:600;border:1px solid var(--proto-border);background:transparent;color:var(--proto-text);cursor:pointer;transition:all 0.15s}
+.proto-btn.active{background:white;color:var(--proto-bg);border-color:white}
+.proto-btn:hover:not(.active){background:rgba(255,255,255,0.1);color:white}
 
 /* ── Hero ── */
-.sp-hero {
-  background: linear-gradient(135deg, var(--em-navy) 0%, var(--em-teal-dark) 100%);
-  padding: 20px 24px 22px; display: flex; align-items: center; gap: 16px;
-}
-.hero-greeting h2 { font-size: 20px; font-weight: 700; color: white; }
-.hero-greeting p { font-size: 13px; color: rgba(255,255,255,0.75); margin-top: 3px; }
-.hero-right { text-align: right; margin-left: auto; }
-.day-num { font-size: 36px; font-weight: 700; color: white; line-height: 1; }
-.day-lbl { font-size: 11px; color: rgba(255,255,255,0.6); }
-.phase-chip { display: inline-block; padding: 3px 10px; border-radius: 12px; background: rgba(255,255,255,0.2); color: white; font-size: 11px; font-weight: 600; margin-top: 4px; }
+.hero{background:var(--navy);padding:32px 24px 30px;display:flex;align-items:center;gap:20px}
+.hero-avatar{width:52px;height:52px;border-radius:14px;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700;color:white;flex-shrink:0}
+.hero-text h1{font-size:22px;font-weight:700;color:white;letter-spacing:-0.3px}
+.hero-text p{font-size:13px;color:rgba(255,255,255,0.6);margin-top:3px}
+.hero-right{margin-left:auto;text-align:right}
+.hero-day{font-size:36px;font-weight:700;color:white;line-height:1}
+.hero-day-label{font-size:11px;color:rgba(255,255,255,0.5)}
+.hero-phase-chip{display:inline-block;padding:3px 10px;border-radius:20px;background:rgba(255,255,255,0.15);color:white;font-size:11px;font-weight:600;margin-top:5px}
 
-/* ── Shell Layout ── */
-.sp-shell { display: flex; flex-direction: column; min-height: 100vh; }
-.sp-body-wrap { display: flex; flex: 1; }
+/* ── Layout ── */
+.app-body{display:flex;min-height:0}
+.sidebar{width:240px;background:white;border-right:1px solid var(--border);padding:20px 0;flex-shrink:0;overflow-y:auto}
+.main{flex:1;padding:24px;overflow-y:auto;min-width:0}
 
-/* ── Left Rail ── */
-.sp-left-rail {
-  width: 48px; background: var(--em-navy); flex-shrink: 0;
-  display: flex; flex-direction: column; align-items: center; padding: 8px 0; gap: 2px;
-}
-.rail-icon { width: 36px; height: 36px; border-radius: 3px; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.65); cursor: pointer; transition: all 0.15s; font-size: 18px; }
-.rail-icon:hover, .rail-icon.active { background: rgba(255,255,255,0.18); color: white; }
-.rail-divider { width: 24px; height: 1px; background: rgba(255,255,255,0.15); margin: 4px 0; }
-.rail-add { margin-top: auto; }
+/* Sidebar */
+.sb-section{margin-bottom:4px}
+.sb-label{font-size:10px;font-weight:700;color:var(--text-3);text-transform:uppercase;letter-spacing:0.7px;padding:4px 16px 6px}
+.sb-link{display:flex;align-items:center;gap:9px;padding:8px 16px;font-size:13px;color:var(--text-2);cursor:pointer;transition:background 0.1s;text-decoration:none}
+.sb-link:hover{background:var(--bg)}
+.sb-link.active{background:var(--blue-light);color:var(--navy2);font-weight:600}
+.sb-link i{font-size:15px;opacity:0.6}
+.sb-link.active i{opacity:1}
+.sb-divider{height:1px;background:var(--border);margin:8px 16px}
 
-/* ── Sidebar ── */
-.sp-sidebar { width: 240px; background: white; border-right: 1px solid var(--em-border); padding: 16px 0; flex-shrink: 0; overflow-y: auto; }
-.sidebar-section-label { font-size: 11px; font-weight: 600; color: var(--em-text-light); padding: 4px 16px 6px; text-transform: uppercase; letter-spacing: 0.6px; }
-.sidebar-link { display: flex; align-items: center; gap: 10px; padding: 8px 16px; font-size: 13px; color: var(--em-text); cursor: pointer; transition: background 0.1s; }
-.sidebar-link:hover { background: var(--em-gray-bg); }
-.sidebar-link.active { background: var(--em-blue-light); color: var(--em-navy2); font-weight: 600; border-right: 3px solid var(--em-navy2); }
-.sidebar-link i { font-size: 15px; opacity: 0.65; }
-.sidebar-link.active i { opacity: 1; }
-.sidebar-divider { height: 1px; background: var(--em-border); margin: 8px 16px; }
-.phase-nav-item { display: flex; align-items: center; gap: 10px; padding: 5px 16px; font-size: 12px; color: var(--em-text-muted); }
-.phase-nav-item.done { text-decoration: line-through; opacity: 0.5; }
-.phase-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; background: var(--em-border-strong); }
-.phase-dot.done { background: var(--em-teal); }
-.phase-dot.current { background: var(--em-navy2); width: 10px; height: 10px; }
+/* Phase nav */
+.phase-item{display:flex;align-items:center;gap:9px;padding:5px 16px;font-size:12px;color:var(--text-3)}
+.phase-item.done{opacity:0.5}
+.phase-item.done .pi-label{text-decoration:line-through}
+.phase-item.current{color:var(--navy2);font-weight:600}
+.pi-dot{width:8px;height:8px;border-radius:50%;background:var(--border);flex-shrink:0}
+.pi-dot.done{background:var(--teal)}
+.pi-dot.current{background:var(--navy2);width:10px;height:10px}
 
 /* Progress */
-.progress-block { padding: 10px 16px; }
-.donut-wrap { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
-.donut-pct { font-size: 22px; font-weight: 700; color: var(--em-navy2); line-height: 1; }
-.donut-sub { font-size: 11px; color: var(--em-text-muted); }
-.phase-bar-row { margin-bottom: 7px; }
-.phase-bar-label { display: flex; justify-content: space-between; font-size: 11px; color: var(--em-text-muted); margin-bottom: 3px; }
-.bar-track { height: 4px; background: var(--em-gray-light); border-radius: 2px; overflow: hidden; }
-.bar-fill { height: 100%; background: var(--em-navy2); border-radius: 2px; transition: width 0.4s; }
-.bar-fill.complete { background: var(--em-teal); }
-
-/* Deploy list */
-.deploy-list { padding: 0 16px 8px; }
-.deploy-badge { display: flex; align-items: center; gap: 8px; padding: 5px 0; font-size: 11px; color: var(--em-text-muted); border-bottom: 1px solid var(--em-border); }
-.deploy-badge:last-child { border-bottom: none; }
-.deploy-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--em-teal); flex-shrink: 0; }
-
-/* ── Main ── */
-.sp-main { flex: 1; padding: 20px; overflow-y: auto; min-width: 0; }
+.progress-block{padding:10px 16px}
+.donut-row{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.donut-pct{font-size:22px;font-weight:700;color:var(--navy2);line-height:1}
+.donut-sub{font-size:11px;color:var(--text-3)}
+.pbar-row{margin-bottom:7px}
+.pbar-labels{display:flex;justify-content:space-between;font-size:10px;color:var(--text-3);margin-bottom:3px}
+.pbar-track{height:4px;background:var(--border-2);border-radius:2px;overflow:hidden}
+.pbar-fill{height:100%;background:var(--navy2);border-radius:2px;transition:width 0.4s}
+.pbar-fill.done{background:var(--teal)}
 
 /* Cards */
-.sp-card { background: white; border: 1px solid var(--em-border); border-radius: 3px; margin-bottom: 16px; }
-.card-header { display: flex; align-items: center; justify-content: space-between; padding: 13px 18px; border-bottom: 1px solid var(--em-border); }
-.card-title { font-size: 14px; font-weight: 600; color: var(--em-text); display: flex; align-items: center; gap: 8px; }
-.card-title i { font-size: 16px; color: var(--em-navy2); }
-.card-body { padding: 14px 18px; }
-.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+.card{background:white;border:1px solid var(--border);border-radius:10px;margin-bottom:16px;overflow:hidden}
+.card-header{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;border-bottom:1px solid var(--border)}
+.card-title{font-size:14px;font-weight:600;color:var(--text);display:flex;align-items:center;gap:8px}
+.card-title i{font-size:15px;color:var(--navy2)}
+.card-body{padding:16px 18px}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
 
 /* Tasks */
-.today-task { display: flex; align-items: flex-start; gap: 10px; padding: 10px 12px; border: 1px solid var(--em-border); border-radius: 3px; cursor: pointer; transition: border-color 0.15s; margin-bottom: 8px; }
-.today-task:last-child { margin-bottom: 0; }
-.today-task:hover { border-color: var(--em-blue); }
-.today-task.done { opacity: 0.6; }
-.today-task.done .task-name { text-decoration: line-through; }
-.task-check { width: 16px; height: 16px; border: 1.5px solid var(--em-border-strong); border-radius: 2px; flex-shrink: 0; margin-top: 2px; display: flex; align-items: center; justify-content: center; transition: all 0.2s; }
-.task-check.checked { background: var(--em-teal); border-color: var(--em-teal); color: white; font-size: 10px; font-weight: 700; }
-.task-name { font-size: 13px; color: var(--em-text); line-height: 1.4; }
-.task-meta { display: flex; align-items: center; gap: 6px; margin-top: 3px; flex-wrap: wrap; }
-.trigger-tag { font-size: 10px; padding: 1px 6px; border-radius: 2px; background: var(--em-amber-light); color: var(--em-amber); font-weight: 600; display: flex; align-items: center; gap: 3px; }
-.deadline-tag { font-size: 10px; padding: 1px 6px; border-radius: 2px; background: #FDE8E8; color: var(--em-red); font-weight: 600; }
+.task-item{display:flex;align-items:flex-start;gap:10px;padding:10px 12px;border:1px solid var(--border);border-radius:8px;cursor:pointer;transition:border-color 0.15s;margin-bottom:8px}
+.task-item:last-child{margin-bottom:0}
+.task-item:hover{border-color:var(--blue-mid)}
+.task-item.done{opacity:0.6}
+.task-item.done .task-name{text-decoration:line-through}
+.task-check{width:17px;height:17px;border:1.5px solid var(--border);border-radius:4px;flex-shrink:0;margin-top:1px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;transition:all 0.2s}
+.task-check.checked{background:var(--teal);border-color:var(--teal);color:white}
+.task-name{font-size:13px;color:var(--text);line-height:1.4}
+.task-meta{display:flex;align-items:center;gap:5px;margin-top:3px;flex-wrap:wrap}
+.trigger-tag{font-size:10px;padding:1px 7px;border-radius:10px;background:var(--amber-light);color:var(--amber);font-weight:600;display:flex;align-items:center;gap:3px}
+.deadline-tag{font-size:10px;padding:1px 7px;border-radius:10px;background:var(--red-light);color:var(--red);font-weight:600}
 
-/* People */
-.person-row { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
-.person-avatar { width: 40px; height: 40px; border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; color: white; }
-.person-name { font-size: 13px; font-weight: 600; }
-.person-role { font-size: 11px; color: var(--em-text-muted); }
-.person-rel { font-size: 12px; color: var(--em-text-muted); margin-bottom: 10px; line-height: 1.5; }
-.action-link { display: inline-flex; align-items: center; gap: 5px; font-size: 12px; color: var(--em-navy2); font-weight: 600; padding: 5px 10px; border: 1px solid var(--em-navy2); border-radius: 3px; cursor: pointer; transition: all 0.15s; text-decoration: none; }
-.action-link:hover { background: var(--em-navy2); color: white; }
+/* People cards */
+.person-row{display:flex;align-items:center;gap:12px;margin-bottom:8px}
+.person-avatar{width:38px;height:38px;border-radius:10px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:white}
+.person-name{font-size:13px;font-weight:600;color:var(--text)}
+.person-role{font-size:11px;color:var(--text-3)}
+.person-rel{font-size:12px;color:var(--text-2);margin-bottom:10px;line-height:1.55}
+.action-link{display:inline-flex;align-items:center;gap:5px;font-size:12px;color:var(--navy2);font-weight:600;padding:5px 10px;border:1px solid var(--blue-mid);border-radius:6px;cursor:pointer;transition:all 0.15s;text-decoration:none}
+.action-link:hover{background:var(--navy2);color:white;border-color:var(--navy2)}
 
 /* Checklist */
-.phase-group { border-bottom: 1px solid var(--em-border); }
-.phase-group:last-child { border-bottom: none; }
-.phase-toggle { display: flex; align-items: center; gap: 10px; padding: 11px 18px; cursor: pointer; transition: background 0.1s; user-select: none; }
-.phase-toggle:hover { background: var(--em-gray-bg); }
-.phase-toggle-label { font-size: 13px; font-weight: 600; flex: 1; }
-.phase-count { font-size: 11px; color: var(--em-text-muted); }
-.phase-arrow { font-size: 13px; color: var(--em-text-light); transition: transform 0.2s; display: inline-block; }
-.phase-arrow.open { transform: rotate(90deg); }
-.phase-tasks { padding: 0 18px 8px; display: none; }
-.phase-tasks.open { display: block; }
-.checklist-task { display: flex; align-items: flex-start; gap: 10px; padding: 8px 0; border-bottom: 1px solid var(--em-border); cursor: pointer; }
-.checklist-task:last-child { border-bottom: none; }
-.checklist-task.done .task-name { text-decoration: line-through; color: var(--em-text-muted); }
+.phase-group{border-bottom:1px solid var(--border)}
+.phase-group:last-child{border-bottom:none}
+.phase-toggle{display:flex;align-items:center;gap:10px;padding:12px 18px;cursor:pointer;user-select:none;transition:background 0.1s}
+.phase-toggle:hover{background:var(--bg)}
+.phase-pip{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.phase-toggle-label{font-size:13px;font-weight:600;color:var(--text);flex:1}
+.phase-count{font-size:11px;color:var(--text-3);margin-right:6px}
+.phase-arrow{font-size:13px;color:var(--text-3);transition:transform 0.2s;display:inline-block}
+.phase-arrow.open{transform:rotate(90deg)}
+.phase-tasks{padding:0 18px 10px;display:none}
+.phase-tasks.open{display:block}
+.checklist-task{display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1px solid var(--border);cursor:pointer}
+.checklist-task:last-child{border-bottom:none}
+.checklist-task.done .task-name{text-decoration:line-through;color:var(--text-3)}
 
-/* Manager / Mentor */
-.status-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 16px; }
-.stat-box { background: white; border: 1px solid var(--em-border); border-radius: 3px; padding: 14px; text-align: center; }
-.stat-num { font-size: 26px; font-weight: 700; color: var(--em-navy2); }
-.stat-label { font-size: 11px; color: var(--em-text-muted); }
-.alert-card { display: flex; align-items: flex-start; gap: 12px; background: white; border: 1px solid var(--em-border); border-radius: 3px; padding: 11px 14px; margin-bottom: 7px; }
-.alert-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; margin-top: 4px; }
-.alert-dot.done { background: var(--em-teal); }
-.alert-dot.pending { background: var(--em-amber); }
-.alert-title { font-size: 13px; font-weight: 600; }
-.alert-sub { font-size: 12px; color: var(--em-text-muted); margin-top: 2px; }
-.nudge-card { background: var(--em-blue-light); border: 1px solid var(--em-blue-mid); border-radius: 3px; padding: 12px 14px; margin-bottom: 8px; }
-.nudge-timing { font-size: 11px; color: var(--em-navy2); font-weight: 700; margin-bottom: 5px; text-transform: uppercase; letter-spacing: 0.4px; }
-.nudge-q { font-size: 13px; color: var(--em-text); line-height: 1.5; }
-.ai-chip { display: inline-flex; align-items: center; gap: 4px; font-size: 10px; padding: 2px 8px; border-radius: 10px; background: var(--em-gray-light); color: var(--em-text-muted); margin-top: 7px; font-weight: 500; }
+/* Manager/Mentor views */
+.stat-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px}
+.stat-box{background:white;border:1px solid var(--border);border-radius:10px;padding:16px;text-align:center}
+.stat-num{font-size:28px;font-weight:700;color:var(--navy2);line-height:1}
+.stat-label{font-size:11px;color:var(--text-3);margin-top:3px}
+.alert-item{display:flex;align-items:flex-start;gap:12px;background:white;border:1px solid var(--border);border-radius:8px;padding:12px 14px;margin-bottom:8px}
+.alert-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;margin-top:4px}
+.alert-dot.done{background:var(--teal)}
+.alert-dot.pending{background:var(--amber)}
+.alert-title{font-size:13px;font-weight:600;color:var(--text)}
+.alert-sub{font-size:12px;color:var(--text-3);margin-top:2px}
+.nudge-card{background:var(--blue-light);border:1px solid var(--blue-mid);border-radius:8px;padding:13px 15px;margin-bottom:8px}
+.nudge-timing{font-size:10px;color:var(--navy2);font-weight:700;text-transform:uppercase;letter-spacing:0.4px;margin-bottom:5px}
+.nudge-q{font-size:13px;color:var(--text);line-height:1.6}
+.ai-chip{display:inline-flex;align-items:center;gap:4px;font-size:10px;padding:2px 8px;border-radius:10px;background:var(--border-2);color:var(--text-3);margin-top:7px;font-weight:500}
 
 /* Teams sim */
-.teams-sim { background: #1A1D21; border-radius: 3px; padding: 16px; }
-.teams-header { color: #868D96; font-size: 11px; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid #2C2F35; }
-.teams-msg { display: flex; gap: 10px; margin-bottom: 14px; }
-.teams-avatar { width: 32px; height: 32px; border-radius: 4px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; color: white; }
-.teams-name { font-size: 13px; font-weight: 700; color: #D9D9D9; }
-.teams-time { font-size: 11px; color: #868D96; margin-left: 6px; }
-.teams-body { font-size: 13px; color: #B9BBBE; line-height: 1.5; margin-top: 3px; }
-.teams-body strong { color: #D9D9D9; font-weight: 600; }
-.teams-body ul { padding-left: 16px; margin-top: 6px; }
-.teams-body li { margin-bottom: 4px; }
-.trigger-pending { background: #2C2F35; border-left: 3px solid var(--em-amber); border-radius: 0 3px 3px 0; padding: 10px 14px; margin-bottom: 10px; }
-.tp-label { font-size: 11px; color: var(--em-amber); font-weight: 700; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.4px; }
-.tp-text { font-size: 12px; color: #868D96; line-height: 1.5; }
-.simulate-btn { background: var(--em-navy2); color: white; border: none; padding: 7px 14px; border-radius: 3px; font-size: 12px; font-weight: 600; cursor: pointer; margin-top: 10px; transition: background 0.15s; }
-.simulate-btn:hover { background: var(--em-blue); }
-
-/* CEO Modal */
-.modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 500; display: flex; align-items: center; justify-content: center; }
-.modal-box { background: white; border-radius: 3px; max-width: 480px; width: 90%; overflow: hidden; border: 1px solid var(--em-border); }
-.modal-header { background: var(--em-navy); padding: 20px 24px; }
-.modal-header .eyebrow { font-size: 10px; color: rgba(255,255,255,0.6); font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; margin-bottom: 6px; }
-.modal-header h2 { font-size: 20px; font-weight: 700; color: white; }
-.modal-body { padding: 20px 24px; }
-.modal-body p { font-size: 13px; line-height: 1.7; color: var(--em-text); margin-top: 10px; }
-.modal-body p:first-child { margin-top: 0; }
-.modal-actions { display: flex; gap: 10px; margin-top: 18px; }
-.btn-secondary { flex: 1; padding: 8px; border: 1px solid var(--em-border-strong); border-radius: 3px; background: white; font-size: 13px; cursor: pointer; color: var(--em-text-muted); }
-.btn-primary { flex: 2; padding: 8px; border: none; border-radius: 3px; background: var(--em-navy); color: white; font-size: 13px; font-weight: 600; cursor: pointer; }
+.teams-sim{background:#1A1D21;border-radius:10px;padding:16px}
+.teams-hdr{color:#868D96;font-size:11px;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #2C2F35}
+.teams-msg{display:flex;gap:10px;margin-bottom:14px}
+.teams-av{width:32px;height:32px;border-radius:6px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:white}
+.teams-name{font-size:13px;font-weight:700;color:#D9D9D9}
+.teams-time{font-size:11px;color:#868D96;margin-left:6px}
+.teams-body{font-size:13px;color:#B9BBBE;line-height:1.5;margin-top:3px}
+.teams-body strong{color:#D9D9D9;font-weight:600}
+.teams-body ul{padding-left:16px;margin-top:6px}
+.teams-body li{margin-bottom:4px}
+.trigger-pend{background:#2C2F35;border-left:3px solid var(--amber);border-radius:0 6px 6px 0;padding:10px 14px;margin-bottom:10px}
+.tp-label{font-size:10px;color:var(--amber);font-weight:700;text-transform:uppercase;letter-spacing:0.4px;margin-bottom:4px}
+.tp-text{font-size:12px;color:#868D96;line-height:1.5}
+.sim-btn{background:var(--navy2);color:white;border:none;padding:7px 14px;border-radius:6px;font-size:12px;font-weight:600;cursor:pointer;margin-top:10px;transition:background 0.15s;font-family:inherit}
+.sim-btn:hover{background:var(--navy)}
 
 /* Toast */
-.toast { position: fixed; bottom: 24px; right: 24px; background: white; border: 1px solid var(--em-border); border-left: 3px solid var(--em-teal); border-radius: 3px; padding: 12px 16px; max-width: 300px; z-index: 999; display: none; box-shadow: 0 4px 16px rgba(0,0,0,0.1); }
-.toast.show { display: block; animation: slideIn 0.25s ease; }
-@keyframes slideIn { from { transform: translateX(16px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
-.toast-title { font-size: 13px; font-weight: 600; color: var(--em-teal); margin-bottom: 4px; }
-.toast-body { font-size: 12px; color: var(--em-text-muted); line-height: 1.4; }
-.toast-link { font-size: 12px; color: var(--em-navy2); font-weight: 600; cursor: pointer; margin-top: 8px; display: block; }
+.toast{position:fixed;bottom:24px;right:24px;background:white;border:1px solid var(--border);border-left:3px solid var(--teal);border-radius:10px;padding:12px 16px;max-width:300px;z-index:999;display:none;box-shadow:0 4px 20px rgba(0,0,0,0.08)}
+.toast.show{display:block;animation:tin 0.25s ease}
+@keyframes tin{from{transform:translateX(12px);opacity:0}to{transform:translateX(0);opacity:1}}
+.toast-title{font-size:13px;font-weight:600;color:var(--teal);margin-bottom:3px}
+.toast-body{font-size:12px;color:var(--text-2);line-height:1.4}
+.toast-link{font-size:12px;color:var(--navy2);font-weight:600;cursor:pointer;margin-top:7px;display:block}
 
-/* View panels */
-.view-panel { display: none; }
-.view-panel.active { display: block; }
+/* CEO modal */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.45);z-index:500;display:flex;align-items:center;justify-content:center}
+.modal-box{background:white;border-radius:14px;max-width:480px;width:92%;overflow:hidden;border:1px solid var(--border)}
+.modal-header{background:var(--navy);padding:22px 26px}
+.modal-eyebrow{font-size:10px;color:rgba(255,255,255,0.5);font-weight:700;letter-spacing:0.8px;text-transform:uppercase;margin-bottom:6px}
+.modal-header h2{font-size:20px;font-weight:700;color:white}
+.modal-body{padding:22px 26px}
+.modal-body p{font-size:13px;line-height:1.7;color:var(--text-2);margin-top:10px}
+.modal-body p:first-child{margin-top:0}
+.modal-actions{display:flex;gap:10px;margin-top:18px}
+.btn-sec{flex:1;padding:9px;border:1px solid var(--border);border-radius:8px;background:white;font-size:13px;cursor:pointer;color:var(--text-3);font-family:inherit}
+.btn-pri{flex:2;padding:9px;border:none;border-radius:8px;background:var(--navy);color:white;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit}
+
+.view-panel{display:none}
+.view-panel.active{display:block}
+
+/* Deploy list */
+.deploy-list{padding:4px 0}
+.deploy-item{display:flex;align-items:center;gap:8px;padding:4px 0;font-size:11px;color:var(--text-3);border-bottom:1px solid var(--border)}
+.deploy-item:last-child{border-bottom:none}
+.deploy-dot{width:6px;height:6px;border-radius:50%;background:var(--teal);flex-shrink:0}
 </style>
 </head>
 <body>
 
-<div class="sp-shell">
-
-  <!-- Top Bar -->
-  <div class="sp-topbar">
-    <div class="sp-app-launcher" title="App launcher">
-      <svg width="18" height="18" viewBox="0 0 16 16" fill="white" aria-hidden="true">
-        <rect x="1" y="1" width="4" height="4" rx="0.5"/><rect x="6" y="1" width="4" height="4" rx="0.5"/>
-        <rect x="11" y="1" width="4" height="4" rx="0.5"/><rect x="1" y="6" width="4" height="4" rx="0.5"/>
-        <rect x="6" y="6" width="4" height="4" rx="0.5"/><rect x="11" y="6" width="4" height="4" rx="0.5"/>
-        <rect x="1" y="11" width="4" height="4" rx="0.5"/><rect x="6" y="11" width="4" height="4" rx="0.5"/>
-        <rect x="11" y="11" width="4" height="4" rx="0.5"/>
-      </svg>
-    </div>
-    <div class="sp-topbar-logo"><span class="em-wordmark">EMERSON</span></div>
-    <div class="sp-topbar-app">SharePoint</div>
-    <div class="sp-topbar-search">
-      <i class="ti ti-search" style="font-size:14px;color:rgba(255,255,255,0.6)" aria-hidden="true"></i>
-      <input type="text" placeholder="Search"/>
-    </div>
-    <div class="sp-topbar-right">
-      <button class="sp-icon-btn" title="Settings"><i class="ti ti-settings" style="font-size:16px"></i></button>
-      <button class="sp-icon-btn" title="Help"><i class="ti ti-help" style="font-size:16px"></i></button>
-      <div class="sp-avatar-pill">
-        <span class="sp-avatar-name">Park, Jordan</span>
-        <div class="sp-avatar">JP</div>
-      </div>
-    </div>
+<!-- App Nav -->
+<div class="app-nav">
+  <a class="app-back" href="index.html"><i class="ti ti-arrow-left" style="font-size:12px"></i> LDD Demo Space</a>
+  <div class="app-nav-divider"></div>
+  <div class="app-nav-title">People Hub: Onboarding</div>
+  <div class="app-nav-right">
+    <div class="app-avatar">JP</div>
   </div>
+</div>
 
-  <!-- Site Header -->
-  <div class="sp-site-header">
-    <div class="sp-site-identity">
-      <div class="sp-site-icon"><i class="ti ti-users" aria-hidden="true"></i></div>
-      <div class="sp-site-name">Emerson People Hub</div>
-      <div class="sp-site-follow"><i class="ti ti-star" style="font-size:12px" aria-hidden="true"></i> Following</div>
-    </div>
-    <div class="sp-horiz-nav">
-      <div class="sp-nav-item active">My Onboarding</div>
-      <div class="sp-nav-item">Resources <i class="ti ti-chevron-down" style="font-size:11px"></i></div>
-      <div class="sp-nav-item">Benefits <i class="ti ti-chevron-down" style="font-size:11px"></i></div>
-      <div class="sp-nav-item">IT Setup</div>
-      <div class="sp-nav-item">HR Contacts</div>
-    </div>
+<!-- Proto banner -->
+<div class="proto-banner">
+  <div class="proto-label"><i class="ti ti-flask" style="font-size:10px"></i> Prototype</div>
+  <span class="proto-msg">View toggle is a <strong>design preview only</strong>. In production, each person sees only their own view based on permissions.</span>
+  <div class="proto-views">
+    <span class="proto-view-label">View as:</span>
+    <button class="proto-btn active" onclick="switchView('new-hire',this)">Jordan (New Hire)</button>
+    <button class="proto-btn" onclick="switchView('manager',this)">Sarah (Manager)</button>
+    <button class="proto-btn" onclick="switchView('mentor',this)">Marcus (Mentor)</button>
   </div>
+</div>
 
-  <!-- Prototype Banner -->
-  <div class="proto-banner">
-    <div class="proto-label"><i class="ti ti-flask" style="font-size:11px" aria-hidden="true"></i> Prototype</div>
-    <span class="proto-msg">This view toggle is a <strong>design preview only</strong> — in production, each person sees only their own view based on SharePoint permissions.</span>
-    <div class="proto-views">
-      <span class="proto-view-label">Simulate view as:</span>
-      <button class="proto-btn active" onclick="switchView('new-hire',this)">Jordan (New Hire)</button>
-      <button class="proto-btn" onclick="switchView('manager',this)">Sarah (Manager)</button>
-      <button class="proto-btn" onclick="switchView('mentor',this)">Marcus (Mentor)</button>
-    </div>
+<!-- Hero -->
+<div class="hero">
+  <div class="hero-avatar">J</div>
+  <div class="hero-text">
+    <h1>Good morning, Jordan.</h1>
+    <p>Day 12 of your onboarding. Here's what's on your plate today.</p>
   </div>
-
-  <!-- Hero -->
-  <div class="sp-hero">
-    <div class="hero-greeting">
-      <h2>Good morning, Jordan.</h2>
-      <p>Day 12 of your onboarding — here's what's on your plate today.</p>
-    </div>
-    <div class="hero-right">
-      <div class="day-num">12</div>
-      <div class="day-lbl">Day</div>
-      <div class="phase-chip">First 30 Days</div>
-    </div>
+  <div class="hero-right">
+    <div class="hero-day">12</div>
+    <div class="hero-day-label">Day</div>
+    <div class="hero-phase-chip">First 30 Days</div>
   </div>
+</div>
 
-  <!-- Body -->
-  <div class="sp-body-wrap">
+<!-- Body -->
+<div class="app-body">
 
-    <!-- Left Rail -->
-    <div class="sp-left-rail">
-      <div class="rail-icon active" title="Home"><i class="ti ti-home"></i></div>
-      <div class="rail-icon" title="My content"><i class="ti ti-layout-dashboard"></i></div>
-      <div class="rail-icon" title="Sites"><i class="ti ti-world"></i></div>
-      <div class="rail-icon" title="News"><i class="ti ti-news"></i></div>
-      <div class="rail-icon" title="Pages"><i class="ti ti-file"></i></div>
-      <div class="rail-divider"></div>
-      <div class="rail-icon" title="Conversations"><i class="ti ti-messages"></i></div>
-      <div class="rail-icon rail-add" title="Add"><i class="ti ti-plus"></i></div>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="sb-section">
+      <div class="sb-label">Navigation</div>
+      <a class="sb-link active"><i class="ti ti-home"></i> Today's guidance</a>
+      <a class="sb-link"><i class="ti ti-checkbox"></i> My checklist</a>
+      <a class="sb-link"><i class="ti ti-users"></i> My team</a>
+      <a class="sb-link"><i class="ti ti-book"></i> Resources</a>
     </div>
-
-    <!-- Sidebar -->
-    <div class="sp-sidebar">
-      <div class="sidebar-section-label">Navigation</div>
-      <div class="sidebar-link active"><i class="ti ti-home"></i> Today's guidance</div>
-      <div class="sidebar-link"><i class="ti ti-checkbox"></i> My checklist</div>
-      <div class="sidebar-link"><i class="ti ti-users"></i> My team</div>
-      <div class="sidebar-link"><i class="ti ti-book"></i> Resources</div>
-
-      <div class="sidebar-divider"></div>
-      <div class="sidebar-section-label">90-Day Phases</div>
-      <div class="phase-nav-item done"><div class="phase-dot done"></div> Day 1 — Welcome</div>
-      <div class="phase-nav-item done"><div class="phase-dot done"></div> Days 2–5 — Orientation</div>
-      <div class="phase-nav-item"><div class="phase-dot current"></div> Days 6–30 — First 30 Days</div>
-      <div class="phase-nav-item"><div class="phase-dot"></div> Days 31–60 — Settling In</div>
-      <div class="phase-nav-item"><div class="phase-dot"></div> Days 61–90 — Finalize</div>
-
-      <div class="sidebar-divider"></div>
-      <div class="sidebar-section-label">Track Progress</div>
+    <div class="sb-divider"></div>
+    <div class="sb-section">
+      <div class="sb-label">90-Day Phases</div>
+      <div class="phase-item done"><div class="pi-dot done"></div><span class="pi-label">Day 1: Welcome</span></div>
+      <div class="phase-item done"><div class="pi-dot done"></div><span class="pi-label">Days 2-5: Orientation</span></div>
+      <div class="phase-item current"><div class="pi-dot current"></div><span class="pi-label">Days 6-30: First 30 Days</span></div>
+      <div class="phase-item"><div class="pi-dot"></div><span class="pi-label">Days 31-60: Settling In</span></div>
+      <div class="phase-item"><div class="pi-dot"></div><span class="pi-label">Days 61-90: Finalize</span></div>
+    </div>
+    <div class="sb-divider"></div>
+    <div class="sb-section">
+      <div class="sb-label">Progress</div>
       <div class="progress-block">
-        <div class="donut-wrap">
+        <div class="donut-row">
           <svg width="52" height="52" viewBox="0 0 52 52" style="flex-shrink:0">
-            <circle cx="26" cy="26" r="20" fill="none" stroke="#E5E6E7" stroke-width="6"/>
-            <circle id="donut-ring" cx="26" cy="26" r="20" fill="none" stroke="#004487" stroke-width="6"
-              stroke-linecap="round" stroke-dasharray="125.7" stroke-dashoffset="62.8"
-              transform="rotate(-90 26 26)" style="transition:stroke-dashoffset 0.5s"/>
+            <circle cx="26" cy="26" r="20" fill="none" stroke="#E5E7EB" stroke-width="6"/>
+            <circle id="donut-ring" cx="26" cy="26" r="20" fill="none" stroke="#004487" stroke-width="6" stroke-linecap="round" stroke-dasharray="125.7" stroke-dashoffset="62.8" transform="rotate(-90 26 26)" style="transition:stroke-dashoffset 0.5s"/>
           </svg>
           <div>
             <div class="donut-pct" id="pct-display">50%</div>
@@ -392,195 +272,169 @@ body { background: var(--em-gray-bg); color: var(--em-text); font-size: 14px; }
         </div>
         <div id="phase-bars"></div>
       </div>
+    </div>
+    <div class="sb-divider"></div>
+    <div class="sb-section">
+      <div class="sb-label">Deploy options</div>
+      <div style="padding:4px 16px 8px">
+        <div class="deploy-item"><div class="deploy-dot"></div> SharePoint intranet</div>
+        <div class="deploy-item"><div class="deploy-dot"></div> Teams tab</div>
+        <div class="deploy-item"><div class="deploy-dot"></div> Power Apps embedded</div>
+        <div class="deploy-item"><div class="deploy-dot"></div> HRIS / Workday link</div>
+      </div>
+    </div>
+  </div>
 
-      <div class="sidebar-divider"></div>
-      <div class="sidebar-section-label">Deploy Options</div>
-      <div class="deploy-list">
-        <div class="deploy-badge"><div class="deploy-dot"></div> SharePoint intranet</div>
-        <div class="deploy-badge"><div class="deploy-dot"></div> Teams tab</div>
-        <div class="deploy-badge"><div class="deploy-dot"></div> Power Apps embedded</div>
-        <div class="deploy-badge"><div class="deploy-dot"></div> HRIS / Workday link</div>
-        <div class="deploy-badge"><div class="deploy-dot"></div> ATS extension</div>
+  <!-- Main -->
+  <div class="main">
+
+    <!-- NEW HIRE VIEW -->
+    <div class="view-panel active" id="panel-new-hire">
+      <div class="two-col">
+        <div class="card" style="margin-bottom:0">
+          <div class="card-header"><div class="card-title"><i class="ti ti-star"></i> Up next for you</div></div>
+          <div class="card-body" id="today-tasks-list"></div>
+        </div>
+        <div>
+          <div class="card" style="margin-bottom:12px">
+            <div class="card-header"><div class="card-title"><i class="ti ti-user"></i> Your manager</div></div>
+            <div class="card-body">
+              <div class="person-row">
+                <div class="person-avatar" style="background:var(--navy2)">SC</div>
+                <div><div class="person-name">Sarah Chen</div><div class="person-role">Senior Director, Operations</div></div>
+              </div>
+              <div class="person-rel">Sarah owns your onboarding milestones and 90-day goal alignment. She'll check in at day 30 and 60.</div>
+              <a class="action-link"><i class="ti ti-calendar" style="font-size:12px"></i> Schedule 1:1</a>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header"><div class="card-title"><i class="ti ti-user-heart"></i> Your mentor</div></div>
+            <div class="card-body">
+              <div class="person-row">
+                <div class="person-avatar" style="background:var(--teal)">MW</div>
+                <div><div class="person-name">Marcus Webb</div><div class="person-role">Principal Analyst, Strategy</div></div>
+              </div>
+              <div class="person-rel">Marcus will reach out via Teams after key milestones. Your go-to for culture and context questions.</div>
+              <a class="action-link"><i class="ti ti-message" style="font-size:12px"></i> Message mentor</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title"><i class="ti ti-checkbox"></i> My 90-Day Checklist</div>
+          <span id="checklist-count" style="font-size:12px;color:var(--text-3)">9 of 18 complete</span>
+        </div>
+        <div id="checklist-body"></div>
       </div>
     </div>
 
-    <!-- Main Content -->
-    <div class="sp-main">
-
-      <!-- NEW HIRE VIEW -->
-      <div class="view-panel active" id="panel-new-hire">
-
-        <div class="two-col">
-          <div class="sp-card" style="margin-bottom:0">
-            <div class="card-header"><div class="card-title"><i class="ti ti-star" aria-hidden="true"></i> Today's focus</div></div>
-            <div class="card-body" id="today-tasks-list"></div>
-          </div>
-          <div>
-            <div class="sp-card" style="margin-bottom:12px">
-              <div class="card-header"><div class="card-title"><i class="ti ti-user" aria-hidden="true"></i> Your manager</div></div>
-              <div class="card-body">
-                <div class="person-row">
-                  <div class="person-avatar" style="background:#004487">SC</div>
-                  <div><div class="person-name">Sarah Chen</div><div class="person-role">Senior Director, Operations</div></div>
-                </div>
-                <div class="person-rel">Sarah owns your onboarding milestones and 90-day goal alignment. She'll check in at day 30 and 60.</div>
-                <a class="action-link" href="#"><i class="ti ti-calendar" style="font-size:12px" aria-hidden="true"></i> Schedule 1:1</a>
-              </div>
-            </div>
-            <div class="sp-card">
-              <div class="card-header"><div class="card-title"><i class="ti ti-user-heart" aria-hidden="true"></i> Your mentor</div></div>
-              <div class="card-body">
-                <div class="person-row">
-                  <div class="person-avatar" style="background:#00796B">MW</div>
-                  <div><div class="person-name">Marcus Webb</div><div class="person-role">Principal Analyst, Strategy</div></div>
-                </div>
-                <div class="person-rel">Marcus will reach out via Teams after key milestones. Your go-to for culture and context questions.</div>
-                <a class="action-link" href="#"><i class="ti ti-message" style="font-size:12px" aria-hidden="true"></i> Message mentor</a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="sp-card">
-          <div class="card-header">
-            <div class="card-title"><i class="ti ti-checkbox" aria-hidden="true"></i> My 90-Day Checklist</div>
-            <span id="checklist-count" style="font-size:12px;color:var(--em-text-muted)">9 of 18 complete</span>
-          </div>
-          <div id="checklist-body"></div>
-        </div>
-
+    <!-- MANAGER VIEW -->
+    <div class="view-panel" id="panel-manager">
+      <div style="margin-bottom:18px">
+        <div style="font-size:20px;font-weight:700;letter-spacing:-0.3px;margin-bottom:3px">Jordan Park: Onboarding Status</div>
+        <div style="font-size:13px;color:var(--text-3)">Day 12 of 90 · First 30 Days · On track</div>
       </div>
+      <div class="stat-row">
+        <div class="stat-box"><div class="stat-num">12</div><div class="stat-label">Days elapsed</div></div>
+        <div class="stat-box"><div class="stat-num" id="mgr-done">9</div><div class="stat-label">Tasks complete</div></div>
+        <div class="stat-box"><div class="stat-num" id="mgr-open">9</div><div class="stat-label">Remaining</div></div>
+        <div class="stat-box"><div class="stat-num" style="color:var(--amber)">1</div><div class="stat-label">Deadlines upcoming</div></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-title"><i class="ti ti-bell"></i> Milestone alerts</div></div>
+        <div class="card-body" style="padding-top:8px">
+          <div class="alert-item"><div class="alert-dot done"></div><div><div class="alert-title">Completed IT onboarding &amp; device setup</div><div class="alert-sub">Day 1 · No action needed</div></div></div>
+          <div class="alert-item"><div class="alert-dot done"></div><div><div class="alert-title">Completed onboarding hub tour</div><div class="alert-sub">Day 1 · Mentor trigger fired: Marcus notified via Teams</div></div></div>
+          <div class="alert-item"><div class="alert-dot done"></div><div><div class="alert-title">Met mentor: intro sync scheduled</div><div class="alert-sub">Day 3 · Trigger fired: Marcus notified</div></div></div>
+          <div class="alert-item"><div class="alert-dot pending"></div><div><div class="alert-title" style="color:var(--amber)">Benefits enrollment deadline approaching</div><div class="alert-sub">Due by Day 30 · 18 days remaining</div></div></div>
+          <div class="alert-item"><div class="alert-dot pending"></div><div><div class="alert-title" style="color:var(--text-3)">1:1 with manager not yet scheduled</div><div class="alert-sub">Day 6–30 task · Recommend reaching out this week</div></div></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div class="card-title"><i class="ti ti-message-dots"></i> Manager nudge scripts</div></div>
+        <div class="card-body">
+          <div style="font-size:12px;color:var(--text-3);margin-bottom:12px">AI-generated check-in questions based on Jordan's progress <span class="ai-chip"><i class="ti ti-sparkles" style="font-size:10px"></i> Power Automate + AI Builder</span></div>
+          <div class="nudge-card"><div class="nudge-timing">Use this week (Day 12-14)</div><div class="nudge-q">"Now that you've had a chance to meet the team, which relationships feel most natural so far: and are there any gaps you'd like help bridging?"</div></div>
+          <div class="nudge-card"><div class="nudge-timing">Day 20–25 · Pre-benefits deadline</div><div class="nudge-q">"Have you had a chance to look through the benefits enrollment options? Happy to connect you with HR if you have questions before the Day 30 deadline."</div></div>
+          <div class="nudge-card"><div class="nudge-timing">Day 28-30 · 30-day check-in</div><div class="nudge-q">"As we hit the one-month mark: what's clicked faster than expected, and what still feels unclear about how we operate?"</div></div>
+        </div>
+      </div>
+    </div>
 
-      <!-- MANAGER VIEW -->
-      <div class="view-panel" id="panel-manager">
-        <div style="margin-bottom:16px">
-          <div style="font-size:18px;font-weight:600;margin-bottom:3px">Jordan Park — New Hire Status</div>
-          <div style="font-size:13px;color:var(--em-text-muted)">Day 12 of 90 · First 30 Days phase · On track</div>
-        </div>
-        <div class="status-row">
-          <div class="stat-box"><div class="stat-num">12</div><div class="stat-label">Days elapsed</div></div>
-          <div class="stat-box"><div class="stat-num" id="mgr-done">9</div><div class="stat-label">Tasks complete</div></div>
-          <div class="stat-box"><div class="stat-num" id="mgr-open">9</div><div class="stat-label">Remaining</div></div>
-          <div class="stat-box"><div class="stat-num" style="color:var(--em-amber)">1</div><div class="stat-label">Deadlines upcoming</div></div>
-        </div>
-        <div class="sp-card">
-          <div class="card-header"><div class="card-title"><i class="ti ti-bell" aria-hidden="true"></i> Milestone alerts</div></div>
+    <!-- MENTOR VIEW -->
+    <div class="view-panel" id="panel-mentor">
+      <div style="margin-bottom:18px">
+        <div style="font-size:20px;font-weight:700;letter-spacing:-0.3px;margin-bottom:3px">Marcus: Your Mentee, Jordan Park</div>
+        <div style="font-size:13px;color:var(--text-3)">The system alerts you when Jordan completes a milestone that benefits from your perspective. No tracking needed.</div>
+      </div>
+      <div class="two-col" style="margin-bottom:16px">
+        <div class="card" style="margin-bottom:0">
+          <div class="card-header"><div class="card-title"><i class="ti ti-check"></i> Triggers fired</div></div>
           <div class="card-body" style="padding-top:8px">
-            <div class="alert-card"><div class="alert-dot done"></div><div><div class="alert-title">Completed IT onboarding &amp; device setup</div><div class="alert-sub">Day 1 · No action needed</div></div></div>
-            <div class="alert-card"><div class="alert-dot done"></div><div><div class="alert-title">Completed onboarding hub tour</div><div class="alert-sub">Day 1 · Mentor trigger fired — Marcus notified via Teams</div></div></div>
-            <div class="alert-card"><div class="alert-dot done"></div><div><div class="alert-title">Met mentor — intro sync scheduled</div><div class="alert-sub">Day 3 · Trigger fired — Marcus notified</div></div></div>
-            <div class="alert-card"><div class="alert-dot pending"></div><div><div class="alert-title" style="color:var(--em-amber)">Benefits enrollment deadline approaching</div><div class="alert-sub">Due by Day 30 · 18 days remaining — consider a nudge</div></div></div>
-            <div class="alert-card"><div class="alert-dot pending"></div><div><div class="alert-title" style="color:var(--em-text-muted)">1:1 with manager not yet scheduled</div><div class="alert-sub">Day 6–30 task · Recommend reaching out to Jordan this week</div></div></div>
+            <div class="alert-item"><div class="alert-dot done"></div><div><div class="alert-title">Completed onboarding hub tour</div><div class="alert-sub">Day 1 · Teams message sent</div></div></div>
+            <div class="alert-item"><div class="alert-dot done"></div><div><div class="alert-title">Reviewed company history &amp; mission</div><div class="alert-sub">Day 2 · Teams message sent</div></div></div>
+            <div class="alert-item"><div class="alert-dot done"></div><div><div class="alert-title">Met mentor: intro sync complete</div><div class="alert-sub">Day 3 · Teams message sent</div></div></div>
           </div>
         </div>
-        <div class="sp-card">
-          <div class="card-header"><div class="card-title"><i class="ti ti-message-dots" aria-hidden="true"></i> Manager nudge scripts</div></div>
-          <div class="card-body">
-            <div style="font-size:12px;color:var(--em-text-muted);margin-bottom:12px">
-              AI-generated check-in questions based on Jordan's progress
-              <span class="ai-chip"><i class="ti ti-sparkles" style="font-size:10px" aria-hidden="true"></i> Power Automate + AI Builder</span>
+        <div class="card" style="margin-bottom:0">
+          <div class="card-header"><div class="card-title"><i class="ti ti-clock"></i> Pending triggers</div></div>
+          <div class="card-body" style="padding-top:6px">
+            <div class="trigger-pend">
+              <div class="tp-label">Waiting</div>
+              <div class="tp-text">Jordan completes "Review Company Operating Model": trigger will fire with suggested questions.</div>
+              <button class="sim-btn" onclick="simulateTrigger()">Simulate trigger →</button>
             </div>
-            <div class="nudge-card"><div class="nudge-timing">Use this week (Day 12–14)</div><div class="nudge-q">"Now that you've had a chance to meet the team, which relationships feel most natural so far — and are there any gaps you'd like help bridging?"</div></div>
-            <div class="nudge-card"><div class="nudge-timing">Day 20–25 · Pre-benefits deadline</div><div class="nudge-q">"Have you had a chance to look through the benefits enrollment options? Happy to connect you with HR if you have questions before the Day 30 deadline."</div></div>
-            <div class="nudge-card"><div class="nudge-timing">Day 28–30 · 30-day check-in</div><div class="nudge-q">"As we hit the one-month mark — what's clicked faster than expected, and what still feels unclear about how we operate?"</div></div>
+            <div class="trigger-pend">
+              <div class="tp-label">Waiting</div>
+              <div class="tp-text">Jordan completes "Values in Action deep dive": trigger will fire with reflection prompts.</div>
+            </div>
           </div>
         </div>
       </div>
-
-      <!-- MENTOR VIEW -->
-      <div class="view-panel" id="panel-mentor">
-        <div style="margin-bottom:16px">
-          <div style="font-size:18px;font-weight:600;margin-bottom:3px">Marcus — Your Mentee: Jordan Park</div>
-          <div style="font-size:13px;color:var(--em-text-muted)">The system alerts you when Jordan completes a milestone that benefits from your perspective. No tracking needed on your end.</div>
-        </div>
-        <div class="two-col" style="margin-bottom:16px">
-          <div class="sp-card" style="margin-bottom:0">
-            <div class="card-header"><div class="card-title"><i class="ti ti-check" aria-hidden="true"></i> Triggers fired</div></div>
-            <div class="card-body" style="padding-top:8px">
-              <div class="alert-card"><div class="alert-dot done"></div><div><div class="alert-title">Completed onboarding hub tour</div><div class="alert-sub">Day 1 · Teams message sent</div></div></div>
-              <div class="alert-card"><div class="alert-dot done"></div><div><div class="alert-title">Reviewed company history &amp; mission</div><div class="alert-sub">Day 2 · Teams message sent</div></div></div>
-              <div class="alert-card"><div class="alert-dot done"></div><div><div class="alert-title">Met mentor — intro sync complete</div><div class="alert-sub">Day 3 · Teams message sent</div></div></div>
-            </div>
-          </div>
-          <div class="sp-card" style="margin-bottom:0">
-            <div class="card-header"><div class="card-title"><i class="ti ti-clock" aria-hidden="true"></i> Pending triggers</div></div>
-            <div class="card-body" style="padding-top:4px">
-              <div class="trigger-pending">
-                <div class="tp-label">Waiting</div>
-                <div class="tp-text">Jordan completes "Review Company Operating Model" — trigger will fire with suggested questions.</div>
-                <button class="simulate-btn" onclick="simulateTrigger()">Click to simulate →</button>
-              </div>
-              <div class="trigger-pending">
-                <div class="tp-label">Waiting</div>
-                <div class="tp-text">Jordan completes "Values in Action deep dive" — trigger will fire with reflection prompts.</div>
+      <div class="card">
+        <div class="card-header"><div class="card-title"><i class="ti ti-brand-teams"></i> Teams thread: Mentor touchpoints</div></div>
+        <div class="card-body">
+          <div style="font-size:12px;color:var(--text-3);margin-bottom:12px">Messages sent to your Teams DM when a trigger fires <span class="ai-chip"><i class="ti ti-sparkles" style="font-size:10px"></i> Power Automate + AI Builder</span></div>
+          <div class="teams-sim" id="teams-thread">
+            <div class="teams-hdr">Onboarding Bot · Mentor Touchpoints</div>
+            <div class="teams-msg">
+              <div class="teams-av" style="background:var(--navy2)">OB</div>
+              <div>
+                <span class="teams-name">Onboarding Bot</span><span class="teams-time"> · Day 1</span>
+                <div class="teams-body"><strong>Jordan completed the onboarding hub tour.</strong> First look at how the next 90 days are structured.<br><br><strong>Suggested questions:</strong><ul><li>What feels different about this structure vs. how you've been onboarded before?</li><li>Is there a phase that already makes you feel more or less ready?</li><li>Any questions you'd want to flag before Day 5?</li></ul><strong>Your role:</strong> Set the tone. Jordan should leave the intro sync feeling like they have a real partner: not just a name on a list.</div>
               </div>
             </div>
-          </div>
-        </div>
-        <div class="sp-card">
-          <div class="card-header"><div class="card-title"><i class="ti ti-brand-teams" aria-hidden="true"></i> Teams message thread — Mentor touchpoints</div></div>
-          <div class="card-body">
-            <div style="font-size:12px;color:var(--em-text-muted);margin-bottom:12px">
-              Messages sent to your Teams DM when a trigger fires
-              <span class="ai-chip"><i class="ti ti-sparkles" style="font-size:10px" aria-hidden="true"></i> Power Automate + AI Builder</span>
-            </div>
-            <div class="teams-sim" id="teams-thread">
-              <div class="teams-header">🔔 Emerson Onboarding Bot · Mentor Touchpoints</div>
-              <div class="teams-msg">
-                <div class="teams-avatar" style="background:#004487">EB</div>
-                <div>
-                  <span class="teams-name">Emerson Onboarding Bot</span><span class="teams-time"> · Day 1</span>
-                  <div class="teams-body">
-                    <strong>Jordan completed the onboarding hub tour.</strong> This is their first real look at how Emerson structures the next 90 days.<br><br>
-                    <strong>Suggested questions:</strong>
-                    <ul>
-                      <li>What feels different about this structure vs. how you've been onboarded before?</li>
-                      <li>Is there a phase that already makes you feel more or less ready?</li>
-                      <li>Any questions you'd want to flag before Day 5?</li>
-                    </ul>
-                    <strong>Your role:</strong> Set the tone. Jordan should leave the intro sync feeling like they have a real partner — not just a name on a list.
-                  </div>
-                </div>
-              </div>
-              <div class="teams-msg">
-                <div class="teams-avatar" style="background:#004487">EB</div>
-                <div>
-                  <span class="teams-name">Emerson Onboarding Bot</span><span class="teams-time"> · Day 3</span>
-                  <div class="teams-body">
-                    <strong>Jordan reviewed company history &amp; mission.</strong> This content often surfaces questions about how we got here — good territory for you to explore.<br><br>
-                    <strong>Suggested questions:</strong>
-                    <ul>
-                      <li>What surprised you most about where Emerson started vs. where it is now?</li>
-                      <li>Is there a part of the mission that already feels personally relevant?</li>
-                      <li>What's one thing you'd want to understand better about how we got here?</li>
-                    </ul>
-                  </div>
-                </div>
+            <div class="teams-msg">
+              <div class="teams-av" style="background:var(--navy2)">OB</div>
+              <div>
+                <span class="teams-name">Onboarding Bot</span><span class="teams-time"> · Day 3</span>
+                <div class="teams-body"><strong>Jordan reviewed company history &amp; mission.</strong> Good territory to explore together.<br><br><strong>Suggested questions:</strong><ul><li>What surprised you most about where Emerson started vs. where it is now?</li><li>Is there a part of the mission that already feels personally relevant?</li></ul></div>
               </div>
             </div>
           </div>
         </div>
       </div>
+    </div>
 
-    </div><!-- /sp-main -->
-  </div><!-- /sp-body-wrap -->
-</div><!-- /sp-shell -->
+  </div>
+</div>
 
-<!-- CEO Welcome Modal -->
+<!-- CEO Modal -->
 <div class="modal-overlay" id="ceo-modal">
   <div class="modal-box">
     <div class="modal-header">
-      <div class="eyebrow">From the Desk of the CEO</div>
+      <div class="modal-eyebrow">From the Desk of the CEO</div>
       <h2>Welcome to Emerson, Jordan.</h2>
     </div>
     <div class="modal-body">
-      <p>Today marks the beginning of something meaningful — for you, and for us. You were chosen because of what you bring to this organization, and we're genuinely glad you're here.</p>
-      <p>Your manager, <strong>Sarah Chen</strong>, and your mentor, <strong>Marcus Webb</strong>, are already looking forward to working alongside you. This hub will guide your first 90 days — one step at a time.</p>
+      <p>Today marks the beginning of something meaningful, for you and for us. You were chosen because of what you bring to this organization, and we're genuinely glad you're here.</p>
+      <p>Your manager, <strong>Sarah Chen</strong>, and your mentor, <strong>Marcus Webb</strong>, are already looking forward to working alongside you. This hub will guide your first 90 days: one step at a time.</p>
       <p style="font-style:italic">Make it count. We're building something that matters.</p>
-      <p style="font-size:12px;color:var(--em-text-muted);margin-top:6px">— Lal Karsanbhai, CEO</p>
+      <p style="font-size:12px;color:var(--text-3);margin-top:6px"> Lal Karsanbhai, CEO</p>
       <div class="modal-actions">
-        <button class="btn-secondary" onclick="closeModal()">Skip tour</button>
-        <button class="btn-primary" onclick="closeModal()">Start site tour →</button>
+        <button class="btn-sec" onclick="document.getElementById('ceo-modal').style.display='none'">Skip tour</button>
+        <button class="btn-pri" onclick="document.getElementById('ceo-modal').style.display='none'">Start site tour →</button>
       </div>
     </div>
   </div>
@@ -590,209 +444,161 @@ body { background: var(--em-gray-bg); color: var(--em-text); font-size: 14px; }
 <div class="toast" id="toast">
   <div class="toast-title">✓ Mentor trigger fired</div>
   <div class="toast-body" id="toast-body">Jordan completed a milestone. Marcus has been notified via Teams.</div>
-  <a class="toast-link" onclick="switchViewByName('mentor'); hideToast()">View mentor Teams thread →</a>
+  <a class="toast-link" onclick="switchViewByName('mentor');hideToast()">View mentor Teams thread →</a>
 </div>
 
 <script>
-const phases = [
-  { id:'p1', label:'Day 1 — Welcome', tasks:[
-    {id:'t1', name:'Complete IT onboarding and device setup', done:true},
-    {id:'t2', name:'Review benefits overview and enrollment timeline', done:true},
-    {id:'t3', name:'Complete onboarding hub tour', done:true, trigger:true},
-    {id:'t4', name:'Introduce yourself in team channel', done:true},
+const phases=[
+  {id:'p1',label:'Day 1: Welcome',tasks:[
+    {id:'t1',name:'Complete IT onboarding and device setup',done:true},
+    {id:'t2',name:'Review benefits overview and enrollment timeline',done:true},
+    {id:'t3',name:'Complete onboarding hub tour',done:true,trigger:true},
+    {id:'t4',name:'Introduce yourself in team channel',done:true},
   ]},
-  { id:'p2', label:'Days 2–5 — Orientation', tasks:[
-    {id:'t5', name:'Review company history and mission', done:true, trigger:true},
-    {id:'t6', name:'Meet your mentor — schedule intro sync', done:true, trigger:true},
-    {id:'t7', name:'Review Company Operating Model', done:false, trigger:true},
-    {id:'t8', name:'Complete Values in Action deep dive', done:false, trigger:true},
-    {id:'t9', name:'Complete systems access setup', done:true},
+  {id:'p2',label:'Days 2-5: Orientation',tasks:[
+    {id:'t5',name:'Review company history and mission',done:true,trigger:true},
+    {id:'t6',name:'Meet your mentor: schedule intro sync',done:true,trigger:true},
+    {id:'t7',name:'Review Company Operating Model',done:false,trigger:true},
+    {id:'t8',name:'Complete Values in Action deep dive',done:false,trigger:true},
+    {id:'t9',name:'Complete systems access setup',done:true},
   ]},
-  { id:'p3', label:'Days 6–30 — First 30 Days', tasks:[
-    {id:'t10', name:'Schedule recurring 1:1 with manager', done:false},
-    {id:'t11', name:'Set up meetings with immediate team members', done:false},
-    {id:'t12', name:'Complete role-specific onboarding modules', done:false},
-    {id:'t13', name:'Complete assigned role-specific training', done:false},
-    {id:'t14', name:'Submit first contribution', done:false},
-    {id:'t15', name:'Complete benefits enrollment', done:false, deadline:true},
+  {id:'p3',label:'Days 6-30: First 30 Days',tasks:[
+    {id:'t10',name:'Schedule recurring 1:1 with manager',done:false},
+    {id:'t11',name:'Set up meetings with immediate team members',done:false},
+    {id:'t12',name:'Complete role-specific onboarding modules',done:false},
+    {id:'t13',name:'Complete assigned role-specific training',done:false},
+    {id:'t14',name:'Submit first contribution',done:false},
+    {id:'t15',name:'Complete benefits enrollment',done:false,deadline:true},
   ]},
-  { id:'p4', label:'Days 31–60 — Settling In', tasks:[
-    {id:'t16', name:'Schedule meetings with cross-functional collaborators', done:false},
-    {id:'t17', name:'Meet with manager to align on 90-day goals', done:false},
-    {id:'t18', name:'Complete 30-day check-in survey', done:false},
+  {id:'p4',label:'Days 31-60: Settling In',tasks:[
+    {id:'t16',name:'Schedule meetings with cross-functional collaborators',done:false},
+    {id:'t17',name:'Meet with manager to align on 90-day goals',done:false},
+    {id:'t18',name:'Complete 30-day check-in survey',done:false},
   ]},
-  { id:'p5', label:'Days 61–90 — Finalize', tasks:[
-    {id:'t19', name:'Complete all outstanding role-specific training', done:false},
-    {id:'t20', name:'Finalize goals in performance system', done:false},
-  ]},
+  {id:'p5',label:'Days 61-90: Finalize',tasks:[
+    {id:'t19',name:'Complete all outstanding role-specific training',done:false},
+    {id:'t20',name:'Finalize goals in performance system',done:false},
+  ]}
 ];
+const todayIds=['t10','t7','t12'];
+const allTasks=()=>phases.flatMap(p=>p.tasks);
+const PHASE_COLORS=['#004487','#285F9A','#00796B','#B85C00','#9CA3AF'];
 
-const todayTaskIds = ['t10','t7','t12'];
-const allTasks = () => phases.flatMap(p => p.tasks);
-
-function closeModal() { document.getElementById('ceo-modal').style.display = 'none'; }
-
-function updateProgress() {
-  const done = allTasks().filter(t => t.done).length;
-  const total = allTasks().length;
-  const pct = Math.round(done / total * 100);
-  document.getElementById('pct-display').textContent = pct + '%';
-  document.getElementById('tasks-display').textContent = done + ' of ' + total;
-  document.getElementById('checklist-count').textContent = done + ' of ' + total + ' complete';
-  const circ = 2 * Math.PI * 20;
-  const offset = circ - (pct / 100 * circ);
-  document.getElementById('donut-ring').setAttribute('stroke-dashoffset', offset.toFixed(1));
-  const md = document.getElementById('mgr-done');
-  const mo = document.getElementById('mgr-open');
-  if (md) { md.textContent = done; mo.textContent = total - done; }
+function updateProgress(){
+  const done=allTasks().filter(t=>t.done).length,total=allTasks().length,pct=Math.round(done/total*100);
+  document.getElementById('pct-display').textContent=pct+'%';
+  document.getElementById('tasks-display').textContent=done+' of '+total;
+  document.getElementById('checklist-count').textContent=done+' of '+total+' complete';
+  const circ=2*Math.PI*20;
+  document.getElementById('donut-ring').setAttribute('stroke-dashoffset',(circ-pct/100*circ).toFixed(1));
+  const md=document.getElementById('mgr-done'),mo=document.getElementById('mgr-open');
+  if(md){md.textContent=done;mo.textContent=total-done;}
   renderPhaseBars();
 }
 
-function renderPhaseBars() {
-  const c = document.getElementById('phase-bars');
-  if (!c) return;
-  c.innerHTML = phases.map(p => {
-    const d = p.tasks.filter(t => t.done).length;
-    const t = p.tasks.length;
-    const pct = Math.round(d / t * 100);
-    const lbl = p.label.split(' — ')[1] || p.label;
-    return `<div class="phase-bar-row">
-      <div class="phase-bar-label"><span>${lbl}</span><span>${d}/${t}</span></div>
-      <div class="bar-track"><div class="bar-fill ${d === t ? 'complete' : ''}" style="width:${pct}%"></div></div>
-    </div>`;
+function renderPhaseBars(){
+  const c=document.getElementById('phase-bars');if(!c)return;
+  c.innerHTML=phases.map((p,i)=>{
+    const d=p.tasks.filter(t=>t.done).length,t=p.tasks.length,pct=Math.round(d/t*100),lbl=p.label.split(': ')[1]||p.label;
+    return`<div class="pbar-row"><div class="pbar-labels"><span>${lbl}</span><span>${d}/${t}</span></div><div class="pbar-track"><div class="pbar-fill ${d===t?'done':''}" style="width:${pct}%"></div></div></div>`;
   }).join('');
 }
 
-function renderTodayTasks() {
-  const c = document.getElementById('today-tasks-list');
-  const tasks = allTasks().filter(t => todayTaskIds.includes(t.id));
-  c.innerHTML = tasks.map(t => `
-    <div class="today-task ${t.done ? 'done' : ''}" onclick="toggleTask('${t.id}')">
-      <div class="task-check ${t.done ? 'checked' : ''}">${t.done ? '✓' : ''}</div>
-      <div>
-        <div class="task-name">${t.name}</div>
-        <div class="task-meta">
-          ${t.trigger ? '<span class="trigger-tag"><i class="ti ti-bolt" style="font-size:10px"></i> triggers mentor</span>' : ''}
-          ${t.deadline ? '<span class="deadline-tag">deadline Day 30</span>' : ''}
-        </div>
-      </div>
+function renderTodayTasks(){
+  const c=document.getElementById('today-tasks-list');
+  c.innerHTML=allTasks().filter(t=>todayIds.includes(t.id)).map(t=>`
+    <div class="task-item ${t.done?'done':''}" onclick="toggleTask('${t.id}')">
+      <div class="task-check ${t.done?'checked':''}">${t.done?'✓':''}</div>
+      <div><div class="task-name">${t.name}</div><div class="task-meta">
+        ${t.trigger?'<span class="trigger-tag"><i class="ti ti-bolt" style="font-size:10px"></i> triggers mentor</span>':''}
+        ${t.deadline?'<span class="deadline-tag">deadline Day 30</span>':''}
+      </div></div>
     </div>`).join('');
 }
 
-function renderChecklist() {
-  const c = document.getElementById('checklist-body');
-  const openIdx = phases.findIndex(p => p.tasks.some(t => !t.done));
-  c.innerHTML = phases.map((p, pi) => {
-    const d = p.tasks.filter(t => t.done).length;
-    const isOpen = pi <= openIdx;
-    return `<div class="phase-group">
-      <div class="phase-toggle" onclick="togglePhase('ph-${p.id}', this)">
-        <i class="ti ti-chevron-right phase-arrow ${isOpen ? 'open' : ''}"></i>
+function renderChecklist(){
+  const c=document.getElementById('checklist-body');
+  const openIdx=phases.findIndex(p=>p.tasks.some(t=>!t.done));
+  c.innerHTML=phases.map((p,pi)=>{
+    const d=p.tasks.filter(t=>t.done).length,isOpen=pi<=openIdx;
+    return`<div class="phase-group">
+      <div class="phase-toggle" onclick="togglePhase('ph-${p.id}',this)">
+        <div class="phase-pip" style="background:${PHASE_COLORS[pi]}"></div>
         <span class="phase-toggle-label">${p.label}</span>
         <span class="phase-count">${d} of ${p.tasks.length}</span>
+        <i class="ti ti-chevron-right phase-arrow ${isOpen?'open':''}"></i>
       </div>
-      <div class="phase-tasks ${isOpen ? 'open' : ''}" id="ph-${p.id}">
-        ${p.tasks.map(t => `
-          <div class="checklist-task ${t.done ? 'done' : ''}" onclick="toggleTask('${t.id}')" id="ct-${t.id}">
-            <div class="task-check ${t.done ? 'checked' : ''}">${t.done ? '✓' : ''}</div>
-            <div>
-              <div class="task-name">${t.name}</div>
-              <div class="task-meta">
-                ${t.trigger ? '<span class="trigger-tag"><i class="ti ti-bolt" style="font-size:10px"></i> triggers mentor</span>' : ''}
-                ${t.deadline ? '<span class="deadline-tag">deadline Day 30</span>' : ''}
-              </div>
-            </div>
-          </div>`).join('')}
+      <div class="phase-tasks ${isOpen?'open':''}" id="ph-${p.id}">
+        ${p.tasks.map(t=>`<div class="checklist-task ${t.done?'done':''}" onclick="toggleTask('${t.id}')" id="ct-${t.id}">
+          <div class="task-check ${t.done?'checked':''}">${t.done?'✓':''}</div>
+          <div><div class="task-name">${t.name}</div><div class="task-meta">
+            ${t.trigger?'<span class="trigger-tag"><i class="ti ti-bolt" style="font-size:10px"></i> triggers mentor</span>':''}
+            ${t.deadline?'<span class="deadline-tag">deadline Day 30</span>':''}
+          </div></div>
+        </div>`).join('')}
       </div>
     </div>`;
   }).join('');
 }
 
-function toggleTask(id) {
-  const task = allTasks().find(t => t.id === id);
-  if (!task) return;
-  task.done = !task.done;
-  document.querySelectorAll('#ct-' + id).forEach(el => {
-    el.classList.toggle('done', task.done);
-    const chk = el.querySelector('.task-check');
-    chk.classList.toggle('checked', task.done);
-    chk.textContent = task.done ? '✓' : '';
+function toggleTask(id){
+  const task=allTasks().find(t=>t.id===id);if(!task)return;
+  task.done=!task.done;
+  document.querySelectorAll('#ct-'+id).forEach(el=>{
+    el.classList.toggle('done',task.done);
+    const ch=el.querySelector('.task-check');ch.classList.toggle('checked',task.done);ch.textContent=task.done?'✓':'';
   });
-  if (task.trigger && task.done) {
-    document.getElementById('toast-body').textContent = 'Jordan completed "' + task.name + '". Marcus has been notified via Teams.';
+  if(task.trigger&&task.done){
+    document.getElementById('toast-body').textContent=`Jordan completed "${task.name}". Marcus has been notified via Teams.`;
     showToast();
   }
-  updateProgress();
-  renderTodayTasks();
-  phases.forEach(p => {
-    const el = document.querySelector('[onclick="togglePhase(\'ph-' + p.id + '\', this)"] .phase-count');
-    if (el) el.textContent = p.tasks.filter(t => t.done).length + ' of ' + p.tasks.length;
+  updateProgress();renderTodayTasks();
+  phases.forEach(p=>{
+    const el=document.querySelector(`[onclick="togglePhase('ph-${p.id}',this)"] .phase-count`);
+    if(el)el.textContent=p.tasks.filter(t=>t.done).length+' of '+p.tasks.length;
   });
 }
 
-function togglePhase(id, header) {
-  const panel = document.getElementById(id);
-  const arrow = header.querySelector('.phase-arrow');
-  const open = panel.classList.contains('open');
-  panel.classList.toggle('open', !open);
-  arrow.classList.toggle('open', !open);
+function togglePhase(id,hdr){
+  const panel=document.getElementById(id),arrow=hdr.querySelector('.phase-arrow'),open=panel.classList.contains('open');
+  panel.classList.toggle('open',!open);arrow.classList.toggle('open',!open);
 }
 
-function switchView(view, btn) {
-  document.querySelectorAll('.view-panel').forEach(p => p.classList.remove('active'));
-  document.getElementById('panel-' + view).classList.add('active');
-  document.querySelectorAll('.proto-btn').forEach(b => b.classList.remove('active'));
-  if (btn) btn.classList.add('active');
+function switchView(view,btn){
+  document.querySelectorAll('.view-panel').forEach(p=>p.classList.remove('active'));
+  document.getElementById('panel-'+view).classList.add('active');
+  document.querySelectorAll('.proto-btn').forEach(b=>b.classList.remove('active'));
+  if(btn)btn.classList.add('active');
 }
 
-function switchViewByName(view) {
-  document.querySelectorAll('.view-panel').forEach(p => p.classList.remove('active'));
-  document.getElementById('panel-' + view).classList.add('active');
-  const map = {'new-hire': 0, 'manager': 1, 'mentor': 2};
-  document.querySelectorAll('.proto-btn').forEach((b, i) => b.classList.toggle('active', i === map[view]));
+function switchViewByName(view){
+  document.querySelectorAll('.view-panel').forEach(p=>p.classList.remove('active'));
+  document.getElementById('panel-'+view).classList.add('active');
+  const m={'new-hire':0,'manager':1,'mentor':2};
+  document.querySelectorAll('.proto-btn').forEach((b,i)=>b.classList.toggle('active',i===m[view]));
 }
 
-function showToast() {
-  const t = document.getElementById('toast');
-  t.classList.add('show');
-  clearTimeout(window._toastTimer);
-  window._toastTimer = setTimeout(hideToast, 5500);
-}
+function showToast(){const t=document.getElementById('toast');t.classList.add('show');clearTimeout(window._tt);window._tt=setTimeout(hideToast,5500);}
+function hideToast(){document.getElementById('toast').classList.remove('show');}
 
-function hideToast() {
-  document.getElementById('toast').classList.remove('show');
-}
-
-function simulateTrigger() {
-  const thread = document.getElementById('teams-thread');
-  const m = document.createElement('div');
-  m.className = 'teams-msg';
-  m.style.cssText = 'border-top:1px solid #2C2F35;padding-top:12px;margin-top:4px';
-  m.innerHTML = `
-    <div class="teams-avatar" style="background:#00796B">EB</div>
-    <div>
-      <span class="teams-name">Emerson Onboarding Bot</span><span class="teams-time"> · Just now</span>
-      <div class="teams-body">
-        <strong>🔔 Jordan completed "Review Company Operating Model."</strong>
-        This is a pivotal frame — often where new hires first feel the gap between how they're used to working and how Emerson operates.<br><br>
-        <strong>Suggested questions:</strong>
-        <ul>
-          <li>Which part of the operating model felt most different from how you've worked before?</li>
-          <li>Is there a part that already makes sense given your background — or one that still feels abstract?</li>
-          <li>Where do you see your role connecting most directly to how decisions get made here?</li>
-          <li>Anything you'd want to pressure-test before Day 30?</li>
-        </ul>
-        <strong>Your role:</strong> Don't just answer — invite Jordan to form hypotheses. Help them build their own map of how Emerson works, not hand them yours.
-      </div>
-    </div>`;
+function simulateTrigger(){
+  const thread=document.getElementById('teams-thread');
+  const m=document.createElement('div');m.className='teams-msg';
+  m.style.cssText='border-top:1px solid #2C2F35;padding-top:12px;margin-top:4px';
+  m.innerHTML=`<div class="teams-av" style="background:var(--teal)">OB</div>
+    <div><span class="teams-name">Onboarding Bot</span><span class="teams-time"> · Just now</span>
+    <div class="teams-body"><strong>Jordan completed "Review Company Operating Model."</strong><br><br>
+    <strong>Suggested questions:</strong><ul>
+    <li>Which part felt most different from how you've worked before?</li>
+    <li>Is there a part that still feels abstract given your background?</li>
+    <li>Where do you see your role connecting to how decisions get made here?</li>
+    </ul><strong>Your role:</strong> Don't just answer. Invite Jordan to form their own hypotheses.</div></div>`;
   thread.appendChild(m);
-  document.getElementById('toast-body').textContent = 'Jordan completed "Review Company Operating Model". Marcus has been notified via Teams.';
+  document.getElementById('toast-body').textContent='Jordan completed "Review Company Operating Model". Marcus has been notified via Teams.';
   showToast();
 }
 
-renderTodayTasks();
-renderChecklist();
-updateProgress();
+renderTodayTasks();renderChecklist();updateProgress();
 </script>
 </body>
 </html>

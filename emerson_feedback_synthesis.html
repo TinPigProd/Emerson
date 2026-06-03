@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Feedback Synthesis — Emerson Success Model</title>
+<title>Feedback Synthesis: Emerson Success Model</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css"/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
 <style>
@@ -208,7 +208,7 @@ body { display: flex; flex-direction: column; background: var(--right-bg); }
 
 <div class="sim-banner">
   <i class="ti ti-flask"></i>
-  <div><strong>Prototype — simulated output.</strong> In production this calls the Anthropic API via a Vercel proxy at <code>/api/synthesize</code> with the full Emerson Success Model embedded in the system prompt.</div>
+  <div><strong>Prototype: simulated output.</strong> In production this calls the Anthropic API via a Vercel proxy at <code>/api/synthesize</code> with the full Emerson Success Model embedded in the system prompt. <strong>The "View full framework" link is shown for context only.</strong> The form, level selector, scenarios, and synthesis output are fully interactive.</div>
 </div>
 
 <div class="split">
@@ -311,7 +311,7 @@ body { display: flex; flex-direction: column; background: var(--right-bg); }
 
       <div class="field" style="margin-top:4px">
         <div class="field-label">Manager observations <span style="font-weight:400;color:rgba(255,255,255,0.2)">(write naturally)</span></div>
-        <textarea id="observations" placeholder="Write however you naturally think — no structure required. The tool handles the translation."></textarea>
+        <textarea id="observations" placeholder="Write however you naturally think. No structure required. The tool handles the translation."></textarea>
       </div>
     </div>
 
@@ -332,11 +332,11 @@ body { display: flex; flex-direction: column; background: var(--right-bg); }
         <div class="empty-icon"><i class="ti ti-clipboard-text"></i></div>
         <div>
           <div class="empty-title">Ready to synthesize</div>
-          <div class="empty-desc">Fill in the form on the left — or load a sample scenario to see how the tool works.</div>
+          <div class="empty-desc">Fill in the form on the left, or load a sample scenario to see how the tool works.</div>
         </div>
         <div class="empty-steps">
           <div class="empty-step"><div class="empty-step-num">1</div> Enter an employee name, role, and career level</div>
-          <div class="empty-step"><div class="empty-step-num">2</div> Write your raw observations — no structure needed</div>
+          <div class="empty-step"><div class="empty-step-num">2</div> Write your raw observations. No structure needed</div>
           <div class="empty-step"><div class="empty-step-num">3</div> The tool maps notes to the Emerson Success Model</div>
           <div class="empty-step"><div class="empty-step-num">4</div> Receive structured, level-calibrated feedback</div>
         </div>
@@ -443,60 +443,60 @@ var CAT_LABEL = {
 
 var scenarios = [
   { name:'Alex Rivera', role:'Process Improvement Analyst', level:'IC3', cat:'ic',
-    obs:"Alex is reliable and consistently delivers on what she commits to — rarely needs follow-up and her work quality is solid. She's good at navigating her immediate team but tends to wait to be asked before looping in other functions. Customers seem happy with her work but she doesn't always connect her output to broader customer impact. Has good ideas but doesn't surface them proactively in team meetings. Adapts when direction changes but doesn't always volunteer to help others through the transition." },
+    obs:"Alex is reliable and consistently delivers on what she commits to. Rarely needs follow-up and her work quality is solid. She's good at navigating her immediate team but tends to wait to be asked before looping in other functions. Customers seem happy with her work but she doesn't always connect her output to broader customer impact. Has good ideas but doesn't surface them proactively in team meetings. Adapts when direction changes but doesn't always volunteer to help others through the transition." },
   { name:'Morgan Shaw', role:'Operations Manager', level:'L2', cat:'lot',
-    obs:"Morgan is a strong executor — his team hits their numbers and he's good at removing blockers quickly. Where I see gaps is in developing people: he tends to solve problems for his team rather than coaching them through it. He models trust and reliability well but team members don't always feel empowered to push back or share ideas. Communicates clearly one-on-one but team meetings feel like status updates, not real dialogue. Customer feedback is positive but his team isn't consistently gathering or acting on it systematically." },
+    obs:"Morgan is a strong executor. His team hits their numbers and he's good at removing blockers quickly. Where I see gaps is in developing people: he tends to solve problems for his team rather than coaching them through it. He models trust and reliability well but team members don't always feel empowered to push back or share ideas. Communicates clearly one-on-one but team meetings feel like status updates, not real dialogue. Customer feedback is positive but his team isn't consistently gathering or acting on it systematically." },
   { name:'Dana Kim', role:'Senior Director, Commercial Operations', level:'L5', cat:'lol',
-    obs:"Dana is excellent at translating strategy into execution plans — her organizations consistently deliver. Cross-functional collaboration is a strength; she's built strong relationships at peer level and knows how to influence without authority. The gap I see is at the next level up: she's not yet thinking about how to build the organizational conditions that make collaboration and accountability the default. Her direct reports perform well but the leaders below them are not being developed with the same intentionality. Strong communicator at her level but hasn't fully stepped into shaping the narrative across the broader enterprise." }
+    obs:"Dana is excellent at translating strategy into execution plans. Her organizations consistently deliver. Cross-functional collaboration is a strength; she's built strong relationships at peer level and knows how to influence without authority. The gap I see is at the next level up: she's not yet thinking about how to build the organizational conditions that make collaboration and accountability the default. Her direct reports perform well but the leaders below them are not being developed with the same intentionality. Strong communicator at her level but hasn't fully stepped into shaping the narrative across the broader enterprise." }
 ];
 
 var simOutput = {
   IC3: {
     strengths: [
       { cap:'Deliver With Discipline And Rigor', kf:'Drives Results · Ensures Accountability', text:'Alex consistently delivers on commitments without requiring follow-up, demonstrating the independent task ownership and accountability expected of a Proficient Practitioner. Her ability to monitor her own progress and maintain quality output without supervision is a clear behavioral strength at this level.' },
-      { cap:'Collaborate To Realize Value', kf:'Instills Trust', text:'Alex has established a reliable, trust-based presence within her immediate team. Her consistency in delivering quality work creates the credibility that makes her a dependable collaborator — a foundational expectation at IC3–IC4.' }
+      { cap:'Collaborate To Realize Value', kf:'Instills Trust', text:'Alex has established a reliable, trust-based presence within her immediate team. Her consistency in delivering quality work creates the credibility that makes her a dependable collaborator, a foundational expectation at IC3–IC4.' }
     ],
     opportunities: [
-      { cap:'Collaborate To Realize Value', kf:'Collaborates · Organizational Savvy', text:'At the Proficient Practitioner level, the expectation is to proactively share information and involve others to build trust — not to wait to be asked. Alex tends to operate within her immediate team boundary rather than navigating across functions with initiative, which limits her impact and visibility.' },
+      { cap:'Collaborate To Realize Value', kf:'Collaborates · Organizational Savvy', text:'At the Proficient Practitioner level, the expectation is to proactively share information and involve others to build trust: not to wait to be asked. Alex tends to operate within her immediate team boundary rather than navigating across functions with initiative, which limits her impact and visibility.' },
       { cap:'Fuel Growth Through Customer Focus', kf:'Customer Focus · Strategic Mindset', text:'Proficient Practitioners are expected to independently meet customer needs and seek ways to improve solutions mindful of the whole picture. Alex delivers well at the task level but isn\'t yet consistently connecting her work to broader customer outcomes.' },
-      { cap:'Innovate For Impact', kf:'Cultivates Innovation · Nimble Learning', text:'Alex has good ideas but doesn\'t surface them unless prompted. At IC3–IC4, the expectation is to suggest and implement creative ideas actively — not to wait for permission. This is a meaningful gap given where she is in her development trajectory.' }
+      { cap:'Innovate For Impact', kf:'Cultivates Innovation · Nimble Learning', text:'Alex has good ideas but doesn\'t surface them unless prompted. At IC3–IC4, the expectation is to suggest and implement creative ideas actively: not to wait for permission. This is a meaningful gap given where she is in her development trajectory.' }
     ],
     actions: [
       { cap:'Collaborate To Realize Value', kf:'Collaborates · Organizational Savvy', text:'Assign Alex a cross-functional task that requires proactive coordination with at least two other teams. Debrief with her afterward on how she initiated those connections and what she would do differently. The goal is to build the muscle for cross-boundary initiative.' },
-      { cap:'Fuel Growth Through Customer Focus', kf:'Customer Focus', text:'In your next 1:1, ask Alex to articulate how her current project connects to a specific customer outcome. Make this a standing expectation — for each significant deliverable, she should name the customer impact, not just the task output.' },
-      { cap:'Innovate For Impact', kf:'Nimble Learning', text:'Create a low-stakes space for Alex to share ideas — a standing agenda item or a brief async format. The goal is to build proactive idea-sharing as a habit before it becomes an expectation at higher levels.' }
+      { cap:'Fuel Growth Through Customer Focus', kf:'Customer Focus', text:'In your next 1:1, ask Alex to articulate how her current project connects to a specific customer outcome. Make this a standing expectation: for each significant deliverable, she should name the customer impact, not just the task output.' },
+      { cap:'Innovate For Impact', kf:'Nimble Learning', text:'Create a low-stakes space for Alex to share ideas: a standing agenda item or a brief async format. The goal is to build proactive idea-sharing as a habit before it becomes an expectation at higher levels.' }
     ]
   },
   L2: {
     strengths: [
-      { cap:'Deliver With Discipline And Rigor', kf:'Drives Results · Ensures Accountability', text:'Morgan\'s team consistently hits commitments and he is effective at removing blockers — a core expectation for a Leader of Teams. His ability to drive focus and accountability reflects strong execution capability at the L1–L4 level.' },
+      { cap:'Deliver With Discipline And Rigor', kf:'Drives Results · Ensures Accountability', text:'Morgan\'s team consistently hits commitments and he is effective at removing blockers: a core expectation for a Leader of Teams. His ability to drive focus and accountability reflects strong execution capability at the L1–L4 level.' },
       { cap:'Collaborate To Realize Value', kf:'Instills Trust', text:'Morgan models trust and reliability personally, which creates a stable environment for his team. His consistency builds the kind of manager credibility that supports sustained team performance over time.' }
     ],
     opportunities: [
-      { cap:'Unlock The Power Of The Team', kf:'Builds Effective Teams', text:'Leader of Teams expectations include developing high-performing teams through coaching, feedback, and recognition — not just delivering results through them. Morgan\'s tendency to solve problems for his team rather than coach them through challenges is limiting their development and his own progression.' },
-      { cap:'Collaborate To Realize Value', kf:'Collaborates · Instills Trust', text:'Encouraging open dialogue and supporting team members to collaborate across boundaries is a core expectation at L1–L4. Team members not feeling empowered to push back or share ideas suggests a gap in psychological safety — even if Morgan is personally trustworthy.' },
+      { cap:'Unlock The Power Of The Team', kf:'Builds Effective Teams', text:'Leader of Teams expectations include developing high-performing teams through coaching, feedback, and recognition: not just delivering results through them. Morgan\'s tendency to solve problems for his team rather than coach them through challenges is limiting their development and his own progression.' },
+      { cap:'Collaborate To Realize Value', kf:'Collaborates · Instills Trust', text:'Encouraging open dialogue and supporting team members to collaborate across boundaries is a core expectation at L1–L4. Team members not feeling empowered to push back or share ideas suggests a gap in psychological safety: even if Morgan is personally trustworthy.' },
       { cap:'Fuel Growth Through Customer Focus', kf:'Customer Focus', text:'At the Leader of Teams level, the expectation is to gather and act on customer feedback systematically and prioritize team efforts toward customer success. Positive individual customer sentiment is good, but without a team-level process, this will plateau.' }
     ],
     actions: [
-      { cap:'Unlock The Power Of The Team', kf:'Builds Effective Teams', text:'Work with Morgan to identify two or three team members with development gaps and co-create a lightweight coaching plan for each. The goal is to shift his instinct from problem-solver to developer — a critical transition at this level.' },
+      { cap:'Unlock The Power Of The Team', kf:'Builds Effective Teams', text:'Work with Morgan to identify two or three team members with development gaps and co-create a lightweight coaching plan for each. The goal is to shift his instinct from problem-solver to developer: a critical transition at this level.' },
       { cap:'Unlock The Power Of The Team', kf:'Communicates Effectively', text:'Encourage Morgan to redesign one recurring team meeting with the explicit goal of generating dialogue rather than collecting status updates. A practical starting point: pose a real business question and let the group work through it before he offers his view.' },
-      { cap:'Fuel Growth Through Customer Focus', kf:'Customer Focus', text:'Ask Morgan to implement a simple team ritual for customer feedback — a monthly review, a rotating synthesis responsibility, or integration into team planning. The goal is to make customer-centricity a team habit, not a manager behavior.' }
+      { cap:'Fuel Growth Through Customer Focus', kf:'Customer Focus', text:'Ask Morgan to implement a simple team ritual for customer feedback: a monthly review, a rotating synthesis responsibility, or integration into team planning. The goal is to make customer-centricity a team habit, not a manager behavior.' }
     ]
   },
   L5: {
     strengths: [
-      { cap:'Deliver With Discipline And Rigor', kf:'Drives Results · Ensures Accountability', text:'Dana excels at translating strategy into execution — her organizations deliver consistently and with discipline. Holding leaders accountable for team outcomes is a core Leader of Leaders expectation, and this is clearly a strength she has developed and can rely on.' },
+      { cap:'Deliver With Discipline And Rigor', kf:'Drives Results · Ensures Accountability', text:'Dana excels at translating strategy into execution: her organizations deliver consistently and with discipline. Holding leaders accountable for team outcomes is a core Leader of Leaders expectation, and this is clearly a strength she has developed and can rely on.' },
       { cap:'Collaborate To Realize Value', kf:'Collaborates · Organizational Savvy', text:'Dana\'s cross-functional relationship-building and ability to drive alignment through influence rather than authority represents advanced capability at the L5–E1 level. She has built the peer credibility that makes enterprise collaboration possible.' }
     ],
     opportunities: [
-      { cap:'Unlock The Power Of The Team', kf:'Builds Effective Teams', text:'At Leader of Leaders, the expectation is to develop high-performing teams across the employee lifecycle — not just manage directs well. Dana\'s leaders below the director level are not being developed with the same intentionality she brings to her own span, which creates a pipeline risk.' },
-      { cap:'Collaborate To Realize Value', kf:'Collaborates · Organizational Savvy', text:'The shift to enterprise-level impact requires building organizational conditions that make collaboration the default — not just being personally collaborative. Dana is not yet designing the structures or norms that would make cross-functional alignment systematic rather than dependent on her involvement.' },
-      { cap:'Unlock The Power Of The Team', kf:'Communicates Effectively', text:'Shaping the narrative across the broader enterprise is an L5+ expectation. Dana communicates well at her level but has not yet stepped into the role of enterprise storyteller — helping stakeholders understand where the organization is going and why it matters.' }
+      { cap:'Unlock The Power Of The Team', kf:'Builds Effective Teams', text:'At Leader of Leaders, the expectation is to develop high-performing teams across the employee lifecycle: not just manage directs well. Dana\'s leaders below the director level are not being developed with the same intentionality she brings to her own span, which creates a pipeline risk.' },
+      { cap:'Collaborate To Realize Value', kf:'Collaborates · Organizational Savvy', text:'The shift to enterprise-level impact requires building organizational conditions that make collaboration the default: not just being personally collaborative. Dana is not yet designing the structures or norms that would make cross-functional alignment systematic rather than dependent on her involvement.' },
+      { cap:'Unlock The Power Of The Team', kf:'Communicates Effectively', text:'Shaping the narrative across the broader enterprise is an L5+ expectation. Dana communicates well at her level but has not yet stepped into the role of enterprise storyteller: helping stakeholders understand where the organization is going and why it matters.' }
     ],
     actions: [
       { cap:'Unlock The Power Of The Team', kf:'Builds Effective Teams', text:'Work with Dana to conduct a talent review one level below her directs. The goal is to build her awareness of the pipeline and her intentionality about developing leaders beneath her direct span. Consider establishing a cadence of skip-level development conversations.' },
-      { cap:'Collaborate To Realize Value', kf:'Organizational Savvy', text:'Challenge Dana to identify one cross-functional process that is currently dependent on her personal involvement — and to design a structural alternative that doesn\'t require her as the connector. This is the work of building organizational capability versus personal capability.' },
-      { cap:'Unlock The Power Of The Team', kf:'Communicates Effectively', text:'Create visible opportunities for Dana to communicate strategy to audiences beyond her immediate organization — all-hands sessions, written leadership updates, or cross-functional forums. Offer direct feedback on how she\'s landing the enterprise narrative, not just the functional message.' }
+      { cap:'Collaborate To Realize Value', kf:'Organizational Savvy', text:'Challenge Dana to identify one cross-functional process that is currently dependent on her personal involvement: and to design a structural alternative that doesn\'t require her as the connector. This is the work of building organizational capability versus personal capability.' },
+      { cap:'Unlock The Power Of The Team', kf:'Communicates Effectively', text:'Create visible opportunities for Dana to communicate strategy to audiences beyond her immediate organization: all-hands sessions, written leadership updates, or cross-functional forums. Offer direct feedback on how she\'s landing the enterprise narrative, not just the functional message.' }
     ]
   }
 };

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Emerson Management Process</title>
+<title>Emerson Management Process: Rising Leaders Program</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -26,12 +26,26 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body { font-family: 'DM Sans', sans-serif; background: var(--surface-2); color: var(--text); }
 
+/* BACK BAR */
+.back-bar {
+  background: #003865; padding: 0 20px; height: 36px;
+  display: flex; align-items: center; gap: 12px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.back-link {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 12px; color: rgba(255,255,255,0.65); text-decoration: none;
+  transition: color 0.15s;
+}
+.back-link:hover { color: white; }
+.back-sep { color: rgba(255,255,255,0.25); font-size: 12px; }
+.back-current { font-size: 12px; color: rgba(255,255,255,0.45); }
+
 /* HEADER */
 .hdr {
-  background: var(--blue);
+  background: #003B6F;
   padding: 14px 28px;
   display: flex; align-items: center; justify-content: space-between;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.2);
 }
 .hdr-logo { font-family: 'DM Serif Display', serif; font-size: 18px; color: #fff; }
 .hdr-logo span { color: rgba(255,255,255,0.5); }
@@ -47,7 +61,6 @@ body { font-family: 'DM Sans', sans-serif; background: var(--surface-2); color: 
   border-bottom: 1px solid var(--border);
   padding: 0 28px;
   display: flex; overflow-x: auto;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
 }
 .np {
   padding: 12px 16px; font-size: 12px; font-weight: 500;
@@ -77,10 +90,7 @@ body { font-family: 'DM Sans', sans-serif; background: var(--surface-2); color: 
 @keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
 
 /* HERO */
-.hero {
-  background: var(--blue); border-radius: var(--r-lg);
-  padding: 40px; color: #fff; margin-bottom: 20px;
-}
+.hero { background: var(--blue); border-radius: var(--r-lg); padding: 40px; color: #fff; margin-bottom: 20px; }
 .hero-eyebrow { font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.65); margin-bottom: 10px; }
 .hero h1 { font-family: 'DM Serif Display', serif; font-size: 34px; color: #fff; margin-bottom: 14px; line-height: 1.15; }
 .hero p { font-size: 15px; color: rgba(255,255,255,0.82); line-height: 1.7; max-width: 560px; }
@@ -142,13 +152,7 @@ p:last-child { margin-bottom: 0; }
 /* CASCADE BARS */
 .cascade-wrap { display: flex; flex-direction: column; gap: 5px; margin-bottom: 20px; }
 .cascade-hint { font-size: 13px; color: var(--text-2); margin-bottom: 12px; line-height: 1.5; }
-.cbar {
-  display: flex; align-items: center; justify-content: center;
-  padding: 12px 16px; border-radius: var(--r);
-  font-size: 13px; font-weight: 600; color: #fff;
-  cursor: pointer; transition: filter 0.15s, box-shadow 0.15s;
-  text-align: center; line-height: 1.3;
-}
+.cbar { display: flex; align-items: center; justify-content: center; padding: 12px 16px; border-radius: var(--r); font-size: 13px; font-weight: 600; color: #fff; cursor: pointer; transition: filter 0.15s, box-shadow 0.15s; text-align: center; line-height: 1.3; }
 .cbar:hover { filter: brightness(1.1); }
 .cbar.on { box-shadow: inset 0 0 0 2.5px rgba(255,255,255,0.9); }
 .cl1 { background: #001C3D; }
@@ -187,12 +191,7 @@ p:last-child { margin-bottom: 0; }
 .scenario-text { font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.88); }
 .scenario-text strong { color: rgba(255,255,255,0.6); }
 .scenario-choices { display: flex; flex-direction: column; gap: 8px; }
-.sc-btn {
-  background: rgba(255,255,255,0.05); border: 1.5px solid rgba(255,255,255,0.12);
-  border-radius: var(--r); padding: 14px 18px; cursor: pointer;
-  font-size: 14px; color: rgba(255,255,255,0.82); text-align: left; line-height: 1.5;
-  transition: background 0.15s, border-color 0.15s;
-}
+.sc-btn { background: rgba(255,255,255,0.05); border: 1.5px solid rgba(255,255,255,0.12); border-radius: var(--r); padding: 14px 18px; cursor: pointer; font-size: 14px; color: rgba(255,255,255,0.82); text-align: left; line-height: 1.5; transition: background 0.15s, border-color 0.15s; }
 .sc-btn:hover:not(:disabled) { background: rgba(0,113,188,0.2); border-color: var(--blue-mid); }
 .sc-btn.correct { background: rgba(13,148,136,0.2); border-color: var(--teal); }
 .sc-btn.wrong { background: rgba(239,68,68,0.12); border-color: #EF4444; opacity: 0.7; }
@@ -218,11 +217,7 @@ p:last-child { margin-bottom: 0; }
 .qdot.cur { background: var(--blue-mid); width: 18px; border-radius: 99px; }
 .quiz-q { font-size: 16px; font-weight: 600; color: var(--text); margin-bottom: 18px; line-height: 1.5; }
 .quiz-opts { display: flex; flex-direction: column; gap: 8px; }
-.qopt {
-  background: var(--surface); border: 1.5px solid var(--border); border-radius: var(--r);
-  padding: 13px 16px; cursor: pointer; font-size: 14px; color: var(--text);
-  text-align: left; line-height: 1.5; transition: border-color 0.15s, background 0.15s;
-}
+.qopt { background: var(--surface); border: 1.5px solid var(--border); border-radius: var(--r); padding: 13px 16px; cursor: pointer; font-size: 14px; color: var(--text); text-align: left; line-height: 1.5; transition: border-color 0.15s, background 0.15s; }
 .qopt:hover:not(:disabled) { border-color: var(--blue-mid); background: var(--blue-light); }
 .qopt.correct { background: rgba(13,148,136,0.1); border-color: var(--teal); color: var(--teal); }
 .qopt.wrong { background: rgba(239,68,68,0.07); border-color: #EF4444; color: #DC2626; }
@@ -253,12 +248,24 @@ p:last-child { margin-bottom: 0; }
 .btn-sky { background: var(--sky); color: #fff; }
 .btn-sky:hover { background: #0284c7; }
 .btn-row { display: flex; justify-content: flex-end; gap: 10px; margin-top: 28px; }
-
-/* DIVIDER */
 .divider { height: 1px; background: var(--border); margin: 20px 0; }
 </style>
 </head>
 <body>
+
+<!-- Back bar -->
+<div class="back-bar">
+  <a class="back-link" href="index.html">← LDD Demo Space</a>
+  <span class="back-sep">/</span>
+  <span class="back-current">Emerson Management Process</span>
+</div>
+
+<div style="background:#2D1B69;border-bottom:1px solid #7C5CBF;padding:7px 20px;display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+  <div style="display:inline-flex;align-items:center;gap:5px;background:#7C5CBF;color:white;font-size:10px;font-weight:700;letter-spacing:0.8px;text-transform:uppercase;padding:3px 8px;border-radius:4px;flex-shrink:0">
+    <i class="ti ti-flask" style="font-size:10px"></i> Prototype
+  </div>
+  <span style="font-size:12px;color:#C9B8F0">The module navigation, pillar cards, forum cascade, and knowledge check are <strong style="color:white">fully interactive</strong>. The <strong style="color:white">Back to Summary</strong> and <strong style="color:white">Restart Course</strong> buttons are functional. External links are shown for context only.</span>
+</div>
 
 <div class="hdr">
   <div class="hdr-logo">Emerson <span>·</span> Management Process</div>
@@ -282,12 +289,12 @@ p:last-child { margin-bottom: 0; }
 
 <div class="main">
 
-<!-- ===== SLIDE 0: WELCOME ===== -->
+<!-- SLIDE 0: WELCOME -->
 <div class="slide active" id="slide-0">
   <div class="hero">
     <div class="hero-eyebrow">Rising Leaders Program · Session 1</div>
     <h1>Emerson Management Process</h1>
-    <p>In this session you'll explore how Emerson drives value creation through a structured management system — and the cultural mindset that makes it work. Use the <strong>Continue</strong> button at the bottom of each page to move forward, or jump to any section using the navigation above.</p>
+    <p>In this session you'll explore how Emerson drives value creation through a structured management system and the cultural mindset that makes it work.</p>
     <div class="hero-meta">
       <div class="hero-meta-item">📚 <strong>8 modules</strong></div>
       <div class="hero-meta-item">⏱ <strong>~25 min</strong></div>
@@ -307,17 +314,17 @@ p:last-child { margin-bottom: 0; }
     </ul>
   </div>
   <div class="btn-row">
-    <button class="btn btn-primary" onclick="goTo(1)">Begin Course — Module 1 →</button>
+    <button class="btn btn-primary" onclick="goTo(1)">Begin Course: Module 1 →</button>
   </div>
 </div>
 
-<!-- ===== SLIDE 1: VALUE CREATION ===== -->
+<!-- SLIDE 1: VALUE CREATION -->
 <div class="slide" id="slide-1">
   <div class="eyebrow">Module 1</div>
-  <h2>Going Boldly Towards Emerson's Future — A Global Automation Leader</h2>
+  <h2>Going Boldly Towards Emerson's Future: A Global Automation Leader</h2>
   <p>Emerson's strategy centers on evolving its culture and management system to achieve higher growth, accelerate innovation, and deliver on commitments.</p>
   <div class="card card-kpi">
-    <div class="eyebrow">KPIs — Through-the-Cycle Targets</div>
+    <div class="eyebrow">KPIs: Through-the-Cycle Targets</div>
     <div class="kpi-grid">
       <div class="kpi-card"><div class="kpi-val">4–7%</div><div class="kpi-lbl">Organic Growth through-the-cycle</div></div>
       <div class="kpi-card"><div class="kpi-val">~35%</div><div class="kpi-lbl">Incremental Margins</div></div>
@@ -336,15 +343,15 @@ p:last-child { margin-bottom: 0; }
   </div>
   <div class="btn-row">
     <button class="btn btn-secondary" onclick="goTo(0)">← Back</button>
-    <button class="btn btn-primary" onclick="goTo(2)">Continue — Module 2 →</button>
+    <button class="btn btn-primary" onclick="goTo(2)">Continue: Module 2 →</button>
   </div>
 </div>
 
-<!-- ===== SLIDE 2: MANAGEMENT SYSTEM ===== -->
+<!-- SLIDE 2: MANAGEMENT SYSTEM -->
 <div class="slide" id="slide-2">
   <div class="eyebrow">Module 2</div>
-  <h2>Emerson Management System — Six Pillars</h2>
-  <p>The Management System ties together culture, values, and execution across six interconnected pillars. <strong>Click any pillar card</strong> to read a description, then continue to explore the management principles that bind them together.</p>
+  <h2>Emerson Management System: Six Pillars</h2>
+  <p>The Management System ties together culture, values, and execution across six interconnected pillars. <strong>Click any pillar card</strong> to read a description.</p>
   <div class="card">
     <div class="pillar-grid">
       <div class="pillar-card" onclick="showPillar(0)"><div class="pillar-icon">🔄</div><div class="pillar-name">Management Process</div></div>
@@ -355,9 +362,9 @@ p:last-child { margin-bottom: 0; }
       <div class="pillar-card" onclick="showPillar(5)"><div class="pillar-icon">🌱</div><div class="pillar-name">Culture</div></div>
     </div>
     <div class="pillar-detail" id="pd0"><strong>Management Process</strong>Increased focus on enterprise agility and the balance of growth and profit. The regular cadence of reviews binds strategy to execution.</div>
-    <div class="pillar-detail" id="pd1"><strong>Commercial Excellence</strong>A comprehensive go-to-market approach aligned to customers' needs — covering sales models, digital channels, pricing, and lifecycle services.</div>
+    <div class="pillar-detail" id="pd1"><strong>Commercial Excellence</strong>A comprehensive go-to-market approach aligned to customers' needs: covering sales models, digital channels, pricing, and lifecycle services.</div>
     <div class="pillar-detail" id="pd2"><strong>Operational Execution</strong>Continuing Emerson's legacy of top-quartile operations through factory automation, supply chain resilience, and trade working capital discipline.</div>
-    <div class="pillar-detail" id="pd3"><strong>World Class M&amp;A</strong>Improved capabilities across three phases: Finding the right deal, Validating and executing, and Delivering the value — with robust playbooks for each.</div>
+    <div class="pillar-detail" id="pd3"><strong>World Class M&amp;A</strong>Improved capabilities across three phases: Finding the right deal, Validating and executing, and Delivering the value, with robust playbooks for each.</div>
     <div class="pillar-detail" id="pd4"><strong>Innovation</strong>A systematic approach to identify, pursue, and commercialize opportunities across four critical technology areas: Disruptive Measurement, Software-Defined Automation, Self-Optimizing Assets, and Sustainability.</div>
     <div class="pillar-detail" id="pd5"><strong>Culture</strong>Empowering the team to deliver results through Trust &amp; Empowerment, Inclusion &amp; Belonging, Accountability &amp; Transparency, and Passion for Value-Creating Results.</div>
   </div>
@@ -366,32 +373,32 @@ p:last-child { margin-bottom: 0; }
     <p style="margin-bottom:12px">The Management Process binds culture, values, and the four pillars through nine guiding principles:</p>
     <ul class="principle-list">
       <li class="principle-item"><span class="principle-dot"></span>Think and act ambitiously</li>
-      <li class="principle-item"><span class="principle-dot"></span>Always have a bias for action — work with a sense of urgency</li>
+      <li class="principle-item"><span class="principle-dot"></span>Always have a bias for action: work with a sense of urgency</li>
       <li class="principle-item"><span class="principle-dot"></span>Exercise intellectual honesty</li>
-      <li class="principle-item"><span class="principle-dot"></span>Attention to details is critical — measure everything that matters</li>
-      <li class="principle-item"><span class="principle-dot"></span>No boundaries on collaboration — org charts don't dictate communication</li>
-      <li class="principle-item"><span class="principle-dot"></span>Enterprise will lead select initiatives — businesses cannot opt out</li>
+      <li class="principle-item"><span class="principle-dot"></span>Attention to details is critical: measure everything that matters</li>
+      <li class="principle-item"><span class="principle-dot"></span>No boundaries on collaboration: org charts don't dictate communication</li>
+      <li class="principle-item"><span class="principle-dot"></span>Enterprise will lead select initiatives: businesses cannot opt out</li>
       <li class="principle-item"><span class="principle-dot"></span>Stay humble and care for one another</li>
       <li class="principle-item"><span class="principle-dot"></span>Customer engagement is foundational</li>
     </ul>
     <div class="quote-block">
       <div class="quote-text">"In management, trust and empowerment is a two-way street, equally earned and given."</div>
-      <div class="quote-attr">— Lal Karsanbhai, CPC 2024</div>
+      <div class="quote-attr">Lal Karsanbhai, CPC 2024</div>
     </div>
   </div>
   <div class="btn-row">
     <button class="btn btn-secondary" onclick="goTo(1)">← Back</button>
-    <button class="btn btn-primary" onclick="goTo(3)">Continue — Module 3 →</button>
+    <button class="btn btn-primary" onclick="goTo(3)">Continue: Module 3 →</button>
   </div>
 </div>
 
-<!-- ===== SLIDE 3: ANNUAL CYCLE ===== -->
+<!-- SLIDE 3: ANNUAL CYCLE -->
 <div class="slide" id="slide-3">
   <div class="eyebrow">Module 3</div>
-  <h2>The Annual Cycle — Emerson's Management Forums</h2>
-  <p>The Management System runs on a regular cadence of forums, each serving a distinct purpose. The wider the bar, the more operational the forum. <strong>Click any bar</strong> to open its detail below.</p>
+  <h2>The Annual Cycle: Emerson's Management Forums</h2>
+  <p>The Management System runs on a regular cadence of forums, each serving a distinct purpose. <strong>Click any bar</strong> to open its detail below.</p>
   <div class="card">
-    <p class="cascade-hint">Driving value creation from the bottom up — click any level to explore</p>
+    <p class="cascade-hint">Driving value creation from the bottom up. Click any level to explore.</p>
     <div class="cascade-wrap">
       <div style="padding:0 160px"><div class="cbar cl1" id="cb6" onclick="showForum(6)">Corporate Planning Conference</div></div>
       <div style="padding:0 110px"><div class="cbar cl2" id="cb5" onclick="showForum(5)">Strategy Review / OCE Offsite</div></div>
@@ -409,7 +416,7 @@ p:last-child { margin-bottom: 0; }
     </div>
 
     <div class="forum-panel on" id="forum-0">
-      <div class="forum-hdr"><span class="forum-badge" style="background:#5C9BD4">Layer 5 — operational</span><h3 style="margin:0">President's Operating Report (POR)</h3></div>
+      <div class="forum-hdr"><span class="forum-badge" style="background:#5C9BD4">Layer 5: operational</span><h3 style="margin:0">President's Operating Report (POR)</h3></div>
       <div class="forum-grid">
         <div class="forum-meta"><div class="forum-meta-lbl">What is it?</div><div class="forum-meta-val">Financial reporting package for Emerson Business Units. Basis for internal and external communication.</div></div>
         <div class="forum-meta"><div class="forum-meta-lbl">Frequency</div><div class="forum-meta-val">Updated quarterly by Business Units. Updates financial expectations for each quarter and fiscal year.</div></div>
@@ -421,14 +428,13 @@ p:last-child { margin-bottom: 0; }
           <li>Coherent, challenging, and realistic sales plan</li>
           <li>Reasonable profit leverage and deleverage assumptions</li>
           <li>Headcount plans consistent with sales outlook</li>
-          <li>Focus on asset productivity — TWC and Capex</li>
+          <li>Focus on asset productivity: TWC and Capex</li>
           <li>Continuous improvement in margin and asset productivity</li>
         </ul>
       </div>
     </div>
-
     <div class="forum-panel" id="forum-1">
-      <div class="forum-hdr"><span class="forum-badge" style="background:#5C9BD4">Layer 5 — operational</span><h3 style="margin:0">President's Council</h3></div>
+      <div class="forum-hdr"><span class="forum-badge" style="background:#5C9BD4">Layer 5: operational</span><h3 style="margin:0">President's Council</h3></div>
       <div class="forum-grid">
         <div class="forum-meta"><div class="forum-meta-lbl">What is it?</div><div class="forum-meta-val">Forum for discussing performance within a year by comparing POR to actual performance and near-term outlooks.</div></div>
         <div class="forum-meta"><div class="forum-meta-lbl">Frequency</div><div class="forum-meta-val">Quarterly reviews; annual expectations monitored throughout.</div></div>
@@ -439,12 +445,11 @@ p:last-child { margin-bottom: 0; }
         <ul class="forum-expect"><li>Financial plans must have integrity</li><li>Commitment of the management team</li><li>Alignment with Emerson's overall strategic goals</li></ul>
       </div>
     </div>
-
     <div class="forum-panel" id="forum-2">
-      <div class="forum-hdr"><span class="forum-badge" style="background:#3780B8">Layer 4 — operational</span><h3 style="margin:0">Business Unit Profit Review</h3></div>
+      <div class="forum-hdr"><span class="forum-badge" style="background:#3780B8">Layer 4: operational</span><h3 style="margin:0">Business Unit Profit Review</h3></div>
       <div class="forum-grid">
         <div class="forum-meta"><div class="forum-meta-lbl">What is it?</div><div class="forum-meta-val">One-day review, typically at the business unit site, focused on driving margin, cash flow, and ROTC.</div></div>
-        <div class="forum-meta"><div class="forum-meta-lbl">Frequency</div><div class="forum-meta-val">Annual; presentations scheduled Q1–Q2 of following year. Exhibits submitted in summer.</div></div>
+        <div class="forum-meta"><div class="forum-meta-lbl">Frequency</div><div class="forum-meta-val">Annual; presentations scheduled Q1–Q2 of following year.</div></div>
         <div class="forum-meta"><div class="forum-meta-lbl">Attendees</div><div class="forum-meta-val">COO, Business Unit Leaders, President, and key managers.</div></div>
         <div class="forum-meta"><div class="forum-meta-lbl">Content</div><div class="forum-meta-val">Key profit levers: price, material containment, supply chain productivity, footprint optimization, SG&amp;A.</div></div>
       </div>
@@ -452,9 +457,8 @@ p:last-child { margin-bottom: 0; }
         <ul class="forum-expect"><li>Thoughtful analysis to generate plans and exhibit packages</li><li>Plans linked to Growth Conference plans</li><li>Intentional monitoring of success/failure of past actions</li></ul>
       </div>
     </div>
-
     <div class="forum-panel" id="forum-3">
-      <div class="forum-hdr"><span class="forum-badge" style="background:#3780B8">Layer 4 — operational</span><h3 style="margin:0">Growth Conference</h3></div>
+      <div class="forum-hdr"><span class="forum-badge" style="background:#3780B8">Layer 4: operational</span><h3 style="margin:0">Growth Conference</h3></div>
       <div class="forum-grid">
         <div class="forum-meta"><div class="forum-meta-lbl">What is it?</div><div class="forum-meta-val">Focused discussion between business management and OCE on growth levers and investments needed.</div></div>
         <div class="forum-meta"><div class="forum-meta-lbl">Frequency</div><div class="forum-meta-val">Annual event coinciding with the Profit Review. Exhibits submitted in August prior.</div></div>
@@ -465,9 +469,8 @@ p:last-child { margin-bottom: 0; }
         <ul class="forum-expect"><li>Exhibits must cover at least 70% of incremental growth</li><li>Must be submitted with the profit plan and tie together</li><li>Presentation must align with original submission</li></ul>
       </div>
     </div>
-
     <div class="forum-panel" id="forum-4">
-      <div class="forum-hdr"><span class="forum-badge" style="background:#3780B8">Layer 4 — operational</span><h3 style="margin:0">Organization Review</h3></div>
+      <div class="forum-hdr"><span class="forum-badge" style="background:#3780B8">Layer 4: operational</span><h3 style="margin:0">Organization Review</h3></div>
       <div class="forum-grid">
         <div class="forum-meta"><div class="forum-meta-lbl">What is it?</div><div class="forum-meta-val">1–2 day review at Corporate. Ensures talent is aligned to deliver the business strategy.</div></div>
         <div class="forum-meta"><div class="forum-meta-lbl">Frequency</div><div class="forum-meta-val">Business Units present every year.</div></div>
@@ -475,22 +478,20 @@ p:last-child { margin-bottom: 0; }
         <div class="forum-meta"><div class="forum-meta-lbl">Content</div><div class="forum-meta-val">Org charts, organization issues, planning charts, high potential lists, diversity dashboard.</div></div>
       </div>
       <div class="forum-meta" style="margin-top:10px"><div class="forum-meta-lbl">4 Review Components</div>
-        <ul class="forum-expect"><li>Business Strategy → Critical Roles</li><li>Key Organizational Issues</li><li>Leadership Performance &amp; Succession Planning</li><li>Talent Review — identifying high-potential talent</li></ul>
+        <ul class="forum-expect"><li>Business Strategy → Critical Roles</li><li>Key Organizational Issues</li><li>Leadership Performance &amp; Succession Planning</li><li>Talent Review: identifying high-potential talent</li></ul>
       </div>
     </div>
-
     <div class="forum-panel" id="forum-5">
-      <div class="forum-hdr"><span class="forum-badge" style="background:#003B6F">Layer 2 — senior leadership</span><h3 style="margin:0">Strategy Reviews / OCE Offsite</h3></div>
+      <div class="forum-hdr"><span class="forum-badge" style="background:#003B6F">Layer 2: senior leadership</span><h3 style="margin:0">Strategy Reviews / OCE Offsite</h3></div>
       <div class="forum-grid">
-        <div class="forum-meta"><div class="forum-meta-lbl">What is it?</div><div class="forum-meta-val">Multi-day offsite strategic discussion among top-level management, including strategy reviews consolidated with the OCE Offsite.</div></div>
-        <div class="forum-meta"><div class="forum-meta-lbl">Frequency</div><div class="forum-meta-val">Once per year. Strategy reviews are included as part of the OCE meeting.</div></div>
+        <div class="forum-meta"><div class="forum-meta-lbl">What is it?</div><div class="forum-meta-val">Multi-day offsite strategic discussion among top-level management, consolidated with the OCE Offsite.</div></div>
+        <div class="forum-meta"><div class="forum-meta-lbl">Frequency</div><div class="forum-meta-val">Once per year.</div></div>
         <div class="forum-meta"><div class="forum-meta-lbl">Attendees</div><div class="forum-meta-val">CEO, OCE representatives, Business Unit leaders, functional leaders.</div></div>
         <div class="forum-meta"><div class="forum-meta-lbl">Content</div><div class="forum-meta-val">Strategy for key growth platforms, investment allocations, risk/reward assessments, M&amp;A, market dynamics.</div></div>
       </div>
     </div>
-
     <div class="forum-panel" id="forum-6">
-      <div class="forum-hdr"><span class="forum-badge" style="background:#001C3D">Layer 1 — enterprise</span><h3 style="margin:0">Corporate Planning Conference (CPC)</h3></div>
+      <div class="forum-hdr"><span class="forum-badge" style="background:#001C3D">Layer 1: enterprise</span><h3 style="margin:0">Corporate Planning Conference (CPC)</h3></div>
       <div class="forum-grid">
         <div class="forum-meta"><div class="forum-meta-lbl">What is it?</div><div class="forum-meta-val">One to two day strategic communication presentation by Corporate in North America, Europe, and Asia.</div></div>
         <div class="forum-meta"><div class="forum-meta-lbl">Frequency</div><div class="forum-meta-val">Once per year.</div></div>
@@ -498,55 +499,43 @@ p:last-child { margin-bottom: 0; }
         <div class="forum-meta"><div class="forum-meta-lbl">Content</div><div class="forum-meta-val">FY results, strategic business review and outlook, culture/portfolio/execution focus programs, annual awards.</div></div>
       </div>
     </div>
-
-    <div class="forum-panel" id="forum-7">
-      <div class="forum-hdr"><span class="forum-badge" style="background:#001C3D">Enterprise governance</span><h3 style="margin:0">Board Meetings</h3></div>
-      <div class="forum-grid">
-        <div class="forum-meta"><div class="forum-meta-lbl">What is it?</div><div class="forum-meta-val">Formal governance meetings with Emerson's Board of Directors, reviewing major strategic and financial decisions.</div></div>
-        <div class="forum-meta"><div class="forum-meta-lbl">Frequency</div><div class="forum-meta-val">Twice per year.</div></div>
-        <div class="forum-meta"><div class="forum-meta-lbl">Example Topics</div><div class="forum-meta-val">FY25 orders progression, R&amp;D spend analysis, incremental growth plans, strategic business unit updates.</div></div>
-      </div>
-    </div>
-
     <div class="forum-panel" id="forum-8">
-      <div class="forum-hdr"><span class="forum-badge" style="background:#1565A0">Layer 3 — functional</span><h3 style="margin:0">Technology, IT, Procurement &amp; Logistics</h3></div>
+      <div class="forum-hdr"><span class="forum-badge" style="background:#1565A0">Layer 3: functional</span><h3 style="margin:0">Technology, IT, Procurement &amp; Logistics</h3></div>
       <div class="forum-grid">
-        <div class="forum-meta"><div class="forum-meta-lbl">What is it?</div><div class="forum-meta-val">Cross-functional review layer spanning all business units — ensuring enterprise-wide alignment on technology, procurement strategy, supply chain, and logistics execution.</div></div>
-        <div class="forum-meta"><div class="forum-meta-lbl">Role in the hierarchy</div><div class="forum-meta-val">Sits between the operational base forums and senior leadership reviews — translating execution insights upward and enterprise direction downward.</div></div>
+        <div class="forum-meta"><div class="forum-meta-lbl">What is it?</div><div class="forum-meta-val">Cross-functional review layer spanning all business units: ensuring enterprise-wide alignment on technology, procurement strategy, supply chain, and logistics.</div></div>
+        <div class="forum-meta"><div class="forum-meta-lbl">Role in the hierarchy</div><div class="forum-meta-val">Sits between operational base forums and senior leadership reviews: translating execution insights upward and enterprise direction downward.</div></div>
         <div class="forum-meta"><div class="forum-meta-lbl">Key focus areas</div><div class="forum-meta-val">Digital transformation, IT infrastructure, indirect material management, supplier development, nearshoring and supply chain resilience.</div></div>
         <div class="forum-meta"><div class="forum-meta-lbl">Connection to value creation</div><div class="forum-meta-val">Factory automation, Oracle roadmap, material cost containment, and tariff mitigation are channeled through this layer.</div></div>
       </div>
     </div>
-
     <div class="forum-panel" id="forum-9">
-      <div class="forum-hdr"><span class="forum-badge" style="background:#5C9BD4">Layer 5 — operational</span><h3 style="margin:0">Country Growth Review</h3></div>
+      <div class="forum-hdr"><span class="forum-badge" style="background:#5C9BD4">Layer 5: operational</span><h3 style="margin:0">Country Growth Review</h3></div>
       <div class="forum-grid">
-        <div class="forum-meta"><div class="forum-meta-lbl">What is it?</div><div class="forum-meta-val">Focused review of growth strategy and performance at the country level, covering key markets in Asia Pacific, EMEA, and the Americas.</div></div>
+        <div class="forum-meta"><div class="forum-meta-lbl">What is it?</div><div class="forum-meta-val">Focused review of growth strategy and performance at the country level across APAC, EMEA, and the Americas.</div></div>
         <div class="forum-meta"><div class="forum-meta-lbl">Attendees</div><div class="forum-meta-val">World Area leaders, country managers, and relevant Business Unit leadership.</div></div>
         <div class="forum-meta"><div class="forum-meta-lbl">Content</div><div class="forum-meta-val">Market dynamics, customer penetration, distributor performance, local growth initiatives, and geopolitical risk factors.</div></div>
-        <div class="forum-meta"><div class="forum-meta-lbl">Examples</div><div class="forum-meta-val">APAC reviews covering China decline analysis, Taiwan growth roadmap, India supplier development, and Japan distribution strategy.</div></div>
+        <div class="forum-meta"><div class="forum-meta-lbl">Examples</div><div class="forum-meta-val">APAC reviews covering China decline analysis, Taiwan growth roadmap, India supplier development, Japan distribution strategy.</div></div>
       </div>
     </div>
   </div>
-
   <div class="btn-row">
     <button class="btn btn-secondary" onclick="goTo(2)">← Back</button>
-    <button class="btn btn-primary" onclick="goTo(4)">Continue — Module 4 →</button>
+    <button class="btn btn-primary" onclick="goTo(4)">Continue: Module 4 →</button>
   </div>
 </div>
 
-<!-- ===== SLIDE 4: CULTURE ===== -->
+<!-- SLIDE 4: CULTURE -->
 <div class="slide" id="slide-4">
   <div class="eyebrow">Module 4</div>
   <h2>Modernizing Culture to Enable Value Creation</h2>
-  <p>Culture isn't a side initiative — it's integral to Emerson's planning process and a key enabler of the Management System.</p>
+  <p>Culture isn't a side initiative. It's integral to Emerson's planning process and a key enabler of the Management System.</p>
   <div class="card">
     <div class="eyebrow">The Culture Framework</div>
     <div class="culture-grid">
       <div class="culture-card"><div class="culture-icon">🤝</div><div class="culture-title">Trust &amp; Empowerment</div><div class="culture-desc">Leaders earn trust and give it in return. Empowerment is a two-way street, not a one-way delegation.</div></div>
       <div class="culture-card"><div class="culture-icon">🌐</div><div class="culture-title">Inclusion &amp; Belonging</div><div class="culture-desc">Diverse perspectives drive better decisions. Every person should feel they belong and can contribute fully.</div></div>
       <div class="culture-card"><div class="culture-icon">📊</div><div class="culture-title">Accountability &amp; Transparency</div><div class="culture-desc">Measure what matters. Be open about results, challenges, and progress. No surprises culture.</div></div>
-      <div class="culture-card"><div class="culture-icon">🚀</div><div class="culture-title">Passion for Value-Creating Results</div><div class="culture-desc">A relentless focus on outcomes that create real value — for customers, shareholders, and employees.</div></div>
+      <div class="culture-card"><div class="culture-icon">🚀</div><div class="culture-title">Passion for Value-Creating Results</div><div class="culture-desc">A relentless focus on outcomes that create real value: for customers, shareholders, and employees.</div></div>
     </div>
   </div>
   <div class="card card-green">
@@ -570,56 +559,47 @@ p:last-child { margin-bottom: 0; }
   </div>
   <div class="btn-row">
     <button class="btn btn-secondary" onclick="goTo(3)">← Back</button>
-    <button class="btn btn-primary" onclick="goTo(5)">Continue — Module 5 →</button>
+    <button class="btn btn-primary" onclick="goTo(5)">Continue: Module 5 →</button>
   </div>
 </div>
 
-<!-- ===== SLIDE 5: APPLY IT ===== -->
+<!-- SLIDE 5: APPLY IT -->
 <div class="slide" id="slide-5">
-  <div class="eyebrow">Module 5 — Apply It</div>
+  <div class="eyebrow">Module 5: Apply It</div>
   <h2>Scenario-Based Exercise</h2>
-  <p>Now it's your turn to apply what you've learned. Read each scenario and select the response that best aligns with Emerson's Management System. Feedback is provided after each choice — there's no penalty for an incorrect answer, just a chance to learn.</p>
-
+  <p>Apply what you've learned. Select the response that best aligns with Emerson's Management System. Feedback is provided after each choice.</p>
   <div id="sc1">
     <div class="step-track">
       <div class="snode cur" id="sn1">1</div><div class="sline" id="sl1"></div><div class="snode" id="sn2">2</div>
     </div>
     <div class="scenario-card">
       <div class="scenario-lbl">Scenario 1 of 2</div>
-      <div class="scenario-text">
-        <strong>Situation:</strong> You're a Business Unit President. It's August, and your team has just finished preparing exhibits outlining your top growth initiatives, incremental growth forecasts by SBU and region, and KPIs for each initiative. You're preparing to submit them to Enterprise.<br><br>
-        <strong>Your task:</strong> Which Emerson management forum are these exhibits being prepared for?
-      </div>
+      <div class="scenario-text"><strong>Situation:</strong> You're a Business Unit President. It's August, and your team has finished preparing exhibits outlining your top growth initiatives, incremental growth forecasts by SBU and region, and KPIs for each initiative. You're preparing to submit them to Enterprise.<br><br><strong>Your task:</strong> Which Emerson management forum are these exhibits being prepared for?</div>
     </div>
     <div class="scenario-choices">
-      <button class="sc-btn" onclick="answerSc1(0)">A. President's Council — quarterly performance review</button>
-      <button class="sc-btn" onclick="answerSc1(1)">B. Growth Conference — annual growth planning event</button>
-      <button class="sc-btn" onclick="answerSc1(2)">C. Corporate Planning Conference (CPC) — annual all-leaders event</button>
-      <button class="sc-btn" onclick="answerSc1(3)">D. Organization Review — talent alignment discussion</button>
+      <button class="sc-btn" onclick="answerSc1(0)">A. President's Council: quarterly performance review</button>
+      <button class="sc-btn" onclick="answerSc1(1)">B. Growth Conference: annual growth planning event</button>
+      <button class="sc-btn" onclick="answerSc1(2)">C. Corporate Planning Conference (CPC): annual all-leaders event</button>
+      <button class="sc-btn" onclick="answerSc1(3)">D. Organization Review: talent alignment discussion</button>
     </div>
     <div class="sc-feedback" id="sc1-fb"></div>
   </div>
-
   <div id="sc2" style="display:none">
     <div class="step-track">
       <div class="snode done">✓</div><div class="sline done"></div><div class="snode cur">2</div>
     </div>
     <div class="scenario-card">
       <div class="scenario-lbl">Scenario 2 of 2</div>
-      <div class="scenario-text">
-        <strong>Situation:</strong> During a President's Council meeting, the CFO shares that a business unit's actual results are trailing the POR by 2 points on operating margin. The BU president says, "We'll catch up in the second half — I don't think we need to escalate this yet."<br><br>
-        <strong>Your task:</strong> Based on Emerson's Management Principles, what's the most aligned response?
-      </div>
+      <div class="scenario-text"><strong>Situation:</strong> During a President's Council meeting, the CFO shares that a business unit's actual results are trailing the POR by 2 points on operating margin. The BU president says, "We'll catch up in the second half: I don't think we need to escalate this yet."<br><br><strong>Your task:</strong> Based on Emerson's Management Principles, what's the most aligned response?</div>
     </div>
     <div class="scenario-choices">
-      <button class="sc-btn" onclick="answerSc2(0)">A. Support the BU president — they own their plan and know their business best</button>
+      <button class="sc-btn" onclick="answerSc2(0)">A. Support the BU president: they own their plan and know their business best</button>
       <button class="sc-btn" onclick="answerSc2(1)">B. Request a detailed data-driven analysis of the gap with corrective actions outlined</button>
       <button class="sc-btn" onclick="answerSc2(2)">C. Escalate immediately to the Board without further discussion</button>
       <button class="sc-btn" onclick="answerSc2(3)">D. Accept the verbal assurance but wait to see if Q3 results improve</button>
     </div>
     <div class="sc-feedback" id="sc2-fb"></div>
   </div>
-
   <div id="sc-done" style="display:none">
     <div class="card card-green" style="text-align:center;padding:28px">
       <div style="font-size:36px;margin-bottom:10px">🎯</div>
@@ -627,18 +607,17 @@ p:last-child { margin-bottom: 0; }
       <p>You've demonstrated your ability to apply the Emerson Management System to real-world situations.</p>
     </div>
   </div>
-
   <div class="btn-row">
     <button class="btn btn-secondary" onclick="goTo(4)">← Back</button>
-    <button class="btn btn-primary" id="scNext" style="display:none" onclick="goTo(6)">Continue — Knowledge Check →</button>
+    <button class="btn btn-primary" id="scNext" style="display:none" onclick="goTo(6)">Continue: Knowledge Check →</button>
   </div>
 </div>
 
-<!-- ===== SLIDE 6: QUIZ ===== -->
+<!-- SLIDE 6: QUIZ -->
 <div class="slide" id="slide-6">
   <div class="eyebrow">Module 6</div>
   <h2>Knowledge Check</h2>
-  <p>You're almost there! Answer all six questions — select the best response for each. After each answer you'll see an explanation to reinforce your understanding.</p>
+  <p>Answer all six questions: select the best response for each. An explanation follows each answer.</p>
   <div class="card">
     <div id="qWrap">
       <div class="quiz-prog">
@@ -665,26 +644,26 @@ p:last-child { margin-bottom: 0; }
   </div>
 </div>
 
-<!-- ===== SLIDE 7: SUMMARY ===== -->
+<!-- SLIDE 7: SUMMARY -->
 <div class="slide" id="slide-7">
   <div class="completion-banner">
     <div class="completion-icon">🏆</div>
     <div class="completion-title">Session Complete!</div>
-    <div class="completion-sub">You've completed all 8 modules of the Emerson Management Process session. Use the buttons below to restart or revisit the knowledge check.</div>
+    <div class="completion-sub">You've completed all 8 modules of the Emerson Management Process session.</div>
   </div>
   <div class="card">
     <div class="eyebrow">Key Takeaways</div>
-    <h2>What We Set in Motion</h2>
+    <h2>What We Covered</h2>
     <div class="summary-grid">
-      <div class="summary-item"><div class="summary-icon">🎯</div><div class="summary-text"><strong>Value Creation Framework</strong><span>Three drivers — Organic Growth, Portfolio Management, and Operational Excellence — with clear KPIs.</span></div></div>
-      <div class="summary-item"><div class="summary-icon">🔄</div><div class="summary-text"><strong>Six-Pillar Management System</strong><span>Process, Commercial Excellence, Operational Execution, M&amp;A, Innovation, and Culture — all interconnected.</span></div></div>
-      <div class="summary-item"><div class="summary-icon">📅</div><div class="summary-text"><strong>Annual Cadence</strong><span>Eight forums create productive tension and accountability across the organisation, from POR to CPC.</span></div></div>
-      <div class="summary-item"><div class="summary-icon">🌱</div><div class="summary-text"><strong>Culture as Enabler</strong><span>Trust, inclusion, accountability, and passion for results aren't soft concepts — they're how the process delivers.</span></div></div>
+      <div class="summary-item"><div class="summary-icon">🎯</div><div class="summary-text"><strong>Value Creation Framework</strong><span>Three drivers: Organic Growth, Portfolio Management, and Operational Excellence: with clear KPIs.</span></div></div>
+      <div class="summary-item"><div class="summary-icon">🔄</div><div class="summary-text"><strong>Six-Pillar Management System</strong><span>Process, Commercial Excellence, Operational Execution, M&amp;A, Innovation, and Culture: all interconnected.</span></div></div>
+      <div class="summary-item"><div class="summary-icon">📅</div><div class="summary-text"><strong>Annual Cadence</strong><span>Nine forums create productive tension and accountability across the organisation, from POR to CPC.</span></div></div>
+      <div class="summary-item"><div class="summary-icon">🌱</div><div class="summary-text"><strong>Culture as Enabler</strong><span>Trust, inclusion, accountability, and passion for results aren't soft concepts: they're how the process delivers.</span></div></div>
     </div>
   </div>
   <div class="quote-block">
-    <div class="quote-text">"Use the process to run the business — not as a side show or supplement."</div>
-    <div class="quote-attr">— Emerson Management Process Principles</div>
+    <div class="quote-text">"Use the process to run the business, not as a side show or supplement."</div>
+    <div class="quote-attr">Emerson Management Process Principles</div>
   </div>
   <div class="card" style="background:var(--blue);border-color:var(--blue)">
     <div class="eyebrow" style="color:rgba(255,255,255,0.7)">Objectives Achieved</div>
@@ -703,210 +682,126 @@ p:last-child { margin-bottom: 0; }
   </div>
 </div>
 
-</div><!-- /main -->
+</div>
 
 <script>
-var TOTAL = 8;
-var cur = 0;
-var seen = [true,false,false,false,false,false,false,false];
-
-var quizData = [
-  { q: "Which of the following correctly lists Emerson's three Value Creation Drivers?",
-    opts: ["Innovation, Culture, and Commercial Excellence","Organic Growth, Portfolio Management, and Operational Excellence","Management Process, M&A, and Talent Engine","KPI Achievement, Margin Expansion, and Cash Conversion"],
-    ans: 1, explain: "Emerson's three value creation drivers are Organic Growth (accelerating innovation), Portfolio Management (building a cohesive automation portfolio), and Operational Excellence (delivering margin and cash performance)." },
-  { q: "The President's Operating Report (POR) is best described as:",
-    opts: ["An annual one-day review at the business unit site focused on profit levers","A quarterly financial reporting package that communicates BU commitment to financial targets","A multi-day offsite strategic discussion among top-level management","A forum for discussing talent alignment and succession planning"],
-    ans: 1, explain: "The POR is a quarterly financial reporting package for Business Units. It is the basis for internal and external communication and updates financial expectations for each quarter and fiscal year." },
-  { q: "According to Emerson's Management Principles, which behavior is explicitly emphasized?",
-    opts: ["Organizational hierarchy determines communication channels","Businesses may opt out of enterprise-led initiatives if they conflict with local strategy","No boundaries on collaboration — org charts do not dictate channels of communication","Short-term results should always take precedence over long-term planning"],
-    ans: 2, explain: "One of Emerson's nine Management Principles states that there are no boundaries on collaboration and that organization charts do not dictate channels of communication. This reflects the matrix-based, enterprise-first approach." },
-  { q: "The Growth Conference requires that exhibits cover at least what percentage of incremental growth?",
-    opts: ["50%","60%","70%","100%"],
-    ans: 2, explain: "Growth Conference exhibits must be completed for at least 70% of the incremental growth. They must also be submitted with the profit plan and tie together, with the presentation aligning to the original submission." },
-  { q: "Which statement BEST reflects how Emerson's culture is evolving under the modernized Management Process?",
-    opts: ["More top-down direction with less tolerance for risk","Greater transparency, less fear, and more visibility for emerging talent","Reduced focus on financial metrics in favor of qualitative outcomes","Shifting away from operational excellence toward pure growth focus"],
-    ans: 1, explain: "Observable changes include more transparency and openness, less fear, higher tolerance to risk, and more visibility to emerging talent." },
-  { q: "The Organization Review ensures talent is aligned to deliver business strategy through four components. Which of the following is NOT one of them?",
-    opts: ["Business Strategy to Critical Roles","Key Organizational Issues","Financial Performance and Budget Review","Leadership Performance and Succession Planning"],
-    ans: 2, explain: "The four components are: Business Strategy to Critical Roles, Key Organizational Issues, Leadership Performance and Succession Planning, and Talent Review. Financial performance is covered in POR and President's Council, not the Org Review." }
+var TOTAL=8,cur=0,seen=[true,false,false,false,false,false,false,false];
+var quizData=[
+  {q:"Which of the following correctly lists Emerson's three Value Creation Drivers?",opts:["Innovation, Culture, and Commercial Excellence","Organic Growth, Portfolio Management, and Operational Excellence","Management Process, M&A, and Talent Engine","KPI Achievement, Margin Expansion, and Cash Conversion"],ans:1,explain:"Emerson's three value creation drivers are Organic Growth (accelerating innovation), Portfolio Management (building a cohesive automation portfolio), and Operational Excellence (delivering margin and cash performance)."},
+  {q:"The President's Operating Report (POR) is best described as:",opts:["An annual one-day review at the business unit site focused on profit levers","A quarterly financial reporting package that communicates BU commitment to financial targets","A multi-day offsite strategic discussion among top-level management","A forum for discussing talent alignment and succession planning"],ans:1,explain:"The POR is a quarterly financial reporting package for Business Units. It is the basis for internal and external communication and updates financial expectations for each quarter and fiscal year."},
+  {q:"According to Emerson's Management Principles, which behavior is explicitly emphasized?",opts:["Organizational hierarchy determines communication channels","Businesses may opt out of enterprise-led initiatives if they conflict with local strategy","No boundaries on collaboration: org charts do not dictate channels of communication","Short-term results should always take precedence over long-term planning"],ans:2,explain:"One of Emerson's nine Management Principles states that there are no boundaries on collaboration and that organization charts do not dictate channels of communication."},
+  {q:"The Growth Conference requires that exhibits cover at least what percentage of incremental growth?",opts:["50%","60%","70%","100%"],ans:2,explain:"Growth Conference exhibits must be completed for at least 70% of the incremental growth. They must also be submitted with the profit plan and tie together."},
+  {q:"Which statement BEST reflects how Emerson's culture is evolving under the modernized Management Process?",opts:["More top-down direction with less tolerance for risk","Greater transparency, less fear, and more visibility for emerging talent","Reduced focus on financial metrics in favor of qualitative outcomes","Shifting away from operational excellence toward pure growth focus"],ans:1,explain:"Observable changes include more transparency and openness, less fear, higher tolerance to risk, and more visibility to emerging talent."},
+  {q:"The Organization Review ensures talent is aligned to deliver business strategy through four components. Which of the following is NOT one of them?",opts:["Business Strategy to Critical Roles","Key Organizational Issues","Financial Performance and Budget Review","Leadership Performance and Succession Planning"],ans:2,explain:"The four components are: Business Strategy to Critical Roles, Key Organizational Issues, Leadership Performance and Succession Planning, and Talent Review. Financial performance is covered in POR and President's Council, not the Org Review."}
 ];
-var qIdx = 0, qScore = 0, qAnswered = false;
-var sc1done = false, sc2done = false;
+var qIdx=0,qScore=0,qAnswered=false,sc1done=false,sc2done=false;
 
-function goTo(idx) {
-  if (idx < 0 || idx >= TOTAL) return;
-  var slides = document.querySelectorAll('.slide');
-  for (var i = 0; i < slides.length; i++) slides[i].classList.remove('active');
-  document.getElementById('slide-' + idx).classList.add('active');
-  cur = idx;
-  seen[idx] = true;
-  updateProgress();
-  updateNav();
-  if (idx === 6) initQuiz();
-  try { document.querySelector('.main').scrollTop = 0; } catch(e) {}
-  try { window.scrollTo(0, 0); } catch(e) {}
+function goTo(idx){
+  if(idx<0||idx>=TOTAL)return;
+  document.querySelectorAll('.slide').forEach(function(s){s.classList.remove('active');});
+  document.getElementById('slide-'+idx).classList.add('active');
+  cur=idx; seen[idx]=true;
+  updateProgress(); updateNav();
+  if(idx===6)initQuiz();
+  window.scrollTo(0,0);
 }
-
-function updateProgress() {
-  var count = 0;
-  for (var i = 0; i < seen.length; i++) if (seen[i]) count++;
-  var pct = Math.round(count / TOTAL * 100);
-  document.getElementById('progBar').style.width = pct + '%';
-  document.getElementById('progPct').textContent = pct + '%';
+function updateProgress(){
+  var count=seen.filter(Boolean).length;
+  var pct=Math.round(count/TOTAL*100);
+  document.getElementById('progBar').style.width=pct+'%';
+  document.getElementById('progPct').textContent=pct+'%';
 }
-
-function updateNav() {
-  var pills = document.querySelectorAll('.np');
-  for (var i = 0; i < pills.length; i++) {
-    pills[i].classList.remove('active','seen');
-    var pn = document.getElementById('pn' + i);
-    if (i === cur) {
-      pills[i].classList.add('active');
-      if (pn) { pn.textContent = (i+1); }
-    } else if (seen[i]) {
-      pills[i].classList.add('seen');
-      if (pn) { pn.textContent = '✓'; }
-    } else {
-      if (pn) { pn.textContent = (i+1); }
-    }
-  }
+function updateNav(){
+  document.querySelectorAll('.np').forEach(function(btn,i){
+    btn.classList.remove('active','seen');
+    var pn=document.getElementById('pn'+i);
+    if(i===cur){btn.classList.add('active');if(pn)pn.textContent=(i+1);}
+    else if(seen[i]){btn.classList.add('seen');if(pn)pn.textContent='✓';}
+    else{if(pn)pn.textContent=(i+1);}
+  });
 }
-
-function showPillar(idx) {
-  var cards = document.querySelectorAll('.pillar-card');
-  var details = document.querySelectorAll('.pillar-detail');
-  for (var i = 0; i < cards.length; i++) {
-    cards[i].classList.toggle('on', i === idx);
-    details[i].classList.toggle('on', i === idx);
-  }
+function showPillar(idx){
+  document.querySelectorAll('.pillar-card').forEach(function(c,i){c.classList.toggle('on',i===idx);});
+  document.querySelectorAll('.pillar-detail').forEach(function(d,i){d.classList.toggle('on',i===idx);});
 }
-
-function showForum(idx) {
-  var panels = document.querySelectorAll('.forum-panel');
-  for (var i = 0; i < panels.length; i++) panels[i].classList.remove('on');
-  var p = document.getElementById('forum-' + idx);
-  if (p) p.classList.add('on');
-  var bars = document.querySelectorAll('.cbar');
-  for (var i = 0; i < bars.length; i++) bars[i].classList.remove('on');
-  var idMap = {0:'cb0',1:'cb1',2:'cb2',3:'cb3',4:'cb4',5:'cb5',6:'cb6',8:'cb8',9:'cb9'};
-  var el = document.getElementById(idMap[idx]);
-  if (el) el.classList.add('on');
+function showForum(idx){
+  document.querySelectorAll('.forum-panel').forEach(function(p){p.classList.remove('on');});
+  var p=document.getElementById('forum-'+idx); if(p)p.classList.add('on');
+  document.querySelectorAll('.cbar').forEach(function(b){b.classList.remove('on');});
+  var idMap={0:'cb0',1:'cb1',2:'cb2',3:'cb3',4:'cb4',5:'cb5',6:'cb6',8:'cb8',9:'cb9'};
+  var el=document.getElementById(idMap[idx]); if(el)el.classList.add('on');
 }
-
-function answerSc1(choice) {
-  if (sc1done) return;
-  sc1done = true;
-  var btns = document.querySelectorAll('#sc1 .sc-btn');
-  for (var i = 0; i < btns.length; i++) btns[i].disabled = true;
-  var fb = document.getElementById('sc1-fb');
-  if (choice === 1) {
-    btns[1].classList.add('correct');
-    fb.className = 'sc-feedback show good';
-    fb.textContent = 'Correct! Growth Conference exhibits outline top growth initiatives, incremental growth forecasts, and KPIs. They are submitted in August and reviewed at the annual event coinciding with the Profit Review.';
-  } else {
-    btns[choice].classList.add('wrong');
-    btns[1].classList.add('correct');
-    fb.className = 'sc-feedback show bad';
-    fb.textContent = 'Not quite. The correct answer is B — Growth Conference. The clues: growth initiatives, incremental forecasts, KPIs, and August submission all point to the Growth Conference.';
-  }
-  setTimeout(function() {
-    document.getElementById('sc1').style.display = 'none';
-    document.getElementById('sc2').style.display = 'block';
-  }, 2000);
+function answerSc1(choice){
+  if(sc1done)return; sc1done=true;
+  var btns=document.querySelectorAll('#sc1 .sc-btn');
+  btns.forEach(function(b){b.disabled=true;});
+  var fb=document.getElementById('sc1-fb');
+  if(choice===1){btns[1].classList.add('correct');fb.className='sc-feedback show good';fb.textContent='Correct! Growth Conference exhibits outline top growth initiatives, incremental growth forecasts, and KPIs. They are submitted in August and reviewed at the annual event coinciding with the Profit Review.';}
+  else{btns[choice].classList.add('wrong');btns[1].classList.add('correct');fb.className='sc-feedback show bad';fb.textContent='Not quite. The correct answer is B: Growth Conference. The clues: growth initiatives, incremental forecasts, KPIs, and August submission all point to the Growth Conference.';}
+  setTimeout(function(){document.getElementById('sc1').style.display='none';document.getElementById('sc2').style.display='block';},2000);
 }
-
-function answerSc2(choice) {
-  if (sc2done) return;
-  sc2done = true;
-  var btns = document.querySelectorAll('#sc2 .sc-btn');
-  for (var i = 0; i < btns.length; i++) btns[i].disabled = true;
-  var fb = document.getElementById('sc2-fb');
-  if (choice === 1) {
-    btns[1].classList.add('correct');
-    fb.className = 'sc-feedback show good';
-    fb.textContent = 'Correct! Emerson\'s principles emphasize intellectual honesty, measuring everything that matters, and a bias for action. A data-driven gap analysis with corrective actions aligns perfectly.';
-  } else {
-    btns[choice].classList.add('wrong');
-    btns[1].classList.add('correct');
-    fb.className = 'sc-feedback show bad';
-    fb.textContent = 'Not quite. The answer is B. Verbal assurances without data analysis conflict with Emerson\'s principles of intellectual honesty and measuring what matters.';
-  }
-  setTimeout(function() {
-    document.getElementById('sc2').style.display = 'none';
-    document.getElementById('sc-done').style.display = 'block';
-    document.getElementById('scNext').style.display = 'inline-flex';
-  }, 2000);
+function answerSc2(choice){
+  if(sc2done)return; sc2done=true;
+  var btns=document.querySelectorAll('#sc2 .sc-btn');
+  btns.forEach(function(b){b.disabled=true;});
+  var fb=document.getElementById('sc2-fb');
+  if(choice===1){btns[1].classList.add('correct');fb.className='sc-feedback show good';fb.textContent="Correct! Emerson's principles emphasize intellectual honesty, measuring everything that matters, and a bias for action. A data-driven gap analysis with corrective actions aligns perfectly.";}
+  else{btns[choice].classList.add('wrong');btns[1].classList.add('correct');fb.className='sc-feedback show bad';fb.textContent='Not quite. The answer is B. Verbal assurances without data analysis conflict with Emerson\'s principles of intellectual honesty and measuring what matters.';}
+  setTimeout(function(){document.getElementById('sc2').style.display='none';document.getElementById('sc-done').style.display='block';document.getElementById('scNext').style.display='inline-flex';},2000);
 }
-
-function initQuiz() {
-  qIdx = 0; qScore = 0; qAnswered = false;
-  document.getElementById('qResult').style.display = 'none';
-  document.getElementById('qWrap').style.display = 'block';
-  document.getElementById('quizNav').style.display = 'none';
+function initQuiz(){
+  qIdx=0;qScore=0;qAnswered=false;
+  document.getElementById('qResult').style.display='none';
+  document.getElementById('qWrap').style.display='block';
+  document.getElementById('quizNav').style.display='none';
   renderQ();
 }
-
-function renderQ() {
-  var q = quizData[qIdx];
-  document.getElementById('qNum').textContent = 'Question ' + (qIdx+1) + ' of ' + quizData.length;
-  var dots = '';
-  for (var i = 0; i < quizData.length; i++) {
-    dots += '<div class="qdot ' + (i < qIdx ? 'done' : i === qIdx ? 'cur' : '') + '"></div>';
-  }
-  document.getElementById('qDots').innerHTML = dots;
-  document.getElementById('qText').textContent = q.q;
-  var html = '';
-  for (var i = 0; i < q.opts.length; i++) {
-    html += '<button class="qopt" onclick="answerQ(' + i + ')">' + q.opts[i] + '</button>';
-  }
-  document.getElementById('qOpts').innerHTML = html;
-  document.getElementById('qExplain').className = 'quiz-explain';
-  document.getElementById('qExplain').textContent = '';
-  document.getElementById('qNav').style.display = 'none';
-  qAnswered = false;
+function renderQ(){
+  var q=quizData[qIdx];
+  document.getElementById('qNum').textContent='Question '+(qIdx+1)+' of '+quizData.length;
+  var dots='';
+  for(var i=0;i<quizData.length;i++)dots+='<div class="qdot '+(i<qIdx?'done':i===qIdx?'cur':'')+'"></div>';
+  document.getElementById('qDots').innerHTML=dots;
+  document.getElementById('qText').textContent=q.q;
+  var html='';
+  for(var i=0;i<q.opts.length;i++)html+='<button class="qopt" onclick="answerQ('+i+')">'+q.opts[i]+'</button>';
+  document.getElementById('qOpts').innerHTML=html;
+  document.getElementById('qExplain').className='quiz-explain';
+  document.getElementById('qExplain').textContent='';
+  document.getElementById('qNav').style.display='none';
+  qAnswered=false;
 }
-
-function answerQ(choice) {
-  if (qAnswered) return;
-  qAnswered = true;
-  var q = quizData[qIdx];
-  var opts = document.querySelectorAll('.qopt');
-  for (var i = 0; i < opts.length; i++) opts[i].disabled = true;
-  if (choice === q.ans) { opts[choice].classList.add('correct'); qScore++; }
-  else { opts[choice].classList.add('wrong'); opts[q.ans].classList.add('correct'); }
-  var ex = document.getElementById('qExplain');
-  ex.textContent = q.explain;
-  ex.className = 'quiz-explain show';
-  document.getElementById('qNav').style.display = 'flex';
-  document.getElementById('qNext').textContent = qIdx === quizData.length - 1 ? 'See My Results →' : 'Next Question →';
+function answerQ(choice){
+  if(qAnswered)return; qAnswered=true;
+  var q=quizData[qIdx];
+  var opts=document.querySelectorAll('.qopt');
+  opts.forEach(function(o){o.disabled=true;});
+  if(choice===q.ans){opts[choice].classList.add('correct');qScore++;}
+  else{opts[choice].classList.add('wrong');opts[q.ans].classList.add('correct');}
+  var ex=document.getElementById('qExplain');
+  ex.textContent=q.explain; ex.className='quiz-explain show';
+  document.getElementById('qNav').style.display='flex';
+  document.getElementById('qNext').textContent=qIdx===quizData.length-1?'See My Results →':'Next Question →';
 }
-
-function nextQ() {
-  qIdx++;
-  if (qIdx >= quizData.length) showResults();
-  else renderQ();
+function nextQ(){
+  qIdx++; if(qIdx>=quizData.length)showResults(); else renderQ();
 }
-
-function showResults() {
-  document.getElementById('qWrap').style.display = 'none';
-  document.getElementById('qResult').style.display = 'block';
-  document.getElementById('qScore').textContent = qScore;
-  var pct = Math.round(qScore / quizData.length * 100);
-  var badge, msg;
-  if (pct === 100) { badge = 'Perfect Score!'; msg = 'Outstanding! You have mastered the Emerson Management Process.'; }
-  else if (pct >= 83) { badge = 'Excellent!'; msg = 'Great work! You have a strong grasp of the Management System.'; }
-  else if (pct >= 67) { badge = 'Good Job!'; msg = 'Solid understanding. Review any missed questions to strengthen your knowledge.'; }
-  else { badge = 'Keep Reviewing'; msg = 'Take a moment to revisit the course content before applying these concepts.'; }
-  document.getElementById('qBadge').textContent = badge;
-  document.getElementById('qMsg').textContent = msg;
-  document.getElementById('quizNav').style.display = 'flex';
-  seen[7] = true;
-  updateProgress();
-  updateNav();
+function showResults(){
+  document.getElementById('qWrap').style.display='none';
+  document.getElementById('qResult').style.display='block';
+  document.getElementById('qScore').textContent=qScore;
+  var pct=Math.round(qScore/quizData.length*100);
+  var badge,msg;
+  if(pct===100){badge='Perfect Score!';msg='Outstanding! You have mastered the Emerson Management Process.';}
+  else if(pct>=83){badge='Excellent!';msg='Great work! You have a strong grasp of the Management System.';}
+  else if(pct>=67){badge='Good Job!';msg='Solid understanding. Review any missed questions to strengthen your knowledge.';}
+  else{badge='Keep Reviewing';msg='Take a moment to revisit the course content before applying these concepts.';}
+  document.getElementById('qBadge').textContent=badge;
+  document.getElementById('qMsg').textContent=msg;
+  document.getElementById('quizNav').style.display='flex';
+  seen[7]=true; updateProgress(); updateNav();
 }
-
-updateProgress();
-updateNav();
+updateProgress(); updateNav();
 </script>
 </body>
 </html>
