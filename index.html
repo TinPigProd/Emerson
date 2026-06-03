@@ -3,230 +3,313 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>LDD Demo Space — Emerson</title>
+<title>LDD Demo Space</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet"/>
 <style>
-* { box-sizing: border-box; margin: 0; padding: 0; }
-:root {
-  --em-navy: #003865;
-  --em-navy2: #004487;
-  --em-blue: #285F9A;
-  --em-blue-light: #E8F0F8;
-  --em-blue-mid: #C5D8EE;
-  --em-teal: #00796B;
-  --em-teal-light: #E0F2F0;
-  --em-gray-bg: #F3F4F6;
-  --em-gray-light: #E5E6E7;
-  --em-border: #EDEBE9;
-  --em-border-strong: #C8C6C4;
-  --em-text: #201F1E;
-  --em-text-muted: #605E5C;
-  --em-text-light: #8A8886;
-  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#003865;
+  --navy2:#004487;
+  --teal:#00796B;
+  --teal-light:#E0F2F0;
+  --teal-dark:#005A52;
+  --text:#111827;
+  --text-2:#4B5563;
+  --text-3:#9CA3AF;
+  --border:#E5E7EB;
+  --border-2:#F3F4F6;
+  --surface:#FFFFFF;
+  --bg:#F9FAFB;
+  font-family:'Inter',system-ui,sans-serif;
+  font-size:14px;
+  color:var(--text);
 }
-html, body { min-height: 100%; background: var(--em-gray-bg); color: var(--em-text); font-size: 14px; }
+html,body{min-height:100%;background:var(--bg)}
 
-/* ── Top Bar ── */
-.topbar { background: var(--em-navy); height: 48px; display: flex; align-items: center; position: sticky; top: 0; z-index: 50; }
-.topbar-waffle { width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; color: white; flex-shrink: 0; }
-.topbar-logo { display: flex; align-items: center; padding: 0 14px; height: 100%; border-left: 1px solid rgba(255,255,255,0.25); }
-.em-wordmark { font-size: 13px; font-weight: 700; color: white; letter-spacing: 2px; }
-.topbar-site { font-size: 14px; color: rgba(255,255,255,0.8); padding: 0 16px; border-left: 1px solid rgba(255,255,255,0.25); }
-.topbar-right { margin-left: auto; padding-right: 20px; display: flex; align-items: center; gap: 8px; }
-.topbar-avatar { width: 30px; height: 30px; border-radius: 50%; background: #6264A7; color: white; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; }
+/* ── Nav ── */
+.nav{height:56px;background:white;border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 40px;position:sticky;top:0;z-index:50}
+.nav-logo{display:flex;align-items:center;gap:10px}
+.nav-wordmark{font-size:11px;font-weight:700;letter-spacing:2px;color:var(--navy)}
+.nav-divider{width:1px;height:16px;background:var(--border)}
+.nav-name{font-size:14px;font-weight:600;color:var(--text)}
+.nav-tag{margin-left:auto;font-size:11px;font-weight:600;color:var(--teal);background:var(--teal-light);padding:3px 10px;border-radius:20px}
 
 /* ── Hero ── */
-.hero { background: var(--em-navy); padding: 52px 40px 48px; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.08); }
-.hero-eyebrow { font-size: 11px; font-weight: 600; letter-spacing: 1.4px; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 12px; }
-.hero-title { font-size: 32px; font-weight: 700; color: white; letter-spacing: -0.5px; line-height: 1.15; margin-bottom: 12px; }
-.hero-sub { font-size: 14px; color: rgba(255,255,255,0.65); max-width: 520px; margin: 0 auto 28px; line-height: 1.7; }
-.hero-meta { display: inline-flex; align-items: center; gap: 20px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); border-radius: 3px; padding: 10px 20px; font-size: 12px; color: rgba(255,255,255,0.6); }
-.hero-meta-item { display: flex; align-items: center; gap: 6px; }
-.hero-meta-divider { width: 1px; height: 14px; background: rgba(255,255,255,0.2); }
-.url-chip { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.15); border-radius: 3px; padding: 7px 14px; font-size: 12px; color: rgba(255,255,255,0.6); font-family: 'Courier New', monospace; margin-top: 16px; cursor: pointer; transition: background 0.15s; }
-.url-chip:hover { background: rgba(255,255,255,0.1); }
-.url-chip i { font-size: 13px; color: rgba(255,255,255,0.5); }
-.copied-flash { font-size: 11px; color: var(--em-teal); display: none; margin-left: 4px; }
+.hero{padding:80px 40px 72px;max-width:760px;margin:0 auto;text-align:center}
+.hero-label{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--teal);margin-bottom:16px}
+.hero-title{font-size:44px;font-weight:700;color:var(--text);letter-spacing:-1.5px;line-height:1.1;margin-bottom:18px}
+.hero-title em{font-style:normal;color:var(--navy)}
+.hero-sub{font-size:17px;color:var(--text-2);line-height:1.7;max-width:520px;margin:0 auto 32px}
+.hero-cta{display:inline-flex;align-items:center;gap:8px;background:var(--navy);color:white;padding:12px 24px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:background 0.15s}
+.hero-cta:hover{background:var(--navy2)}
+.hero-note{font-size:12px;color:var(--text-3);margin-top:14px}
 
-/* ── Page body ── */
-.page-body { max-width: 960px; margin: 0 auto; padding: 36px 24px 72px; }
-.section-label { font-size: 11px; font-weight: 600; color: var(--em-text-light); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
-.section-label::after { content: ''; flex: 1; height: 1px; background: var(--em-border); }
+/* ── How it works ── */
+.how{background:white;border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:56px 40px}
+.how-inner{max-width:900px;margin:0 auto}
+.section-label{font-size:11px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--teal);margin-bottom:8px}
+.section-title{font-size:26px;font-weight:700;color:var(--text);letter-spacing:-0.5px;margin-bottom:36px}
+.how-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+@media(max-width:640px){.how-grid{grid-template-columns:1fr}}
+.how-step{display:flex;flex-direction:column;gap:10px}
+.how-step-num{font-size:28px;font-weight:700;color:var(--border);line-height:1;font-variant-numeric:tabular-nums}
+.how-step-title{font-size:15px;font-weight:600;color:var(--text)}
+.how-step-desc{font-size:13px;color:var(--text-2);line-height:1.7}
 
-/* ── About strip ── */
-.about-strip { background: white; border: 1px solid var(--em-border); border-radius: 3px; padding: 22px 26px; margin-bottom: 32px; display: flex; gap: 20px; align-items: flex-start; }
-.about-content h3 { font-size: 14px; font-weight: 700; color: var(--em-text); margin-bottom: 6px; }
-.about-content p { font-size: 13px; color: var(--em-text-muted); line-height: 1.65; }
-.about-content p + p { margin-top: 6px; }
+/* ── Demos ── */
+.demos{padding:56px 40px 80px;max-width:900px;margin:0 auto}
+.demo-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:640px){.demo-grid{grid-template-columns:1fr}}
 
-/* ── Demo grid ── */
-.demo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 32px; }
-@media (max-width: 640px) { .demo-grid { grid-template-columns: 1fr; } }
-
-.demo-card { background: white; border: 1px solid var(--em-border); border-radius: 3px; overflow: hidden; transition: border-color 0.2s; display: flex; flex-direction: column; text-decoration: none; color: inherit; }
-.demo-card:hover { border-color: var(--em-navy2); }
-.demo-card.placeholder { border-style: dashed; cursor: default; }
-.demo-card.placeholder:hover { border-color: var(--em-border); }
+.demo-card{background:white;border:1px solid var(--border);border-radius:12px;overflow:hidden;text-decoration:none;color:inherit;display:flex;flex-direction:column;transition:border-color 0.2s,transform 0.15s}
+.demo-card:hover{border-color:var(--navy2);transform:translateY(-2px)}
+.demo-card.placeholder{border-style:dashed;cursor:default}
+.demo-card.placeholder:hover{border-color:var(--border);transform:none}
 
 /* Thumbnails */
-.demo-thumb { height: 130px; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; flex-shrink: 0; }
-.thumb-navy { background: var(--em-navy); }
-.thumb-teal { background: var(--em-teal); }
-.thumb-blue { background: var(--em-navy2); }
-.thumb-gray { background: var(--em-gray-bg); border-bottom: 1px solid var(--em-border); }
-.thumb-ui { position: relative; z-index: 1; width: 86%; background: white; border-radius: 2px; overflow: hidden; border: 1px solid rgba(255,255,255,0.15); box-shadow: 0 6px 20px rgba(0,0,0,0.22); }
-.thumb-bar { height: 7px; background: var(--em-navy); }
-.thumb-subnav { height: 5px; background: var(--em-navy2); }
-.thumb-proto { height: 4px; background: #2D1B69; }
-.thumb-hero { height: 20px; display: flex; align-items: center; padding: 0 7px; gap: 5px; }
-.thumb-dot { width: 5px; height: 5px; border-radius: 50%; background: rgba(255,255,255,0.55); flex-shrink: 0; }
-.thumb-line { height: 3px; border-radius: 1px; background: rgba(255,255,255,0.45); }
-.thumb-body { display: flex; height: 55px; }
-.thumb-sidebar { width: 30%; background: white; border-right: 1px solid var(--em-border); padding: 4px 5px; }
-.thumb-sl { height: 3px; border-radius: 1px; background: var(--em-gray-light); margin-bottom: 3px; }
-.thumb-sl.active { background: var(--em-blue-light); }
-.thumb-main-area { flex: 1; padding: 4px; display: grid; grid-template-columns: 1fr 1fr; gap: 3px; }
-.thumb-card-mini { background: var(--em-gray-bg); border-radius: 1px; border: 1px solid var(--em-border); }
-/* Course thumb */
-.thumb-course-ui { position: relative; z-index: 1; width: 86%; background: white; border-radius: 2px; overflow: hidden; border: 1px solid rgba(255,255,255,0.15); box-shadow: 0 6px 20px rgba(0,0,0,0.22); }
-.thumb-course-nav { height: 7px; background: var(--em-navy); }
-.thumb-course-tabs { height: 6px; background: white; border-bottom: 1px solid var(--em-border); display: flex; gap: 2px; padding: 0 4px; align-items: flex-end; }
-.thumb-tab { height: 4px; width: 14px; border-radius: 1px 1px 0 0; background: var(--em-gray-light); }
-.thumb-tab.active { background: var(--em-navy2); height: 5px; }
-.thumb-course-body { height: 68px; padding: 6px; display: flex; flex-direction: column; gap: 3px; }
-.thumb-hero-block { height: 20px; background: var(--em-navy); border-radius: 2px; }
-.thumb-content-row { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; flex: 1; }
-.thumb-content-card { background: var(--em-gray-bg); border-radius: 1px; border: 1px solid var(--em-border); }
+.demo-thumb{height:160px;overflow:hidden;flex-shrink:0;position:relative;display:flex;align-items:center;justify-content:center}
+.thumb-onboard{background:#003865}
+.thumb-rlp{background:#004487}
+.thumb-feedback{background:#003865;padding:0}
+.thumb-placeholder{background:var(--bg);border-bottom:1px solid var(--border)}
+
+/* Onboarding thumb */
+.t-ob{width:88%;background:white;border-radius:6px;overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,0.2)}
+.t-bar{height:8px;background:#003865}
+.t-hero{height:24px;background:#004487;display:flex;align-items:center;padding:0 8px;gap:6px}
+.t-dot{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,0.5)}
+.t-line{height:3px;border-radius:2px;background:rgba(255,255,255,0.4)}
+.t-body{display:flex;height:68px}
+.t-sb{width:28%;background:#FAFAFA;border-right:1px solid #F0F0F0;padding:5px}
+.t-sl{height:3px;border-radius:1px;background:#E5E7EB;margin-bottom:4px}
+.t-sl.a{background:#C5D8EE}
+.t-main{flex:1;padding:5px;display:grid;grid-template-columns:1fr 1fr;gap:3px}
+.t-card{background:#F9FAFB;border:1px solid #F0F0F0;border-radius:2px}
+
+/* Split feedback thumb */
+.t-split{display:flex;width:88%;height:110px;border-radius:6px;overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,0.2)}
+.t-split-l{width:42%;background:#003865;padding:8px;display:flex;flex-direction:column;gap:4px}
+.t-split-r{flex:1;background:#F5F6F8;padding:8px;display:flex;flex-direction:column;gap:5px}
+.t-f-title{font-size:9px;font-weight:700;color:white;line-height:1.2}
+.t-f-input{height:14px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);border-radius:3px}
+.t-f-chip-row{display:flex;gap:2px}
+.t-f-chip{padding:1px 4px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);border-radius:2px;font-size:6px;color:rgba(255,255,255,0.4)}
+.t-f-chip.s{background:#00796B;border-color:#00796B;color:white}
+.t-f-btn{height:12px;background:#00796B;border-radius:2px;margin-top:auto}
+.t-r-item{background:white;border:1px solid #E8E9EC;border-radius:3px;border-left-width:2px;padding:4px 5px}
+.t-r-tag{height:5px;border-radius:1px;margin-bottom:3px}
+.t-r-line{height:2px;background:#E5E7EB;border-radius:1px;margin-bottom:2px}
 
 /* Card body */
-.demo-card-body { padding: 16px 18px 18px; flex: 1; display: flex; flex-direction: column; }
-.demo-tag { display: inline-flex; align-items: center; gap: 5px; font-size: 10px; font-weight: 700; letter-spacing: 0.4px; text-transform: uppercase; padding: 2px 8px; border-radius: 2px; margin-bottom: 10px; width: fit-content; }
-.tag-onboarding { background: var(--em-blue-light); color: var(--em-navy2); }
-.tag-rlp { background: var(--em-teal-light); color: var(--em-teal); }
-.tag-course { background: #EDE9FE; color: #5B21B6; }
-.tag-coming { background: var(--em-gray-light); color: var(--em-text-light); }
+.demo-card-body{padding:20px 22px 22px;flex:1;display:flex;flex-direction:column}
+.demo-tag{display:inline-flex;align-items:center;gap:5px;font-size:10px;font-weight:700;letter-spacing:0.3px;text-transform:uppercase;padding:3px 9px;border-radius:20px;margin-bottom:12px;width:fit-content}
+.tag-onboard{background:#E8F0F8;color:#004487}
+.tag-rlp{background:var(--teal-light);color:var(--teal-dark)}
+.tag-talent{background:#E0F2F0;color:#005A52}
+.tag-course{background:#EDE9FE;color:#4C1D95}
+.tag-coming{background:var(--bg);color:var(--text-3);border:1px solid var(--border)}
 
-.demo-card-title { font-size: 15px; font-weight: 700; color: var(--em-text); margin-bottom: 5px; }
-.demo-card-desc { font-size: 13px; color: var(--em-text-muted); line-height: 1.6; margin-bottom: 14px; flex: 1; }
-.demo-features { display: flex; flex-direction: column; gap: 5px; margin-bottom: 16px; }
-.demo-feature { display: flex; align-items: center; gap: 7px; font-size: 12px; color: var(--em-text-muted); }
-.demo-feature i { font-size: 13px; color: var(--em-teal); flex-shrink: 0; }
+.demo-card-title{font-size:16px;font-weight:700;color:var(--text);letter-spacing:-0.3px;margin-bottom:6px}
+.demo-card-desc{font-size:13px;color:var(--text-2);line-height:1.65;margin-bottom:16px;flex:1}
+.demo-features{display:flex;flex-direction:column;gap:5px;margin-bottom:18px}
+.demo-feature{display:flex;align-items:flex-start;gap:7px;font-size:12px;color:var(--text-2)}
+.demo-feature i{font-size:13px;color:var(--teal);flex-shrink:0;margin-top:1px}
 
-.demo-card-footer { border-top: 1px solid var(--em-border); margin: 0 -18px; padding: 11px 18px 0; display: flex; align-items: center; justify-content: space-between; }
-.demo-views { display: flex; gap: 4px; flex-wrap: wrap; }
-.view-chip { font-size: 10px; padding: 2px 7px; border-radius: 10px; background: var(--em-gray-bg); color: var(--em-text-muted); border: 1px solid var(--em-border); }
-.launch-btn { display: inline-flex; align-items: center; gap: 5px; font-size: 12px; font-weight: 700; color: white; background: var(--em-navy2); padding: 6px 13px; border-radius: 3px; text-decoration: none; transition: background 0.15s; }
-.launch-btn:hover { background: var(--em-blue); }
-.launch-btn-ghost { display: inline-flex; align-items: center; gap: 5px; font-size: 12px; font-weight: 600; color: var(--em-text-light); background: var(--em-gray-bg); padding: 6px 13px; border-radius: 3px; border: 1px solid var(--em-border); cursor: default; }
+.demo-card-footer{border-top:1px solid var(--border);margin:0 -22px;padding:12px 22px 0;display:flex;align-items:center;justify-content:space-between}
+.demo-views{display:flex;gap:4px;flex-wrap:wrap}
+.view-chip{font-size:10px;padding:2px 8px;border-radius:20px;background:var(--bg);color:var(--text-3);border:1px solid var(--border)}
+.launch-btn{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:700;color:white;background:var(--navy);padding:7px 14px;border-radius:6px;text-decoration:none;transition:background 0.15s}
+.launch-btn:hover{background:var(--navy2)}
+.launch-btn-ghost{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;color:var(--text-3);background:var(--bg);padding:7px 14px;border-radius:6px;border:1px solid var(--border);cursor:default}
 
-/* ── How-to ── */
-.how-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 32px; }
-@media (max-width: 640px) { .how-grid { grid-template-columns: 1fr; } }
-.how-card { background: white; border: 1px solid var(--em-border); border-radius: 3px; padding: 18px; }
-.how-num { font-size: 26px; font-weight: 700; color: var(--em-gray-light); line-height: 1; margin-bottom: 8px; }
-.how-title { font-size: 13px; font-weight: 700; color: var(--em-text); margin-bottom: 4px; }
-.how-desc { font-size: 12px; color: var(--em-text-muted); line-height: 1.6; }
+/* ── About ── */
+.about{background:var(--navy);padding:56px 40px}
+.about-inner{max-width:900px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+@media(max-width:640px){.about-inner{grid-template-columns:1fr}}
+.about-label{font-size:11px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:12px}
+.about-title{font-size:26px;font-weight:700;color:white;letter-spacing:-0.5px;line-height:1.3;margin-bottom:16px}
+.about-text{font-size:13px;color:rgba(255,255,255,0.6);line-height:1.75}
+.about-text+.about-text{margin-top:12px}
+.about-right{display:flex;flex-direction:column;gap:16px;padding-top:8px}
+.about-item{display:flex;gap:12px;align-items:flex-start}
+.about-item-icon{width:32px;height:32px;border-radius:8px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.5);font-size:15px;flex-shrink:0}
+.about-item-title{font-size:13px;font-weight:600;color:white;margin-bottom:3px}
+.about-item-desc{font-size:12px;color:rgba(255,255,255,0.5);line-height:1.6}
 
 /* ── Footer ── */
-.footer { background: var(--em-navy); padding: 20px 32px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
-.footer-left { font-size: 12px; color: rgba(255,255,255,0.45); }
-.footer-left strong { color: rgba(255,255,255,0.7); font-weight: 600; }
-.footer-right { display: flex; gap: 6px; align-items: center; }
-.footer-badge { font-size: 10px; font-weight: 600; letter-spacing: 0.4px; text-transform: uppercase; background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.5); padding: 3px 8px; border-radius: 2px; border: 1px solid rgba(255,255,255,0.12); }
+.footer{padding:24px 40px;background:white;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.footer-left{font-size:12px;color:var(--text-3)}
+.footer-right{display:flex;gap:8px;align-items:center}
+.footer-chip{font-size:10px;font-weight:600;color:var(--text-3);background:var(--bg);padding:3px 8px;border-radius:4px;border:1px solid var(--border)}
 </style>
 </head>
 <body>
 
-<!-- Top Bar -->
-<div class="topbar">
-  <div class="topbar-waffle">
-    <svg width="18" height="18" viewBox="0 0 16 16" fill="white" aria-hidden="true">
-      <rect x="1" y="1" width="4" height="4" rx="0.5"/><rect x="6" y="1" width="4" height="4" rx="0.5"/>
-      <rect x="11" y="1" width="4" height="4" rx="0.5"/><rect x="1" y="6" width="4" height="4" rx="0.5"/>
-      <rect x="6" y="6" width="4" height="4" rx="0.5"/><rect x="11" y="6" width="4" height="4" rx="0.5"/>
-      <rect x="1" y="11" width="4" height="4" rx="0.5"/><rect x="6" y="11" width="4" height="4" rx="0.5"/>
-      <rect x="11" y="11" width="4" height="4" rx="0.5"/>
-    </svg>
+<!-- Nav -->
+<div class="nav">
+  <div class="nav-logo">
+    <span class="nav-wordmark">LDD</span>
+    <div class="nav-divider"></div>
+    <span class="nav-name">Demo Space</span>
   </div>
-  <div class="topbar-logo"><span class="em-wordmark">EMERSON</span></div>
-  <div class="topbar-site">Learning &amp; Development · Demo Space</div>
-  <div class="topbar-right">
-    <div class="topbar-avatar">LDD</div>
-  </div>
+  <div class="nav-tag">Design previews</div>
 </div>
 
 <!-- Hero -->
 <div class="hero">
-  <div class="hero-eyebrow">Emerson Learning &amp; Development</div>
-  <div class="hero-title">LDD Demo Space</div>
-  <div class="hero-sub">Interactive prototypes for stakeholder review — built to model real SharePoint and learning experiences before production development begins.</div>
-  <div class="hero-meta">
-    <div class="hero-meta-item"><i class="ti ti-layout-dashboard" style="font-size:13px"></i> 4 demos live</div>
-    <div class="hero-meta-divider"></div>
-    <div class="hero-meta-item"><i class="ti ti-flask" style="font-size:13px"></i> Design previews only</div>
-    <div class="hero-meta-divider"></div>
-    <div class="hero-meta-item"><i class="ti ti-brand-github" style="font-size:13px"></i> Hosted on GitHub Pages</div>
-  </div>
-  <div>
-    <div class="url-chip" onclick="copyUrl()">
-      <i class="ti ti-link"></i>
-      tinpigprod.github.io
-      <span class="copied-flash" id="copied-flash">Copied!</span>
+  <div class="hero-label">Learning &amp; Development</div>
+  <div class="hero-title">See what we're<br><em>building.</em></div>
+  <div class="hero-sub">Interactive prototypes for review and feedback — before production development begins. Click through, interact, and tell us what works.</div>
+  <a href="#demos" class="hero-cta">Explore the demos</a>
+  <div class="hero-note">No login required · Works in any browser · All demos are interactive</div>
+</div>
+
+<!-- How it works -->
+<div class="how">
+  <div class="how-inner">
+    <div class="section-label">How to use this space</div>
+    <div class="section-title">You got a link. Here's what to do next.</div>
+    <div class="how-grid">
+      <div class="how-step">
+        <div class="how-step-num">01</div>
+        <div class="how-step-title">Pick a demo below</div>
+        <div class="how-step-desc">Each card describes demo function. Choose any experience to begin. No downloads or logins required.</div>
+      </div>
+      <div class="how-step">
+        <div class="how-step-num">02</div>
+        <div class="how-step-title">Interact with everything</div>
+        <div class="how-step-desc">Each experience is fully interactive. Complete tasks, switch between role views, run feedback, and click through course modules.</div>
+      </div>
+      <div class="how-step">
+        <div class="how-step-num">03</div>
+        <div class="how-step-title">Tell us what you think</div>
+        <div class="how-step-desc">Feedback is appreciated. Tell us what's working, what's falling flat, and what's missing.</div>
+      </div>
     </div>
   </div>
 </div>
 
-<!-- Page Body -->
-<div class="page-body">
+<!-- Demos -->
+<div class="demos" id="demos">
+  <div class="section-label" style="margin-bottom:8px">Live demos</div>
+  <div class="section-title">Four experiences to explore.</div>
 
-  <!-- About -->
-  <div class="about-strip">
-    <div class="about-content">
-      <h3>What is this space?</h3>
-      <p>These demos are interactive prototypes designed to look and feel like real SharePoint pages and learning modules — built for stakeholder review and sign-off before any production development begins. Each demo is fully interactive: click through views, check off tasks, and simulate system behavior.</p>
-      <p>Once a design is approved, each component maps to a SharePoint + Power Platform production build (SPFx web parts, Power Apps, Power Automate) or an LMS-ready course package. Nothing here requires a SharePoint license or LMS account to view.</p>
-    </div>
-  </div>
-
-  <!-- Live Demos -->
-  <div class="section-label">Live demos</div>
   <div class="demo-grid">
 
     <!-- Onboarding Hub -->
     <a class="demo-card" href="emerson_onboarding_hub_demo.html">
-      <div class="demo-thumb thumb-navy">
-        <div class="thumb-ui">
-          <div class="thumb-bar"></div>
-          <div class="thumb-subnav"></div>
-          <div class="thumb-proto"></div>
-          <div class="thumb-hero" style="background:var(--em-navy)">
-            <div class="thumb-dot"></div>
-            <div class="thumb-line" style="width:38%"></div>
-            <div class="thumb-line" style="width:16%;margin-left:auto"></div>
-          </div>
-          <div class="thumb-body">
-            <div class="thumb-sidebar">
-              <div class="thumb-sl active"></div>
-              <div class="thumb-sl" style="width:72%"></div>
-              <div class="thumb-sl" style="width:82%"></div>
-              <div class="thumb-sl" style="width:60%"></div>
+      <div class="demo-thumb thumb-onboard" style="padding:0">
+        <div style="display:flex;width:100%;height:100%">
+          <!-- sidebar -->
+          <div style="width:30%;background:#002a50;padding:10px 8px;display:flex;flex-direction:column;gap:5px">
+            <div style="font-size:7px;font-weight:700;letter-spacing:1px;color:rgba(255,255,255,0.3);margin-bottom:4px">NAVIGATION</div>
+            <div style="display:flex;align-items:center;gap:4px;padding:4px 5px;background:rgba(255,255,255,0.12);border-radius:3px">
+              <div style="width:5px;height:5px;border-radius:50%;background:#00796B"></div>
+              <div style="height:3px;width:55%;background:rgba(255,255,255,0.6);border-radius:1px"></div>
             </div>
-            <div class="thumb-main-area">
-              <div class="thumb-card-mini"></div>
-              <div class="thumb-card-mini"></div>
-              <div class="thumb-card-mini" style="grid-column:1/-1"></div>
+            <div style="display:flex;align-items:center;gap:4px;padding:4px 5px">
+              <div style="width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,0.2)"></div>
+              <div style="height:3px;width:45%;background:rgba(255,255,255,0.2);border-radius:1px"></div>
+            </div>
+            <div style="display:flex;align-items:center;gap:4px;padding:4px 5px">
+              <div style="width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,0.2)"></div>
+              <div style="height:3px;width:50%;background:rgba(255,255,255,0.2);border-radius:1px"></div>
+            </div>
+            <div style="height:1px;background:rgba(255,255,255,0.1);margin:3px 0"></div>
+            <div style="font-size:7px;font-weight:700;letter-spacing:1px;color:rgba(255,255,255,0.25)">90-DAY PHASES</div>
+            <div style="display:flex;align-items:center;gap:4px;padding:2px 0">
+              <div style="width:5px;height:5px;border-radius:50%;background:#00796B"></div>
+              <div style="height:2px;width:50%;background:rgba(255,255,255,0.25);border-radius:1px;text-decoration:line-through"></div>
+            </div>
+            <div style="display:flex;align-items:center;gap:4px;padding:2px 0">
+              <div style="width:5px;height:5px;border-radius:50%;background:#00796B"></div>
+              <div style="height:2px;width:60%;background:rgba(255,255,255,0.25);border-radius:1px"></div>
+            </div>
+            <div style="display:flex;align-items:center;gap:4px;padding:2px 0">
+              <div style="width:7px;height:7px;border-radius:50%;background:#004487"></div>
+              <div style="height:2px;width:55%;background:rgba(255,255,255,0.5);border-radius:1px"></div>
+            </div>
+            <div style="height:1px;background:rgba(255,255,255,0.1);margin:3px 0"></div>
+            <!-- donut progress -->
+            <div style="display:flex;align-items:center;gap:6px;margin-top:2px">
+              <svg width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="3"/><circle cx="12" cy="12" r="8" fill="none" stroke="#00796B" stroke-width="3" stroke-linecap="round" stroke-dasharray="50.3" stroke-dashoffset="25" transform="rotate(-90 12 12)"/></svg>
+              <div><div style="font-size:10px;font-weight:700;color:white">50%</div><div style="font-size:7px;color:rgba(255,255,255,0.35)">complete</div></div>
+            </div>
+          </div>
+          <!-- main content -->
+          <div style="flex:1;background:#F9FAFB;padding:10px">
+            <!-- greeting bar -->
+            <div style="background:white;border:1px solid #E5E7EB;border-radius:5px;padding:6px 8px;margin-bottom:6px;display:flex;align-items:center;gap:7px">
+              <div style="width:18px;height:18px;border-radius:5px;background:#004487;display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:700;color:white;flex-shrink:0">J</div>
+              <div style="flex:1"><div style="height:3px;background:#111827;border-radius:1px;width:55%;margin-bottom:3px"></div><div style="height:2px;background:#E5E7EB;border-radius:1px;width:70%"></div></div>
+              <div style="text-align:right"><div style="font-size:11px;font-weight:700;color:#004487;line-height:1">12</div><div style="font-size:6px;color:#9CA3AF">Day</div></div>
+            </div>
+            <!-- two col -->
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-bottom:6px">
+              <!-- today card -->
+              <div style="background:white;border:1px solid #E5E7EB;border-radius:5px;padding:6px 7px">
+                <div style="height:3px;background:#004487;border-radius:1px;width:40%;margin-bottom:5px"></div>
+                <div style="display:flex;align-items:center;gap:4px;margin-bottom:3px">
+                  <div style="width:8px;height:8px;border-radius:2px;background:#00796B;display:flex;align-items:center;justify-content:center;font-size:6px;color:white;flex-shrink:0">✓</div>
+                  <div style="height:2px;background:#E5E7EB;border-radius:1px;flex:1"></div>
+                </div>
+                <div style="display:flex;align-items:center;gap:4px;margin-bottom:3px">
+                  <div style="width:8px;height:8px;border-radius:2px;border:1px solid #E5E7EB;flex-shrink:0"></div>
+                  <div style="height:2px;background:#E5E7EB;border-radius:1px;flex:1"></div>
+                </div>
+                <div style="display:flex;align-items:center;gap:4px">
+                  <div style="width:8px;height:8px;border-radius:2px;border:1px solid #E5E7EB;flex-shrink:0"></div>
+                  <div style="height:2px;background:#E5E7EB;border-radius:1px;flex:1"></div>
+                </div>
+                <div style="margin-top:4px;display:flex;gap:2px">
+                  <div style="padding:1px 4px;background:#FFF3E0;border-radius:2px;font-size:6px;color:#B85C00;font-weight:600">triggers mentor</div>
+                </div>
+              </div>
+              <!-- people card -->
+              <div style="background:white;border:1px solid #E5E7EB;border-radius:5px;padding:6px 7px">
+                <div style="height:3px;background:#004487;border-radius:1px;width:40%;margin-bottom:5px"></div>
+                <div style="display:flex;align-items:center;gap:5px;margin-bottom:4px">
+                  <div style="width:14px;height:14px;border-radius:4px;background:#004487;display:flex;align-items:center;justify-content:center;font-size:6px;font-weight:700;color:white;flex-shrink:0">SC</div>
+                  <div><div style="height:3px;background:#111827;border-radius:1px;width:30px;margin-bottom:2px"></div><div style="height:2px;background:#E5E7EB;border-radius:1px;width:24px"></div></div>
+                </div>
+                <div style="display:flex;align-items:center;gap:5px">
+                  <div style="width:14px;height:14px;border-radius:4px;background:#00796B;display:flex;align-items:center;justify-content:center;font-size:6px;font-weight:700;color:white;flex-shrink:0">MW</div>
+                  <div><div style="height:3px;background:#111827;border-radius:1px;width:30px;margin-bottom:2px"></div><div style="height:2px;background:#E5E7EB;border-radius:1px;width:24px"></div></div>
+                </div>
+                <div style="margin-top:5px;padding:3px 5px;background:#004487;border-radius:3px;font-size:6px;color:white;font-weight:600;width:fit-content">Schedule 1:1</div>
+              </div>
+            </div>
+            <!-- checklist -->
+            <div style="background:white;border:1px solid #E5E7EB;border-radius:5px;padding:6px 7px">
+              <div style="height:3px;background:#004487;border-radius:1px;width:35%;margin-bottom:5px"></div>
+              <div style="display:flex;align-items:center;gap:3px;padding:3px 0;border-bottom:1px solid #F3F4F6">
+                <div style="width:6px;height:6px;border-radius:50%;background:#00796B;flex-shrink:0"></div>
+                <div style="height:2px;background:#E5E7EB;border-radius:1px;flex:1"></div>
+                <div style="font-size:6px;color:#9CA3AF">4/4</div>
+              </div>
+              <div style="display:flex;align-items:center;gap:3px;padding:3px 0;border-bottom:1px solid #F3F4F6">
+                <div style="width:6px;height:6px;border-radius:50%;background:#004487;flex-shrink:0"></div>
+                <div style="height:2px;background:#E5E7EB;border-radius:1px;flex:1"></div>
+                <div style="font-size:6px;color:#9CA3AF">3/5</div>
+              </div>
+              <div style="display:flex;align-items:center;gap:3px;padding:3px 0">
+                <div style="width:6px;height:6px;border-radius:50%;background:#9CA3AF;flex-shrink:0"></div>
+                <div style="height:2px;background:#E5E7EB;border-radius:1px;flex:1"></div>
+                <div style="font-size:6px;color:#9CA3AF">0/6</div>
+              </div>
             </div>
           </div>
         </div>
       </div>
       <div class="demo-card-body">
-        <div class="demo-tag tag-onboarding"><i class="ti ti-home" style="font-size:10px"></i> New Hire Onboarding</div>
-        <div class="demo-card-title">Emerson People Hub — Onboarding</div>
-        <div class="demo-card-desc">A 90-day onboarding experience coordinating the new hire, their manager, and their mentor — with a trigger-based Teams notification system at key milestones.</div>
+        <div class="demo-tag tag-onboard">New Hire Onboarding</div>
+        <div class="demo-card-title">People Hub | Onboarding</div>
+        <div class="demo-card-desc">Explore a 90-day onboarding experience that coordinates new employee, manager, and mentor views. Uses trigger-based notifications to track progress and send reminders at key milestones.</div>
         <div class="demo-features">
-          <div class="demo-feature"><i class="ti ti-check"></i> Interactive 90-day checklist with live progress tracking</div>
-          <div class="demo-feature"><i class="ti ti-check"></i> Trigger system fires Teams messages at milestones</div>
-          <div class="demo-feature"><i class="ti ti-check"></i> Three role views: new hire, manager, mentor</div>
+          <div class="demo-feature"><div style="width:5px;height:5px;border-radius:50%;background:#00796B;flex-shrink:0;margin-top:4px"></div> Interactive 90-day checklist with live progress tracking</div>
+          <div class="demo-feature"><div style="width:5px;height:5px;border-radius:50%;background:#00796B;flex-shrink:0;margin-top:4px"></div> Trigger system fires Teams messages at milestones</div>
+          <div class="demo-feature"><div style="width:5px;height:5px;border-radius:50%;background:#00796B;flex-shrink:0;margin-top:4px"></div> Three role views: new hire, manager, mentor</div>
         </div>
         <div class="demo-card-footer">
           <div class="demo-views">
@@ -234,46 +317,107 @@ html, body { min-height: 100%; background: var(--em-gray-bg); color: var(--em-te
             <span class="view-chip">Manager</span>
             <span class="view-chip">Mentor</span>
           </div>
-          <div class="launch-btn">Open <i class="ti ti-arrow-right" style="font-size:11px"></i></div>
+          <div class="launch-btn">Open</div>
         </div>
       </div>
     </a>
 
     <!-- Rising Leaders -->
     <a class="demo-card" href="emerson_rising_leaders_demo.html">
-      <div class="demo-thumb thumb-blue">
-        <div class="thumb-ui">
-          <div class="thumb-bar"></div>
-          <div class="thumb-subnav"></div>
-          <div class="thumb-proto"></div>
-          <div class="thumb-hero" style="background:var(--em-navy2)">
-            <div class="thumb-dot"></div>
-            <div class="thumb-line" style="width:46%"></div>
-            <div class="thumb-line" style="width:18%;margin-left:auto;background:rgba(255,255,255,0.3)"></div>
-          </div>
-          <div class="thumb-body">
-            <div class="thumb-sidebar">
-              <div class="thumb-sl active"></div>
-              <div class="thumb-sl" style="width:76%"></div>
-              <div class="thumb-sl" style="width:64%"></div>
-              <div class="thumb-sl" style="width:80%"></div>
+      <div class="demo-thumb thumb-rlp" style="padding:0">
+        <div style="display:flex;width:100%;height:100%">
+          <!-- sidebar -->
+          <div style="width:30%;background:#002a50;padding:10px 8px;display:flex;flex-direction:column;gap:5px">
+            <div style="font-size:7px;font-weight:700;letter-spacing:1px;color:rgba(255,255,255,0.3);margin-bottom:4px">PROGRAM PHASES</div>
+            <div style="display:flex;align-items:center;gap:4px;padding:3px 0">
+              <div style="width:7px;height:7px;border-radius:50%;background:#004487;flex-shrink:0"></div>
+              <div style="height:2px;width:50%;background:rgba(255,255,255,0.6);border-radius:1px"></div>
             </div>
-            <div class="thumb-main-area">
-              <div class="thumb-card-mini"></div>
-              <div class="thumb-card-mini"></div>
-              <div class="thumb-card-mini" style="grid-column:1/-1"></div>
+            <div style="display:flex;align-items:center;gap:4px;padding:3px 0">
+              <div style="width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,0.2);flex-shrink:0"></div>
+              <div style="height:2px;width:40%;background:rgba(255,255,255,0.2);border-radius:1px"></div>
+            </div>
+            <div style="display:flex;align-items:center;gap:4px;padding:3px 0">
+              <div style="width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,0.1);flex-shrink:0"></div>
+              <div style="height:2px;width:55%;background:rgba(255,255,255,0.1);border-radius:1px"></div>
+            </div>
+            <div style="display:flex;align-items:center;gap:4px;padding:3px 0">
+              <div style="width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,0.1);flex-shrink:0"></div>
+              <div style="height:2px;width:45%;background:rgba(255,255,255,0.1);border-radius:1px"></div>
+            </div>
+            <div style="height:1px;background:rgba(255,255,255,0.1);margin:3px 0"></div>
+            <!-- donut -->
+            <div style="display:flex;align-items:center;gap:6px">
+              <svg width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="3"/><circle cx="12" cy="12" r="8" fill="none" stroke="#00796B" stroke-width="3" stroke-linecap="round" stroke-dasharray="50.3" stroke-dashoffset="40" transform="rotate(-90 12 12)"/></svg>
+              <div><div style="font-size:10px;font-weight:700;color:white">20%</div><div style="font-size:7px;color:rgba(255,255,255,0.35)">complete</div></div>
+            </div>
+            <div style="height:1px;background:rgba(255,255,255,0.1);margin:3px 0"></div>
+            <div style="font-size:7px;color:rgba(255,255,255,0.3);font-weight:600">PROGRAM STAFF</div>
+            <div style="display:flex;align-items:center;gap:4px">
+              <div style="width:14px;height:14px;border-radius:4px;background:#004487;display:flex;align-items:center;justify-content:center;font-size:6px;font-weight:700;color:white;flex-shrink:0">RK</div>
+              <div style="height:2px;width:35px;background:rgba(255,255,255,0.25);border-radius:1px"></div>
+            </div>
+            <div style="display:flex;align-items:center;gap:4px">
+              <div style="width:14px;height:14px;border-radius:4px;background:#00796B;display:flex;align-items:center;justify-content:center;font-size:6px;font-weight:700;color:white;flex-shrink:0">MT</div>
+              <div style="height:2px;width:35px;background:rgba(255,255,255,0.25);border-radius:1px"></div>
+            </div>
+          </div>
+          <!-- main -->
+          <div style="flex:1;background:#F9FAFB;padding:10px">
+            <!-- alert banner -->
+            <div style="background:#FFF3E0;border:1px solid #F5D0A9;border-radius:5px;padding:5px 7px;margin-bottom:6px;display:flex;gap:5px;align-items:flex-start">
+              <div style="width:7px;height:7px;border-radius:50%;background:#B85C00;flex-shrink:0;margin-top:1px"></div>
+              <div style="height:2px;background:#F5D0A9;border-radius:1px;flex:1;margin-top:2px"></div>
+            </div>
+            <!-- up next card -->
+            <div style="background:white;border:1px solid #E5E7EB;border-radius:5px;padding:6px 7px;margin-bottom:6px">
+              <div style="height:3px;background:#004487;border-radius:1px;width:35%;margin-bottom:5px"></div>
+              <div style="display:flex;align-items:center;gap:4px;margin-bottom:3px">
+                <div style="width:8px;height:8px;border-radius:2px;border:1px solid #E5E7EB;flex-shrink:0"></div>
+                <div style="flex:1"><div style="height:2px;background:#E5E7EB;border-radius:1px;width:80%"></div></div>
+              </div>
+              <div style="display:flex;align-items:center;gap:4px;margin-bottom:3px">
+                <div style="width:8px;height:8px;border-radius:2px;border:1px solid #E5E7EB;flex-shrink:0"></div>
+                <div style="flex:1"><div style="height:2px;background:#E5E7EB;border-radius:1px;width:65%"></div></div>
+                <div style="padding:1px 3px;background:#FFF3E0;border-radius:2px;font-size:5px;color:#B85C00;font-weight:700;white-space:nowrap">notifies</div>
+              </div>
+              <div style="display:flex;align-items:center;gap:4px">
+                <div style="width:8px;height:8px;border-radius:2px;border:1px solid #E5E7EB;flex-shrink:0"></div>
+                <div style="flex:1"><div style="height:2px;background:#E5E7EB;border-radius:1px;width:70%"></div></div>
+                <div style="padding:1px 3px;background:#FDE8E8;border-radius:2px;font-size:5px;color:#A4262C;font-weight:700;white-space:nowrap">deadline</div>
+              </div>
+            </div>
+            <!-- checklist with phases -->
+            <div style="background:white;border:1px solid #E5E7EB;border-radius:5px;padding:6px 7px">
+              <div style="height:3px;background:#004487;border-radius:1px;width:40%;margin-bottom:5px"></div>
+              <!-- prework phase -->
+              <div style="display:flex;align-items:center;gap:3px;padding:3px 0;border-bottom:1px solid #F3F4F6">
+                <div style="width:6px;height:6px;border-radius:50%;background:#8B6914;flex-shrink:0"></div>
+                <div style="height:2px;background:#E5E7EB;border-radius:1px;flex:1"></div>
+                <div style="font-size:6px;color:#9CA3AF">3/6</div>
+              </div>
+              <div style="display:flex;align-items:center;gap:3px;padding:3px 0;border-bottom:1px solid #F3F4F6">
+                <div style="width:6px;height:6px;border-radius:50%;background:#004487;flex-shrink:0"></div>
+                <div style="height:2px;background:#E5E7EB;border-radius:1px;flex:1"></div>
+                <div style="font-size:6px;color:#9CA3AF">0/3</div>
+              </div>
+              <div style="display:flex;align-items:center;gap:3px;padding:3px 0">
+                <div style="width:6px;height:6px;border-radius:50%;background:#9CA3AF;flex-shrink:0"></div>
+                <div style="height:2px;background:#E5E7EB;border-radius:1px;flex:1"></div>
+                <div style="font-size:6px;color:#9CA3AF">0/9</div>
+              </div>
             </div>
           </div>
         </div>
       </div>
       <div class="demo-card-body">
-        <div class="demo-tag tag-rlp"><i class="ti ti-trophy" style="font-size:10px"></i> Leadership Development</div>
+        <div class="demo-tag tag-rlp">Leadership Development</div>
         <div class="demo-card-title">Rising Leaders Program Hub</div>
-        <div class="demo-card-desc">A program hub for a multi-session leadership cohort. Covers Prework through Session 2 with monthly between-session task groupings, LMS course links, and three distinct role views.</div>
+        <div class="demo-card-desc">Check out concepts for a programmatic hub that drives prework, in session activities, and between session learning.</div>
         <div class="demo-features">
-          <div class="demo-feature"><i class="ti ti-check"></i> Phase-based checklist: Prework, Sessions, Between, Post</div>
-          <div class="demo-feature"><i class="ti ti-check"></i> LMS course tags and embedded action links</div>
-          <div class="demo-feature"><i class="ti ti-check"></i> Three role views: participant, program staff, exec</div>
+          <div class="demo-feature"><div style="width:5px;height:5px;border-radius:50%;background:#00796B;flex-shrink:0;margin-top:4px"></div> Phase-based checklist: Prework, Sessions, Between, Post</div>
+          <div class="demo-feature"><div style="width:5px;height:5px;border-radius:50%;background:#00796B;flex-shrink:0;margin-top:4px"></div> LMS course tags and embedded action links</div>
+          <div class="demo-feature"><div style="width:5px;height:5px;border-radius:50%;background:#00796B;flex-shrink:0;margin-top:4px"></div> Three role views: participant, program staff, exec</div>
         </div>
         <div class="demo-card-footer">
           <div class="demo-views">
@@ -281,110 +425,51 @@ html, body { min-height: 100%; background: var(--em-gray-bg); color: var(--em-te
             <span class="view-chip">Staff</span>
             <span class="view-chip">Exec</span>
           </div>
-          <div class="launch-btn">Open <i class="ti ti-arrow-right" style="font-size:11px"></i></div>
+          <div class="launch-btn">Open</div>
         </div>
       </div>
     </a>
 
-    <!-- EMP Course -->
-    <a class="demo-card" href="emerson_management_process.html">
-      <div class="demo-thumb thumb-teal">
-        <div class="thumb-course-ui">
-          <div class="thumb-course-nav"></div>
-          <div class="thumb-course-tabs">
-            <div class="thumb-tab active"></div>
-            <div class="thumb-tab"></div>
-            <div class="thumb-tab"></div>
-            <div class="thumb-tab"></div>
-            <div class="thumb-tab"></div>
-            <div class="thumb-tab"></div>
-            <div class="thumb-tab"></div>
-            <div class="thumb-tab"></div>
-          </div>
-          <div class="thumb-course-body">
-            <div class="thumb-hero-block"></div>
-            <div class="thumb-content-row">
-              <div class="thumb-content-card"></div>
-              <div class="thumb-content-card"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="demo-card-body">
-        <div class="demo-tag tag-course"><i class="ti ti-school" style="font-size:10px"></i> Course Module</div>
-        <div class="demo-card-title">Emerson Management Process</div>
-        <div class="demo-card-desc">An interactive 8-module course for the Rising Leaders Program covering Emerson's value creation framework, management system, annual forum cadence, and culture — with scenarios and a knowledge check.</div>
-        <div class="demo-features">
-          <div class="demo-feature"><i class="ti ti-check"></i> 8 modules with progress tracking across the nav bar</div>
-          <div class="demo-feature"><i class="ti ti-check"></i> Interactive forum cascade map and pillar explorer</div>
-          <div class="demo-feature"><i class="ti ti-check"></i> Scenario exercises and 6-question knowledge check</div>
-        </div>
-        <div class="demo-card-footer">
-          <div class="demo-views">
-            <span class="view-chip">~25 min</span>
-            <span class="view-chip">6 objectives</span>
-            <span class="view-chip">RLP Session 1</span>
-          </div>
-          <div class="launch-btn">Open <i class="ti ti-arrow-right" style="font-size:11px"></i></div>
-        </div>
-      </div>
-    </a>
-
-    <!-- Feedback Synthesis Tool -->
+    <!-- Feedback Synthesis -->
     <a class="demo-card" href="emerson_feedback_synthesis.html">
-      <div class="demo-thumb" style="background:#003865;padding:0;overflow:hidden">
-        <div style="display:flex;width:100%;height:100%">
-          <div style="width:44%;background:#003865;padding:10px 10px 10px 12px;display:flex;flex-direction:column;gap:6px">
-            <div style="font-size:7px;font-weight:700;letter-spacing:1.5px;color:rgba(255,255,255,0.3)">EMERSON</div>
-            <div style="font-size:11px;font-weight:700;color:white;line-height:1.2">Feedback<br>Synthesis</div>
-            <div style="height:1px;background:rgba(255,255,255,0.1);margin:2px 0"></div>
-            <div style="height:18px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);border-radius:3px"></div>
-            <div style="height:18px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);border-radius:3px"></div>
-            <div style="display:flex;gap:2px;flex-wrap:wrap">
-              <div style="padding:2px 5px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);border-radius:3px;font-size:7px;color:rgba(255,255,255,0.4)">IC3</div>
-              <div style="padding:2px 5px;background:#00796B;border-radius:3px;font-size:7px;color:white;font-weight:700">L2</div>
-              <div style="padding:2px 5px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);border-radius:3px;font-size:7px;color:rgba(255,255,255,0.4)">L5</div>
+      <div class="demo-thumb thumb-feedback">
+        <div class="t-split">
+          <div class="t-split-l">
+            <div style="font-size:7px;font-weight:700;letter-spacing:1.5px;color:rgba(255,255,255,0.3);margin-bottom:2px">LDD</div>
+            <div class="t-f-title">Feedback<br>Synthesis</div>
+            <div class="t-f-input"></div>
+            <div class="t-f-chip-row">
+              <div class="t-f-chip">IC3</div>
+              <div class="t-f-chip s">L2</div>
+              <div class="t-f-chip">L5</div>
             </div>
-            <div style="height:28px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);border-radius:3px;margin-top:2px"></div>
-            <div style="height:18px;background:#00796B;border-radius:4px;margin-top:auto"></div>
+            <div class="t-f-input" style="height:28px"></div>
+            <div class="t-f-btn"></div>
           </div>
-          <div style="flex:1;background:#F5F6F8;padding:10px;display:flex;flex-direction:column;gap:6px">
-            <div style="height:3px;background:#E0F2F0;border-radius:1px;border-left:2px solid #00796B;margin-bottom:2px"></div>
-            <div style="background:white;border:1px solid #E8E9EC;border-radius:4px;border-left:2px solid #00796B;padding:6px 7px">
-              <div style="display:flex;gap:3px;margin-bottom:4px">
-                <div style="height:6px;width:40%;background:#DBEAFE;border-radius:2px"></div>
-                <div style="height:6px;width:28%;background:#F3F4F6;border-radius:2px"></div>
-              </div>
-              <div style="height:3px;background:#E8E9EC;border-radius:1px;margin-bottom:2px"></div>
-              <div style="height:3px;background:#E8E9EC;border-radius:1px;width:80%"></div>
+          <div class="t-split-r">
+            <div class="t-r-item" style="border-left-color:#00796B">
+              <div class="t-r-tag" style="background:#DBEAFE;width:55%"></div>
+              <div class="t-r-line"></div><div class="t-r-line" style="width:75%"></div>
             </div>
-            <div style="height:3px;background:#FFF3E0;border-radius:1px;border-left:2px solid #B85C00;margin-top:2px;margin-bottom:2px"></div>
-            <div style="background:white;border:1px solid #E8E9EC;border-radius:4px;border-left:2px solid #B85C00;padding:6px 7px">
-              <div style="display:flex;gap:3px;margin-bottom:4px">
-                <div style="height:6px;width:45%;background:#D1FAE5;border-radius:2px"></div>
-              </div>
-              <div style="height:3px;background:#E8E9EC;border-radius:1px;margin-bottom:2px"></div>
-              <div style="height:3px;background:#E8E9EC;border-radius:1px;width:70%"></div>
+            <div class="t-r-item" style="border-left-color:#B85C00">
+              <div class="t-r-tag" style="background:#D1FAE5;width:45%"></div>
+              <div class="t-r-line"></div><div class="t-r-line" style="width:80%"></div>
             </div>
-            <div style="height:3px;background:#E8F0F8;border-radius:1px;border-left:2px solid #004487;margin-top:2px;margin-bottom:2px"></div>
-            <div style="background:white;border:1px solid #E8E9EC;border-radius:4px;border-left:2px solid #004487;padding:6px 7px">
-              <div style="display:flex;gap:3px;margin-bottom:4px">
-                <div style="height:6px;width:38%;background:#EDE9FE;border-radius:2px"></div>
-              </div>
-              <div style="height:3px;background:#E8E9EC;border-radius:1px;margin-bottom:2px"></div>
-              <div style="height:3px;background:#E8E9EC;border-radius:1px;width:85%"></div>
+            <div class="t-r-item" style="border-left-color:#004487">
+              <div class="t-r-tag" style="background:#EDE9FE;width:40%"></div>
+              <div class="t-r-line"></div><div class="t-r-line" style="width:65%"></div>
             </div>
           </div>
         </div>
       </div>
       <div class="demo-card-body">
-        <div class="demo-tag" style="background:#E0F2F0;color:#005A52;font-size:10px;font-weight:700;padding:2px 8px;border-radius:2px;margin-bottom:10px;width:fit-content;display:inline-flex;align-items:center;gap:5px"><i class="ti ti-clipboard-check" style="font-size:10px"></i> Talent Tool</div>
+        <div class="demo-tag tag-talent">Talent Tool</div>
         <div class="demo-card-title">Feedback Synthesis Tool</div>
-        <div class="demo-card-desc">Enter raw manager observations and a career level — the tool maps notes to the Emerson Success Model and returns structured strengths, opportunities, and recommended actions calibrated to that level.</div>
+        <div class="demo-card-desc">Make sure your feedback aligns to the Success Model guidance for employees at any career level. Use this tool to draft feedback based on strengths, areas of opportunity, and development actions.</div>
         <div class="demo-features">
-          <div class="demo-feature"><i class="ti ti-check"></i> Split-panel UI — dark input, light results</div>
-          <div class="demo-feature"><i class="ti ti-check"></i> Five Success Model capabilities · ten Korn Ferry competencies</div>
-          <div class="demo-feature"><i class="ti ti-check"></i> API-ready — Vercel proxy integration point labeled in code</div>
+          <div class="demo-feature"><div style="width:5px;height:5px;border-radius:50%;background:#00796B;flex-shrink:0;margin-top:4px"></div> Split-panel UI — dark input, light results</div>
+          <div class="demo-feature"><div style="width:5px;height:5px;border-radius:50%;background:#00796B;flex-shrink:0;margin-top:4px"></div> Five capabilities · ten Korn Ferry competencies</div>
+          <div class="demo-feature"><div style="width:5px;height:5px;border-radius:50%;background:#00796B;flex-shrink:0;margin-top:4px"></div> API-ready — Vercel proxy integration point labeled</div>
         </div>
         <div class="demo-card-footer">
           <div class="demo-views">
@@ -392,70 +477,138 @@ html, body { min-height: 100%; background: var(--em-gray-bg); color: var(--em-te
             <span class="view-chip">L1–L6</span>
             <span class="view-chip">E1–E5+</span>
           </div>
-          <div class="launch-btn">Open <i class="ti ti-arrow-right" style="font-size:11px"></i></div>
+          <div class="launch-btn">Open</div>
+        </div>
+      </div>
+    </a>
+
+    <!-- EMP Course -->
+    <a class="demo-card" href="emerson_management_process.html">
+      <div class="demo-thumb" style="background:#00796B;padding:0">
+        <div style="width:88%;background:white;border-radius:6px;overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,0.2)">
+          <!-- header bar -->
+          <div style="background:#003B6F;padding:5px 8px;display:flex;align-items:center;justify-content:space-between">
+            <div style="font-size:8px;font-weight:700;color:white">Emerson Management Process</div>
+            <div style="display:flex;align-items:center;gap:4px">
+              <div style="font-size:7px;color:rgba(255,255,255,0.6)">Progress</div>
+              <div style="width:30px;height:3px;background:rgba(255,255,255,0.2);border-radius:2px;overflow:hidden"><div style="width:60%;height:100%;background:#0D9488;border-radius:2px"></div></div>
+              <div style="font-size:7px;color:white;font-weight:700">60%</div>
+            </div>
+          </div>
+          <!-- module tabs -->
+          <div style="background:white;border-bottom:1px solid #E5E7EB;padding:0 6px;display:flex;gap:0">
+            <div style="padding:4px 6px;border-bottom:2px solid #003B6F;font-size:6px;font-weight:700;color:#003B6F;white-space:nowrap">Welcome</div>
+            <div style="padding:4px 6px;border-bottom:2px solid transparent;font-size:6px;color:#9CA3AF;white-space:nowrap">Value</div>
+            <div style="padding:4px 6px;border-bottom:2px solid transparent;font-size:6px;color:#9CA3AF;white-space:nowrap">Mgmt System</div>
+            <div style="padding:4px 6px;border-bottom:2px solid transparent;font-size:6px;color:#9CA3AF;white-space:nowrap">Annual Cycle</div>
+            <div style="padding:4px 6px;border-bottom:2px solid transparent;font-size:6px;color:#9CA3AF;white-space:nowrap">Culture</div>
+          </div>
+          <!-- slide content -->
+          <div style="padding:7px 8px">
+            <!-- hero block -->
+            <div style="background:#003B6F;border-radius:4px;padding:7px 8px;margin-bottom:5px">
+              <div style="font-size:7px;color:rgba(255,255,255,0.5);font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:3px">Session Objectives</div>
+              <div style="height:5px;background:rgba(255,255,255,0.8);border-radius:1px;width:70%;margin-bottom:3px"></div>
+              <div style="height:3px;background:rgba(255,255,255,0.4);border-radius:1px;width:90%;margin-bottom:2px"></div>
+              <div style="height:3px;background:rgba(255,255,255,0.4);border-radius:1px;width:75%"></div>
+            </div>
+            <!-- objective pills -->
+            <div style="display:flex;flex-direction:column;gap:3px">
+              <div style="display:flex;align-items:center;gap:4px;padding:3px 5px;background:#E8F2FA;border-radius:3px">
+                <div style="width:10px;height:10px;border-radius:50%;background:#003B6F;display:flex;align-items:center;justify-content:center;font-size:6px;font-weight:700;color:white;flex-shrink:0">1</div>
+                <div style="height:2px;background:#C5D8EE;border-radius:1px;flex:1"></div>
+              </div>
+              <div style="display:flex;align-items:center;gap:4px;padding:3px 5px;background:#E8F2FA;border-radius:3px">
+                <div style="width:10px;height:10px;border-radius:50%;background:#003B6F;display:flex;align-items:center;justify-content:center;font-size:6px;font-weight:700;color:white;flex-shrink:0">2</div>
+                <div style="height:2px;background:#C5D8EE;border-radius:1px;flex:1"></div>
+              </div>
+              <div style="display:flex;align-items:center;gap:4px;padding:3px 5px;background:#E8F2FA;border-radius:3px">
+                <div style="width:10px;height:10px;border-radius:50%;background:#003B6F;display:flex;align-items:center;justify-content:center;font-size:6px;font-weight:700;color:white;flex-shrink:0">3</div>
+                <div style="height:2px;background:#C5D8EE;border-radius:1px;flex:1"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="demo-card-body">
+        <div class="demo-tag tag-course">Course Module</div>
+        <div class="demo-card-title">Emerson Management Process</div>
+        <div class="demo-card-desc">Learn about the Emerson Management Process and how this value creation framework sets the cadence for operational excellence.</div>
+        <div class="demo-features">
+          <div class="demo-feature"><div style="width:5px;height:5px;border-radius:50%;background:#00796B;flex-shrink:0;margin-top:4px"></div> 8 modules with progress tracking nav</div>
+          <div class="demo-feature"><div style="width:5px;height:5px;border-radius:50%;background:#00796B;flex-shrink:0;margin-top:4px"></div> Interactive forum cascade map and pillar explorer</div>
+          <div class="demo-feature"><div style="width:5px;height:5px;border-radius:50%;background:#00796B;flex-shrink:0;margin-top:4px"></div> Scenario exercises and 6-question knowledge check</div>
+        </div>
+        <div class="demo-card-footer">
+          <div class="demo-views">
+            <span class="view-chip">~25 min</span>
+            <span class="view-chip">6 objectives</span>
+            <span class="view-chip">RLP Session 1</span>
+          </div>
+          <div class="launch-btn">Open</div>
         </div>
       </div>
     </a>
 
     <!-- Placeholder -->
-    <div class="demo-card placeholder">
-      <div class="demo-thumb thumb-gray">
-        <i class="ti ti-plus" style="font-size:28px;color:var(--em-border-strong)"></i>
+    <div class="demo-card placeholder" style="grid-column:1/-1">
+      <div class="demo-thumb thumb-placeholder" style="height:80px">
+        <i class="ti ti-plus" style="font-size:24px;color:#D1D5DB"></i>
       </div>
-      <div class="demo-card-body">
-        <div class="demo-tag tag-coming"><i class="ti ti-clock" style="font-size:10px"></i> In design</div>
-        <div class="demo-card-title" style="color:var(--em-text-muted)">Next demo</div>
-        <div class="demo-card-desc">Space reserved for the next L&amp;D experience prototype.</div>
-        <div class="demo-card-footer">
-          <div class="demo-views"></div>
-          <div class="launch-btn-ghost"><i class="ti ti-lock" style="font-size:11px"></i> Not yet available</div>
+      <div class="demo-card-body" style="padding:16px 22px 18px">
+        <div class="demo-tag tag-coming">In design</div>
+        <div class="demo-card-title" style="color:var(--text-3)">More coming soon</div>
+        <div class="demo-card-desc" style="margin-bottom:0">Space reserved for the next experience prototype. Designs in progress.</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- About -->
+<div class="about">
+  <div class="about-inner">
+    <div>
+      <div class="about-label">About this space</div>
+      <div class="about-title">Prototypes, not promises.</div>
+      <div class="about-text">Everything here is a preview. Simulated environments are built to look and feel real so you can experience the interaction as a user. These prototypes provide a safe place to test function and reaction before any production development begins.</div>
+      
+    </div>
+    <div class="about-right">
+      <div class="about-item">
+        <div style="width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.5);flex-shrink:0;margin-top:6px"></div>
+        <div>
+          <div class="about-item-title">Fully interactive</div>
+          <div class="about-item-desc">No mockups. Real HTML/CSS/JS running in your browser. You can click everything.</div>
         </div>
       </div>
-    </div>
+      <div class="about-item">
+        <div style="width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.5);flex-shrink:0;margin-top:6px"></div>
+        <div>
+          <div class="about-item-title">Role views built in</div>
+          <div class="about-item-desc">Program hubs provide a multi-user view so you can see what each role sees. In production, permissions would be granted by SharePoint user recognition.</div>
+        </div>
+      </div>
+      <div class="about-item">
+        <div style="width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.5);flex-shrink:0;margin-top:6px"></div>
+        <div>
+          <div class="about-item-title">Production-ready architecture</div>
+          <div class="about-item-desc">Every component has a named production counterpart. In a real world setting, these prototypes would be driven by SPFx web parts, Power Automate flows, AI Builder integrations, or LMS SCORM packages.</div>
+        </div>
+      </div>
 
-  </div>
-
-  <!-- How to use -->
-  <div class="section-label">How to use these demos</div>
-  <div class="how-grid">
-    <div class="how-card">
-      <div class="how-num">01</div>
-      <div class="how-title">Explore all views</div>
-      <div class="how-desc">The SharePoint demos have a purple prototype banner — use it to switch between role views. In production, SharePoint permissions handle this automatically so each person only sees their own.</div>
-    </div>
-    <div class="how-card">
-      <div class="how-num">02</div>
-      <div class="how-title">Interact with the content</div>
-      <div class="how-desc">Checklists are clickable and update progress in real time. The course module has scenarios, a knowledge check, and a nav bar you can use to jump between sections.</div>
-    </div>
-    <div class="how-card">
-      <div class="how-num">03</div>
-      <div class="how-title">Collect and share feedback</div>
-      <div class="how-desc">Share this link with stakeholders for review. Once a design is signed off, each component maps to a real SharePoint, Power Platform, or LMS build step.</div>
     </div>
   </div>
-
 </div>
 
 <!-- Footer -->
 <div class="footer">
-  <div class="footer-left">
-    <strong>Emerson Learning &amp; Development</strong> · LDD Demo Space · For internal review only
-  </div>
+  <div class="footer-left">LDD Demo Space · For internal review only</div>
   <div class="footer-right">
-    <div class="footer-badge"><i class="ti ti-brand-github" style="font-size:10px"></i> tinpigprod.github.io</div>
-    <div class="footer-badge">Prototype v1</div>
+    <div class="footer-chip">Design previews</div>
+    <div class="footer-chip">tinpigprod.github.io/Emerson</div>
   </div>
 </div>
 
-<script>
-function copyUrl() {
-  navigator.clipboard.writeText('https://tinpigprod.github.io').then(function() {
-    var el = document.getElementById('copied-flash');
-    el.style.display = 'inline';
-    setTimeout(function() { el.style.display = 'none'; }, 2000);
-  });
-}
-</script>
 </body>
 </html>
