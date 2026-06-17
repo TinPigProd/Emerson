@@ -259,15 +259,16 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
 
 .fb-card { background: #F8F9FC; border: 1px solid var(--border); border-radius: 8px; padding: 14px; }
 .fb-card h4 { font-size: 13px; font-weight: 600; color: var(--text-primary); margin-bottom: 12px; }
-.fb-item { margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid #E5E7EB; }
+.fb-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
+.fb-item { background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px; padding: 12px 14px; }
 .fb-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-.fb-name-row { font-size: 12px; font-weight: 600; color: var(--text-primary); margin-bottom: 3px; display: flex; align-items: center; gap: 6px; }
+.fb-name-row { font-size: 12px; font-weight: 600; color: var(--text-primary); margin-bottom: 5px; display: flex; align-items: center; gap: 6px; }
 .fb-text { font-size: 12px; color: var(--text-secondary); line-height: 1.6; }
 .mb { font-size: 9px; padding: 2px 6px; border-radius: 10px; font-weight: 500; }
 .mb-yes { background: #DCFCE7; color: #15803D; }
 .mb-close { background: #FEF9C3; color: #A16207; }
 .mb-review { background: #FEE2E2; color: #B91C1C; }
-.pattern-block { margin-top: 12px; padding-top: 12px; border-top: 1px solid #E5E7EB; font-size: 12px; color: var(--text-secondary); line-height: 1.7; font-style: italic; }
+.pattern-block { background: #EFF6FF; border: 1px solid #BFDBFE; border-radius: 8px; padding: 14px 16px; font-size: 13px; color: #1E40AF; line-height: 1.7; }
 </style>
 </head>
 <body>
@@ -407,6 +408,8 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
             </div>
           </div>
         </div>
+        <!-- Feedback renders below grid after submit -->
+        <div id="sim-feedback" style="display:none;margin-top:24px;border-top:1px solid var(--border);padding-top:24px"></div>
       </div>
     </div>
 
@@ -867,28 +870,39 @@ function submitSim() {
 
   const patternFeedback = getPatternFeedback();
 
-  document.getElementById('sim-panel').innerHTML = `
-    <div class="fb-card">
-      <h4>Calibration feedback</h4>
+  // Reset panel to neutral state
+  document.getElementById('sim-panel').innerHTML = `<div class="dp-card"><h4>Calibration complete</h4><p>Your feedback is below. Click any persona on the grid to review their placement.</p></div>`;
+
+  // Render feedback full-width below grid
+  const fbDiv = document.getElementById('sim-feedback');
+  fbDiv.style.display = 'block';
+  fbDiv.innerHTML = `
+    <div style="font-size:14px;font-weight:600;color:var(--text-primary);margin-bottom:16px;">Calibration feedback</div>
+    <div class="fb-grid">
       ${items.map(item => `
         <div class="fb-item">
           <div class="fb-name-row">
-            <div class="g-chip-av" style="background:${item.p.color};color:#fff;width:18px;height:18px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:7px;font-weight:600">${item.p.initials}</div>
+            <div class="g-chip-av" style="background:${item.p.color};color:#fff;width:20px;height:20px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:7px;font-weight:600;flex-shrink:0">${item.p.initials}</div>
             ${item.p.name}
             <span class="mb ${item.exact ? 'mb-yes' : item.close ? 'mb-close' : 'mb-review'}">${item.exact ? 'Aligned' : item.close ? 'Close' : 'Review'}</span>
           </div>
           <div class="fb-text">${item.feedback}</div>
         </div>
       `).join('')}
-      <div class="pattern-block">${patternFeedback}</div>
     </div>
-    <button class="rst-btn" onclick="resetSim()">← Start over</button>
+    <div class="pattern-block">${patternFeedback}</div>
+    <div style="margin-top:16px"><button class="rst-btn" onclick="resetSim()">← Start over</button></div>
   `;
+
+  // Scroll to feedback
+  fbDiv.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
 function resetSim() {
   placements = {}; justifications = {}; selectedId = null;
   setSimPhase(1);
+  document.getElementById('sim-feedback').style.display = 'none';
+  document.getElementById('sim-feedback').innerHTML = '';
   renderSim();
   document.getElementById('sim-panel').innerHTML = `<div class="dp-card"><h4>How to use this</h4><p>Drag a leader from the bench onto the grid. Click any placed leader to read their profile and add your justification.</p></div>`;
 }
