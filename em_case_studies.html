@@ -65,6 +65,10 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
 .nav-case-title { flex: 1; font-size: 12px; }
 .nav-case-lock { font-size: 9px; opacity: 0.5; }
 
+/* Disabled nav items */
+.nav-item.nav-disabled { opacity: 0.35; cursor: default; pointer-events: none; }
+.nav-case-day-disabled { background: rgba(255,255,255,0.06) !important; color: rgba(255,255,255,0.3) !important; }
+
 /* Main */
 .main { margin-left: 240px; flex: 1; min-height: 100vh; }
 
@@ -76,6 +80,11 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
 .breadcrumb-sep { color: var(--text-muted); font-size: 11px; }
 .breadcrumb-current { color: var(--text-primary); font-weight: 500; }
 .proto-badge { font-size: 10px; background: #FEF3C7; color: #92400E; padding: 2px 8px; border-radius: 20px; font-weight: 500; }
+
+.proto-banner { background: #2D1B69; border-bottom: 1px solid #7C5CBF; padding: 7px 24px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.proto-label { display: inline-flex; align-items: center; gap: 5px; background: #7C5CBF; color: white; font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 8px; border-radius: 4px; flex-shrink: 0; }
+.proto-msg { font-size: 12px; color: #C9B8F0; }
+.proto-msg strong { color: white; }
 
 .content { padding: 32px; max-width: 900px; }
 
@@ -277,6 +286,19 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
 .sg-complete h3 { font-size: 18px; font-weight: 600; color: var(--text-primary); margin-bottom: 8px; }
 .sg-complete p { font-size: 13px; color: var(--text-secondary); line-height: 1.6; max-width: 460px; margin: 0 auto 20px; }
 
+/* Cascade visual */
+.cascade-diagram { display: flex; flex-direction: column; gap: 0; margin-bottom: 20px; }
+.cascade-level { display: flex; align-items: center; gap: 14px; padding: 14px 16px; border-radius: 8px; background: #fff; border: 1px solid var(--border); position: relative; }
+.cascade-level-icon { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; color: #fff; flex-shrink: 0; }
+.cascade-level-info { flex: 1; }
+.cascade-level-name { font-size: 13px; font-weight: 600; color: var(--text-primary); }
+.cascade-level-role { font-size: 11px; color: var(--text-secondary); margin-bottom: 4px; }
+.cascade-level-msg { font-size: 12px; color: var(--text-secondary); line-height: 1.5; font-style: italic; }
+.cascade-arrow { display: flex; align-items: center; justify-content: center; padding: 4px 0; color: var(--text-muted); font-size: 16px; }
+.cascade-arrow-label { font-size: 10px; color: var(--text-muted); margin-left: 8px; }
+.cascade-break { border: 1.5px dashed #DC2626; }
+.cascade-break .cascade-level-icon { background: #DC2626 !important; }
+
 /* Coming soon modal */
 .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 100; align-items: center; justify-content: center; }
 .modal-overlay.visible { display: flex; }
@@ -326,32 +348,28 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
   <nav class="nav-section">
     <div class="nav-label">Navigation</div>
     <a class="nav-item" href="emerson_rising_leaders_demo.html">📋 My program</a>
-    <a class="nav-item" href="emerson_rising_leaders_demo.html">✓ My checklist</a>
     <a class="nav-item" href="emerson_rising_leaders_demo.html">👥 My cohort</a>
-    <a class="nav-item" href="emerson_rising_leaders_demo.html">🎓 LMS courses</a>
-    <a class="nav-item" href="emerson_rising_leaders_demo.html">📎 Resources</a>
+    <a class="nav-item nav-disabled">🎓 LMS courses</a>
+    <a class="nav-item nav-disabled">📎 Resources</a>
   </nav>
   <nav class="nav-section" style="margin-top:4px">
     <div class="nav-label">E.M. Merson cases</div>
-    <a class="nav-item nav-case" id="nav-committed" onclick="navToCase('committed');return false;" href="#">
-      <span class="nav-case-day" id="nav-day-committed">1</span>
-      <span class="nav-case-title">Committed Number</span>
-      <span class="nav-case-lock" id="nav-lock-committed">🔒</span>
+    <a class="nav-item nav-disabled" id="nav-committed">
+      <span class="nav-case-day nav-case-day-disabled">1</span>
+      <span class="nav-case-title">Emerson Management Process</span>
     </a>
-    <a class="nav-item nav-case" id="nav-translation" onclick="navToCase('translation');return false;" href="#">
-      <span class="nav-case-day" id="nav-day-translation">2</span>
-      <span class="nav-case-title">Translation Gap</span>
-      <span class="nav-case-lock" id="nav-lock-translation">🔒</span>
+    <a class="nav-item nav-disabled" id="nav-translation">
+      <span class="nav-case-day nav-case-day-disabled">2</span>
+      <span class="nav-case-title">The Cascade</span>
     </a>
     <a class="nav-item nav-case" id="nav-heir" onclick="navToCase('heir');return false;" href="#">
       <span class="nav-case-day" id="nav-day-heir">3</span>
       <span class="nav-case-title">Org Review 9-Box</span>
       <span class="nav-case-lock" id="nav-lock-heir">🔒</span>
     </a>
-    <a class="nav-item nav-case" id="nav-stranded" onclick="navToCase('stranded');return false;" href="#">
-      <span class="nav-case-day" id="nav-day-stranded">4</span>
+    <a class="nav-item nav-disabled" id="nav-stranded">
+      <span class="nav-case-day nav-case-day-disabled">4</span>
       <span class="nav-case-title">Matrix Leadership</span>
-      <span class="nav-case-lock" id="nav-lock-stranded">🔒</span>
     </a>
   </nav>
   <div class="phase-section">
@@ -365,13 +383,16 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
 
 <!-- Main -->
 <main class="main">
+  <div class="proto-banner">
+    <div class="proto-label">🧪 Prototype</div>
+    <span class="proto-msg"><strong>Design preview only.</strong> This page demonstrates the Org Review 9-Box talent calibration. All other nav items, locked cases, and the staff override are shown for context — not fully built out.</span>
+  </div>
   <div class="topbar">
     <div class="topbar-left">
       <div class="breadcrumb" id="breadcrumb">
         <span class="breadcrumb-current">Cases</span>
       </div>
     </div>
-    <div class="proto-badge">Prototype</div>
   </div>
 
   <div class="content">
@@ -511,6 +532,24 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
       </div>
     </div>
 
+    <!-- CASCADE (TRANSLATION GAP) REFLECTION VIEW -->
+    <div class="sim-view" id="cascade-view">
+      <button class="back-btn" onclick="showList()">← Cases</button>
+      <div class="sim-container">
+        <div class="sim-header">
+          <h2>The Cascade</h2>
+          <p>Four prompts on how strategy becomes unrecognizable as it travels down the organization. Work through each before moving on.</p>
+        </div>
+        <div class="phases-bar">
+          <div class="sim-phase active" id="cap1">The signal</div>
+          <div class="sim-phase" id="cap2">The break</div>
+          <div class="sim-phase" id="cap3">The cost</div>
+          <div class="sim-phase" id="cap4">The mirror</div>
+        </div>
+        <div id="ca-content"></div>
+      </div>
+    </div>
+
   </div>
 </main>
 
@@ -538,7 +577,7 @@ const CASES = [
   {
     id: 'committed',
     day: 1,
-    title: 'The Committed Number',
+    title: 'Emerson Management Process',
     module: 'Leading With Purpose',
     moduleDay: 'Day 1',
     status: 'available',
@@ -621,23 +660,20 @@ function renderCaseList() {
   const grid = document.getElementById('cases-grid');
   grid.innerHTML = '';
   CASES.forEach(c => {
-    const unlocked = isUnlocked(c.day);
+    const unlocked = c.id === 'heir'; // Only Org Review 9-Box is live
     const card = document.createElement('div');
     card.className = `case-card ${unlocked ? 'unlocked' : 'locked'}`;
     if (unlocked) card.onclick = () => navToCase(c.id);
 
-    const isNew = c.day === overrideLevel;
-
     card.innerHTML = `
       <div class="case-inner">
         <div class="case-day-strip ${unlocked ? 'unlocked-strip' : 'locked-strip'}">
-          <div class="day-label ${unlocked ? 'unlocked-label' : 'locked-label'}">Day</div>
           <div class="day-num ${unlocked ? 'unlocked-num' : 'locked-num'}">${c.day}</div>
         </div>
         <div class="case-body">
           <div class="case-meta">
             <span class="case-module">${c.module}</span>
-            <span class="case-status-badge ${unlocked ? (isNew ? 'badge-new' : 'badge-available') : 'badge-locked'}">${unlocked ? (isNew ? 'New' : 'Available') : 'Locked'}</span>
+            <span class="case-status-badge ${unlocked ? 'badge-available' : 'badge-locked'}">${unlocked ? 'Available' : 'Locked'}</span>
           </div>
           <div class="case-title">${c.title}</div>
           <div class="case-desc">${c.desc}</div>
@@ -645,7 +681,6 @@ function renderCaseList() {
             <div class="case-activities">
               ${c.activities.map(a => `<span class="activity-tag ${unlocked ? 'available' : 'locked'}">${a.name}</span>`).join('')}
             </div>
-            ${!unlocked ? `<div class="unlock-note"><span class="lock-icon">🔒</span>${unlockLabel(c.day)}</div>` : ''}
           </div>
         </div>
         ${unlocked ? '<div class="case-arrow">›</div>' : ''}
@@ -662,6 +697,7 @@ function showList() {
   document.getElementById('sim-view').className = 'sim-view';
   document.getElementById('succession-view').className = 'sim-view';
   document.getElementById('committed-view').className = 'sim-view';
+  document.getElementById('cascade-view').className = 'sim-view';
   document.getElementById('breadcrumb').innerHTML = '<span class="breadcrumb-current">Cases</span>';
   // Scroll to top
   window.scrollTo(0, 0);
@@ -673,6 +709,7 @@ function showDetail(caseId) {
   document.getElementById('sim-view').className = 'sim-view';
   document.getElementById('succession-view').className = 'sim-view';
   document.getElementById('committed-view').className = 'sim-view';
+  document.getElementById('cascade-view').className = 'sim-view';
   document.getElementById('case-detail').className = 'case-detail visible';
 
   document.getElementById('breadcrumb').innerHTML = `
@@ -1229,7 +1266,8 @@ function setActiveNavCase(caseId) {
 }
 
 function updateNavState() {
-  ['committed','translation','heir','stranded'].forEach(id => {
+  // Only Org Review 9-Box is live; other nav items are permanently disabled
+  ['heir'].forEach(id => {
     const el = document.getElementById(`nav-${id}`);
     const lockEl = document.getElementById(`nav-lock-${id}`);
     const dayEl = document.getElementById(`nav-day-${id}`);
@@ -1251,6 +1289,7 @@ function navToCase(caseId) {
   document.getElementById('sim-view').className = 'sim-view';
   document.getElementById('succession-view').className = 'sim-view';
   document.getElementById('committed-view').className = 'sim-view';
+  document.getElementById('cascade-view').className = 'sim-view';
 
   // Update breadcrumb
   const titles = {
@@ -1276,6 +1315,8 @@ function navToCase(caseId) {
     showCommitted();
   } else if (caseId === 'heir') {
     showSim();
+  } else if (caseId === 'translation') {
+    showCascade();
   } else {
     showComingSoonInline(caseId);
   }
@@ -1510,6 +1551,209 @@ function advanceCN(fromStep) {
 
 renderCaseList();
 updateNavState();
+
+// ---- THE CASCADE (TRANSLATION GAP) REFLECTION ----
+let caStep = 1;
+let caSelections = {};
+
+const CA_BREAK_FEEDBACK = {
+  A: "Naming Alex's silence as the break is accurate — and it is the harder answer to land on, because Alex is not the one experiencing the consequence. The strategy did not change at Alex's level. What changed is that Alex knew the Q3 number was at risk and did not say so. Everything downstream is operating on stale information that looked current. The break happened before the cascade even started moving.",
+  B: "Marcus is a reasonable place to look, but the case does not show Marcus distorting anything — Marcus is working from the same committed number Alex gave him. The information Marcus has is accurate to what he was told. The gap opened earlier, when Alex chose not to update that number once it changed. Marcus cannot translate information he was never given.",
+  C: "The regional leadership layer is where the gap becomes visible, but visibility is not the same as origin. By the time Sam's manager is setting targets, the number has already been wrong for weeks. This layer is doing reasonable work with a stale input. The question worth asking is why no correction reached them before targets were set — not whether they translated faithfully.",
+  D: "Sam asking for clarity twice and receiving reassurance is the most visible symptom — but it is a symptom, not the break. Sam is the person furthest from the original decision and the most affected by it. Naming Sam as the break point risks treating the person with the least power in the chain as the source of the problem, when Sam is actually the most accurate signal that something upstream is wrong."
+};
+
+function showCascade() {
+  setActiveNavCase('translation');
+  document.getElementById('breadcrumb').innerHTML = `
+    <a href="#" onclick="showList();return false;">Cases</a>
+    <span class="breadcrumb-sep">›</span>
+    <span class="breadcrumb-current">The Cascade</span>
+  `;
+  document.getElementById('case-list').style.display = 'none';
+  document.getElementById('case-detail').className = 'case-detail';
+  document.getElementById('sim-view').className = 'sim-view';
+  document.getElementById('succession-view').className = 'sim-view';
+  document.getElementById('committed-view').className = 'sim-view';
+  document.getElementById('cascade-view').className = 'sim-view';
+  document.getElementById('cascade-view').className = 'sim-view visible';
+  caStep = 1;
+  caSelections = {};
+  renderCAStep(1);
+  window.scrollTo(0, 0);
+}
+
+function setCAPhase(n) {
+  ['cap1','cap2','cap3','cap4'].forEach((id,i) => {
+    document.getElementById(id).classList.toggle('active', i < n);
+  });
+}
+
+function renderCAStep(step) {
+  setCAPhase(step);
+  const c = document.getElementById('ca-content');
+
+  if (step === 1) {
+    c.innerHTML = `
+      <div class="sg-prompt-card">
+        <div class="sg-prompt-num">Prompt 1 of 4 — The signal</div>
+        <div class="sg-prompt-q">Trace the message as it travels. What changes at each level?</div>
+        <div class="sg-prompt-sub">Read the cascade below before answering.</div>
+        <div class="cascade-diagram">
+          <div class="cascade-level">
+            <div class="cascade-level-icon" style="background:#1B2552">AT</div>
+            <div class="cascade-level-info">
+              <div class="cascade-level-name">Alex Tan</div>
+              <div class="cascade-level-role">VP &amp; GM, E.M. Merson Controls</div>
+              <div class="cascade-level-msg">"We're holding the Q3 number. No need to change direction yet."</div>
+            </div>
+          </div>
+          <div class="cascade-arrow">↓<span class="cascade-arrow-label">commits to Marcus, says nothing about the risk</span></div>
+          <div class="cascade-level">
+            <div class="cascade-level-icon" style="background:#2D3748">MH</div>
+            <div class="cascade-level-info">
+              <div class="cascade-level-name">Marcus Holt</div>
+              <div class="cascade-level-role">Divisional President</div>
+              <div class="cascade-level-msg">"Americas is on track for Q3. Keep current targets in place."</div>
+            </div>
+          </div>
+          <div class="cascade-arrow">↓<span class="cascade-arrow-label">cascades the plan downward, unaware anything has shifted</span></div>
+          <div class="cascade-level">
+            <div class="cascade-level-icon" style="background:#6B7280">?</div>
+            <div class="cascade-level-info">
+              <div class="cascade-level-name">Regional Operations Leadership</div>
+              <div class="cascade-level-role">Sets specific targets for Houston</div>
+              <div class="cascade-level-msg">"Hold the line. Same targets as last quarter."</div>
+            </div>
+          </div>
+          <div class="cascade-arrow">↓<span class="cascade-arrow-label">sets Sam's operating targets from a number that's already stale</span></div>
+          <div class="cascade-level cascade-break">
+            <div class="cascade-level-icon">SR</div>
+            <div class="cascade-level-info">
+              <div class="cascade-level-name">Sam Reyes</div>
+              <div class="cascade-level-role">Director, Operations — Americas</div>
+              <div class="cascade-level-msg">"I've asked twice why the targets don't match what I'm seeing. I keep getting reassurance, not information."</div>
+            </div>
+          </div>
+        </div>
+        <textarea class="sg-textarea" id="ca-t1" placeholder="What changes at each level? Where does the message stop matching reality?" oninput="checkSGText('ca-t1','ca-btn1',20)"></textarea>
+        <button class="sg-next-btn" id="ca-btn1" disabled onclick="advanceCA(1)">Next →</button>
+      </div>`;
+  }
+
+  else if (step === 2) {
+    c.innerHTML = `
+      <div class="sg-prompt-card">
+        <div class="sg-prompt-num">Prompt 2 of 4 — The break</div>
+        <div class="sg-prompt-q">Where did the cascade actually break?</div>
+        <div class="sg-prompt-sub">Pick the point where the information stopped being accurate — not where the consequence became visible.</div>
+        <div class="sg-options">
+          <button class="sg-option" onclick="selectCAOption(this,'A')">
+            <div class="sg-option-letter">A</div>
+            <div class="sg-option-text">It broke with Alex — the moment Alex knew the number was at risk and chose not to update it.</div>
+          </button>
+          <button class="sg-option" onclick="selectCAOption(this,'B')">
+            <div class="sg-option-letter">B</div>
+            <div class="sg-option-text">It broke with Marcus — he should have questioned the number more before cascading it.</div>
+          </button>
+          <button class="sg-option" onclick="selectCAOption(this,'C')">
+            <div class="sg-option-letter">C</div>
+            <div class="sg-option-text">It broke at the regional operations layer — they set targets without checking if conditions had changed.</div>
+          </button>
+          <button class="sg-option" onclick="selectCAOption(this,'D')">
+            <div class="sg-option-letter">D</div>
+            <div class="sg-option-text">It broke with Sam — Sam should have escalated past the reassurance instead of accepting it.</div>
+          </button>
+        </div>
+        <button class="sg-next-btn" id="ca-btn2" disabled onclick="advanceCA(2)">See feedback →</button>
+        <div class="sg-feedback" id="ca-fb2"></div>
+        <button class="sg-next-btn" id="ca-btn2b" style="display:none;margin-top:12px" onclick="advanceCA(2.5)">Next →</button>
+      </div>`;
+  }
+
+  else if (step === 3) {
+    c.innerHTML = `
+      <div class="sg-prompt-card">
+        <div class="sg-prompt-num">Prompt 3 of 4 — The cost</div>
+        <div class="sg-prompt-q">Sam has been executing against the wrong target for weeks. What is the actual cost of that — beyond the missed number?</div>
+        <div class="sg-prompt-sub">Think about what Sam's team has been doing, and what it will take to recover.</div>
+        <div class="sg-context">
+          <strong>What's accumulated in Houston:</strong><br><br>
+          Sam's team has been allocating people and budget against a target that no longer reflects what the business actually needs. Decisions about hiring, overtime, and customer commitments have all been made on the old assumption. Sam has asked for clarity twice and been told to "hold the line" both times — which has started to erode Sam's confidence in the information coming from above, not just the target itself.
+        </div>
+        <textarea class="sg-textarea" id="ca-t3" placeholder="What has the misalignment cost beyond the number? Name 2–3 specific things." oninput="checkSGText('ca-t3','ca-btn3',30)"></textarea>
+        <button class="sg-next-btn" id="ca-btn3" disabled onclick="advanceCA(3)">Next →</button>
+        <div class="sg-feedback" id="ca-fb3" style="display:none">
+          <strong>What the case reveals:</strong> The visible cost is the missed target. The real cost is everything Sam's team did in good faith against a target that was already wrong — the hours allocated, the commitments made to customers, the overtime spent protecting a number that didn't reflect reality. And there's a second cost that doesn't show up in any report: Sam now trusts the information from above less. The next time something looks off, Sam may not ask a third time. That is the most expensive part of a cascade failure — it teaches the people furthest from the decision to stop trusting the signal.
+        </div>
+      </div>`;
+  }
+
+  else if (step === 4) {
+    c.innerHTML = `
+      <div class="sg-mirror-card">
+        <div class="sg-prompt-num" style="color:rgba(255,255,255,0.6)">Prompt 4 of 4 — The mirror</div>
+        <div class="sg-mirror-q">Where in your own organization is a number, a target, or a direction currently more stale than the people relying on it realize?</div>
+        <div class="sg-mirror-sub">Not Alex's cascade. Yours. What have you committed to that may already need an update — and who is downstream of it right now?</div>
+      </div>
+      <div class="sg-facilitator">
+        <strong>Facilitator note:</strong> Hold this question before opening discussion. Cascade failures are rarely caused by one bad actor — they are caused by a gap that opens quietly at the top and grows as it travels. Ask the room: how would you know if your own committed number needed updating right now? What would have to happen for that information to travel upward as fast as it traveled down?
+      </div>
+      <div class="sg-prompt-card" style="margin-top:16px">
+        <div class="sg-prompt-q" style="font-size:15px">One thing to take forward</div>
+        <div class="sg-prompt-sub">What is one piece of information you are sitting on right now that someone downstream needs in order to do their job accurately?</div>
+        <textarea class="sg-textarea" id="ca-t4" placeholder="Be specific. Name the information and who needs it." oninput="checkSGText('ca-t4','ca-btn4',20)"></textarea>
+        <button class="sg-next-btn" id="ca-btn4" disabled onclick="advanceCA(4)">Complete →</button>
+      </div>`;
+  }
+
+  else if (step === 5) {
+    c.innerHTML = `
+      <div class="sg-complete">
+        <div class="sg-complete-icon">✓</div>
+        <h3>Reflection complete</h3>
+        <p>The cascade broke quietly, at the top, before anyone downstream knew anything was wrong. The question this case leaves open is how fast your own organization would catch the same kind of gap — and whether you would be the one to surface it.</p>
+        <button class="sg-next-btn" onclick="showList()">← Back to cases</button>
+      </div>`;
+  }
+}
+
+function selectCAOption(el, letter) {
+  document.querySelectorAll('#ca-content .sg-option').forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+  caSelections.breakPoint = letter;
+  document.getElementById('ca-btn2').disabled = false;
+}
+
+function advanceCA(fromStep) {
+  if (fromStep === 1) {
+    caSelections.signal = document.getElementById('ca-t1').value;
+    renderCAStep(2);
+  }
+  else if (fromStep === 2) {
+    const fb = document.getElementById('ca-fb2');
+    fb.textContent = CA_BREAK_FEEDBACK[caSelections.breakPoint];
+    fb.classList.add('visible');
+    document.getElementById('ca-btn2').style.display = 'none';
+    document.getElementById('ca-btn2b').style.display = 'inline-block';
+    document.querySelectorAll('#ca-content .sg-option').forEach(o => o.style.pointerEvents = 'none');
+  }
+  else if (fromStep === 2.5) {
+    renderCAStep(3);
+  }
+  else if (fromStep === 3) {
+    caSelections.cost = document.getElementById('ca-t3').value;
+    const fb = document.getElementById('ca-fb3');
+    fb.style.display = 'block';
+    document.getElementById('ca-btn3').textContent = 'Continue →';
+    document.getElementById('ca-btn3').onclick = () => renderCAStep(4);
+    document.getElementById('ca-btn3').disabled = false;
+  }
+  else if (fromStep === 4) {
+    caSelections.commitment = document.getElementById('ca-t4').value;
+    renderCAStep(5);
+  }
+}
 
 // Query param: show staff controls if ?staff=true
 const urlParams = new URLSearchParams(window.location.search);
