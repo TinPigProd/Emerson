@@ -56,6 +56,15 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
 .phase-item.current { color: rgba(255,255,255,0.8); }
 .phase-item.complete .phase-dot { background: #059669; }
 
+/* Case nav items */
+.nav-case { padding: 7px 10px 7px 16px; gap: 8px; opacity: 1; }
+.nav-case.locked-nav { opacity: 0.45; cursor: default; }
+.nav-case.active { background: var(--sidebar-active); color: #fff; }
+.nav-case-day { width: 18px; height: 18px; border-radius: 4px; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; font-size: 9px; font-weight: 700; color: rgba(255,255,255,0.6); flex-shrink: 0; }
+.nav-case.active .nav-case-day { background: var(--accent-light); color: #fff; }
+.nav-case-title { flex: 1; font-size: 12px; }
+.nav-case-lock { font-size: 9px; opacity: 0.5; }
+
 /* Main */
 .main { margin-left: 240px; flex: 1; min-height: 100vh; }
 
@@ -319,9 +328,31 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
     <a class="nav-item" href="emerson_rising_leaders_demo.html">📋 My program</a>
     <a class="nav-item" href="emerson_rising_leaders_demo.html">✓ My checklist</a>
     <a class="nav-item" href="emerson_rising_leaders_demo.html">👥 My cohort</a>
-    <a class="nav-item active" href="#">📁 EM Merson cases</a>
     <a class="nav-item" href="emerson_rising_leaders_demo.html">🎓 LMS courses</a>
     <a class="nav-item" href="emerson_rising_leaders_demo.html">📎 Resources</a>
+  </nav>
+  <nav class="nav-section" style="margin-top:4px">
+    <div class="nav-label">EM Merson cases</div>
+    <a class="nav-item nav-case" id="nav-committed" onclick="navToCase('committed');return false;" href="#">
+      <span class="nav-case-day" id="nav-day-committed">1</span>
+      <span class="nav-case-title">Committed Number</span>
+      <span class="nav-case-lock" id="nav-lock-committed">🔒</span>
+    </a>
+    <a class="nav-item nav-case" id="nav-translation" onclick="navToCase('translation');return false;" href="#">
+      <span class="nav-case-day" id="nav-day-translation">2</span>
+      <span class="nav-case-title">Translation Gap</span>
+      <span class="nav-case-lock" id="nav-lock-translation">🔒</span>
+    </a>
+    <a class="nav-item nav-case" id="nav-heir" onclick="navToCase('heir');return false;" href="#">
+      <span class="nav-case-day" id="nav-day-heir">3</span>
+      <span class="nav-case-title">Org Review 9-Box</span>
+      <span class="nav-case-lock" id="nav-lock-heir">🔒</span>
+    </a>
+    <a class="nav-item nav-case" id="nav-stranded" onclick="navToCase('stranded');return false;" href="#">
+      <span class="nav-case-day" id="nav-day-stranded">4</span>
+      <span class="nav-case-title">Matrix Leadership</span>
+      <span class="nav-case-lock" id="nav-lock-stranded">🔒</span>
+    </a>
   </nav>
   <div class="phase-section">
     <div class="phase-label">Program phases</div>
@@ -583,6 +614,7 @@ function setOverride(level) {
   overrideLevel = level;
   document.querySelectorAll('.override-btn').forEach((b,i) => b.classList.toggle('active', i === level));
   renderCaseList();
+  updateNavState();
 }
 
 function renderCaseList() {
@@ -624,6 +656,7 @@ function renderCaseList() {
 }
 
 function showList() {
+  document.querySelectorAll('.nav-case').forEach(el => el.classList.remove('active'));
   document.getElementById('case-list').style.display = 'block';
   document.getElementById('case-detail').className = 'case-detail';
   document.getElementById('sim-view').className = 'sim-view';
@@ -718,20 +751,21 @@ const SIM_PERSONAS = [
 ];
 
 const BOXES = [
-  {perf:0,pot:2,label:'Underperforming',                              bg:'#F3F4F6', hiPot:false},
-  {perf:1,pot:2,label:'Solid Performance — Potential to Move Up 2+ Levels', bg:'#BFDBFE', hiPot:true},
-  {perf:2,pot:2,label:'High Performance — Potential to Move Up 2+ Levels',  bg:'#93C5FD', hiPot:true},
-  {perf:0,pot:1,label:'Underperforming',                              bg:'#F3F4F6', hiPot:false},
-  {perf:1,pot:1,label:'Solid Performance — Potential to Move Up 1 Level',   bg:'#DBEAFE', hiPot:false},
+  {perf:2,pot:0,label:'High Performance and Well Placed',                    bg:'#DBEAFE', hiPot:false},
   {perf:2,pot:1,label:'High Performance — Potential to Move Up 1 Level',    bg:'#BFDBFE', hiPot:true},
-  {perf:0,pot:0,label:'Underperforming',                              bg:'#F3F4F6', hiPot:false},
-  {perf:1,pot:0,label:'Solid Performance and Well Placed',            bg:'#EFF6FF', hiPot:false},
-  {perf:2,pot:0,label:'High Performance and Well Placed',             bg:'#DBEAFE', hiPot:false}
+  {perf:2,pot:2,label:'High Performance — Potential to Move Up 2+ Levels',  bg:'#93C5FD', hiPot:true},
+  {perf:1,pot:0,label:'Solid Performance and Well Placed',                   bg:'#EFF6FF', hiPot:false},
+  {perf:1,pot:1,label:'Solid Performance — Potential to Move Up 1 Level',   bg:'#DBEAFE', hiPot:false},
+  {perf:1,pot:2,label:'Solid Performance — Potential to Move Up 2+ Levels', bg:'#BFDBFE', hiPot:true},
+  {perf:0,pot:0,label:'Underperforming',                                     bg:'#F3F4F6', hiPot:false},
+  {perf:0,pot:1,label:'Underperforming',                                     bg:'#F3F4F6', hiPot:false},
+  {perf:0,pot:2,label:'Underperforming',                                     bg:'#F3F4F6', hiPot:false}
 ];
 
 let placements = {}, justifications = {}, selectedId = null;
 
 function showSim() {
+  setActiveNavCase('heir');
   document.getElementById('case-detail').className = 'case-detail';
   document.getElementById('sim-view').className = 'sim-view visible';
   document.getElementById('breadcrumb').innerHTML = `
@@ -1178,10 +1212,108 @@ function advanceSG(fromStep) {
   }
 }
 
-// Query param: show staff controls if ?staff=true
-const urlParams = new URLSearchParams(window.location.search);
-if (urlParams.get('staff') === 'true') {
-  document.getElementById('staff-banner').style.display = 'flex';
+// ---- CASE NAVIGATION ----
+const CASE_UNLOCK_DAYS = { committed: 1, translation: 2, heir: 3, stranded: 4 };
+
+function isCaseUnlocked(caseId) {
+  return CASE_UNLOCK_DAYS[caseId] <= overrideLevel;
+}
+
+function setActiveNavCase(caseId) {
+  document.querySelectorAll('.nav-case').forEach(el => el.classList.remove('active'));
+  const el = document.getElementById(`nav-${caseId}`);
+  if (el) el.classList.add('active');
+}
+
+function updateNavState() {
+  ['committed','translation','heir','stranded'].forEach(id => {
+    const el = document.getElementById(`nav-${id}`);
+    const lockEl = document.getElementById(`nav-lock-${id}`);
+    const dayEl = document.getElementById(`nav-day-${id}`);
+    if (!el) return;
+    const unlocked = isCaseUnlocked(id);
+    el.classList.toggle('locked-nav', !unlocked);
+    if (lockEl) lockEl.style.display = unlocked ? 'none' : 'inline';
+    if (dayEl) dayEl.style.background = unlocked ? 'rgba(29,177,222,0.3)' : 'rgba(255,255,255,0.1)';
+  });
+}
+
+function navToCase(caseId) {
+  if (!isCaseUnlocked(caseId)) return;
+  setActiveNavCase(caseId);
+
+  // Hide all views first
+  document.getElementById('case-list').style.display = 'none';
+  document.getElementById('case-detail').className = 'case-detail';
+  document.getElementById('sim-view').className = 'sim-view';
+  document.getElementById('succession-view').className = 'sim-view';
+  document.getElementById('committed-view').className = 'sim-view';
+
+  // Update breadcrumb
+  const titles = {
+    committed: 'Committed Number',
+    translation: 'Translation Gap',
+    heir: 'Org Review 9-Box',
+    stranded: 'Matrix Leadership'
+  };
+  document.getElementById('breadcrumb').innerHTML = `<span class="breadcrumb-current">${titles[caseId]}</span>`;
+
+  // Route to correct interaction
+  if (caseId === 'committed') {
+    showCommitted();
+  } else if (caseId === 'heir') {
+    showSim();
+  } else {
+    // Translation and Stranded — show coming soon inline rather than modal
+    showComingSoonInline(caseId);
+  }
+}
+
+function showComingSoonInline(caseId) {
+  const titles = { translation: 'The Translation Gap', stranded: 'The Stranded Asset' };
+  const days = { translation: 'Day 2', stranded: 'Day 4' };
+  const modules = { translation: 'Management Process', stranded: 'Matrix Leadership' };
+
+  document.getElementById('case-list').style.display = 'none';
+  document.getElementById('case-detail').className = 'case-detail visible';
+
+  document.getElementById('d-day-tag').textContent = `${days[caseId]} · ${modules[caseId]}`;
+  document.getElementById('d-title').textContent = titles[caseId];
+  document.getElementById('d-module').textContent = 'EM Merson Controls · Session 1';
+
+  const premises = {
+    translation: 'Sam Reyes in Houston is working hard. The problem is that the direction Sam received two months ago no longer matches what Alex committed to in the planning cycle. No one has told Sam. The gap between strategy and execution is clearly visible at the bottom of the organization — invisible at the top.',
+    stranded: 'The Nexagen Connect implementation is behind schedule and Alex and Meera Krishnan have developed meaningfully different views on how to proceed. Every meeting ends with agreement. Nothing moves. Dana Mensah has been watching this play out and has information that could change the conversation — but no one has asked.'
+  };
+
+  document.getElementById('d-premise').textContent = premises[caseId];
+
+  const contexts = {
+    translation: `<h3>What are you looking at?</h3><p>Sam Reyes in Houston is working hard. The problem is that the direction Sam received two months ago no longer matches what Alex committed to in the planning cycle. No one has told Sam.</p><p>The gap between strategy and execution is clearly visible at the bottom of the organization. It is invisible at the top.</p><p>As you work through this case, consider: how does a message get lost between the leader who sets direction and the team that executes it? At what point does that become a leadership problem rather than a communication problem? And if you were Sam — what would you do?</p>`,
+    stranded: `<h3>What are you looking at?</h3><p>Alex and Meera Krishnan are co-leading the Nexagen Connect implementation. Every meeting ends with agreement. Nothing moves. The initiative is behind schedule and both leaders have developed different views on how to proceed — views neither has stated directly to the other.</p><p>Is this a conflict? It doesn't look like one. Both leaders are professional, present, and constructive in every meeting. But look closer: what is each of them protecting? And what would it take to name that out loud?</p><p>Dana Mensah has been watching this play out for months and holds information that could change the conversation. Neither Alex nor Meera has asked for it directly.</p><p>As you work through this case, consider: when two capable leaders are in genuine disagreement, what does mission-led behavior look like — for each of them?</p>`
+  };
+
+  document.getElementById('d-context').innerHTML = contexts[caseId];
+
+  const personaLists = { translation: ['alex','sam','dana'], stranded: ['alex','meera','dana','marcus'] };
+  const pList = document.getElementById('d-personas');
+  pList.innerHTML = '';
+  personaLists[caseId].forEach(pid => {
+    const p = PERSONAS_DATA[pid];
+    if (!p) return;
+    const chip = document.createElement('div');
+    chip.className = 'persona-chip-ref';
+    chip.innerHTML = `<div class="p-avatar" style="background:${p.color}">${p.initials}</div><div class="p-info"><div class="p-name">${p.name}</div><div class="p-role">${p.role}</div></div>`;
+    pList.appendChild(chip);
+  });
+
+  // Coming soon activity
+  const aList = document.getElementById('d-activities');
+  aList.innerHTML = '';
+  const item = document.createElement('div');
+  item.className = 'activity-item';
+  item.innerHTML = `<div class="activity-icon">🔧</div><div class="activity-info"><div class="activity-name">Activity coming soon</div><div class="activity-sub">Available before the field year begins</div></div>`;
+  aList.appendChild(item);
 }
 
 // ---- COMMITTED NUMBER REFLECTION ----
@@ -1196,6 +1328,7 @@ const CN_PATH_FEEDBACK = {
 };
 
 function showCommitted() {
+  setActiveNavCase('committed');
   document.getElementById('case-detail').className = 'case-detail';
   document.getElementById('sim-view').className = 'sim-view';
   document.getElementById('succession-view').className = 'sim-view';
@@ -1361,6 +1494,13 @@ function advanceCN(fromStep) {
 }
 
 renderCaseList();
+updateNavState();
+
+// Query param: show staff controls if ?staff=true
+const urlParams = new URLSearchParams(window.location.search);
+if (urlParams.get('staff') === 'true') {
+  document.getElementById('staff-banner').style.display = 'flex';
+}
 </script>
 </body>
 </html>
