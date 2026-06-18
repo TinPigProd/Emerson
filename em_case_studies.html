@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>EM Merson Cases — Rising Leaders Program</title>
+<title>E.M. Merson Cases — Rising Leaders Program</title>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -332,7 +332,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
     <a class="nav-item" href="emerson_rising_leaders_demo.html">📎 Resources</a>
   </nav>
   <nav class="nav-section" style="margin-top:4px">
-    <div class="nav-label">EM Merson cases</div>
+    <div class="nav-label">E.M. Merson cases</div>
     <a class="nav-item nav-case" id="nav-committed" onclick="navToCase('committed');return false;" href="#">
       <span class="nav-case-day" id="nav-day-committed">1</span>
       <span class="nav-case-title">Committed Number</span>
@@ -379,7 +379,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
     <!-- CASE LIST VIEW -->
     <div class="case-list" id="case-list">
       <div class="page-header">
-        <h1>EM Merson cases</h1>
+        <h1>E.M. Merson cases</h1>
         <p>Four cases. One leadership team. Each case unlocks after facilitation and surfaces a new dimension of the same situation. Select a case from the left navigation or click any card below.</p>
       </div>
 
@@ -400,7 +400,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
 
     <!-- CASE DETAIL VIEW -->
     <div class="case-detail" id="case-detail">
-      <button class="back-btn" onclick="showList()">← EM Merson cases</button>
+      <button class="back-btn" onclick="showList()">← E.M. Merson cases</button>
 
       <div class="detail-header">
         <div class="detail-header-card">
@@ -431,7 +431,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
       <button class="back-btn" onclick="showList()">← Cases</button>
       <div class="sim-container">
         <div class="sim-header">
-          <h2>Talent calibration — EM Merson Controls</h2>
+          <h2>Talent calibration — E.M. Merson Controls</h2>
           <p>Place each leader on the 9-box grid. Click any placed leader to add your justification. Submit when all eight are placed.</p>
         </div>
         <div class="phases-bar">
@@ -590,7 +590,7 @@ const CASES = [
 ];
 
 const PERSONAS_DATA = {
-  alex:   { name:'Alex Tan',         initials:'AC', role:'VP & GM, EM Merson Controls',                   color:'#1B2552' },
+  alex:   { name:'Alex Tan',         initials:'AC', role:'VP & GM, E.M. Merson Controls',                   color:'#1B2552' },
   jordan: { name:'Jordan Vásquez',     initials:'JV', role:'Director, Commercial Strategy',              color:'#004B8D' },
   meera:  { name:'Meera Krishnan',        initials:'MK', role:'VP & GM, Industrial Automation BU',          color:'#1DB1DE' },
   marcus: { name:'Marcus Holt',       initials:'MH', role:'Divisional President',                       color:'#2D3748' },
@@ -688,7 +688,7 @@ function showDetail(caseId) {
   `;
   document.getElementById('d-day-tag').textContent = `${c.moduleDay} · ${c.module}`;
   document.getElementById('d-title').textContent = c.title;
-  document.getElementById('d-module').textContent = 'EM Merson Controls · Session 1';
+  document.getElementById('d-module').textContent = 'E.M. Merson Controls · Session 1';
   document.getElementById('d-premise').textContent = c.premise;
   document.getElementById('d-context').innerHTML = c.context;
 
@@ -723,7 +723,7 @@ function showDetail(caseId) {
 
 // ---- 9-BOX SIMULATION ----
 const SIM_PERSONAS = [
-  { id:'alex',   name:'Alex Tan',         initials:'AC', role:'VP & GM, EM Merson Controls',                    color:'#1B2552',
+  { id:'alex',   name:'Alex Tan',         initials:'AC', role:'VP & GM, E.M. Merson Controls',                    color:'#1B2552',
     profile:'Strong commercial instincts, deeply respected by direct reports. Operates with high personal accountability. Under calm conditions leads from mission. Under commercial pressure, problems get absorbed rather than surfaced — and it looks like diligence.',
     caseNote:'Protagonist across all modules. The ego-protection is visible under pressure but reads as ownership, not self-interest. That is what makes it difficult to name.',
     intended:{perf:2,pot:1}, intendedLabel:'High Performance — Potential to Move Up 1 Level. The pattern of absorbing rather than surfacing limits succession readiness for the enterprise level.' },
@@ -941,7 +941,7 @@ const FEEDBACK = {
     review: "Meera's placement is worth revisiting. The surface read — technically collaborative, practically obstructive — can look like a performance or potential issue. The case is asking you to look deeper. Meera has been at Nexagen longer than Alex, knows Marcus Holt's priorities in depth, and is skilled at shaping divisional conversations. That is not a Well Placed or Up 1 Level profile. The matrix conflict is real, but it is structural. Be careful not to penalize Meera for a system problem."
   },
   marcus: {
-    aligned: "You placed Marcus thoughtfully. The case is clear that Marcus is a high-performing divisional president with genuine investment in the leaders around him. Marcus is not formally on the EM Merson Controls 9-box — he sits above it. The more useful question the case raises is about the system Marcus has built: leaders who surface good news are rewarded, leaders who surface problems are managed — while Marcus says the opposite. That cultural footprint is what makes Alex's silence rational. At the enterprise level, that is a potential question worth examining.",
+    aligned: "You placed Marcus thoughtfully. The case is clear that Marcus is a high-performing divisional president with genuine investment in the leaders around him. Marcus is not formally on the E.M. Merson Controls 9-box — he sits above it. The more useful question the case raises is about the system Marcus has built: leaders who surface good news are rewarded, leaders who surface problems are managed — while Marcus says the opposite. That cultural footprint is what makes Alex's silence rational. At the enterprise level, that is a potential question worth examining.",
     close: "Your Marcus placement is in range. Marcus is effective at the divisional level — commercially sharp, direct, invested in talent. The dimension the case keeps surfacing is the gap between what Marcus says about transparency and what Marcus actually rewards. At the level Marcus operates, a leader's cultural footprint is inseparable from their potential assessment. That is worth weighing here even though Marcus sits above the EM Merson box.",
     review: "Marcus's placement deserves more scrutiny. The case does not position Marcus as ineffective — he is a capable, commercially sharp divisional president. But look at the system Marcus has built: the conditions that make Alex's silence feel rational are conditions Marcus created. At the senior level, a leader's cultural impact on how information flows is a meaningful potential indicator. That is the dimension the case is asking you to examine."
   },
@@ -1296,7 +1296,7 @@ function showComingSoonInline(caseId) {
   `;
   document.getElementById('d-day-tag').textContent = `${days[caseId]} · ${modules[caseId]}`;
   document.getElementById('d-title').textContent = titles[caseId];
-  document.getElementById('d-module').textContent = 'EM Merson Controls · Session 1';
+  document.getElementById('d-module').textContent = 'E.M. Merson Controls · Session 1';
 
   const premises = {
     translation: 'Sam Reyes in Houston is working hard. The problem is that the direction Sam received two months ago no longer matches what Alex committed to in the planning cycle. No one has told Sam. The gap between strategy and execution is clearly visible at the bottom of the organization — invisible at the top.',
@@ -1378,7 +1378,7 @@ function renderCNStep(step) {
         <div class="sg-prompt-sub">Not what Alex should do. What does Alex want to do?</div>
         <div class="sg-context">
           <strong>The situation:</strong><br><br>
-          Alex Tan is VP &amp; GM of EM Merson Controls — a $950M business unit operating across Singapore, Houston, Dubai, and Warsaw. Three weeks ago, Alex committed to a Q3 revenue number in the President's Operating Report. Marcus Holt, the Divisional President, is expecting that number.<br><br>
+          Alex Tan is VP &amp; GM of E.M. Merson Controls — a $950M business unit operating across Singapore, Houston, Dubai, and Warsaw. Three weeks ago, Alex committed to a Q3 revenue number in the President's Operating Report. Marcus Holt, the Divisional President, is expecting that number.<br><br>
           This morning, Alex received updated forecast data from the regional teams. The picture has changed materially. The number Alex committed to is no longer achievable on current trajectory — not without something significant shifting in the next six weeks.<br><br>
           Alex has two paths. Surface the information now, before the quarterly review. Or work the problem — push the teams, find upside, and see if the number can be recovered before anyone needs to know it was ever at risk.<br><br>
           Both paths feel reasonable. That is the point.
