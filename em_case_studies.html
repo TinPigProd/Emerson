@@ -368,7 +368,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
   <div class="topbar">
     <div class="topbar-left">
       <div class="breadcrumb" id="breadcrumb">
-        <span class="breadcrumb-current">EM Merson cases</span>
+        <span class="breadcrumb-current">Cases</span>
       </div>
     </div>
     <div class="proto-badge">Prototype</div>
@@ -380,7 +380,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
     <div class="case-list" id="case-list">
       <div class="page-header">
         <h1>EM Merson cases</h1>
-        <p>EM Merson Controls is a fictional leadership team you'll encounter across all four days of Session 1. Each case surfaces a new dimension of the same situation. Cases unlock after each day of facilitation.</p>
+        <p>Four cases. One leadership team. Each case unlocks after facilitation and surfaces a new dimension of the same situation. Select a case from the left navigation or click any card below.</p>
       </div>
 
       <!-- Staff override banner — visible only in staff mode (?staff=true) -->
@@ -428,7 +428,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
 
     <!-- SIMULATION VIEW -->
     <div class="sim-view" id="sim-view">
-      <button class="back-btn" onclick="showDetail('heir')">← The Heir Apparent</button>
+      <button class="back-btn" onclick="showList()">← Cases</button>
       <div class="sim-container">
         <div class="sim-header">
           <h2>Talent calibration — EM Merson Controls</h2>
@@ -477,7 +477,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
 
     <!-- SUCCESSION GAP VIEW -->
     <div class="sim-view" id="succession-view">
-      <button class="back-btn" onclick="showDetail('heir')">← The Heir Apparent</button>
+      <button class="back-btn" onclick="showList()">← Cases</button>
       <div class="sim-container">
         <div class="sim-header">
           <h2>Succession gap analysis</h2>
@@ -495,7 +495,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
 
     <!-- COMMITTED NUMBER REFLECTION VIEW -->
     <div class="sim-view" id="committed-view">
-      <button class="back-btn" onclick="showDetail('committed')">← The Committed Number</button>
+      <button class="back-btn" onclick="showList()">← Cases</button>
       <div class="sim-container">
         <div class="sim-header">
           <h2>Reflection prompts</h2>
@@ -624,7 +624,7 @@ function renderCaseList() {
     const unlocked = isUnlocked(c.day);
     const card = document.createElement('div');
     card.className = `case-card ${unlocked ? 'unlocked' : 'locked'}`;
-    if (unlocked) card.onclick = () => showDetail(c.id);
+    if (unlocked) card.onclick = () => navToCase(c.id);
 
     const isNew = c.day === overrideLevel;
 
@@ -662,7 +662,9 @@ function showList() {
   document.getElementById('sim-view').className = 'sim-view';
   document.getElementById('succession-view').className = 'sim-view';
   document.getElementById('committed-view').className = 'sim-view';
-  document.getElementById('breadcrumb').innerHTML = '<span class="breadcrumb-current">EM Merson cases</span>';
+  document.getElementById('breadcrumb').innerHTML = '<span class="breadcrumb-current">Cases</span>';
+  // Scroll to top
+  window.scrollTo(0, 0);
 }
 
 function showDetail(caseId) {
@@ -674,11 +676,16 @@ function showDetail(caseId) {
   document.getElementById('case-detail').className = 'case-detail visible';
 
   document.getElementById('breadcrumb').innerHTML = `
-    <a href="#" onclick="showList();return false;">EM Merson cases</a>
+    <a href="#" onclick="showList();return false;">Cases</a>
     <span class="breadcrumb-sep">›</span>
     <span class="breadcrumb-current">${c.title}</span>
   `;
 
+  document.getElementById('breadcrumb').innerHTML = `
+    <a href="#" onclick="showList();return false;">Cases</a>
+    <span class="breadcrumb-sep">›</span>
+    <span class="breadcrumb-current">${titles[caseId]}</span>
+  `;
   document.getElementById('d-day-tag').textContent = `${c.moduleDay} · ${c.module}`;
   document.getElementById('d-title').textContent = c.title;
   document.getElementById('d-module').textContent = 'EM Merson Controls · Session 1';
@@ -769,11 +776,9 @@ function showSim() {
   document.getElementById('case-detail').className = 'case-detail';
   document.getElementById('sim-view').className = 'sim-view visible';
   document.getElementById('breadcrumb').innerHTML = `
-    <a href="#" onclick="showList();return false;">EM Merson cases</a>
+    <a href="#" onclick="showList();return false;">Cases</a>
     <span class="breadcrumb-sep">›</span>
-    <a href="#" onclick="showDetail('heir');return false;">The Heir Apparent</a>
-    <span class="breadcrumb-sep">›</span>
-    <span class="breadcrumb-current">Talent calibration</span>
+    <span class="breadcrumb-current">Org Review 9-Box</span>
   `;
   placements = {}; justifications = {}; selectedId = null;
   renderSim();
@@ -1057,9 +1062,7 @@ function showSuccession() {
   document.getElementById('sim-view').className = 'sim-view';
   document.getElementById('succession-view').className = 'sim-view visible';
   document.getElementById('breadcrumb').innerHTML = `
-    <a href="#" onclick="showList();return false;">EM Merson cases</a>
-    <span class="breadcrumb-sep">›</span>
-    <a href="#" onclick="showDetail('heir');return false;">The Heir Apparent</a>
+    <a href="#" onclick="showList();return false;">Cases</a>
     <span class="breadcrumb-sep">›</span>
     <span class="breadcrumb-current">Succession gap analysis</span>
   `;
@@ -1162,7 +1165,7 @@ function renderSGStep(step) {
         <div class="sg-complete-icon">✓</div>
         <h3>Succession gap analysis complete</h3>
         <p>The gap is easy to see in Alex. The harder question is where it shows up in you — and what you do about it in the next 30 days.</p>
-        <button class="sg-next-btn" onclick="showDetail('heir')">← Back to The Heir Apparent</button>
+        <button class="sg-next-btn" onclick="showList()">← Back to cases</button>
       </div>`;
   }
 }
@@ -1256,7 +1259,17 @@ function navToCase(caseId) {
     heir: 'Org Review 9-Box',
     stranded: 'Matrix Leadership'
   };
-  document.getElementById('breadcrumb').innerHTML = `<span class="breadcrumb-current">${titles[caseId]}</span>`;
+  const titleMap = {
+    committed: 'Committed Number',
+    translation: 'Translation Gap',
+    heir: 'Org Review 9-Box',
+    stranded: 'Matrix Leadership'
+  };
+  document.getElementById('breadcrumb').innerHTML = `
+    <a href="#" onclick="showList();return false;">Cases</a>
+    <span class="breadcrumb-sep">›</span>
+    <span class="breadcrumb-current">${titleMap[caseId]}</span>
+  `;
 
   // Route to correct interaction
   if (caseId === 'committed') {
@@ -1264,7 +1277,6 @@ function navToCase(caseId) {
   } else if (caseId === 'heir') {
     showSim();
   } else {
-    // Translation and Stranded — show coming soon inline rather than modal
     showComingSoonInline(caseId);
   }
 }
@@ -1277,6 +1289,11 @@ function showComingSoonInline(caseId) {
   document.getElementById('case-list').style.display = 'none';
   document.getElementById('case-detail').className = 'case-detail visible';
 
+  document.getElementById('breadcrumb').innerHTML = `
+    <a href="#" onclick="showList();return false;">Cases</a>
+    <span class="breadcrumb-sep">›</span>
+    <span class="breadcrumb-current">${titles[caseId]}</span>
+  `;
   document.getElementById('d-day-tag').textContent = `${days[caseId]} · ${modules[caseId]}`;
   document.getElementById('d-title').textContent = titles[caseId];
   document.getElementById('d-module').textContent = 'EM Merson Controls · Session 1';
@@ -1334,11 +1351,9 @@ function showCommitted() {
   document.getElementById('succession-view').className = 'sim-view';
   document.getElementById('committed-view').className = 'sim-view visible';
   document.getElementById('breadcrumb').innerHTML = `
-    <a href="#" onclick="showList();return false;">EM Merson cases</a>
+    <a href="#" onclick="showList();return false;">Cases</a>
     <span class="breadcrumb-sep">›</span>
-    <a href="#" onclick="showDetail('committed');return false;">The Committed Number</a>
-    <span class="breadcrumb-sep">›</span>
-    <span class="breadcrumb-current">Reflection prompts</span>
+    <span class="breadcrumb-current">Committed Number</span>
   `;
   cnStep = 1;
   cnSelections = {};
@@ -1451,7 +1466,7 @@ function renderCNStep(step) {
         <div class="sg-complete-icon">✓</div>
         <h3>Reflection complete</h3>
         <p>The impulse Alex felt is not unique to Alex. The question this case leaves open is not whether you recognize it — it is what you do the next time you feel it in yourself.</p>
-        <button class="sg-next-btn" onclick="showDetail('committed')">← Back to The Committed Number</button>
+        <button class="sg-next-btn" onclick="showList()">← Back to cases</button>
       </div>`;
   }
 }
