@@ -237,6 +237,37 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
 .sub-btn:disabled { opacity: 0.4; cursor: not-allowed; }
 .rst-btn { font-size: 11px; color: var(--text-muted); background: none; border: none; cursor: pointer; font-family: inherit; text-decoration: underline; padding: 4px 0; }
 
+/* Succession gap styles */
+.sg-prompt-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 10px; padding: 28px 32px; margin-bottom: 16px; }
+.sg-prompt-num { font-size: 10px; font-weight: 600; color: var(--accent-light); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; }
+.sg-prompt-q { font-size: 18px; font-weight: 600; color: var(--text-primary); line-height: 1.4; margin-bottom: 6px; }
+.sg-prompt-sub { font-size: 13px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 20px; }
+.sg-context { background: #F8F9FC; border-left: 3px solid var(--accent-blue); border-radius: 0 6px 6px 0; padding: 12px 16px; margin-bottom: 20px; font-size: 13px; color: var(--text-secondary); line-height: 1.6; }
+.sg-textarea { width: 100%; border: 1px solid var(--border); border-radius: 8px; padding: 14px; font-size: 13px; font-family: inherit; color: var(--text-primary); line-height: 1.6; resize: vertical; min-height: 100px; outline: none; transition: border-color 0.15s; background: #fff; }
+.sg-textarea:focus { border-color: var(--accent-blue); }
+.sg-textarea::placeholder { color: var(--text-muted); }
+.sg-next-btn { margin-top: 16px; padding: 11px 24px; background: var(--accent-blue); color: #fff; border: none; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; font-family: inherit; transition: background 0.15s; }
+.sg-next-btn:hover { background: #003570; }
+.sg-next-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+.sg-feedback { background: #EFF6FF; border: 1px solid #BFDBFE; border-radius: 8px; padding: 16px 18px; margin-top: 16px; font-size: 13px; color: #1E40AF; line-height: 1.7; display: none; }
+.sg-feedback.visible { display: block; }
+.sg-mirror-card { background: var(--accent-blue); border-radius: 10px; padding: 32px; text-align: center; margin-bottom: 16px; }
+.sg-mirror-q { font-size: 22px; font-weight: 700; color: #fff; line-height: 1.4; margin-bottom: 12px; }
+.sg-mirror-sub { font-size: 14px; color: rgba(255,255,255,0.75); line-height: 1.6; }
+.sg-facilitator { background: #FFFBEB; border: 1px solid #FDE68A; border-radius: 8px; padding: 14px 16px; margin-top: 16px; font-size: 12px; color: #92400E; line-height: 1.6; }
+.sg-facilitator strong { font-weight: 600; }
+.sg-options { display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px; }
+.sg-option { display: flex; align-items: flex-start; gap: 12px; padding: 14px 16px; background: #fff; border: 1.5px solid var(--border); border-radius: 8px; cursor: pointer; transition: border-color 0.15s, background 0.15s; text-align: left; font-family: inherit; }
+.sg-option:hover { border-color: var(--accent-blue); background: #F0F6FF; }
+.sg-option.selected { border-color: var(--accent-blue); background: #EFF6FF; }
+.sg-option-letter { width: 24px; height: 24px; border-radius: 50%; background: var(--border); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: var(--text-secondary); flex-shrink: 0; margin-top: 1px; transition: background 0.15s, color 0.15s; }
+.sg-option.selected .sg-option-letter { background: var(--accent-blue); color: #fff; }
+.sg-option-text { font-size: 13px; color: var(--text-primary); line-height: 1.5; }
+.sg-complete { text-align: center; padding: 32px 0; }
+.sg-complete-icon { font-size: 40px; margin-bottom: 16px; }
+.sg-complete h3 { font-size: 18px; font-weight: 600; color: var(--text-primary); margin-bottom: 8px; }
+.sg-complete p { font-size: 13px; color: var(--text-secondary); line-height: 1.6; max-width: 460px; margin: 0 auto 20px; }
+
 /* Coming soon modal */
 .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 100; align-items: center; justify-content: center; }
 .modal-overlay.visible { display: flex; }
@@ -385,20 +416,20 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
           <div class="grid-outer">
             <div class="x-labels">
               <span></span>
-              <span>Low performance</span>
-              <span>Moderate performance</span>
-              <span>High performance</span>
+              <span>Well Placed</span>
+              <span>Up 1 Level</span>
+              <span>Up 2+ Levels</span>
             </div>
             <div class="grid-with-y">
               <div class="y-labels-col">
-                <div class="y-lbl"><span>High potential</span></div>
-                <div class="y-lbl"><span>Moderate potential</span></div>
-                <div class="y-lbl"><span>Low potential</span></div>
+                <div class="y-lbl"><span>High Performance</span></div>
+                <div class="y-lbl"><span>Solid Performance</span></div>
+                <div class="y-lbl"><span>Underperforming</span></div>
               </div>
               <div class="nine-grid" id="sim-grid"></div>
             </div>
-            <div class="x-axis-title">Performance →</div>
-            <div class="prog-bar"><div class="prog-fill" id="sim-prog" style="width:0%"></div></div>
+            <div class="x-axis-title">Potential to Advance Within Next ~3 Years →</div>
+            <div style="display:flex;align-items:center;gap:8px;margin-top:8px;margin-bottom:4px"><div style="width:12px;height:12px;background:#BFDBFE;border:1.5px solid #004B8D;border-radius:2px;flex-shrink:0"></div><span style="font-size:10px;color:var(--text-secondary)">High Potential Designation (Up 1 Level — High Performance, and all Up 2+ Levels boxes)</span></div><div class="prog-bar"><div class="prog-fill" id="sim-prog" style="width:0%"></div></div>
             <div class="prog-text" id="sim-prog-text">0 of 8 placed</div>
           </div>
           <div class="detail-panel" id="sim-panel">
@@ -410,6 +441,42 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
         </div>
         <!-- Feedback renders below grid after submit -->
         <div id="sim-feedback" style="display:none;margin-top:24px;border-top:1px solid var(--border);padding-top:24px"></div>
+      </div>
+    </div>
+
+    <!-- SUCCESSION GAP VIEW -->
+    <div class="sim-view" id="succession-view">
+      <button class="back-btn" onclick="showDetail('heir')">← The Heir Apparent</button>
+      <div class="sim-container">
+        <div class="sim-header">
+          <h2>Succession gap analysis</h2>
+          <p>Four prompts. Each one goes a layer deeper. Take your time with each before moving on.</p>
+        </div>
+        <div class="phases-bar">
+          <div class="sim-phase active" id="sgp1">Observe</div>
+          <div class="sim-phase" id="sgp2">Name it</div>
+          <div class="sim-phase" id="sgp3">Say it</div>
+          <div class="sim-phase" id="sgp4">Own it</div>
+        </div>
+        <div id="sg-content"></div>
+      </div>
+    </div>
+
+    <!-- COMMITTED NUMBER REFLECTION VIEW -->
+    <div class="sim-view" id="committed-view">
+      <button class="back-btn" onclick="showDetail('committed')">← The Committed Number</button>
+      <div class="sim-container">
+        <div class="sim-header">
+          <h2>Reflection prompts</h2>
+          <p>Four prompts on escalation, ego, and the impulse to solve before surfacing. Work through each before moving on.</p>
+        </div>
+        <div class="phases-bar">
+          <div class="sim-phase active" id="cnp1">The moment</div>
+          <div class="sim-phase" id="cnp2">The path</div>
+          <div class="sim-phase" id="cnp3">The cost</div>
+          <div class="sim-phase" id="cnp4">The mirror</div>
+        </div>
+        <div id="cn-content"></div>
       </div>
     </div>
 
@@ -448,7 +515,7 @@ const CASES = [
     premise: 'Three weeks before the quarterly business review, Alex receives updated forecast data that materially changes the picture. Marcus Holt is expecting the number Alex committed to in the POR. What Alex does next sets the tone for everything that follows.',
     context: `<h3>What are you looking at?</h3><p>Alex Tan just received updated forecast data. It changes the picture materially. Marcus Holt is expecting the number Alex committed to three weeks ago.</p><p>Alex has options. One is to surface the new information now, early, before the quarterly review. The other is to work the problem — buy some time, protect the commitment, and figure it out.</p><p>Both paths feel reasonable. That is the point. Before you read further: which path would you take? And what is driving that instinct?</p><p>As you work through this case, consider: where does the impulse to solve before surfacing come from in your own leadership? When does ownership become avoidance?</p>`,
     personas: ['alex', 'marcus'],
-    activities: [{ name: 'Reflection prompts', sub: 'Three questions on escalation and ego', icon: '✏️' }]
+    activities: [{ name: 'Reflection prompts', sub: 'Three questions on escalation and ego', icon: '✏️', committed: true }]
   },
   {
     id: 'translation',
@@ -474,7 +541,7 @@ const CASES = [
     personas: ['alex', 'jordan', 'tomasz', 'marcus'],
     activities: [
       { name: 'Talent calibration', sub: 'Place the EM Merson team on the 9-box', icon: '⬡', sim: true },
-      { name: 'Succession gap analysis', sub: 'What has Alex not named — and why?', icon: '✏️' }
+      { name: 'Succession gap analysis', sub: 'What has Alex not named — and why?', icon: '✏️', succession: true }
     ]
   },
   {
@@ -560,6 +627,8 @@ function showList() {
   document.getElementById('case-list').style.display = 'block';
   document.getElementById('case-detail').className = 'case-detail';
   document.getElementById('sim-view').className = 'sim-view';
+  document.getElementById('succession-view').className = 'sim-view';
+  document.getElementById('committed-view').className = 'sim-view';
   document.getElementById('breadcrumb').innerHTML = '<span class="breadcrumb-current">EM Merson cases</span>';
 }
 
@@ -567,6 +636,8 @@ function showDetail(caseId) {
   const c = CASES.find(x => x.id === caseId);
   document.getElementById('case-list').style.display = 'none';
   document.getElementById('sim-view').className = 'sim-view';
+  document.getElementById('succession-view').className = 'sim-view';
+  document.getElementById('committed-view').className = 'sim-view';
   document.getElementById('case-detail').className = 'case-detail visible';
 
   document.getElementById('breadcrumb').innerHTML = `
@@ -599,6 +670,10 @@ function showDetail(caseId) {
     item.innerHTML = `<div class="activity-icon">${a.icon}</div><div class="activity-info"><div class="activity-name">${a.name}</div><div class="activity-sub">${a.sub}</div></div><div class="activity-chevron">›</div>`;
     if (a.sim) {
       item.onclick = () => showSim();
+    } else if (a.succession) {
+      item.onclick = () => showSuccession();
+    } else if (a.committed) {
+      item.onclick = () => showCommitted();
     } else {
       item.onclick = () => showComingSoon();
     }
@@ -611,47 +686,47 @@ const SIM_PERSONAS = [
   { id:'alex',   name:'Alex Tan',         initials:'AC', role:'VP & GM, EM Merson Controls',                    color:'#1B2552',
     profile:'Strong commercial instincts, deeply respected by direct reports. Operates with high personal accountability. Under calm conditions leads from mission. Under commercial pressure, problems get absorbed rather than surfaced — and it looks like diligence.',
     caseNote:'Protagonist across all modules. The ego-protection is visible under pressure but reads as ownership, not self-interest. That is what makes it difficult to name.',
-    intended:{perf:2,pot:2}, intendedLabel:'High performance / Moderate potential' },
+    intended:{perf:2,pot:1}, intendedLabel:'High Performance — Potential to Move Up 1 Level. The pattern of absorbing rather than surfacing limits succession readiness for the enterprise level.' },
   { id:'jordan', name:'Jordan Vásquez',     initials:'JV', role:'Director, Commercial Strategy',               color:'#004B8D',
     profile:'Exceptional commercial results for three consecutive years. Strong at strategy, highly effective in one-on-ones. Widely assumed to be Alex\'s successor — an assumption Jordan holds too.',
     caseNote:'The heir apparent gap: Jordan consistently avoids visible conflict, defers on cross-functional decisions at critical moments, and has not delivered a difficult performance message that changed behavior. The role above requires all three.',
-    intended:{perf:2,pot:1}, intendedLabel:'High performance / Moderate potential — not high. The succession gap matters.' },
+    intended:{perf:2,pot:0}, intendedLabel:'High Performance and Well Placed. Jordan is not yet ready to move up — the succession gap has to be named and developed first.' },
   { id:'priya',  name:'Meera Krishnan',        initials:'MK', role:'VP & GM, Industrial Automation BU',           color:'#1DB1DE',
     profile:'Alex\'s closest peer. Has been with Nexagen longer than Alex, knows Marcus Holt\'s priorities in depth, and is skilled at shaping divisional conversations without appearing to.',
     caseNote:'Technically collaborative, never openly obstructive. In practice, decisions that require her BU to absorb cost or risk get delayed or escalated. This is not bad faith — it is a capable leader protecting a BU inside a matrix that creates that incentive.',
-    intended:{perf:2,pot:2}, intendedLabel:'High performance / High potential — the matrix conflict is structural, not a leadership failure.' },
+    intended:{perf:2,pot:2}, intendedLabel:'High Performance — Potential to Move Up 2+ Levels. The matrix conflict is structural, not a Meera problem.' },
   { id:'marcus', name:'Marcus Holt',       initials:'MH', role:'Divisional President',                        color:'#2D3748',
     profile:'Direct, commercially sharp, genuinely invested in Alex\'s development. Gave Alex the EM Merson role and has publicly vouched for the appointment.',
     caseNote:'Pattern: rewards leaders who surface good news, manages leaders who surface problems — while saying the opposite. This is a cultural norm Marcus has built and is responsible for. One of the structural reasons Alex\'s silence feels rational.',
-    intended:{perf:2,pot:2}, intendedLabel:'Not on the EM Merson 9-box — but worth examining how his behavior shapes the system.' },
+    intended:{perf:2,pot:1}, intendedLabel:'Not formally on the EM Merson 9-box — but the case asks you to examine the cultural system he has built.' },
   { id:'dana',   name:'Dana Mensah',       initials:'DM', role:'VP, Shared Commercial & Customer Excellence',  color:'#0F6E56',
     profile:'Leads shared commercial function across three BUs. Highly diplomatic — reads as non-committal but is more accurately described as strategic restraint.',
     caseNote:'Flagged a customer relationship risk six months ago. Alex was present. The signal was not acted on. Dana has since decided it is not Dana\'s place to escalate what is technically Alex\'s commercial relationship.',
-    intended:{perf:1,pot:2}, intendedLabel:'High performance / Moderate potential — the restraint is a calculated choice, not a gap.' },
+    intended:{perf:1,pot:1}, intendedLabel:'Solid Performance — Potential to Move Up 1 Level. The restraint is calculated, not a capability ceiling.' },
   { id:'sam',    name:'Sam Reyes',        initials:'SR', role:'Director, Operations — Americas',              color:'#853C1D',
     profile:'Leads operations for the Americas region. A strong operational leader who takes commitments seriously. Quietly frustrated that direction keeps shifting without clear explanation.',
     caseNote:'Has asked for clarity twice and received reassurance rather than information. Working hard against a target that isn\'t fully understood. Represents the organizational cost of cascade failure.',
-    intended:{perf:1,pot:1}, intendedLabel:'Moderate performance / Moderate potential — but the performance gap is a system problem, not a Sam problem.' },
+    intended:{perf:1,pot:0}, intendedLabel:'Solid Performance and Well Placed — but the performance gap is a cascade failure, not a Sam problem.' },
   { id:'leila',  name:'Leila Khalil',      initials:'LA', role:'Director, Product Management — EMEA',          color:'#533AB7',
     profile:'One of the sharpest strategic thinkers on Alex\'s direct team. Flagged the customer relationship risk six months ago in a one-on-one with Alex. Received acknowledgment but no action.',
     caseNote:'Has not raised the issue again. Two factors: a read of Alex\'s communication style that signals the topic is closed, and a professional norm around escalating over a manager\'s head that makes that path feel high-risk.',
-    intended:{perf:2,pot:2}, intendedLabel:'High performance / High potential — the silence is a reasonable response to organizational signals, not a capability gap.' },
+    intended:{perf:2,pot:2}, intendedLabel:'High Performance — Potential to Move Up 2+ Levels. The silence is a rational response to organizational signals, not a capability gap.' },
   { id:'tomasz', name:'Tomasz Dąbrowski', initials:'TD', role:'Director, Engineering — EMEA',                 color:'#444441',
     profile:'Highly competent technical leader who has struggled in cross-functional settings — not because of a capability gap but because professional norms reward individual excellence and deep expertise over lateral influence.',
     caseNote:'In a standard calibration, reads as high performance / moderate potential. The behaviors being assessed as potential indicators are behaviors Tomasz demonstrates differently than the default many frameworks implicitly assume.',
-    intended:{perf:2,pot:1}, intendedLabel:'The calibration question: are you assessing Tomasz, or the cultural expression of the behaviors you\'re looking for?' }
+    intended:{perf:2,pot:1}, intendedLabel:'High Performance — Potential to Move Up 1 Level. The calibration question: are you assessing Tomasz, or the cultural expression of the behaviors you are looking for?' }
 ];
 
 const BOXES = [
-  {perf:0,pot:2,label:'Emerging talent',  bg:'#EBF7FC'},
-  {perf:1,pot:2,label:'High potential',   bg:'#C9F0FF'},
-  {perf:2,pot:2,label:'Star performer',   bg:'#75D3EB'},
-  {perf:0,pot:1,label:'Solid contributor',bg:'#F5F5F5'},
-  {perf:1,pot:1,label:'Core performer',   bg:'#EBEBEB'},
-  {perf:2,pot:1,label:'High performer',   bg:'#D6E8F5'},
-  {perf:0,pot:0,label:'Needs attention',  bg:'#FEF3F2'},
-  {perf:1,pot:0,label:'Limited growth',   bg:'#FDE8E8'},
-  {perf:2,pot:0,label:'Misaligned role',  bg:'#FDDCDC'}
+  {perf:0,pot:2,label:'Underperforming',                              bg:'#F3F4F6', hiPot:false},
+  {perf:1,pot:2,label:'Solid Performance — Potential to Move Up 2+ Levels', bg:'#BFDBFE', hiPot:true},
+  {perf:2,pot:2,label:'High Performance — Potential to Move Up 2+ Levels',  bg:'#93C5FD', hiPot:true},
+  {perf:0,pot:1,label:'Underperforming',                              bg:'#F3F4F6', hiPot:false},
+  {perf:1,pot:1,label:'Solid Performance — Potential to Move Up 1 Level',   bg:'#DBEAFE', hiPot:false},
+  {perf:2,pot:1,label:'High Performance — Potential to Move Up 1 Level',    bg:'#BFDBFE', hiPot:true},
+  {perf:0,pot:0,label:'Underperforming',                              bg:'#F3F4F6', hiPot:false},
+  {perf:1,pot:0,label:'Solid Performance and Well Placed',            bg:'#EFF6FF', hiPot:false},
+  {perf:2,pot:0,label:'High Performance and Well Placed',             bg:'#DBEAFE', hiPot:false}
 ];
 
 let placements = {}, justifications = {}, selectedId = null;
@@ -703,10 +778,15 @@ function renderSimGrid() {
     cell.style.background = box.bg;
     cell.dataset.perf = box.perf;
     cell.dataset.pot = box.pot;
+    if (box.hiPot) {
+      cell.style.border = '1.5px solid #004B8D';
+      cell.style.borderRadius = '4px';
+    }
 
     const lbl = document.createElement('div');
     lbl.className = 'g-box-label';
     lbl.textContent = box.label;
+    if (box.hiPot) lbl.style.color = '#1E40AF';
     cell.appendChild(lbl);
 
     const chips = document.createElement('div');
@@ -807,54 +887,52 @@ function removeFromSim(pid) {
 
 const FEEDBACK = {
   alex: {
-    aligned: "You placed Alex in the right territory. High performance is well-supported by the case — strong commercial instincts, trusted by direct reports, high personal accountability. The moderate potential flag is the more nuanced read: Alex is not a ceiling case, but the pattern of absorbing problems rather than surfacing them is a real constraint on the next level. The question to sit with is whether that pattern is a capability gap or a choice — and what it would take to change it.",
-    close: "Your placement is in the right neighborhood. Alex is clearly a high performer — the case is consistent on that. The potential dimension is worth examining more carefully. The pattern of absorbing problems before surfacing them looks like diligence from the outside, but it limits both Alex's own development and the organization's ability to respond early. That's a potential constraint worth naming in a calibration conversation.",
-    review: "Alex's placement deserves a second look. The case shows a leader with genuine commercial strength and deep team loyalty — that's high performance. The more important question is potential: what gets in the way of Alex at the next level? The answer the case keeps surfacing is the impulse to solve before surfacing. That is not a performance failure — it reads as ownership — but it is a pattern that limits upward movement."
+    aligned: "You placed Alex well. High Performance is consistent with the case — strong commercial instincts, trusted by direct reports, high personal accountability. The Up 1 Level read is the more nuanced call. Alex is not a Well Placed case — there is a next level in view. But the pattern of absorbing problems rather than surfacing them is a real constraint on whether Alex gets there. That pattern does not show up in a business review. It shows up in moments like the committed number.",
+    close: "Your placement is close. Alex is clearly a high performer — the case is consistent on that. The potential dimension is worth a closer look. Emerson's framework asks a specific question: within the next three years, where will this person's next role sit relative to their current level? The pattern of solving before surfacing does not prevent upward movement — but it limits it, and it limits the organization's ability to surface risk early. That is worth naming in a calibration conversation.",
+    review: "Alex's placement deserves a second look. The case shows a leader with genuine commercial strength and deep team loyalty. The potential question Emerson's framework asks is concrete: where is the next role within three years? The answer the case keeps surfacing is that Alex's next role is one level up — not two — and the constraint is the information behavior, not the commercial capability. If you placed Alex as Well Placed, ask whether the pattern of absorbing problems feels like a ceiling or a choice."
   },
   jordan: {
-    aligned: "You read Jordan accurately. Three consecutive years of exceptional results is real — the high performance placement is well-supported. The moderate potential call is the harder and more important one. Jordan avoids visible conflict, defers on cross-functional decisions at critical moments, and has not delivered a difficult performance message that changed someone's behavior. The role above requires all three. Excellent results in the current role are not the same thing as readiness for the next one.",
-    close: "You're close on Jordan, but the potential dimension is worth pushing on. Jordan's commercial results are strong — high performance is fair. The succession question is different from the performance question. Has Jordan navigated a cross-functional conflict without deferring? Delivered a message that was genuinely difficult and changed behavior? Led through ambiguity without the support structure the current role provides? Those are the indicators for the next level, and the case doesn't show them clearly.",
-    review: "Jordan's placement needs a closer look. The results are real — three strong years is not noise. But consider what the case actually shows about Jordan's potential for the role above: consistent avoidance of visible conflict, deference at critical cross-functional moments, no evidence of a difficult performance conversation that changed behavior. Placing Jordan in the high potential box based on current results may be exactly the heir apparent trap the case is designed to surface. Performance and succession readiness are not the same assessment."
+    aligned: "You read Jordan accurately. Three consecutive years of exceptional results is real — High Performance is well-supported. The Well Placed call is the harder and more important one. Emerson's framework asks where the next role sits within three years. Jordan's results suggest the potential is there. What the case shows is that the role above has not yet been tested: visible conflict navigated without deferring, a difficult performance message delivered that actually changed behavior, a cross-functional call made without the safety of the current structure. Until those are demonstrated, Well Placed is the honest placement.",
+    close: "You are close on Jordan, but the potential column is worth pushing on. High Performance is fair — the results are real. The Emerson framework asks specifically: where is the next role within three years? Jordan's profile shows strong performance in the current structure. What it does not yet show is whether Jordan can operate at the level above it. The heir apparent assumption — that results in the current role translate directly to readiness for the next — is exactly the calibration trap this case is built around.",
+    review: "Jordan's placement needs a closer look. The results are real — three strong years is not noise. But the Emerson 9-box asks a specific question about potential: where will the next role sit within approximately three years? The case does not support Up 1 Level or Up 2+ Levels yet — not because Jordan lacks capability, but because Jordan has not been tested in the ways the next level requires. Placing Jordan in the High Potential designation based on current results may be exactly the heir apparent trap this case is designed to surface."
   },
-  priya: {
-    aligned: "You read Meera well. The matrix conflict with Alex is real, but it is structural — Meera is protecting a BU inside a system that creates exactly that incentive. That is not ego-led behavior; it is rational leadership within a matrix that hasn't aligned incentives. High performance and high potential is the right call. The more interesting question is what it would take for both Meera and Alex to lead through that conflict rather than around it.",
-    close: "Your placement on Meera is reasonable. The key distinction the case asks you to make is whether the matrix conflict reflects a capability gap or a structural problem. Meera is never openly obstructive — every meeting ends with agreement. What doesn't move is decisions that require the BU to absorb cost or risk. That is a matrix design problem as much as a leadership one. Meera's capability is high; what's constrained is the system she's operating in.",
-    review: "Meera's placement is worth revisiting. The surface read — technically collaborative, practically obstructive — can look like a capability or character issue. The case is asking you to look deeper. Meera has been at Nexagen longer than Alex, knows Marcus Holt's priorities in depth, and is skilled at shaping divisional conversations. That is not a low potential profile. The matrix conflict is real, but it is structural. Be careful not to penalize Meera for a system problem."
+  meera: {
+    aligned: "Good read on Meera. The matrix conflict with Alex is real, but it is structural — Meera is protecting a BU inside a system that creates exactly that incentive. That is not a performance failure or a potential ceiling. High Performance and Up 2+ Levels is the right call. The High Potential designation is warranted. The more interesting question is what it would take for both Meera and Alex to lead through that conflict rather than around it.",
+    close: "Your Meera placement is close. The key distinction the case asks you to make is whether the matrix conflict reflects a capability gap or a structural problem. Meera is never openly obstructive — every meeting ends with agreement. The BU protection pattern is rational within the incentive structure. Meera's capability is high. The potential ceiling, if any, is the system, not the person. Within three years, Up 2+ Levels is achievable.",
+    review: "Meera's placement is worth revisiting. The surface read — technically collaborative, practically obstructive — can look like a performance or potential issue. The case is asking you to look deeper. Meera has been at Nexagen longer than Alex, knows Marcus Holt's priorities in depth, and is skilled at shaping divisional conversations. That is not a Well Placed or Up 1 Level profile. The matrix conflict is real, but it is structural. Be careful not to penalize Meera for a system problem."
   },
   marcus: {
-    aligned: "You placed Marcus thoughtfully. The case is clear that Marcus is a high-performing divisional president with genuine investment in the leaders around him. The more layered read is on potential — not because Marcus lacks it, but because the pattern Marcus has built (rewarding leaders who surface good news, managing leaders who surface problems, while saying the opposite) is one of the structural reasons Alex's silence feels rational. A leader's cultural footprint is part of their potential assessment at this level.",
-    close: "Your Marcus placement is in range. Marcus is clearly effective at the divisional level — commercially sharp, direct, invested in talent. The dimension the case keeps surfecting is the gap between what Marcus says about transparency and what Marcus actually rewards. That gap is not incidental — it is one of the root causes of Alex's behavior throughout the case. How you account for that in a potential assessment says something about what you weight.",
-    review: "Marcus's placement deserves more scrutiny. The case does not position Marcus as a villain — he's a capable, commercially sharp leader who genuinely vouches for Alex. But look at the system Marcus has built: leaders who surface problems get managed, not supported. Alex's silence throughout the case is partly rational — it is a learned response to Marcus's actual behavior. At the senior level, a leader's cultural footprint is inseparable from their potential. That is worth weighing here."
+    aligned: "You placed Marcus thoughtfully. The case is clear that Marcus is a high-performing divisional president with genuine investment in the leaders around him. Marcus is not formally on the EM Merson Controls 9-box — he sits above it. The more useful question the case raises is about the system Marcus has built: leaders who surface good news are rewarded, leaders who surface problems are managed — while Marcus says the opposite. That cultural footprint is what makes Alex's silence rational. At the enterprise level, that is a potential question worth examining.",
+    close: "Your Marcus placement is in range. Marcus is effective at the divisional level — commercially sharp, direct, invested in talent. The dimension the case keeps surfacing is the gap between what Marcus says about transparency and what Marcus actually rewards. At the level Marcus operates, a leader's cultural footprint is inseparable from their potential assessment. That is worth weighing here even though Marcus sits above the EM Merson box.",
+    review: "Marcus's placement deserves more scrutiny. The case does not position Marcus as ineffective — he is a capable, commercially sharp divisional president. But look at the system Marcus has built: the conditions that make Alex's silence feel rational are conditions Marcus created. At the senior level, a leader's cultural impact on how information flows is a meaningful potential indicator. That is the dimension the case is asking you to examine."
   },
   dana: {
-    aligned: "Good read on Dana. The strategic restraint is real and it is not the same as low potential. Dana flagged the customer risk six months ago, read the room accurately when it wasn't acted on, and made a calculated decision not to escalate what is technically Alex's relationship. That is judgment, not passivity. The moderate potential placement reflects a real question: is the restraint a permanent disposition or a response to the system Dana is operating in? The case doesn't fully answer that.",
-    close: "Your Dana placement is close. The non-committal read is understandable — Dana is diplomatic to the point of appearing to not have a position. But the case shows something more deliberate: Dana flagged a real risk, watched it go unaddressed, and chose not to escalate. That is strategic restraint, not absence of judgment. The potential question worth sitting with is whether Dana would lead differently in a system that actually rewarded the escalation.",
-    review: "Dana's placement is worth reconsidering. The diplomatic, non-committal surface is easy to read as moderate performance or limited potential. The case offers a different picture: Dana holds information that could change the Nexagen Connect conversation and has chosen not to surface it — not because Dana lacks the capability, but because no one has created the conditions for it to move. Before settling on this placement, ask what Dana's behavior looks like in a system that actually rewards transparency."
+    aligned: "Good read on Dana. The strategic restraint is real and it is not the same as a performance or potential ceiling. Dana flagged the customer risk six months ago, read the room accurately when it was not acted on, and made a calculated decision not to escalate what is technically Alex's relationship. That is judgment. Solid Performance and Up 1 Level is the right call. The restraint is a response to the system, not a permanent disposition.",
+    close: "Your Dana placement is close. The non-committal read is understandable — Dana is diplomatic to the point of appearing to not have a position. But the case shows something more deliberate: Dana flagged a real risk, watched it go unaddressed, and chose not to escalate. That is strategic restraint, not limited capability. The potential question is whether Dana would operate differently in a system that rewarded the escalation. Within three years, Up 1 Level is achievable.",
+    review: "Dana's placement is worth reconsidering. The diplomatic surface is easy to read as Solid Performance and Well Placed — or lower. The case offers a different picture: Dana holds information that could change the Nexagen Connect conversation and has chosen not to surface it, not because Dana lacks the capability, but because no one has created the conditions for it to move. Before settling on this placement, ask what Dana's behavior looks like in a system that actually rewards transparency."
   },
   sam: {
-    aligned: "You placed Sam accurately, and you identified the right nuance. Sam is working hard against a target that no longer matches the enterprise commitment — and has asked for clarity twice without getting it. The moderate performance placement is fair, but the case is asking a harder question: how much of Sam's performance gap is Sam, and how much is the translation failure above? A clean calibration separates the person from the system. Sam is a capable leader operating in a broken information environment.",
-    close: "Your Sam placement is reasonable. The performance gap is visible — Sam is executing against a misaligned target and the results show it. The harder question the case asks is whether that gap belongs to Sam or to the system. Two requests for clarity, both met with reassurance rather than information. Sam is not the cause of the translation failure — Sam is experiencing it. How you account for that in the calibration is a real leadership test.",
-    review: "Sam's placement needs a second look. It's easy to read the performance gap as a Sam problem — misaligned execution, unclear results, operational friction. The case shows something different: Sam has asked for clarity twice and received reassurance both times. The strategy two layers up has become unrecognizable at Sam's level, and Sam is working hard against a target that no longer matches the enterprise commitment. Before placing Sam in the lower boxes, ask who owns the translation failure."
+    aligned: "You placed Sam accurately, and the nuance matters. Sam is working hard against a target that no longer matches the enterprise commitment — and has asked for clarity twice without getting it. Solid Performance and Well Placed is fair, but the case is asking a harder question: how much of the performance gap is Sam, and how much is the cascade failure above? A clean calibration separates the person from the system. Sam is a capable leader operating in a broken information environment.",
+    close: "Your Sam placement is reasonable. The performance gap is visible — Sam is executing against a misaligned target and the results show it. The Emerson framework asks where the next role sits within three years. The harder question the case raises is whether Sam's current placement reflects Sam's capability or the translation failure above. Sam has asked for clarity twice and received reassurance both times. That is not a Sam problem.",
+    review: "Sam's placement needs a second look. It is easy to read the performance gap as a capability issue — misaligned execution, unclear results, operational friction. The case shows something different: Sam has asked for clarity twice and received reassurance rather than information. The strategy two layers up has become unrecognizable at Sam's level. Before placing Sam in the lower boxes, ask who owns the translation failure — and whether that failure belongs in Sam's calibration at all."
   },
   leila: {
-    aligned: "You read Leila accurately. Flagging a material customer relationship risk six months ago in a one-on-one with Alex — and being right — is a high potential signal. The silence since is not a capability failure; it is a reasonable response to organizational cues that the topic was closed and that escalating over a manager's head carries real professional risk. High performance, high potential is the right call. The more important question is what it would take for Leila's signal to actually move.",
-    close: "Your Leila placement is close. The silence since the initial flag can read as disengagement or limited initiative. The case asks you to look at why the silence is rational: Alex acknowledged the risk and took no action, and the professional norm around escalating over a manager's head is real. Leila is one of the sharpest strategic thinkers on the direct team. The capability is high. What's constrained is the organizational environment, not the person.",
-    review: "Leila's placement is worth revisiting. On the surface: flagged a risk, wasn't acted on, went quiet. That can read as limited follow-through or moderate potential. The case offers a different frame: Leila read Alex's communication style accurately, understood the topic was closed, and made a calculated decision not to escalate over a manager's head. That is sophisticated organizational judgment. Before placing Leila in the middle or lower boxes, ask what you're actually measuring."
+    aligned: "You read Leila accurately. Flagging a material customer relationship risk six months ago in a one-on-one with Alex — and being right — is a High Potential signal. The silence since is not a capability failure; it is a reasonable response to organizational cues that the topic was closed and that escalating over a manager's head carries real professional risk. High Performance and Up 2+ Levels is the right call. The High Potential designation is warranted. The question to carry forward is what it would take for Leila's signal to actually move.",
+    close: "Your Leila placement is close. The silence since the initial flag can read as disengagement or limited initiative. The case asks you to look at why the silence is rational: Alex acknowledged the risk and took no action, and the professional norm around escalating over a manager's head is real. Leila is one of the sharpest strategic thinkers on the direct team. The capability is there. What is constrained is the organizational environment, not the person. Up 2+ Levels within three years is achievable.",
+    review: "Leila's placement is worth revisiting. On the surface: flagged a risk, was not acted on, went quiet. That can read as Solid Performance or limited potential. The case offers a different frame: Leila read Alex's communication style accurately, understood the topic was closed, and made a calculated decision not to escalate over a manager's head. That is sophisticated organizational judgment. Before placing Leila outside the High Potential designation, ask what you are actually measuring."
   },
   tomasz: {
-    aligned: "You placed Tomasz in the right range on performance. The potential placement is the harder call — and the case is designed to make you examine your reasoning. The behaviors often used as potential proxies (comfort with ambiguity, proactive influence, visible leadership in group settings) are behaviors Tomasz demonstrates differently than the default many frameworks implicitly assume. Before finalizing this placement, ask: are you assessing what Tomasz has done, or how Tomasz does it? Those are different questions with different answers.",
-    close: "Your Tomasz placement is in range, but the potential dimension deserves more scrutiny. The case is explicit that the struggle in cross-functional settings is not a capability gap — it is a mismatch between professional norms that reward individual technical excellence and a system that reads certain behaviors as potential signals. Is the placement based on what Tomasz has delivered, or on how Tomasz shows up in rooms? If it's the latter, the calibration may be measuring cultural fit rather than potential.",
-    review: "Tomasz's placement is the one the case most wants you to examine. Strong technical delivery, struggled in cross-functional settings — that reads easily as high performance, moderate or low potential. The case asks a harder question: struggled how, and compared to what baseline? The behaviors being read as potential indicators are behaviors Tomasz demonstrates differently, not behaviors Tomasz doesn't have. If the potential assessment is based on visibility, assertiveness in group settings, or a particular communication style, you may be measuring cultural expression rather than capability. That is the bias trap built into this case."
+    aligned: "You placed Tomasz in the right range on performance. The potential column is the harder call — and the case is designed to make you examine your reasoning. Emerson's framework asks where the next role sits within three years. The behaviors often used as potential proxies — comfort with ambiguity, proactive influence, visible leadership in group settings — are behaviors Tomasz demonstrates differently than many frameworks implicitly assume. Before finalizing, ask: are you assessing what Tomasz has done, or how Tomasz does it?",
+    close: "Your Tomasz placement is in range, but the potential column deserves more scrutiny. The Emerson framework asks a specific question about the next role within three years. If the answer to that question is being shaped by how Tomasz shows up in cross-functional settings rather than what Tomasz has delivered, the calibration may be measuring cultural expression rather than capability. That is a meaningful distinction, and it is worth naming explicitly in any real calibration conversation.",
+    review: "Tomasz's placement is the one the case most wants you to examine. Strong technical delivery, struggled in cross-functional settings — that reads easily as High Performance and Well Placed, or lower potential. The case asks a harder question: struggled how, and compared to what baseline? The behaviors being read as potential indicators are behaviors Tomasz demonstrates differently, not behaviors Tomasz does not have. If the potential column is being driven by visibility, assertiveness in group settings, or a particular communication style, you may be measuring cultural fit rather than capability. That is the bias trap built into this case."
   }
 };
-
 const PATTERN_FEEDBACK = {
-  bothWrong: "Looking at your placements as a set, the two cases that tend to reveal the most about an assessor's lens are Jordan and Tomasz — and they pull in opposite directions. Placing Jordan too high suggests a tendency to weight results over readiness, or to avoid the harder conversation about what the next level actually requires. Placing Tomasz too low suggests a tendency to weight behavioral style over demonstrated capability. Together, those two moves reveal something worth sitting with: what signals are you actually reading when you assess potential? The ego vs. mission frame from this program applies here too — mission-led talent assessment asks what the organization needs and what this person can genuinely contribute. Ego-led assessment, even unconsciously, asks who looks and sounds like leadership to me.",
-  jordanHigh: "Your placements show strong calibration across most of the team. The one to examine most carefully is Jordan. Placing Jordan in the high potential box based on three strong years of results is the most common move in this exercise — and it is the heir apparent trap the case is built around. Succession readiness is a different assessment from performance. The question isn't whether Jordan is excellent in the current role. It is whether Jordan has demonstrated the behaviors the role above requires: navigating visible conflict, making cross-functional calls without deferring, delivering a hard message that changed someone's behavior. The case doesn't show those. That gap is worth naming.",
-  tomaszLow: "Your placements are largely well-calibrated. The one to look at again is Tomasz. The case is designed to surface a specific bias pattern: assessing potential based on how someone demonstrates behaviors rather than whether they have them. If Tomasz landed in the moderate or low potential boxes, ask what evidence drove that call. Strong technical delivery is visible. The cross-functional struggle is also visible. The question the case asks is whether the struggle reflects a capability gap or a mismatch between Tomasz's professional norms and the behaviors the calibration process implicitly rewards. That is a meaningful distinction, and it is worth naming explicitly in any real calibration conversation.",
-  clean: "Your placements reflect careful, evidence-based thinking across the full team. The two cases that most often reveal an assessor's blind spots — Jordan and Tomasz — you handled with nuance: Jordan's results are real, and so is the succession gap; Tomasz's cross-functional struggle is real, and so is the question of what's driving it. The pattern across your placements suggests you are reading the case rather than your assumptions about it. The question to carry forward into your own org review conversations is whether that same discipline holds when the people on the grid are people you know, have history with, or have already formed a story about."
+  bothWrong: "Looking at your placements as a set, the two cases that tend to reveal the most about an assessor's lens are Jordan and Tomasz — and they pull in opposite directions. Placing Jordan in the High Potential designation based on results alone suggests a tendency to weight current performance over demonstrated readiness for the next level. Placing Tomasz outside the High Potential designation suggests a tendency to weight behavioral style over delivered capability. Together, those two moves reveal something worth sitting with: what signals are you actually reading when you assess potential within Emerson's three-year framework? The ego vs. mission frame applies here too — mission-led talent assessment asks what the organization needs and what this person can genuinely contribute. Ego-led assessment, even unconsciously, asks who looks and sounds like a leader to me.",
+  jordanHigh: "Your placements show strong calibration across most of the team. The one to examine most carefully is Jordan. Placing Jordan in the High Potential designation based on three strong years of results is the most common move in this exercise — and it is the heir apparent trap the case is built around. Emerson's framework asks a specific question: where is the next role within three years? Jordan's results support High Performance. What the case does not yet show is whether Jordan can operate at the level above — navigating visible conflict, making cross-functional calls without deferring, delivering a difficult message that actually changed behavior. Until those are demonstrated, the High Potential designation is premature.",
+  tomaszLow: "Your placements are largely well-calibrated. The one to look at again is Tomasz. The case is designed to surface a specific bias pattern: assessing potential based on how someone demonstrates behaviors rather than whether they have them. If Tomasz landed outside the High Potential designation, ask what evidence drove that call. Strong technical delivery is visible. The cross-functional struggle is also visible. The question the case asks is whether the struggle reflects a capability gap or a mismatch between Tomasz's professional norms and the behaviors Emerson's calibration process implicitly rewards. That is a meaningful distinction, and it is worth naming explicitly.",
+  clean: "Your placements reflect careful, evidence-based thinking across the full team. The two cases that most often reveal an assessor's blind spots — Jordan and Tomasz — you handled with nuance: Jordan's results are real, and so is the question of whether the High Potential designation is earned yet; Tomasz's cross-functional struggle is real, and so is the question of what is driving it. The pattern across your placements suggests you are reading the case rather than your assumptions about it. The question to carry forward into your own calibration conversations is whether that same discipline holds when the people on the grid are people you know, have history with, or have already formed a story about."
 };
-
 function getPatternFeedback() {
   const jordanPos = placements['jordan'];
   const tomaszPos = placements['tomasz'];
@@ -917,14 +995,6 @@ function resetSim() {
   document.getElementById('sim-panel').innerHTML = `<div class="dp-card"><h4>How to use this</h4><p>Drag a leader from the bench onto the grid. Click any placed leader to read their profile and add your justification.</p></div>`;
 }
 
-// Query param: show staff controls if ?staff=true
-const urlParams = new URLSearchParams(window.location.search);
-if (urlParams.get('staff') === 'true') {
-  document.getElementById('staff-banner').style.display = 'flex';
-  document.getElementById('api-notice').classList.add('visible');
-}
-
-// Coming soon modal
 function showComingSoon() {
   document.getElementById('coming-soon-modal').classList.add('visible');
 }
@@ -934,6 +1004,359 @@ function closeModal() {
 document.getElementById('coming-soon-modal').addEventListener('click', function(e) {
   if (e.target === this) closeModal();
 });
+
+// ---- SUCCESSION GAP ----
+let sgStep = 1;
+let sgSelections = {};
+
+const SG_FEEDBACK = {
+  A: "Conflict avoidance is the right read — and it is the gap most leaders in this room will miss on first pass. Jordan's results make it easy to assume that what worked at this level will carry over. The cases where conflict avoidance becomes most costly are exactly the ones where the stakes are highest — a difficult peer relationship, a resource decision with no clean answer, a performance issue that the organization has been tolerating. Jordan hasn't been tested there yet. Alex knows it and hasn't named it.",
+  B: "Cross-functional judgment is part of the picture, but it is a symptom more than the root gap. The deeper issue is that Jordan hasn't been put in situations where the only path forward requires making a call that costs a relationship. Deferring on cross-functional decisions is how conflict avoidance shows up in the operational context. The gap is the avoidance pattern, not the functional knowledge.",
+  C: "Developing others is a real gap at the next level, but it isn't what the case is surfacing here. Jordan's profile doesn't show evidence of a strong development track record, but Alex hasn't named this as the concern either. The succession gap the case is designed to surface is more about what Jordan does when the situation requires a difficult call — not about how Jordan grows the team.",
+  D: "Strategic thinking is the safest gap to name — and that's worth noticing. Jordan's commercial results suggest real strategic capability. The gap the case is actually pointing to is harder to name because it doesn't show up in a business review: what Jordan does when conflict is unavoidable, when there is no easy answer, when the relationship has to absorb something difficult. That is what Alex hasn't said."
+};
+
+function showSuccession() {
+  document.getElementById('case-detail').className = 'case-detail';
+  document.getElementById('sim-view').className = 'sim-view';
+  document.getElementById('succession-view').className = 'sim-view visible';
+  document.getElementById('breadcrumb').innerHTML = `
+    <a href="#" onclick="showList();return false;">EM Merson cases</a>
+    <span class="breadcrumb-sep">›</span>
+    <a href="#" onclick="showDetail('heir');return false;">The Heir Apparent</a>
+    <span class="breadcrumb-sep">›</span>
+    <span class="breadcrumb-current">Succession gap analysis</span>
+  `;
+  sgStep = 1;
+  sgSelections = {};
+  renderSGStep(1);
+}
+
+function setSGPhase(n) {
+  ['sgp1','sgp2','sgp3','sgp4'].forEach((id,i) => {
+    document.getElementById(id).classList.toggle('active', i < n);
+  });
+}
+
+function renderSGStep(step) {
+  setSGPhase(step);
+  const c = document.getElementById('sg-content');
+
+  if (step === 1) {
+    c.innerHTML = `
+      <div class="sg-prompt-card">
+        <div class="sg-prompt-num">Prompt 1 of 4 — Observe</div>
+        <div class="sg-prompt-q">Read Jordan's profile. What do you see that Alex is not saying out loud?</div>
+        <div class="sg-prompt-sub">Before the group discussion — get your thinking on paper first.</div>
+        <div class="sg-context">
+          <strong>Jordan Vásquez</strong> — Director, Commercial Strategy<br><br>
+          Three consecutive years of exceptional commercial results. Strong at strategy, highly effective in one-on-ones. Widely assumed to be Alex's successor — an assumption Jordan holds too. Consistently avoids visible conflict, defers on cross-functional decisions at critical moments, and has not delivered a difficult performance message that changed someone's behavior.
+        </div>
+        <textarea class="sg-textarea" id="sg-t1" placeholder="Write 2–3 sentences. What is the gap you see?" oninput="checkSGText('sg-t1','sg-btn1',20)"></textarea>
+        <button class="sg-next-btn" id="sg-btn1" disabled onclick="advanceSG(1)">Next →</button>
+      </div>`;
+  }
+
+  else if (step === 2) {
+    c.innerHTML = `
+      <div class="sg-prompt-card">
+        <div class="sg-prompt-num">Prompt 2 of 4 — Name it</div>
+        <div class="sg-prompt-q">Which gap matters most for the role above?</div>
+        <div class="sg-prompt-sub">Choose the one that is most accurate — not the one that is easiest to raise.</div>
+        <div class="sg-options">
+          <button class="sg-option" onclick="selectSGOption(this,'A')">
+            <div class="sg-option-letter">A</div>
+            <div class="sg-option-text">Jordan avoids situations where conflict is unavoidable — and the role above requires navigating them without deferring.</div>
+          </button>
+          <button class="sg-option" onclick="selectSGOption(this,'B')">
+            <div class="sg-option-letter">B</div>
+            <div class="sg-option-text">Jordan hasn't demonstrated cross-functional judgment at the level the next role requires.</div>
+          </button>
+          <button class="sg-option" onclick="selectSGOption(this,'C')">
+            <div class="sg-option-letter">C</div>
+            <div class="sg-option-text">Jordan hasn't shown a track record of developing others — a core expectation of the role above.</div>
+          </button>
+          <button class="sg-option" onclick="selectSGOption(this,'D')">
+            <div class="sg-option-letter">D</div>
+            <div class="sg-option-text">Jordan's strategic thinking hasn't been tested at the enterprise level yet.</div>
+          </button>
+        </div>
+        <button class="sg-next-btn" id="sg-btn2" disabled onclick="advanceSG(2)">See feedback →</button>
+        <div class="sg-feedback" id="sg-fb2"></div>
+        <button class="sg-next-btn" id="sg-btn2b" style="display:none;margin-top:12px" onclick="advanceSG(2.5)">Next →</button>
+      </div>`;
+  }
+
+  else if (step === 3) {
+    c.innerHTML = `
+      <div class="sg-prompt-card">
+        <div class="sg-prompt-num">Prompt 3 of 4 — Say it</div>
+        <div class="sg-prompt-q">You are Alex. You have ten minutes with Jordan before a flight. What do you say?</div>
+        <div class="sg-prompt-sub">Write the opening of that conversation. Not the whole thing — just how you would start it.</div>
+        <div class="sg-context">Jordan believes the next role is a matter of when, not if. This is the first time you are naming something that complicates that assumption.</div>
+        <textarea class="sg-textarea" id="sg-t3" placeholder="Write the opening. 2–4 sentences." oninput="checkSGText('sg-t3','sg-btn3',30)"></textarea>
+        <button class="sg-next-btn" id="sg-btn3" disabled onclick="advanceSG(3)">Next →</button>
+        <div class="sg-feedback" id="sg-fb3" style="display:none">
+          <strong>Notice:</strong> Most first drafts of this conversation open with something that softens the gap before naming it — a compliment, a reframe, a qualifier. Read what you wrote. Did you name the gap directly, or did you manage toward it? Jordan will hear the gap more clearly if you name it first.
+        </div>
+      </div>`;
+  }
+
+  else if (step === 4) {
+    c.innerHTML = `
+      <div class="sg-mirror-card">
+        <div class="sg-prompt-num" style="color:rgba(255,255,255,0.6)">Prompt 4 of 4 — Own it</div>
+        <div class="sg-mirror-q">Who on your team is Jordan right now?</div>
+        <div class="sg-mirror-sub">You don't have to say the name out loud. But notice that you already know.</div>
+      </div>
+      <div class="sg-facilitator">
+        <strong>Facilitator note:</strong> Hold this question in the room for a moment before opening discussion. Ask: what has made that conversation easy to defer? Listen for the same patterns Alex shows — the relationship is good, the results are there, the timing never feels right. Connect to the ego vs. mission frame: protecting the relationship at the cost of honest development is ego-led behavior, even when it doesn't feel that way.
+      </div>
+      <div class="sg-prompt-card" style="margin-top:16px">
+        <div class="sg-prompt-q" style="font-size:15px">One thing to take forward</div>
+        <div class="sg-prompt-sub">What is one specific thing you will do differently in the next 30 days as a result of this conversation?</div>
+        <textarea class="sg-textarea" id="sg-t4" placeholder="Be specific. Name the person, the conversation, the timeframe." oninput="checkSGText('sg-t4','sg-btn4',20)"></textarea>
+        <button class="sg-next-btn" id="sg-btn4" disabled onclick="advanceSG(4)">Complete →</button>
+      </div>`;
+  }
+
+  else if (step === 5) {
+    c.innerHTML = `
+      <div class="sg-complete">
+        <div class="sg-complete-icon">✓</div>
+        <h3>Succession gap analysis complete</h3>
+        <p>The gap is easy to see in Alex. The harder question is where it shows up in you — and what you do about it in the next 30 days.</p>
+        <button class="sg-next-btn" onclick="showDetail('heir')">← Back to The Heir Apparent</button>
+      </div>`;
+  }
+}
+
+function checkSGText(textareaId, btnId, minLen) {
+  const val = document.getElementById(textareaId).value.trim();
+  const btn = document.getElementById(btnId);
+  if (btn) btn.disabled = val.length < minLen;
+}
+
+function selectSGOption(el, letter) {
+  document.querySelectorAll('.sg-option').forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+  sgSelections.gap = letter;
+  document.getElementById('sg-btn2').disabled = false;
+}
+
+function advanceSG(fromStep) {
+  if (fromStep === 1) {
+    sgSelections.observe = document.getElementById('sg-t1').value;
+    renderSGStep(2);
+  }
+  else if (fromStep === 2) {
+    // Show feedback for gap selection
+    const fb = document.getElementById('sg-fb2');
+    fb.textContent = SG_FEEDBACK[sgSelections.gap];
+    fb.classList.add('visible');
+    document.getElementById('sg-btn2').style.display = 'none';
+    document.getElementById('sg-btn2b').style.display = 'inline-block';
+    document.querySelectorAll('.sg-option').forEach(o => o.style.pointerEvents = 'none');
+  }
+  else if (fromStep === 2.5) {
+    renderSGStep(3);
+  }
+  else if (fromStep === 3) {
+    sgSelections.draft = document.getElementById('sg-t3').value;
+    // Show reflection on their draft then proceed
+    const fb = document.getElementById('sg-fb3');
+    fb.style.display = 'block';
+    document.getElementById('sg-btn3').textContent = 'Continue →';
+    document.getElementById('sg-btn3').onclick = () => renderSGStep(4);
+    document.getElementById('sg-btn3').disabled = false;
+  }
+  else if (fromStep === 4) {
+    sgSelections.commitment = document.getElementById('sg-t4').value;
+    renderSGStep(5);
+  }
+}
+
+// Query param: show staff controls if ?staff=true
+const urlParams = new URLSearchParams(window.location.search);
+if (urlParams.get('staff') === 'true') {
+  document.getElementById('staff-banner').style.display = 'flex';
+}
+
+// ---- COMMITTED NUMBER REFLECTION ----
+let cnStep = 1;
+let cnSelections = {};
+
+const CN_PATH_FEEDBACK = {
+  A: "This is the most common justification — and the most honest one. Taking ownership of the problem before surfacing it feels like the right thing to do. The difficulty is that ownership and transparency are not in opposition. Surfacing the information early is not the same as failing to solve the problem. Alex can bring the number and the plan to address it at the same time. The delay does not protect the commitment — it protects the relationship with Marcus at the cost of the system's ability to respond.",
+  B: "Protecting the team is a real instinct and not a cynical one. But notice what it assumes: that Marcus Holt's response to early transparency would be punitive rather than collaborative. That assumption is itself worth examining. If the culture punishes early disclosure of problems, that is a system issue worth naming — not a reason to withhold information. And if the assumption is wrong, Alex has cost the organization three weeks of response time for a risk that wasn't real.",
+  C: "Buying time to recover the number is the operational version of the same instinct. It treats the gap as a technical problem rather than an information problem. Three weeks is not nothing — it is three weeks where Marcus is making decisions about the business based on a commitment that no longer reflects reality. The cost of the delay is not just the number. It is the quality of every decision Marcus makes in that window.",
+  D: "Confidence in recovery is a legitimate reason to push hard on the problem. It becomes ego-led when the confidence is protecting Alex from a difficult conversation rather than genuinely reflecting the probability of recovery. The question to sit with: if the probability of recovery were 40 percent instead of 80 percent, would Alex still wait? At what probability does the information belong to Marcus? That threshold is worth knowing."
+};
+
+function showCommitted() {
+  document.getElementById('case-detail').className = 'case-detail';
+  document.getElementById('sim-view').className = 'sim-view';
+  document.getElementById('succession-view').className = 'sim-view';
+  document.getElementById('committed-view').className = 'sim-view visible';
+  document.getElementById('breadcrumb').innerHTML = `
+    <a href="#" onclick="showList();return false;">EM Merson cases</a>
+    <span class="breadcrumb-sep">›</span>
+    <a href="#" onclick="showDetail('committed');return false;">The Committed Number</a>
+    <span class="breadcrumb-sep">›</span>
+    <span class="breadcrumb-current">Reflection prompts</span>
+  `;
+  cnStep = 1;
+  cnSelections = {};
+  renderCNStep(1);
+}
+
+function setCNPhase(n) {
+  ['cnp1','cnp2','cnp3','cnp4'].forEach((id,i) => {
+    document.getElementById(id).classList.toggle('active', i < n);
+  });
+}
+
+function renderCNStep(step) {
+  setCNPhase(step);
+  const c = document.getElementById('cn-content');
+
+  if (step === 1) {
+    c.innerHTML = `
+      <div class="sg-prompt-card">
+        <div class="sg-prompt-num">Prompt 1 of 4 — The moment</div>
+        <div class="sg-prompt-q">Before Alex does anything — what is the first instinct?</div>
+        <div class="sg-prompt-sub">Not what Alex should do. What does Alex want to do?</div>
+        <div class="sg-context">
+          <strong>The situation:</strong><br><br>
+          Alex Tan is VP &amp; GM of EM Merson Controls — a $950M business unit operating across Singapore, Houston, Dubai, and Warsaw. Three weeks ago, Alex committed to a Q3 revenue number in the President's Operating Report. Marcus Holt, the Divisional President, is expecting that number.<br><br>
+          This morning, Alex received updated forecast data from the regional teams. The picture has changed materially. The number Alex committed to is no longer achievable on current trajectory — not without something significant shifting in the next six weeks.<br><br>
+          Alex has two paths. Surface the information now, before the quarterly review. Or work the problem — push the teams, find upside, and see if the number can be recovered before anyone needs to know it was ever at risk.<br><br>
+          Both paths feel reasonable. That is the point.
+        </div>
+        <textarea class="sg-textarea" id="cn-t1" placeholder="Write 2–3 sentences. What does Alex want to do — and what is driving that?" oninput="checkSGText('cn-t1','cn-btn1',20)"></textarea>
+        <button class="sg-next-btn" id="cn-btn1" disabled onclick="advanceCN(1)">Next →</button>
+      </div>`;
+  }
+
+  else if (step === 2) {
+    c.innerHTML = `
+      <div class="sg-prompt-card">
+        <div class="sg-prompt-num">Prompt 2 of 4 — The path</div>
+        <div class="sg-prompt-q">Alex decides to work the problem before surfacing it. What is Alex telling themselves to justify that choice?</div>
+        <div class="sg-prompt-sub">Choose the justification that feels most honest — not the one that sounds worst.</div>
+        <div class="sg-context">
+          <strong>What we know about Alex:</strong><br><br>
+          Alex is widely respected for high personal accountability. Direct reports describe Alex as someone who takes ownership seriously and rarely passes problems upward without first working them hard. Marcus Holt has publicly vouched for Alex's appointment. The relationship is strong.<br><br>
+          Alex's first instinct is almost always to solve before surfacing. It has worked before. It is not obviously wrong.
+        </div>
+        <div class="sg-options">
+          <button class="sg-option" onclick="selectCNOption(this,'A')">
+            <div class="sg-option-letter">A</div>
+            <div class="sg-option-text">"This is my problem to solve. Escalating before I've exhausted every option isn't ownership — it's passing the problem upward."</div>
+          </button>
+          <button class="sg-option" onclick="selectCNOption(this,'B')">
+            <div class="sg-option-letter">B</div>
+            <div class="sg-option-text">"If I surface this now, it puts my team in a difficult position. I need to give them a chance to recover the number before it becomes a leadership issue."</div>
+          </button>
+          <button class="sg-option" onclick="selectCNOption(this,'C')">
+            <div class="sg-option-letter">C</div>
+            <div class="sg-option-text">"Three weeks is enough time. If I surface it now and we recover anyway, I've created unnecessary noise and damaged confidence in the business."</div>
+          </button>
+          <button class="sg-option" onclick="selectCNOption(this,'D')">
+            <div class="sg-option-letter">D</div>
+            <div class="sg-option-text">"I know this business. I've recovered worse than this. I just need to focus and execute."</div>
+          </button>
+        </div>
+        <button class="sg-next-btn" id="cn-btn2" disabled onclick="advanceCN(2)">See feedback →</button>
+        <div class="sg-feedback" id="cn-fb2"></div>
+        <button class="sg-next-btn" id="cn-btn2b" style="display:none;margin-top:12px" onclick="advanceCN(2.5)">Next →</button>
+      </div>`;
+  }
+
+  else if (step === 3) {
+    c.innerHTML = `
+      <div class="sg-prompt-card">
+        <div class="sg-prompt-num">Prompt 3 of 4 — The cost</div>
+        <div class="sg-prompt-q">Three weeks later, the number doesn't recover. Marcus finds out in the quarterly review. What has the delay cost — beyond the number itself?</div>
+        <div class="sg-prompt-sub">Think beyond the financial result. What else has changed?</div>
+        <div class="sg-context">
+          <strong>What the delay has produced:</strong><br><br>
+          Marcus Holt walked into the President's Council with the committed number in his forecast. He has been using that number in conversations with his leadership team and in reporting upward. Sam Reyes in Houston has been running operations against targets that were set before the forecast shifted — no one told Sam the picture had changed. Leila Khalil flagged a customer relationship risk in EMEA six weeks ago. That risk is now more material than it was, and it never made it into the conversation with Marcus.<br><br>
+          The number is the visible cost. The question is what else has accumulated in the time Alex was working the problem alone.
+        </div>
+        <textarea class="sg-textarea" id="cn-t3" placeholder="What has the delay cost beyond the number? Name 2–3 specific things." oninput="checkSGText('cn-t3','cn-btn3',30)"></textarea>
+        <button class="sg-next-btn" id="cn-btn3" disabled onclick="advanceCN(3)">Next →</button>
+        <div class="sg-feedback" id="cn-fb3" style="display:none">
+          <strong>What the case reveals:</strong> The cost of the delay is not just the number — it is the quality of every decision Marcus made in the window when he didn't have accurate information. It is the three weeks Sam Reyes spent executing against a misaligned target. It is the customer relationship risk Leila named that never got to the level where it could be acted on. And it is the trust cost: not that Alex missed a number, but that Marcus found out at the worst possible moment, in a room where he had committed to the number himself. The number is recoverable. The information dynamic is harder to repair.
+        </div>
+      </div>`;
+  }
+
+  else if (step === 4) {
+    c.innerHTML = `
+      <div class="sg-mirror-card">
+        <div class="sg-prompt-num" style="color:rgba(255,255,255,0.6)">Prompt 4 of 4 — The mirror</div>
+        <div class="sg-mirror-q">Where in your own leadership do you find the impulse to solve before surfacing?</div>
+        <div class="sg-mirror-sub">Not in Alex's business. In yours. What problem are you working alone right now that belongs in a conversation you haven't had yet?</div>
+      </div>
+      <div class="sg-facilitator">
+        <strong>Facilitator note:</strong> Hold this question before opening the floor. The impulse to solve before surfacing is not a character flaw — it is how high-accountability leaders are wired. The question is not whether the instinct exists. It is whether leaders can recognize when it has crossed from ownership into avoidance. Ask: what is the difference between those two things? How do you know which one you're in?
+      </div>
+      <div class="sg-prompt-card" style="margin-top:16px">
+        <div class="sg-prompt-q" style="font-size:15px">One thing to take forward</div>
+        <div class="sg-prompt-sub">What is one conversation you have been deferring that this case is telling you to have sooner? Name the person and the topic — even if only on this page.</div>
+        <textarea class="sg-textarea" id="cn-t4" placeholder="Be specific. The more concrete, the more useful." oninput="checkSGText('cn-t4','cn-btn4',20)"></textarea>
+        <button class="sg-next-btn" id="cn-btn4" disabled onclick="advanceCN(4)">Complete →</button>
+      </div>`;
+  }
+
+  else if (step === 5) {
+    c.innerHTML = `
+      <div class="sg-complete">
+        <div class="sg-complete-icon">✓</div>
+        <h3>Reflection complete</h3>
+        <p>The impulse Alex felt is not unique to Alex. The question this case leaves open is not whether you recognize it — it is what you do the next time you feel it in yourself.</p>
+        <button class="sg-next-btn" onclick="showDetail('committed')">← Back to The Committed Number</button>
+      </div>`;
+  }
+}
+
+function selectCNOption(el, letter) {
+  document.querySelectorAll('#cn-content .sg-option').forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+  cnSelections.path = letter;
+  document.getElementById('cn-btn2').disabled = false;
+}
+
+function advanceCN(fromStep) {
+  if (fromStep === 1) {
+    cnSelections.instinct = document.getElementById('cn-t1').value;
+    renderCNStep(2);
+  }
+  else if (fromStep === 2) {
+    const fb = document.getElementById('cn-fb2');
+    fb.textContent = CN_PATH_FEEDBACK[cnSelections.path];
+    fb.classList.add('visible');
+    document.getElementById('cn-btn2').style.display = 'none';
+    document.getElementById('cn-btn2b').style.display = 'inline-block';
+    document.querySelectorAll('#cn-content .sg-option').forEach(o => o.style.pointerEvents = 'none');
+  }
+  else if (fromStep === 2.5) {
+    renderCNStep(3);
+  }
+  else if (fromStep === 3) {
+    cnSelections.cost = document.getElementById('cn-t3').value;
+    const fb = document.getElementById('cn-fb3');
+    fb.style.display = 'block';
+    document.getElementById('cn-btn3').textContent = 'Continue →';
+    document.getElementById('cn-btn3').onclick = () => renderCNStep(4);
+    document.getElementById('cn-btn3').disabled = false;
+  }
+  else if (fromStep === 4) {
+    cnSelections.commitment = document.getElementById('cn-t4').value;
+    renderCNStep(5);
+  }
+}
 
 renderCaseList();
 </script>
