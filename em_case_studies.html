@@ -553,7 +553,7 @@ const CASES = [
     desc: 'Alex needs Meera Krishnan\'s cooperation on Nexagen Connect. Meera Krishnan is technically collaborative and practically obstructive. Dana Mensah holds information both BU leaders need but neither has asked for directly.',
     premise: 'The Nexagen Connect implementation is behind schedule and Alex and Meera Krishnan have developed meaningfully different views on how to proceed. Every meeting ends with agreement. Nothing moves. Dana Mensah has been watching this play out and has information that could change the conversation — but no one has asked.',
     context: `<h3>What are you looking at?</h3><p>Alex and Meera Krishnan are co-leading the Nexagen Connect implementation. Every meeting ends with agreement. Nothing moves. The initiative is behind schedule and both leaders have developed different views on how to proceed — views neither has stated directly to the other.</p><p>Is this a conflict? It doesn't look like one. Both leaders are professional, present, and constructive in every meeting. But look closer: what is each of them protecting? And what would it take to name that out loud?</p><p>Dana Mensah has been watching this play out for months and holds information that could change the conversation. Neither Alex nor Meera has asked for it directly.</p><p>As you work through this case, consider: when two capable leaders are in genuine disagreement, what does mission-led behavior look like — for each of them? And what is the cost of the conversation that isn't happening?</p>`,
-    personas: ['alex', 'priya', 'dana', 'marcus'],
+    personas: ['alex', 'meera', 'dana', 'marcus'],
     activities: [{ name: 'Matrix conflict mapping', sub: 'Where does accountability sit?', icon: '🔗' }]
   }
 ];
@@ -561,7 +561,7 @@ const CASES = [
 const PERSONAS_DATA = {
   alex:   { name:'Alex Tan',         initials:'AC', role:'VP & GM, EM Merson Controls',                   color:'#1B2552' },
   jordan: { name:'Jordan Vásquez',     initials:'JV', role:'Director, Commercial Strategy',              color:'#004B8D' },
-  priya:  { name:'Meera Krishnan',        initials:'MK', role:'VP & GM, Industrial Automation BU',          color:'#1DB1DE' },
+  meera:  { name:'Meera Krishnan',        initials:'MK', role:'VP & GM, Industrial Automation BU',          color:'#1DB1DE' },
   marcus: { name:'Marcus Holt',       initials:'MH', role:'Divisional President',                       color:'#2D3748' },
   dana:   { name:'Dana Mensah',       initials:'DM', role:'VP, Shared Commercial & Customer Excellence',color:'#0F6E56' },
   sam:    { name:'Sam Reyes',        initials:'SR', role:'Director, Operations — Americas',             color:'#853C1D' },
@@ -691,7 +691,7 @@ const SIM_PERSONAS = [
     profile:'Exceptional commercial results for three consecutive years. Strong at strategy, highly effective in one-on-ones. Widely assumed to be Alex\'s successor — an assumption Jordan holds too.',
     caseNote:'The heir apparent gap: Jordan consistently avoids visible conflict, defers on cross-functional decisions at critical moments, and has not delivered a difficult performance message that changed behavior. The role above requires all three.',
     intended:{perf:2,pot:0}, intendedLabel:'High Performance and Well Placed. Jordan is not yet ready to move up — the succession gap has to be named and developed first.' },
-  { id:'priya',  name:'Meera Krishnan',        initials:'MK', role:'VP & GM, Industrial Automation BU',           color:'#1DB1DE',
+  { id:'meera',  name:'Meera Krishnan',        initials:'MK', role:'VP & GM, Industrial Automation BU',           color:'#1DB1DE',
     profile:'Alex\'s closest peer. Has been with Nexagen longer than Alex, knows Marcus Holt\'s priorities in depth, and is skilled at shaping divisional conversations without appearing to.',
     caseNote:'Technically collaborative, never openly obstructive. In practice, decisions that require her BU to absorb cost or risk get delayed or escalated. This is not bad faith — it is a capable leader protecting a BU inside a matrix that creates that incentive.',
     intended:{perf:2,pot:2}, intendedLabel:'High Performance — Potential to Move Up 2+ Levels. The matrix conflict is structural, not a Meera problem.' },
@@ -948,13 +948,15 @@ function submitSim() {
   setSimPhase(3);
   const items = SIM_PERSONAS.map(p => {
     const pos = placements[p.id];
-    const box = BOXES.find(b => b.perf === pos.perf && b.pot === pos.pot);
+    if (!pos) return null;
+    const box = BOXES.find(b => b.perf === pos.perf && b.pot === pos.pot) || { label: 'Unknown' };
     const exact = pos.perf === p.intended.perf && pos.pot === p.intended.pot;
     const close = !exact && Math.abs(pos.perf - p.intended.perf) <= 1 && Math.abs(pos.pot - p.intended.pot) <= 1;
     const tier = exact ? 'aligned' : close ? 'close' : 'review';
-    const feedback = FEEDBACK[p.id][tier];
+    const feedbackObj = FEEDBACK[p.id];
+    const feedback = feedbackObj ? feedbackObj[tier] : 'Feedback not available for this placement.';
     return { p, box, exact, close, tier, feedback };
-  });
+  }).filter(Boolean);
 
   const patternFeedback = getPatternFeedback();
 
